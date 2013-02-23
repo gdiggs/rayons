@@ -1,3 +1,8 @@
+- if flash[:error]
+  .message.error= flash[:error]
+- if flash[:message]
+  .message= flash[:message]
+
 %h1 Listing items
 
 %table
@@ -29,3 +34,6 @@
 %br
 
 = link_to 'New Item', new_item_path
+%form{ :action => '/items/import', :method => 'post', :enctype => 'multipart/form-data'}
+  %input{ :type => 'file', :name => 'file' }
+  %input{ :type => 'submit', :value => 'Import' }
