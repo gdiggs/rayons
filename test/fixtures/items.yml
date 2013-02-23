@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyText
+  artist: MyText
+  year: 1
+  label: MyText
+  format: MyText
+  condition: MyText
+  price_paid: MyText
+
+two:
+  title: MyText
+  artist: MyText
+  year: 1
+  label: MyText
+  format: MyText
+  condition: MyText
+  price_paid: MyText

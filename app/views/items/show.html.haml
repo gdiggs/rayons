@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @item.title
+%p
+  %b Artist:
+  = @item.artist
+%p
+  %b Year:
+  = @item.year
+%p
+  %b Label:
+  = @item.label
+%p
+  %b Format:
+  = @item.format
+%p
+  %b Condition:
+  = @item.condition
+%p
+  %b Price paid:
+  = @item.price_paid
+
+= link_to 'Edit', edit_item_path(@item)
+\|
+= link_to 'Back', items_path
