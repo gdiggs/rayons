@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_filter :can_edit_items, :only => [:new, :edit, :create, :update, :import, :destroy]
+
   # GET /items
   # GET /items.json
   def index
@@ -99,5 +101,14 @@ class ItemsController < ApplicationController
 
   ensure
     redirect_to '/'
+  end
+
+  private
+  
+  def can_edit_items
+    # return 404 for non-editable things
+    if cannot? :manage, Item
+      raise ActionController::RoutingError.new('Not Found')
+    end
   end
 end

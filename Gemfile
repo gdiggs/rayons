@@ -3,6 +3,10 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.12'
 gem 'pg'
 gem 'thin'
+gem 'jquery-rails'
+gem 'rails_admin'
+gem "devise"
+gem 'cancan'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -16,5 +20,3 @@ group :development do
   gem 'colorize'
   gem 'heroku'
 end
-
-gem 'jquery-rails'
