@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130224161425) do
+ActiveRecord::Schema.define(:version => 20130224180111) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -58,6 +58,17 @@ ActiveRecord::Schema.define(:version => 20130224161425) do
     t.datetime "updated_at", :null => false
     t.text     "color"
   end
+
+  add_index "items", ["artist"], :name => "index_items_on_artist"
+  add_index "items", ["color"], :name => "index_items_on_color"
+  add_index "items", ["condition"], :name => "index_items_on_condition"
+  add_index "items", ["created_at"], :name => "index_items_on_created_at"
+  add_index "items", ["format"], :name => "index_items_on_format"
+  add_index "items", ["label"], :name => "index_items_on_label"
+  add_index "items", ["price_paid"], :name => "index_items_on_price_paid"
+  add_index "items", ["title"], :name => "index_items_on_title"
+  add_index "items", ["updated_at"], :name => "index_items_on_updated_at"
+  add_index "items", ["year"], :name => "index_items_on_year"
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"

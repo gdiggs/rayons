@@ -5,17 +5,19 @@
 
 %h1 Listing items
 
-%table
+%table{ 'data-sort' => params[:sort], 'data-direction' => params[:direction] }
   %tr
-    %th Title
-    %th Artist
-    %th Year
-    %th Label
-    %th Format
-    %th Condition
-    %th Price paid
+    - ['Title', 'Artist', 'Year', 'Label', 'Format', 'Condition', 'Price Paid'].each do |field|
+      %th
+        %a{ 'data-sort' => field.parameterize('_'), :class => ('current' if params[:sort] == field.parameterize('_')) }
+          = field
+          - if params[:sort] == field.parameterize('_')
+            = params[:direction] == 'ASC' ? "\u2191" : "\u2193"
     %th
-    %th
+      %a{ 'data-sort' => 'created_at', :class => ('current' if params[:sort] == 'created_at') }
+        Added On
+        - if params[:sort] == 'created_at' 
+          = params[:direction] == 'ASC' ? "\u2191" : "\u2193"
     %th
 
   - @items.each do |item|
@@ -27,9 +29,11 @@
       %td= item.format
       %td= item.condition
       %td= item.price_paid
-      %td= link_to 'Show', item
-      %td= link_to 'Edit', edit_item_path(item)
-      %td= link_to 'Destroy', item, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= item.created_at.strftime('%m.%d.%y')
+      %td
+        = link_to 'e', edit_item_path(item)
+        \/
+        = link_to 'd', item, :method => :delete, :data => { :confirm => 'Are you sure you want to delete this item?' }
 
 %br
 

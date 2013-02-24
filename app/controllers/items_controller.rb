@@ -1,10 +1,13 @@
 class ItemsController < ApplicationController
   before_filter :can_edit_items, :only => [:new, :edit, :create, :update, :import, :destroy]
 
+  # GET /
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    params[:direction] ||= 'ASC'
+    params[:sort] ||= Item::SORT_ORDER[0]
+    @items = Item.sorted(params[:sort], params[:direction])
 
     respond_to do |format|
       format.html # index.html.erb
