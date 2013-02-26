@@ -61,4 +61,32 @@ $(function() {
 
     return false;
   });
+
+  $('.toggle-controls a').on('click', function() {
+    if($('#editing-bar').is(':visible')) {
+      $('#editing-bar').fadeOut(400);
+      $(this).text('show controls');
+    } else {
+      $('#editing-bar').fadeIn(400);
+      $(this).text('hide controls');
+    }
+    return false;
+  });
+
+  // select random data row, highlight it and scroll the window
+  // to it
+  $('a.random').on('click', function() {
+    $('tr.hover').removeClass('hover');
+    var rows = $('tr[data-id]:not(.edit)'),
+        index = Math.floor(Math.random() * rows.length),
+        $row = $(rows[index]);
+
+    $row.addClass('hover');
+    $('html, body').animate( {
+      scrollTop: $row.offset().top
+    }, 800);
+
+    return false;
+  });
+  
 });
