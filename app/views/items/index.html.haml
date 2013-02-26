@@ -3,6 +3,14 @@
   %a{ :href => '/' } Rayons
 
 .content
+  - if can? :manage, Item
+    #add-new
+      %form{ :action => '/items', :method => 'post' }
+        = token_tag(nil)
+        - ['Title', 'Artist', 'Year', 'Label', 'Format', 'Condition', 'Price Paid'].each do |field|
+          %input{ :type => 'text', :name => "item[#{field.parameterize('_')}]", :placeholder => field }
+        %input{ :type => 'submit', :value => 'Add' }
+
   %table{ 'data-sort' => params[:sort], 'data-direction' => params[:direction] }
     %tr
       - ['Title', 'Artist', 'Year', 'Label', 'Format', 'Condition', 'Price Paid'].each do |field|
