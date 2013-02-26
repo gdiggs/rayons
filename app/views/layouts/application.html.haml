@@ -18,6 +18,9 @@
           ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   %body
+    %h1
+      %a{ :href => '/' } Rayons
+
     - if flash[:error]
       .message.error= flash[:error]
     - if flash[:message] || flash[:notice]

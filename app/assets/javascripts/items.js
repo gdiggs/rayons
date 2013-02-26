@@ -1,7 +1,7 @@
 $(function() {
   // display a message and fade in the message banner
   var showMessage = function(message) {
-    $('.message:first').html(message).fadeIn(400);
+    $('.message:first').html(message).fadeIn(400).delay(4000).fadeOut(400);
   };
 
   $('a[data-sort]').click(function() {
