@@ -90,6 +90,12 @@ var jqueryLoaded = function() {
       return false;
     });
 
+    $('a.login, a.import').live('click', function() {
+      $('#editing-bar form').show();
+      $(this).hide();
+      return false;
+    });
+
     if($('.chart').length) {
       var drawChart = function(elem) {
         var options = {

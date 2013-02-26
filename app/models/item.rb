@@ -29,7 +29,7 @@ class Item < ActiveRecord::Base
 
   def self.search(query = "")
     str = (Item.column_names - ["created_at", "updated_at", "id", "year"]).map { |c| "#{c} ILIKE '%{q}'" }.join(" OR ") % {:q => query}
-    str += " OR year = '#{query}'"
+    str += " OR year = '#{query}'" if query == query.to_i.to_s
     self.where str
   end
 

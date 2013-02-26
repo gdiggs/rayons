@@ -32,14 +32,16 @@
     %a.logout{ :href => '/logout' } disable editing
     %a.import{ :href => '' } import csv
     %form{ :action => '/items/import', :method => 'post', :enctype => 'multipart/form-data'}
+      = token_tag(nil)
       %input{ :type => 'file', :name => 'file' }
       %input{ :type => 'submit', :value => 'Import' }
   - else
     editing is disabled.
     %a.login{ :href => '' } enable now?
-    %form{ :action => '/login', :method => 'post' }
-      %input{ :type => 'password', :name => 'password', :placeholder => 'Password' }
-      %input{ :type => 'submit', :value => 'Enable' }
+    = form_tag user_session_path do
+      = text_field_tag 'user[email]', nil, :placeholder => 'Email Address'
+      = password_field_tag 'user[password]', nil, :placeholder => 'Password'
+      %button Sign in
   %form.search{ :action => '/', :method => 'get' }
     %input{ :type => 'text', :name => 'search', :placeholder => 'Search', :value => params[:search] }
 .toggle-controls

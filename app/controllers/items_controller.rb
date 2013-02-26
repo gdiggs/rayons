@@ -9,6 +9,8 @@ class ItemsController < ApplicationController
     params[:sort] ||= Item::SORT_ORDER[0]
     @items = Item.sorted(params[:sort], params[:direction])
 
+    @items = @items.search(params[:search]) if params[:search].present?
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }
