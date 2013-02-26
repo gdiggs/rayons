@@ -106,6 +106,14 @@ class ItemsController < ApplicationController
     redirect_to '/'
   end
 
+  # GET /stats
+  def stats
+    respond_to do |format|
+      format.html
+      format.json { render json: [[params[:field], 'num']] + Item.stats_for_field(params[:field]).to_a }
+    end
+  end
+
   private
   
   def can_edit_items_or_not_found

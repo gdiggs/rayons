@@ -1,7 +1,31 @@
 class Item < ActiveRecord::Base
   attr_accessible :artist, :condition, :format, :label, :price_paid, :title, :year, :color, :updated_at, :created_at
 
-  SORT_ORDER = ['artist', 'title', 'year', 'label', 'format']
+  SORT_ORDER = ['artist', 'title', 'year', 'label', 'format'].freeze
+  STAT_FIELDS = (Item.column_names - ["created_at", "updated_at", "id"]).freeze
+
+  def self.stats
+    results = {}
+    STAT_FIELDS.each do |field|
+      results[field] = self.stats_for_field(field)
+    end
+    results
+  end
+
+  def self.stats_for_field(field)
+    data = {}
+    stats = self.count(field, :group => field, :order => "count_#{field} DESC")
+
+    stats.each do |val, count|
+      if count == 1
+        data["Other"] = data["Other"].to_i + 1
+      else
+        data[val.to_s] = count
+      end
+    end
+
+    data
+  end
 
   def self.search(query = "")
     str = (Item.column_names - ["created_at", "updated_at", "id", "year"]).map { |c| "#{c} ILIKE '%{q}'" }.join(" OR ") % {:q => query}

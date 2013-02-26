@@ -9,6 +9,7 @@ Rayons::Application.routes.draw do
     end
   end
 
+  get '/stats', :to => 'items#stats'
   root :to => "items#index"
 
   # The priority is based upon order of creation:
