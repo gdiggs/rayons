@@ -5,7 +5,7 @@
 .content
   - if can? :manage, Item
     #add-new
-      %form{ :action => '/items', :method => 'post' }
+      %form.ajax{ :action => '/items', :method => 'post' }
         = token_tag(nil)
         - ['Title', 'Artist', 'Year', 'Label', 'Format', 'Condition', 'Price Paid'].each do |field|
           %input{ :type => 'text', :name => "item[#{field.parameterize('_')}]", :placeholder => field }
@@ -25,21 +25,7 @@
           - if params[:sort] == 'created_at' 
             = params[:direction] == 'ASC' ? "\u2191" : "\u2193"
 
-    - @items.each do |item|
-      %tr
-        %td.title= item.title
-        %td.artist= item.artist
-        %td.year= item.year
-        %td.label= item.label
-        %td.format= item.format
-        %td.condition= item.condition
-        %td.price_paid= item.price_paid
-        %td.added_on= item.created_at.strftime('%m.%d.%y')
-        - if can? :manage, Item
-          %td.edit
-            = link_to 'e', edit_item_path(item)
-            \/
-            = link_to 'd', item, :method => :delete, :data => { :confirm => 'Are you sure you want to delete this item?' }
+    = render :partial => 'items/item', :collection => @items, :as => :item
 
 %form{ :action => '/items/import', :method => 'post', :enctype => 'multipart/form-data'}
   %input{ :type => 'file', :name => 'file' }
