@@ -2,8 +2,40 @@
 %html
   %head
     %title Rayons
+    %link{ :href=>"http://fonts.googleapis.com/css?family=Monoton", :rel=>"stylesheet", :type=>"text/css" }
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
+
+    - if ENV['GOOGLE_ANALYTICS_CODE']
+      :javascript
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', '#{ENV['GOOGLE_ANALYTICS_CODE']}']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   %body
+    - if flash[:error]
+      .message.error= flash[:error]
+    - if flash[:message] || flash[:notice]
+      .message= flash[:message] || flash[:notice]
+
     = yield
+
+    .footer
+      Created by
+      %a{ :href => 'http://www.gordondiggs.com/', :target => '_blank' } Gordon Diggs
+      in 2011.
+
+    .print-footer
+      - if @items
+        == #{@items.count} items.
+      == Printed on #{Time.now.strftime("%a %b %-d %Y at %H:%M")} at #{request.url}
+      %br
+      Fork me on Github at https://github.com/GordonDiggs/cataloguais
+
+    %a.github-link{ :href => "https://github.com/GordonDiggs/cataloguais" }
+      %img{ :src=> "/github.png", :alt => "Fork me on GitHub" }

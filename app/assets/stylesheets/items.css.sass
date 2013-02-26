@@ -1,0 +1,149 @@
+html
+  :min-height 100%
+
+body
+  :background #555
+  :background-image -webkit-linear-gradient(top, #555, #333)
+  :color #888
+  :font-family 'Arial', serif
+  :text-align center
+
+h1
+  :font-size 60px
+  :font-family 'Monoton', cursive
+  a
+    :color #7ac
+    :text-decoration none
+
+.github-link img
+  :position absolute
+  :top 0
+  :right 0
+  :border 0
+
+a
+  :color #ccc
+  &:hover
+    :text-decoration none
+
+form
+  :display inline
+
+.message
+  :display none
+  :width 900px
+  :background #4e4e4e
+  :color #7b8
+  :margin 0 auto
+  :margin-bottom 20px
+  :padding 10px
+  :border-radius 5px
+  :-moz-border-radius 5px
+  :border 1px solid #777
+
+.content
+  :color #ccc
+  :min-width 1000px
+  :width 90%
+  :margin 0 auto
+  :background #2f2f2f
+  :padding 20px
+  :-moz-border-radius 15px
+  :border-radius 15px
+  h1
+    :font-family inherit
+    :font-size 24px
+    :text-align left
+    :margin 0
+    :color #555
+  input
+    :font-size 13px
+    &[type=text]
+      :-webkit-border-radius 3px
+      :-moz-border-radius 3px
+      :border-radius 3px
+      :border 1px solid #444
+      :padding 3px 5px
+      :background-color #3f3f3f
+      :color #ccc
+    &:focus
+      :outline none
+      :-webkit-box-shadow 0px 0px 6px #7ac
+      :-moz-box-shadow 0px 0px 6px #7ac
+      :box-shadow 0px 0px 6px #7ac
+  #add-new
+    :width 98%
+    input
+      :margin 0 1px
+  table
+    :width 100%
+    :margin-top 20px
+    :border-collapse collapse
+    tr
+      td, th
+        :border 1px solid #3f3f3f
+      th
+        :background #3f3f3f
+        :font-weight normal
+        span
+          :font-size 12px
+          :vertical-align top
+      td
+        :padding 8px 3px
+        :max-width 205px
+        &.edit
+          :font-size 10px
+          :border none
+          :width 30px
+          :background #2f2f2f
+      &:nth-child(2n+1)
+        :background #3f3f3f
+      &:hover, &.hover
+        :color #7ac
+
+#editing-bar
+  :position fixed
+  :background #222
+  :opacity 0.9
+  :-moz-opacity 0.9
+  :bottom 0
+  :left 0
+  :line-height 20px
+  :width 100%
+  :font-size 12px
+  :border-top 1px solid #111
+  :text-align left
+  :padding 5px
+  form
+    :display none
+    &.search
+      :display inline
+  a, span
+    :padding-right 10px
+
+.footer, .print-footer
+  :font-size 12px
+  :padding 20px 0 35px 0
+  a
+    :color #888
+
+.print-footer
+  :display none
+
+.toggle-controls
+  :position fixed
+  :bottom 0
+  :right 15px
+  :line-height 20px
+  :font-size 12px
+  :background #222
+  :width 80px
+  :padding 5px
+
+input::-webkit-input-placeholder
+  :color #888
+input:-moz-placeholder
+  :color #888
+
+.chart
+  :height 600px

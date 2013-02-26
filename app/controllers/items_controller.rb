@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_filter :can_edit_items, :only => [:new, :edit, :create, :update, :import, :destroy]
+  before_filter :can_edit_items_or_not_found, :only => [:new, :edit, :create, :update, :import, :destroy]
 
   # GET /
   # GET /items
@@ -108,7 +108,7 @@ class ItemsController < ApplicationController
 
   private
   
-  def can_edit_items
+  def can_edit_items_or_not_found
     # return 404 for non-editable things
     if cannot? :manage, Item
       raise ActionController::RoutingError.new('Not Found')

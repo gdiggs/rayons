@@ -1,0 +1,31 @@
+@media only screen and (max-width: 1000px)
+  .content
+    min-width: 0px !important
+    table, thead, tbody td, tr
+      display: block
+    tr
+      border: 1px solid #ccc
+    td
+      max-width: 1000px !important
+      font-size: 18px
+      border: none
+      border-bottom: 1px solid #eee
+      padding-left: 50%
+      white-space: normal
+      text-align: left
+      &:before
+        width: 45%
+        padding-right: 20px
+        white-space: nowrap
+        text-align: left
+        font-weight: bold
+        content: attr(data-title)
+  thead th, .edit, #add-new, .import, .toggle-controls, .export, .login, .logout
+    display: none !important
+  .message
+    width: 90%
+  #editing-bar
+    font-size: 24px
+    input
+      font-size: 24px
+    
