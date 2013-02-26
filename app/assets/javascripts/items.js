@@ -42,4 +42,23 @@ $(function() {
 
     return false;
   });
+
+  // Delete an item using ajax, then show the message and fade out the row.
+  $('a.delete').on('click', function() {
+    if(confirm("Are you sure you want to delete this item?")) {
+      var $link = $(this);
+
+      $.ajax({
+        url: $link.attr('href'),
+        type: 'DELETE',
+        dataType: 'json',
+        success: function(response) {
+          showMessage("Item deleted!");
+          $link.parents('tr').remove();
+        }
+      });
+    }
+
+    return false;
+  });
 });
