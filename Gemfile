@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.12'
 gem 'pg'
 gem 'thin'
-gem 'jquery-rails'
 gem 'rails_admin'
 gem "devise"
 gem 'cancan'
@@ -13,6 +12,7 @@ gem 'cancan'
 group :assets do
   gem 'sass-rails'
   gem 'haml-rails'
+  gem 'uglifier'
 end
 
 group :development do
