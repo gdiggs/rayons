@@ -52,6 +52,9 @@ var jqueryLoaded = function() {
         $.ajax({
           url: $link.attr('href'),
           type: 'DELETE',
+          data: {
+            'authenticity_token': $('[name=authenticity_token]').val()
+          },
           dataType: 'json',
           success: function(response) {
             showMessage("Item deleted!");
