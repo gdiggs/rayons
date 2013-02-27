@@ -2,10 +2,10 @@
 %html
   %head
     %title Rayons
-    %link{ :href=>"http://fonts.googleapis.com/css?family=Monoton", :rel=>"stylesheet", :type=>"text/css" }
+    %link{ :href=>"#{request.protocol}fonts.googleapis.com/css?family=Monoton", :rel=>"stylesheet", :type=>"text/css" }
     %meta{ :name=>"viewport", :content=>"user-scalable=0" }
     = stylesheet_link_tag    "application", :media => "all"
-    %script{ :type => 'text/javascript', :src => "http://www.google.com/jsapi"}
+    %script{ :type => 'text/javascript', :src => "#{request.protocol}www.google.com/jsapi"}
     = javascript_include_tag "application"
     :javascript
       google.load('jquery', '1.7');
