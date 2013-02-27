@@ -12,7 +12,7 @@
       - ['Title', 'Artist', 'Year', 'Label', 'Format', 'Condition', 'Price Paid'].each do |field|
         %th
           - sort = field.parameterize('_')
-          %a{ 'data-sort' => sort, :class => ('current' if params[:sort] == sort) }
+          %a{ :href => '', 'data-sort' => sort, :class => ('current' if params[:sort] == sort) }
             = field
             - if params[:sort] == sort
               = params[:direction] == 'ASC' ? "\u2191" : "\u2193"

@@ -9,6 +9,8 @@
   %td.added_on= item.created_at.strftime('%m.%d.%y')
   - if can? :manage, Item
     %td.edit
-      = link_to 'e', edit_item_path(item)
+      = link_to 'e', item_path(item), :class => 'edit'
       \/
       = link_to 'd', item, :class => 'delete'
+    %td.save.none
+      %a.save{:href => item_path(item, :format => :json)} save

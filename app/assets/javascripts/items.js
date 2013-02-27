@@ -97,6 +97,41 @@ var jqueryLoaded = function() {
       return false;
     });
 
+    $('a.edit').on('click', function() {
+      var $row = $(this).parents('tr');
+      $row.find('td:not(.edit):not(.save)').each(function() {
+        $(this).html("<input type=text name="+$(this).attr('class')+" value='" + $(this).html().replace(/'/, '&apos;') + "' />");
+      });
+
+      $(this).parent().hide().siblings('td.save').show();
+
+      $('html, body').animate( {
+        scrollTop: $row.offset().top - 50
+      }, 100);
+
+      return false;
+    });
+
+    $('a.save').on('click', function() {
+      var data = {'authenticity_token': $('[name=authenticity_token]').val()},
+          $link = $(this);
+
+      $link.parents('tr').find('input').each(function() { data[$(this).attr('name')] = $(this).val(); });
+
+      $.ajax({
+        url: $link.attr('href'),
+        data: data,
+        dataType: 'json',
+        type: 'PUT',
+        success: function(response) {
+          $link.parents('tr').find('td:not(.edit):not(.save)').each(function() {
+            $(this).html($(this).find('input').val());
+          });
+        }
+      });
+      return false;
+    });
+
     $('a.login, a.import').live('click', function() {
       $('#editing-bar form').show();
       $(this).hide();
