@@ -41,6 +41,17 @@ class Item < ActiveRecord::Base
     self.order(sort_order.join(','))
   end
 
+  def self.to_csv
+    headers = ['title', 'artist', 'year', 'label', 'format', 'condition', 'price_paid', 'created_at', 'updated_at']
+    csv = CSV.generate do |c|
+      c << headers
+      Item.all.each do |item|
+        c << headers.map { |h| item.send(h) }
+      end
+    end
+    csv
+  end
+
   # Import a csv file object and create an Item object for each row
   #
   # @param [File] file The csv file to be read

@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   # GET /
   # GET /items
   # GET /items.json
+  # GET /items.csv
   def index
     params[:direction] ||= 'ASC'
     params[:sort] ||= Item::SORT_ORDER[0]
@@ -14,6 +15,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }
+      format.csv { send_data Item.to_csv, :filename => "rayons_#{Time.now.to_i}.csv" }
     end
   end
 

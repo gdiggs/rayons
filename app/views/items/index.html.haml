@@ -26,7 +26,7 @@
 #editing-bar
   %span #{@items.count} items.
   %a{ :href => '/stats' } stats
-  %a.export{ :href => '/export' } export all items to csv
+  %a.export{ :href => '/items.csv' } export all items to csv
   %a.random{ :href => 'javascript:' } random
   - if can? :manage, Item 
     %a.logout{ :href => '/logout' } disable editing
