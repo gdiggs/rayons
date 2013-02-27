@@ -1,6 +1,8 @@
 class Item < ActiveRecord::Base
   attr_accessible :artist, :condition, :format, :label, :price_paid, :title, :year, :color, :updated_at, :created_at
 
+  validates_presence_of :price_paid
+
   SORT_ORDER = ['artist', 'title', 'year', 'label', 'format'].freeze
   STAT_FIELDS = (Item.column_names - ["created_at", "updated_at", "id"]).freeze
 
@@ -34,7 +36,7 @@ class Item < ActiveRecord::Base
   end
 
   def self.sorted(first = SORT_ORDER[0], direction = 'ASC')
-    # pop first to first
+    first = "to_number(price_paid, '9999999.99')" if first == 'price_paid'
     sort_order = [first] + (SORT_ORDER - [first])
     sort_order = sort_order.map { |s| "#{s} #{direction}" }
 

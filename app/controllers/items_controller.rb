@@ -57,7 +57,7 @@ class ItemsController < ApplicationController
         format.json { render json: @item.as_json.merge(item_markup: render_to_string(:partial => 'items/item', :formats => [:html], :locals=>{:item => @item})), status: :created, location: @item }
       else
         format.html { render action: "new" }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+        format.json { render json: @item.errors.full_messages, status: :unprocessable_entity }
       end
     end
   end
@@ -73,7 +73,7 @@ class ItemsController < ApplicationController
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+        format.json { render json: @item.errors.full_messages, status: :unprocessable_entity }
       end
     end
   end

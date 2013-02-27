@@ -11,9 +11,10 @@
     %tr
       - ['Title', 'Artist', 'Year', 'Label', 'Format', 'Condition', 'Price Paid'].each do |field|
         %th
-          %a{ 'data-sort' => field.parameterize('_'), :class => ('current' if params[:sort] == field.parameterize('_')) }
+          - sort = field.parameterize('_')
+          %a{ 'data-sort' => sort, :class => ('current' if params[:sort] == sort) }
             = field
-            - if params[:sort] == field.parameterize('_')
+            - if params[:sort] == sort
               = params[:direction] == 'ASC' ? "\u2191" : "\u2193"
       %th
         %a{ 'data-sort' => 'created_at', :class => ('current' if params[:sort] == 'created_at') }

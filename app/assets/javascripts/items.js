@@ -38,6 +38,10 @@ var jqueryLoaded = function() {
           showMessage("Item created!");
           $(response.item_markup).insertAfter('table tr:first');
           $form.find('input[type=text]').val('');
+        },
+        error: function(response) {
+          var json = JSON.parse(response.responseText);
+          showMessage(json.join('! '));
         }
       });
 
