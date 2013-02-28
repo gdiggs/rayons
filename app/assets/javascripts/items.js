@@ -21,6 +21,7 @@ var jqueryLoaded = function() {
       }
 
       window.location.href = '/?sort='+$(this).data('sort')+'&direction='+direction;
+      return false;
     });
 
     // bind to form submission (adding/updating an item)
