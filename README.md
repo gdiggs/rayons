@@ -2,7 +2,7 @@
 
 Rayons is a rails port and specification of [https://github.com/GordonDiggs/cataloguais](https://github.com/GordonDiggs/cataloguais). While cataloguais sought to be a reusable, generalized, way to catalog anything, Rayons is more specialized for a record collection.
 
-Rails was chosen over Sinatra mainly for the chainability and ease of ActiveRecord over DataMapper.
+Rails was chosen over Sinatra mainly for the chainability and ease of ActiveRecord over DataMapper. Other advantages include better authentication, more RESTful APIs, and an admin dashboard.
 
 ### Setup
 
