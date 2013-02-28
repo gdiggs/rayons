@@ -1,0 +1,14 @@
+{
+  "name": "Rayons",
+  "version": "0.0.1",
+  "description": "catalog some records, yo",
+  "author": "Gordon Diggs",
+  "dependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-jshint": "~0.2.0"
+  },
+  "engine": "node >= 0.8.7",
+  "devDependencies": {
+    "grunt": "~0.4.0"
+  }
+}

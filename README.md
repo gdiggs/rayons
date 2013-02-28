@@ -18,6 +18,17 @@ $ foreman start
 
 The app will be available at [0.0.0.0:5000](http://0.0.0.0:5000). When running in production mode, the app requires SSL (Heroku supplies this automatically).
 
+### Grunt
+
+Rayons comes with [Grunt](http://gruntjs.com) for js hinting. Install and run it with:
+
+```bash
+$ npm install -g grunt-cli
+$ grunt
+```
+
+*NOTE: You must have node 0.8 or higher*
+
 ### License
 
 Rayons is licensed under the MIT License
