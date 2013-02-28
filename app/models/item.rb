@@ -44,7 +44,7 @@ class Item < ActiveRecord::Base
   end
 
   def self.to_csv
-    headers = ['title', 'artist', 'year', 'label', 'format', 'condition', 'price_paid', 'created_at', 'updated_at']
+    headers = ['title', 'artist', 'year', 'label', 'format', 'condition', 'color', 'price_paid', 'created_at', 'updated_at']
     csv = CSV.generate do |c|
       c << headers
       Item.all.each do |item|
