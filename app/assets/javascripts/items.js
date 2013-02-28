@@ -117,7 +117,7 @@ var jqueryLoaded = function() {
       var data = {'authenticity_token': $('[name=authenticity_token]').val(), 'item': {}},
           $link = $(this);
 
-      $link.parents('tr').find('input').each(function() { data['item'][$(this).attr('name')] = $(this).val(); });
+      $link.parents('tr').find('input').each(function() { data.item[$(this).attr('name')] = $(this).val(); });
 
       $.ajax({
         url: $link.attr('href'),
