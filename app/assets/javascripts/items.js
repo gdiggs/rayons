@@ -128,7 +128,7 @@ var jqueryLoaded = function() {
           $link.parents('tr').find('td:not(.edit):not(.save)').each(function() {
             $(this).html($(this).find('input').val());
           });
-          $(this).parent().hide().siblings('td.edit').show();
+          $link.parent().hide().siblings('td.edit').show();
         }
       });
       return false;
