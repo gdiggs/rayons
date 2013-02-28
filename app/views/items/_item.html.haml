@@ -5,6 +5,7 @@
   %td.label= item.label
   %td.format= item.format
   %td.condition= item.condition
+  %td.color= item.color
   %td.price_paid= item.price_paid
   %td.added_on= item.created_at.strftime('%m.%d.%y')
   - if can? :manage, Item

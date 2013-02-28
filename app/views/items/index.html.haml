@@ -9,7 +9,7 @@
 
   %table{ 'data-sort' => params[:sort], 'data-direction' => params[:direction] }
     %tr
-      - ['Title', 'Artist', 'Year', 'Label', 'Format', 'Condition', 'Price Paid'].each do |field|
+      - ['Title', 'Artist', 'Year', 'Label', 'Format', 'Condition', 'Color', 'Price Paid'].each do |field|
         %th
           - sort = field.parameterize('_')
           %a{ :href => '', 'data-sort' => sort, :class => ('current' if params[:sort] == sort) }
