@@ -16,3 +16,4 @@
 
 *.sw*
 /node_modules
+/.rbx
