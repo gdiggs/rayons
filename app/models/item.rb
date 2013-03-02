@@ -3,6 +3,8 @@ class Item < ActiveRecord::Base
 
   validates_presence_of :price_paid
 
+  scope :added_one_year_ago, :conditions => ["created_at >= ? AND created_at <= ?", 1.year.ago.to_date, (1.year.ago+1.day).to_date]
+
   SORT_ORDER = ['artist', 'title', 'year', 'label', 'format'].freeze
   STAT_FIELDS = (Item.column_names - ["created_at", "updated_at", "id"]).freeze
 

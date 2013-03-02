@@ -13,6 +13,7 @@ group :assets do
   gem 'sass-rails'
   gem 'haml-rails'
   gem 'uglifier'
+  gem 'turbo-sprockets-rails3'
 end
 
 group :development do

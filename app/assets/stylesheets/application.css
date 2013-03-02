@@ -1,4 +1,4 @@
 /*
- *= require_self
- *= require_tree ./application
+ *= require ./application/items
+ *= require ./application/print
  */
