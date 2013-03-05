@@ -22,7 +22,7 @@
           - if params[:sort] == 'created_at' 
             = params[:direction] == 'ASC' ? "\u2191" : "\u2193"
 
-    = render :partial => 'items/item', :collection => @items, :as => :item, :cache => true
+    = render :partial => 'items/item', :collection => @items, :as => :item, :cache => Proc.new{|item| [item, 'item', can?(:manage, Item)]}
 
 #editing-bar
   %span #{@items.count} items.
