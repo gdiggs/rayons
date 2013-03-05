@@ -7,6 +7,8 @@ gem "puma", "~> 2.0.0.b6"
 gem 'rails_admin'
 gem "devise"
 gem 'cancan'
+gem 'memcachier'
+gem 'dalli'
 
 # Gems used only for assets and not required
 # in production environments by default.
