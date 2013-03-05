@@ -27,6 +27,7 @@
 #editing-bar
   %span #{@items.count} items.
   %a{ :href => '/stats' } stats
+  %a{ :href => '/items/time_machine' } time machine
   %a.export{ :href => '/items.csv' } export all items to csv
   %a.random{ :href => 'javascript:' } random
   - if can? :manage, Item 

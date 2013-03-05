@@ -119,6 +119,14 @@ class ItemsController < ApplicationController
     end
   end
 
+  # GET /items/time_machine
+  def time_machine
+    @field_headers = ['Title', 'Artist', 'Year', 'Label', 'Format', 'Condition', 'Color', 'Price Paid', 'Added On']
+    @month_ago = Item.sorted.added_on_day 1.month.ago
+    @six_months_ago = Item.sorted.added_on_day 6.months.ago
+    @year_ago = Item.sorted.added_on_day 1.year.ago
+  end
+
   private
   
   def can_edit_items_or_not_found

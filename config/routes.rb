@@ -10,6 +10,7 @@ Rayons::Application.routes.draw do
   resources :items do
     collection do
       post 'import'
+      get 'time_machine'
     end
   end
 
