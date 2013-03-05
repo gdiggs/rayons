@@ -7,7 +7,8 @@ var jqueryLoaded = function() {
 
     $('a[data-sort]').click(function() {
       var direction = $('table').data('direction'),
-          current_sort = $('table').data('sort');
+          current_sort = $('table').data('sort'),
+          delim = window.location.href.indexOf('?') == -1 ? '?' : '&';
 
       // swap direction if we're using the same sorting column
       if($(this).data('sort') == current_sort) {
@@ -20,7 +21,7 @@ var jqueryLoaded = function() {
         direction = 'ASC';
       }
 
-      window.location.href = '/?sort='+$(this).data('sort')+'&direction='+direction;
+      window.location.href = window.location.href + delim + 'sort='+$(this).data('sort')+'&direction='+direction;
       return false;
     });
 

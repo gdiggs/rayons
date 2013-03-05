@@ -32,9 +32,11 @@ class Item < ActiveRecord::Base
   end
 
   def self.search(query = "")
-    str = (Item.column_names - ["created_at", "updated_at", "id", "year"]).map { |c| "#{c} ILIKE '%{q}'" }.join(" OR ") % {:q => query}
-    str += " OR year = '#{query}'" if query == query.to_i.to_s
-    self.where str
+    if query == query.to_i.to_s
+      self.basic_search(query) | self.where(['year = ?', query])
+    else
+      self.basic_search(query)
+    end
   end
 
   def self.sorted(first = SORT_ORDER[0], direction = 'ASC')
