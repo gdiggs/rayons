@@ -94,6 +94,7 @@ GEM
       treetop (~> 1.4.8)
     memcachier (0.0.2)
     mime-types (1.21)
+    multi_fetch_fragments (0.0.13)
     multi_json (1.6.1)
     nested_form (0.3.1)
     netrc (0.7.7)
@@ -188,6 +189,7 @@ DEPENDENCIES
   haml-rails
   heroku
   memcachier
+  multi_fetch_fragments
   pg
   puma (~> 2.0.0.b6)
   rails (= 3.2.12)
