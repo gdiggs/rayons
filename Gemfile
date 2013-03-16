@@ -9,7 +9,6 @@ gem "devise"
 gem 'cancan'
 gem 'memcachier'
 gem 'dalli'
-gem 'multi_fetch_fragments'
 gem 'textacular', '~> 3.0', require: 'textacular/rails'
 
 # Gems used only for assets and not required

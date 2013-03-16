@@ -22,7 +22,8 @@
           - if params[:sort] == 'created_at' 
             = params[:direction] == 'ASC' ? "\u2191" : "\u2193"
 
-    = render :partial => 'items/item', :collection => @items, :as => :item, :cache => Proc.new{|item| [item, 'item', can?(:manage, Item)]}
+    = cache("items_markup_#{Item.maximum(:updated_at).to_i}_#{can?(:manage, Item)}") do
+      = render :partial => 'items/item', :collection => @items, :as => :item
 
 #editing-bar
   %span #{@items.count} items.
