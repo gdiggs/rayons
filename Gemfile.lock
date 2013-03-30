@@ -97,6 +97,7 @@ GEM
     multi_json (1.6.1)
     nested_form (0.3.1)
     netrc (0.7.7)
+    newrelic_rpm (3.6.0.78)
     nokogiri (1.5.6)
     orm_adapter (0.4.0)
     pg (0.14.1)
@@ -190,6 +191,7 @@ DEPENDENCIES
   haml-rails
   heroku
   memcachier
+  newrelic_rpm
   pg
   puma (~> 2.0.0.b6)
   rails (= 3.2.12)
