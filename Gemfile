@@ -22,6 +22,7 @@ group :assets do
 end
 
 group :development do
+  gem 'sextant'
   gem 'foreman'
   gem 'colorize'
   gem 'heroku'
