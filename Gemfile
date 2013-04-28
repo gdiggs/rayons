@@ -17,6 +17,7 @@ gem 'newrelic_rpm'
 group :assets do
   gem 'sass-rails'
   gem 'haml-rails'
+  gem 'jquery-rails'
   gem 'uglifier'
   gem 'turbo-sprockets-rails3'
 end

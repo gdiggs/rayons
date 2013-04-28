@@ -10,10 +10,6 @@
       = stylesheet_link_tag "responsive", :media => "all"
     %script{ :type => 'text/javascript', :src => "#{request.protocol}www.google.com/jsapi"}
     = javascript_include_tag "application"
-    :javascript
-      google.load('jquery', '1.7');
-      google.load('visualization', '1.0', {'packages': ['corechart']});
-      google.setOnLoadCallback(jqueryLoaded);
     = csrf_meta_tags
 
     - if ENV['GOOGLE_ANALYTICS_CODE']

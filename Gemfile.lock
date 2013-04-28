@@ -193,6 +193,7 @@ DEPENDENCIES
   foreman
   haml-rails
   heroku
+  jquery-rails
   memcachier
   newrelic_rpm
   pg
