@@ -93,7 +93,7 @@ $(function() {
     $row.addClass('hover');
     $('html, body').animate( {
       scrollTop: $row.offset().top
-    }, 800);
+    }, {duration: 1200, easing: "easeInQuad"});
 
     return false;
   });
