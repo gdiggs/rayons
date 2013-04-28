@@ -115,7 +115,7 @@ class ItemsController < ApplicationController
   def stats
     respond_to do |format|
       format.html
-      format.json { render json: [[params[:field], 'num']] + Item.stats_for_field(params[:field]).to_a }
+      format.json { render json: Item.stats_for_field(params[:field]).map{ |k, v| {label: k, value: v}} }
     end
   end
 

@@ -141,28 +141,58 @@ $(function() {
   });
 
   if($('.chart').length) {
+    // creates a padded hex string from a given r, g, or b value
+    var decimalToHex = function(i) {
+      hex = i.toString(16);
+      if(hex.length < 2) {
+        hex = "0" + hex;
+      }
+      return hex;
+    };
 
-      /*$.getJSON('/stats', { field: $(elem).attr('data-field') }, function(response) {
-        console.log("response for field:", $(elem).attr('data-field'), response);
-        var data = google.visualization.arrayToDataTable(response);
-        var chart = new google.visualization.PieChart(elem);
-        chart.draw(data, options);
+    // generates a linear gradient for a given range by splitting into rgb values
+    // and then joining back into hex
+    var colorGradient = function(start, finish, num_steps) {
+      var steps = [],
+        start_r = parseInt(start.substring(0,2), 16),
+        start_g = parseInt(start.substring(2,4), 16),
+        start_b = parseInt(start.substring(4,6), 16),
+        finish_r = parseInt(finish.substring(0,2), 16),
+        finish_g = parseInt(finish.substring(2,4), 16),
+        finish_b = parseInt(finish.substring(4,6), 16),
+        incr_r = (finish_r - start_r) / num_steps,
+        incr_g = (finish_g - start_g) / num_steps,
+        incr_b = (finish_b - start_b) / num_steps;
+      for(var i=0; i<num_steps; i++) {
+        steps[i] = '#' + [
+          decimalToHex(Math.round((incr_r*i) + start_r)),
+          decimalToHex(Math.round((incr_g*i) + start_g)),
+          decimalToHex(Math.round((incr_b*i) + start_b))
+        ].join('');
+      };
 
-        // add select listener to jump to search results from pie charts
-        google.visualization.events.addListener(chart, 'select', function() {
-          var selected = chart.getSelection(),
-              label = data.getFormattedValue(selected[0].row, 0);
-
-          if(confirm("Go to results for '" + label + "'?")) {
-            window.location.href = '/?search=' + encodeURIComponent(label);
-          }
-        });
-      });
-
-    };*/
+      return steps;
+    };
 
     $('.chart').each(function(i) {
-      //drawChart(this);
+      var $elem = $(this),
+          ctx = $elem.find('canvas')[0].getContext("2d");
+
+      $.getJSON('/stats', { field: $elem.attr('data-field') }, function(response) {
+        var data = [],
+            colors = colorGradient('224466', '6699bb', response.length);
+
+        $.each(response, function(i, datum) {
+          datum.color = colors[i % colors.length];
+          data[i] = datum;
+        });
+
+        new Chart(ctx).Pie(data, {
+          segmentStrokeColor: '#2F2F2F',
+          segmentStrokeWidth: 1,
+          animation: false
+        });
+      });
     });
   }
     

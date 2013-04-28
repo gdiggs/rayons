@@ -4,3 +4,4 @@
   - Item::STAT_FIELDS.each do |field|
     %h2= field.titleize
     .chart{ 'data-field' => field }
+      %canvas{ :width => '800', :height => '600' }
