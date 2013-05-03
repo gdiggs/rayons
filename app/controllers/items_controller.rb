@@ -111,6 +111,17 @@ class ItemsController < ApplicationController
     redirect_to '/'
   end
 
+  # GET /items/random
+  # GET /items/random.json
+  def random
+    @item = Item.offset(rand(Item.count)).first
+
+    respond_to do |format|
+      format.html { redirect_to @item }
+      format.json { render json: @item }
+    end
+  end
+
   # GET /stats
   def stats
     respond_to do |format|
