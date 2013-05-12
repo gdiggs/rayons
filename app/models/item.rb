@@ -8,6 +8,8 @@ class Item < ActiveRecord::Base
   SORT_ORDER = ['artist', 'title', 'year', 'label', 'format'].freeze
   STAT_FIELDS = (Item.column_names - ["created_at", "updated_at", "id"]).freeze
 
+  after_destroy :invalidate_cache
+
   def self.stats
     results = {}
     STAT_FIELDS.each do |field|
@@ -78,5 +80,11 @@ class Item < ActiveRecord::Base
 
     items
 
+  end
+
+  private
+  # Invalidates the collection cache, which is made against the max updated_at
+  def invalidate_cache
+    Item.last.touch
   end
 end
