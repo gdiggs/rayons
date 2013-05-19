@@ -27,4 +27,5 @@ group :development do
   gem 'foreman'
   gem 'colorize'
   gem 'heroku'
+  gem 'better_errors'
 end
