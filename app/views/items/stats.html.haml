@@ -7,5 +7,11 @@
       %canvas{ :width => '800', :height => '600' }
 
   - ['title', 'artist', 'label', 'year'].each do |field|
-    %h2 #{field.titleize} Word Frequency
+    %h2 #{field.titleize} Frequency
     .frequency{ 'data-field' => field }
+
+  %h2 Price Stats
+  %h3 Minimum: #{@min_price}
+  %h3 Maximum: #{@max_price}
+  %h3 Average: $#{@avg_price.round(2)}
+  %h3 Median: $#{@median_price}

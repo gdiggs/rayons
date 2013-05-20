@@ -10,6 +10,24 @@ class Item < ActiveRecord::Base
 
   after_destroy :invalidate_cache
 
+  def self.average_price
+    self.prices.inject(:+) / self.prices.count
+  end
+
+  def self.median_price
+    count = self.prices.count
+    if count % 2 == 1
+      self.prices[count/2]
+    else
+      prices = self.prices
+      (prices[count/2 - 1] + prices[count/2]).to_f / 2
+    end
+  end
+
+  def self.prices
+    Item.select(:price_paid).sorted('price_paid').map{ |p| p.price_paid.gsub(/\$/, '').to_f }
+  end
+
   def self.stats
     results = {}
     STAT_FIELDS.each do |field|
