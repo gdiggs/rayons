@@ -195,6 +195,11 @@ $(function() {
       });
     });
   }
-    
+
+  $.each($('.frequency'), function(i, freq) {
+    $.getJSON('/items/words_for_field?field='+$(freq).data('field'), function(response) {
+      $(freq).jQCloud(response);
+    });
+  });
 });
 

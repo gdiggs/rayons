@@ -138,6 +138,11 @@ class ItemsController < ApplicationController
     @year_ago = Item.sorted.added_on_day 1.year.ago
   end
 
+  # GET /items/words_for_field
+  def words_for_field
+    render json: Item.words_for_field(params[:field]).map{ |k,v| {text: k, weight: v} if v > 1 }.compact
+  end
+
   private
   
   def can_edit_items_or_not_found

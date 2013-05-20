@@ -12,6 +12,7 @@ Rayons::Application.routes.draw do
       post 'import'
       get 'random'
       get 'time_machine'
+      get 'words_for_field'
     end
   end
 

@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/GordonDiggs/jqcloud-rails.git
+  revision: 02ce22ef373a787b7051c4b43e5bc1315e14e011
+  specs:
+    jqcloud-rails (1.0.4)
+      jquery-rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -198,6 +205,7 @@ DEPENDENCIES
   foreman
   haml-rails
   heroku
+  jqcloud-rails!
   jquery-rails
   memcachier
   newrelic_rpm

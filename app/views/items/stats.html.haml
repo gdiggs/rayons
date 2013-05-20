@@ -5,3 +5,7 @@
     %h2= field.titleize
     .chart{ 'data-field' => field }
       %canvas{ :width => '800', :height => '600' }
+
+  - ['title', 'artist', 'label', 'year'].each do |field|
+    %h2 #{field.titleize} Word Frequency
+    .frequency{ 'data-field' => field }

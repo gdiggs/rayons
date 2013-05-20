@@ -60,6 +60,15 @@ class Item < ActiveRecord::Base
     csv
   end
 
+  def self.words_for_field(field)
+    raise InvalidFieldError if !Item.column_names.include?(field.to_s)
+
+    # Get a hash of the words in a field
+    items = Item.select(field.to_sym).map{ |i| i.send(field.to_sym).to_s.split(/[\s\/,\(\)]+/) }.flatten.group_by{ |v| v }
+    # return the frequency of each word
+    Hash[items.map{|k,v| [k, v.count] }]
+  end
+
   # Import a csv file object and create an Item object for each row
   #
   # @param [File] file The csv file to be read
@@ -81,6 +90,8 @@ class Item < ActiveRecord::Base
     items
 
   end
+
+  class InvalidFieldError < RuntimeError; end
 
   private
   # Invalidates the collection cache, which is made against the max updated_at
