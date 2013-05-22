@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/GordonDiggs/rayons.png)](https://codeclimate.com/github/GordonDiggs/rayons)
+
 ## Rayons
 
 Rayons is a rails port and specification of [https://github.com/GordonDiggs/cataloguais](https://github.com/GordonDiggs/cataloguais). While cataloguais sought to be a reusable, generalized, way to catalog anything, Rayons is more specialized for a record collection.
