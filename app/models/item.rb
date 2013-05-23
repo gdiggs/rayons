@@ -101,9 +101,11 @@ class Item < ActiveRecord::Base
   # @param [File] file The csv file to be read
   # @return [Array] The array of items created
   def self.import_csv_file(file)
+    raise "You must include a file" if !file
+
     # construct an array of hashes from the data
     # from http://snippets.dzone.com/posts/show/3899
-    csv_data = CSV.read file
+    csv_data = CSV.read(file.tempfile)
     headers = csv_data.shift.map {|i| i.to_s }
     string_data = csv_data.map {|row| row.map {|cell| cell.to_s.force_encoding('utf-8') } }
     array_of_hashes = string_data.map {|row| Hash[*headers.zip(row).flatten] }
@@ -115,7 +117,6 @@ class Item < ActiveRecord::Base
     end
 
     items
-
   end
 
   class InvalidFieldError < RuntimeError; end

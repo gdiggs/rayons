@@ -91,20 +91,13 @@ class ItemsController < ApplicationController
 
   # POST /items/import
   def import
-    if !params[:file]
-      flash[:error] = 'You must upload a file'
-      redirect_to '/' and return
-    end
-
-    @items = Item.import_csv_file(params[:file].tempfile)
+    @items = Item.import_csv_file(params[:file])
     flash[:message] = "Imported #{@items.count} items"
 
   rescue => e
-
     flash[:error] = "Error importing: #{e}"
     Rails.logger.warn("!!! Error importing CSV: #{e}")
     Rails.logger.warn(e.backtrace.join("\n"))
-
   ensure
     redirect_to '/'
   end
