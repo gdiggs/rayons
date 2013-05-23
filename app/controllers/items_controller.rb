@@ -56,8 +56,7 @@ class ItemsController < ApplicationController
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render json: @item.as_json.merge(item_markup: render_to_string(:partial => 'items/item', :formats => [:html], :locals=>{:item => @item})), status: :created, location: @item }
       else
-        format.html { render action: "new" }
-        format.json { render json: @item.errors.full_messages, status: :unprocessable_entity }
+        default_error_response(format, "new", @item)
       end
     end
   end
@@ -73,8 +72,7 @@ class ItemsController < ApplicationController
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @item.errors.full_messages, status: :unprocessable_entity }
+        default_error_response(format, "edit", @item)
       end
     end
   end
