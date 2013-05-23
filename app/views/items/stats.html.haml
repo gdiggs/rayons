@@ -11,7 +11,7 @@
     .frequency{ 'data-field' => field }
 
   %h2 Price Stats
-  %h3 Minimum: #{@min_price}
-  %h3 Maximum: #{@max_price}
-  %h3 Average: $#{@avg_price.round(2)}
-  %h3 Median: $#{@median_price}
+  %h3 Minimum: #{@prices[:min_price]}
+  %h3 Maximum: #{@prices[:max_price]}
+  %h3 Average: $#{@prices[:avg_price]}
+  %h3 Median: $#{@prices[:median_price]}

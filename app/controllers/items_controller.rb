@@ -124,10 +124,7 @@ class ItemsController < ApplicationController
   def stats
     respond_to do |format|
       format.html do
-        @max_price = Item.select('price_paid').sorted('price_paid', 'DESC').first.price_paid
-        @min_price = Item.select('price_paid').sorted('price_paid').first.price_paid
-        @avg_price = Item.average_price
-        @median_price = Item.median_price
+        @prices = Item.significant_prices
       end
       format.json { render json: Item.stats_for_field(params[:field]).map{ |k, v| {label: k, value: v}} }
     end

@@ -11,7 +11,7 @@ class Item < ActiveRecord::Base
   after_destroy :invalidate_cache
 
   def self.average_price
-    self.prices.inject(:+) / self.prices.count
+    (self.prices.inject(:+) / self.prices.count).round(2)
   end
 
   def self.median_price
@@ -20,12 +20,21 @@ class Item < ActiveRecord::Base
       self.prices[count/2]
     else
       prices = self.prices
-      (prices[count/2 - 1] + prices[count/2]).to_f / 2
+      ((prices[count/2 - 1] + prices[count/2]).to_f / 2).round(2)
     end
   end
 
   def self.prices
     Item.select(:price_paid).sorted('price_paid').map{ |p| p.price_paid.gsub(/\$/, '').to_f }
+  end
+
+  def self.significant_prices
+    {
+      :max_price => Item.select('price_paid').sorted('price_paid', 'DESC').first.price_paid,
+      :min_price => Item.select('price_paid').sorted('price_paid').first.price_paid,
+      :avg_price => Item.average_price,
+      :median_price => Item.median_price
+    }
   end
 
   def self.stats
