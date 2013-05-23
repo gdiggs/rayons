@@ -15,13 +15,12 @@ class Item < ActiveRecord::Base
   end
 
   def self.median_price
-    count = self.prices.count
-    if count % 2 == 1
-      self.prices[count/2]
+    prices = self.prices
+    if prices.count.odd?
+      prices[prices.count/2]
     else
-      prices = self.prices
-      ((prices[count/2 - 1] + prices[count/2]).to_f / 2).round(2)
-    end
+      (prices[prices.count/2 - 1] + prices[prices.count/2]).to_f / 2
+    end.round(2)
   end
 
   def self.prices
