@@ -29,4 +29,5 @@ group :development do
   gem 'colorize'
   gem 'heroku'
   gem 'better_errors'
+  gem 'pry-rails'
 end

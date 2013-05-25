@@ -104,6 +104,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     memcachier (0.0.2)
+    method_source (0.8.1)
     mime-types (1.23)
     multi_json (1.7.2)
     nested_form (0.3.1)
@@ -113,6 +114,12 @@ GEM
     orm_adapter (0.4.0)
     pg (0.14.1)
     polyglot (0.3.3)
+    pry (0.9.12.2)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.4)
+    pry-rails (0.3.0)
+      pry (>= 0.9.10)
     puma (2.0.0.b6)
       rack (>= 1.1, < 2.0)
     rack (1.4.5)
@@ -171,6 +178,7 @@ GEM
     sextant (0.2.3)
       activesupport (>= 3.2)
       rails (>= 3.2)
+    slop (3.4.5)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -210,6 +218,7 @@ DEPENDENCIES
   memcachier
   newrelic_rpm
   pg
+  pry-rails
   puma (~> 2.0.0.b6)
   rails (= 3.2.13)
   rails_admin
