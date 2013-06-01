@@ -201,5 +201,19 @@ $(function() {
       $(freq).jQCloud(response);
     });
   });
+
+  $('.switcher a').click(function() {
+    if($(this).is('.active')) { return false; }
+
+    $('.switcher a.active').each(function() {
+      $($(this).data('target')).fadeOut(600);
+      $(this).removeClass('active');
+    });
+
+    $($(this).data('target')).fadeIn(600);
+    $(this).addClass('active');
+
+    return false;
+  });
 });
 

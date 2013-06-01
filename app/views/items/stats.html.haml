@@ -1,17 +1,24 @@
 .content
   %h1 Stats for #{Item.count} items:
 
-  - Item::STAT_FIELDS.each do |field|
-    %h2= field.titleize
-    .chart{ 'data-field' => field }
-      %canvas{ :width => '800', :height => '600' }
+  .switcher
+    %a.active{ :href => 'javascript:', 'data-target' => '.graphs' } Graphs
+    |
+    %a{ :href => 'javascript:', 'data-target' => '.texts' } Words
 
-  - ['title', 'artist', 'label', 'year'].each do |field|
-    %h2 #{field.titleize} Frequency
-    .frequency{ 'data-field' => field }
+  .graphs
+    - Item::STAT_FIELDS.each do |field|
+      %h2= field.titleize
+      .chart{ 'data-field' => field }
+        %canvas{ :width => '800', :height => '600' }
 
-  %h2 Price Stats
-  %h3 Minimum: #{@prices[:min_price]}
-  %h3 Maximum: #{@prices[:max_price]}
-  %h3 Average: $#{@prices[:avg_price]}
-  %h3 Median: $#{@prices[:median_price]}
+  .texts.none
+    - ['title', 'artist', 'label', 'year'].each do |field|
+      %h2 #{field.titleize} Frequency
+      .frequency{ 'data-field' => field }
+
+    %h2 Price Stats
+    %h3 Minimum: #{@prices[:min_price]}
+    %h3 Maximum: #{@prices[:max_price]}
+    %h3 Average: #{sprintf("$%0.02f", @prices[:avg_price])}
+    %h3 Median: #{sprintf("$%0.02f", @prices[:median_price])}
