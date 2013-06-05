@@ -5,7 +5,7 @@ task :backup => :environment do
   CSV_URL = "https://x-vinyl.herokuapp.com/items.csv"
 
   ### GET CSV
-  csv_data = Typhoeus.get(CSV_URL).body
+  csv_data = Typhoeus.get(CSV_URL).response_body
   csv_data = csv_data.encode("UTF-8", "ISO-8859-15")
 
   ### SAVE TO GIST
@@ -14,6 +14,5 @@ task :backup => :environment do
     filename: "rayons_backup_#{Time.now.to_i}.csv",
     public: false
   }
-
   Gist.gist(csv_data, gist_options)
 end
