@@ -13,6 +13,6 @@ namespace :backup do
       filename: "rayons_backup_#{Time.now.to_i}.csv",
       public: false
     }
-    Gist.gist(csv_data, gist_options)
+    Jist.gist(csv_data, gist_options)
   end
 end
