@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130224180111) do
+ActiveRecord::Schema.define(:version => 20130609180946) do
 
   create_table "items", :force => true do |t|
     t.text     "title"
@@ -21,9 +21,10 @@ ActiveRecord::Schema.define(:version => 20130224180111) do
     t.text     "format"
     t.text     "condition"
     t.text     "price_paid"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.text     "color"
+    t.boolean  "deleted",    :default => false
   end
 
   add_index "items", ["artist"], :name => "index_items_on_artist"

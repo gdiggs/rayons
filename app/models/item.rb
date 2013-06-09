@@ -5,10 +5,10 @@ class Item < ActiveRecord::Base
 
   scope :added_on_day, lambda { |date| where ["created_at >= ? AND created_at <= ?", date.to_date, (date+1.day).to_date] }
 
+  default_scope where(:deleted => false)
+
   SORT_ORDER = ['artist', 'title', 'year', 'label', 'format'].freeze
   STAT_FIELDS = (Item.column_names - ["created_at", "updated_at", "id"]).freeze
-
-  after_destroy :invalidate_cache
 
   def self.prices
     Item.select(:price_paid).sorted('price_paid').map{ |p| p.price_paid.gsub(/\$/, '').to_f }
@@ -105,11 +105,10 @@ class Item < ActiveRecord::Base
     items
   end
 
+  def destroy
+    self.update_attribute(:deleted, true)
+  end
+
   class InvalidFieldError < RuntimeError; end
 
-  private
-  # Invalidates the collection cache, which is made against the max updated_at
-  def invalidate_cache
-    Item.last.touch
-  end
 end
