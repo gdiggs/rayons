@@ -106,7 +106,8 @@ class Item < ActiveRecord::Base
   end
 
   def destroy
-    self.update_attribute(:deleted, true)
+    self.deleted = true
+    self.save!
   end
 
   class InvalidFieldError < RuntimeError; end
