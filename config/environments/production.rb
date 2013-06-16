@@ -8,13 +8,14 @@ Rayons::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-  config.cache_store = :dalli_store
-
   config.action_dispatch.rack_cache = {
     :metastore    => Dalli::Client.new,
     :entitystore  => 'file:tmp/cache/rack/body',
     :allow_reload => false
   }
+
+  config.serve_static_assets = true
+  config.static_cache_control = "public, max-age=2592000"
 
   # Compress JavaScripts and CSS
   config.assets.compress = true
