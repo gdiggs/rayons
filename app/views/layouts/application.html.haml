@@ -6,7 +6,7 @@
     %link{ :rel=>"icon", :type=>"images/png", :href=>"/icon.png" }
     %meta{ :name=>"viewport", :content=>"user-scalable=0" }
     = stylesheet_link_tag "application", :media => "all"
-    - if !params[:exclude_responsive]
+    - if !cookies[:exclude_responsive]
       = stylesheet_link_tag "responsive", :media => "all"
     = javascript_include_tag "//www.google.com/jsapi", "chartkick"
     = javascript_include_tag "application"

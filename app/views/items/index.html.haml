@@ -29,7 +29,7 @@
   %span #{@items.count} items.
   %a{ :href => '/stats' } stats
   %a{ :href => '/items/time_machine' } time machine
-  %a.export{ :href => '/items.csv' } export all items to csv
+  %a.export{ :href => '/items.csv' } export csv
   %a.random{ :href => 'javascript:' } random
   - if can? :manage, Item 
     %a.logout{ :href => '/logout' } disable editing
@@ -45,6 +45,10 @@
       = text_field_tag 'user[email]', nil, :placeholder => 'Email Address'
       = password_field_tag 'user[password]', nil, :placeholder => 'Password'
       %button Sign in
+  - if cookies[:exclude_responsive]
+    %a{ :href => root_url(:exclude_responsive => false) } enable responsive
+  - else
+    %a{ :href => root_url(:exclude_responsive => true) } disable responsive
   %form.search{ :action => '/', :method => 'get' }
     %input{ :type => 'text', :name => 'search', :placeholder => 'Search', :value => params[:search] }
 .toggle-controls
