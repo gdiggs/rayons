@@ -147,7 +147,7 @@ $(function() {
   });
 
   $('.switcher a').click(function() {
-    if(!$(this).data('target')) { return true; }
+    if($(this).data('target') === undefined) { return true; }
     if($(this).is('.active')) { return false; }
 
     $('.switcher a.active').each(function() {
