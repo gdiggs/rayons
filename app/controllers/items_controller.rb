@@ -115,12 +115,7 @@ class ItemsController < ApplicationController
 
   # GET /stats
   def stats
-    respond_to do |format|
-      format.html do
-        @prices = Item.significant_prices
-      end
-      format.json { render json: Item.stats_for_field(params[:field]).map{ |k, v| {label: k, value: v}} }
-    end
+    @prices = Item.significant_prices
   end
 
   # GET /items/time_machine

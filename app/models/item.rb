@@ -8,7 +8,7 @@ class Item < ActiveRecord::Base
   default_scope where(:deleted => false)
 
   SORT_ORDER = ['artist', 'title', 'year', 'label', 'format'].freeze
-  STAT_FIELDS = (Item.column_names - ["created_at", "updated_at", "id"]).freeze
+  STAT_FIELDS = (Item.column_names - ["created_at", "updated_at", "id", "deleted"]).freeze
 
   def self.prices
     Item.select(:price_paid).sorted('price_paid').map{ |p| p.price_paid.gsub(/\$/, '').to_f }
