@@ -1,5 +1,6 @@
 /*
  *= require jqcloud
+ *= require ./application/jqcloud
  *= require ./application/items
  *= require ./application/print
  */

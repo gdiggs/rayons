@@ -2,8 +2,8 @@ html
   :min-height 100%
 
 body
-  :background #555
-  :background-image -webkit-linear-gradient(top, #555, #333)
+  :background #66aacc
+  :background-image -webkit-linear-gradient(top, #6AACCC, #2C6079)
   :color #888
   :font-family 'Arial', serif
   :text-align center
@@ -12,7 +12,7 @@ h1
   :font-size 60px
   :font-family 'Monoton', cursive
   a
-    :color #7ac
+    :color #FBBE1E
     :text-decoration none
 
 .github-link img
@@ -22,7 +22,7 @@ h1
   :border 0
 
 a
-  :color #ccc
+  :color #BF5A3F
   &:hover
     :text-decoration none
 
@@ -34,21 +34,22 @@ form
 
 .message
   :width 900px
-  :background #4e4e4e
-  :color #7b8
+  :background #FBBE1E
+  :color black
   :margin 0 auto
   :margin-bottom 20px
   :padding 10px
   :border-radius 5px
   :-moz-border-radius 5px
-  :border 1px solid #777
+  &.error
+    :background #FB4C1E
 
 .content
-  :color #ccc
-  :min-width 1000px
+  :color #222
+  :min-width 925px
   :width 90%
   :margin 0 auto
-  :background #2f2f2f
+  :background white
   :padding 20px
   :-moz-border-radius 15px
   :border-radius 15px
@@ -66,13 +67,12 @@ form
       :border-radius 3px
       :border 1px solid #444
       :padding 3px 5px
-      :background-color #3f3f3f
-      :color #ccc
+      :color #222
     &:focus
       :outline none
-      :-webkit-box-shadow 0px 0px 6px #7ac
-      :-moz-box-shadow 0px 0px 6px #7ac
-      :box-shadow 0px 0px 6px #7ac
+      :-webkit-box-shadow 0px 0px 6px #FBBE1E
+      :-moz-box-shadow 0px 0px 6px #FBBE1E
+      :box-shadow 0px 0px 6px #FBBE1E
   #add-new
     :width 98%
     input
@@ -87,7 +87,7 @@ form
       td, th
         :border 1px solid #3f3f3f
       th
-        :background #3f3f3f
+        :background #ddd
         :font-weight normal
         span
           :font-size 12px
@@ -99,18 +99,17 @@ form
           :font-size 10px
           :border none
           :width 30px
-          :background #2f2f2f
+          :background white
         &.color
           :width 120px
         input
           :width 90%
-          :color #7ac
+          :color #FBBE1E
           :border-color #999
-          :background-color #2f2f2f !important
       &:nth-child(2n+1)
-        :background #3f3f3f
+        :background #ddd
       &:hover, &.hover
-        :color #7ac
+        :color #FD7653
 
 #editing-bar
   :position fixed
@@ -131,12 +130,13 @@ form
       :display inline
   a, span
     :padding-right 10px
+  a
+    :color #FBBE1E
 
 .footer, .print-footer
+  :color #FBBE1E
   :font-size 12px
   :padding 20px 0 35px 0
-  a
-    :color #888
 
 .print-footer
   :display none
@@ -150,6 +150,8 @@ form
   :background #222
   :width 80px
   :padding 5px
+  a
+    :color #FBBE1E
 
 input::-webkit-input-placeholder
   :color #888

@@ -1,18 +1,19 @@
 module ItemsHelper
   def google_column_charts_options
     {
-      backgroundColor: '#2f2f2f',
-      colors: ['#77aacc']
+      backgroundColor: 'white',
+      colors: ['#FBBE1E']
     }
   end
 
   def google_pie_charts_options
     {
       backgroundColor: {
-        fill: '#2F2F2F',
-        stroke: '#2F2F2F'
+        fill: 'white',
+        stroke: 'white'
       },
-      pieSliceBorderColor: '#2F2F2F',
+      colors: ['#1A739F', '#FBBE1E', '#FB4C1E', '#094A6A', '#2C6079', '#BF9B3F', '#BF5A3F', '#094A6A', '#A77B0A', '#A72B0A', '#49A1CC', '#FDCE53', '#FD7653', '#6AACCC', '#FDD97D', '#FD977D'].shuffle,
+      pieSliceBorderColor: '#222',
       pieSliceText: 'label',
       pieSliceTextStyle: { color: 'black', fontSize: '12' },
       legend: {position: 'none'}
