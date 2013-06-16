@@ -5,6 +5,8 @@
     %a.active{ :href => 'javascript:', 'data-target' => '.graphs' } Graphs
     |
     %a{ :href => 'javascript:', 'data-target' => '.texts' } Words
+    |
+    %a{ :href => '/items/time_machine' } Time Machine
 
   .graphs
     - Item::STAT_FIELDS.each do |field|
