@@ -10,6 +10,16 @@ class Item < ActiveRecord::Base
   SORT_ORDER = ['artist', 'title', 'year', 'label', 'format'].freeze
   STAT_FIELDS = (Item.column_names - ["created_at", "updated_at", "id", "deleted"]).freeze
 
+  def self.growth_by_week
+    times = Item.group_by_week(:created_at).order('week asc').count
+    result = {}
+    times.values.each_with_index do |time, i|
+      # Get sum of values up to this point
+      result[times.keys[i]] = times.values[0..i].inject(:+)
+    end
+    result
+  end
+
   def self.prices
     Item.select(:price_paid).sorted('price_paid').map{ |p| p.price_paid.gsub(/\$/, '').to_f }
   end

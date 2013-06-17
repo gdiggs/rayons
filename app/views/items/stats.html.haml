@@ -1,31 +1,35 @@
-.content
-  %h1 Stats for #{Item.count} items:
+= cache("item_charts_#{{Item.unscoped.maximum(:updated_at).to_i}_1") do
+  .content
+    %h1 Stats for #{Item.count} items:
 
-  .switcher
-    %a.active{ :href => 'javascript:', 'data-target' => '.graphs' } Graphs
-    |
-    %a{ :href => 'javascript:', 'data-target' => '.texts' } Words
-    |
-    %a{ :href => '/items/time_machine' } Time Machine
+    .switcher
+      %a.active{ :href => 'javascript:', 'data-target' => '.graphs' } Graphs
+      |
+      %a{ :href => 'javascript:', 'data-target' => '.texts' } Words
+      |
+      %a{ :href => '/items/time_machine' } Time Machine
 
-  .graphs
-    - Item::STAT_FIELDS.each do |field|
-      %h2= field.titleize
-      = pie_chart Item.stats_for_field(field), :height => '600px', :library => google_pie_charts_options
+    .graphs
+      - Item::STAT_FIELDS.each do |field|
+        %h2= field.titleize
+        = pie_chart Item.stats_for_field(field), :height => '600px', :library => google_pie_charts_options
 
-    %h2 Month added
-    = column_chart items_per_month, :library => google_column_charts_options
+      %h2 Month added
+      = column_chart items_per_month, :library => google_column_charts_options
 
-    %h2 Day of week added
-    = column_chart items_per_day_of_week, :library => google_column_charts_options
+      %h2 Day of week added
+      = column_chart items_per_day_of_week, :library => google_column_charts_options
 
-  .texts.none
-    - ['title', 'artist', 'label', 'year'].each do |field|
-      %h2 #{field.titleize} Frequency
-      .frequency{ 'data-field' => field }
+      %h2 Size over time
+      = line_chart Item.growth_by_week, :library => google_column_charts_options
 
-    %h2 Price Stats
-    %h3 Minimum: #{@prices[:min_price]}
-    %h3 Maximum: #{@prices[:max_price]}
-    %h3 Average: #{sprintf("$%0.02f", @prices[:avg_price])}
-    %h3 Median: #{sprintf("$%0.02f", @prices[:median_price])}
+    .texts.none
+      - ['title', 'artist', 'label', 'year'].each do |field|
+        %h2 #{field.titleize} Frequency
+        .frequency{ 'data-field' => field }
+
+      %h2 Price Stats
+      %h3 Minimum: #{@prices[:min_price]}
+      %h3 Maximum: #{@prices[:max_price]}
+      %h3 Average: #{sprintf("$%0.02f", @prices[:avg_price])}
+      %h3 Median: #{sprintf("$%0.02f", @prices[:median_price])}
