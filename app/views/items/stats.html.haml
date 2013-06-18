@@ -1,3 +1,5 @@
+- content_for :title, "Stats"
+
 = cache("item_charts_#{Item.unscoped.maximum(:updated_at).to_i}_1") do
   .content
     %h1 Stats for #{Item.count} items:
