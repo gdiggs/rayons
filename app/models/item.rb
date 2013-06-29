@@ -21,13 +21,16 @@ class Item < ActiveRecord::Base
   end
 
   def self.prices
-    Item.select(:price_paid).sorted('price_paid').map{ |p| p.price_paid.gsub(/\$/, '').to_f }
+    sql = Item.select(:price_paid).sorted('price_paid').to_sql
+    connection.select_values(sql).map{ |p| p.gsub(/\$/, '').to_f }
   end
 
   def self.significant_prices
+    max_price_sql = Item.select('price_paid').sorted('price_paid', 'DESC').limit(1).to_sql
+    min_price_sql = Item.select('price_paid').sorted('price_paid').limit(1).to_sql
     {
-      :max_price => Item.select('price_paid').sorted('price_paid', 'DESC').first.price_paid,
-      :min_price => Item.select('price_paid').sorted('price_paid').first.price_paid,
+      :max_price => connection.select_values(max_price_sql).first,
+      :min_price => connection.select_values(min_price_sql).first,
       :avg_price => Item.prices.average.round(2),
       :median_price => Item.prices.median.round(2)
     }
