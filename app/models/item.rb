@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  attr_accessible :artist, :condition, :format, :label, :price_paid, :title, :year, :color, :updated_at, :created_at
+  attr_accessible :artist, :condition, :format, :label, :price_paid, :title, :year, :color
 
   validates_presence_of :price_paid
 
