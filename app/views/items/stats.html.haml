@@ -31,7 +31,7 @@
         .frequency{ 'data-field' => field }
 
       %h2 Price Stats
-      %h3 Minimum: #{@prices[:min_price]}
-      %h3 Maximum: #{@prices[:max_price]}
+      %h3 Minimum: #{sprintf("$%0.02f", @prices[:min_price])}
+      %h3 Maximum: #{sprintf("$%0.02f",@prices[:max_price])}
       %h3 Average: #{sprintf("$%0.02f", @prices[:avg_price])}
       %h3 Median: #{sprintf("$%0.02f", @prices[:median_price])}

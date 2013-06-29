@@ -26,11 +26,9 @@ class Item < ActiveRecord::Base
   end
 
   def self.significant_prices
-    max_price_sql = Item.select('price_paid').sorted('price_paid', 'DESC').limit(1).to_sql
-    min_price_sql = Item.select('price_paid').sorted('price_paid').limit(1).to_sql
     {
-      :max_price => connection.select_values(max_price_sql).first,
-      :min_price => connection.select_values(min_price_sql).first,
+      :max_price => Item.prices.last.round(2),
+      :min_price => Item.prices.first.round(2),
       :avg_price => Item.prices.average.round(2),
       :median_price => Item.prices.median.round(2)
     }
