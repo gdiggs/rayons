@@ -2,9 +2,9 @@ Rayons = {};
 
 Rayons.Item = {
   bind: function() {
-    $('a.delete').on('click', Rayons.Item.destroy);
-    $('a.edit').on('click', Rayons.Item.edit);
-    $('a.save').on('click', Rayons.Item.save);
+    $(document).delegate('a.delete', 'click', Rayons.Item.destroy)
+               .delegate('a.edit', 'click', Rayons.Item.edit)
+               .delegate('a.save', 'click', Rayons.Item.save);
   },
 
   // Delete an item using ajax, then show the message and fade out the row.
@@ -101,7 +101,7 @@ Rayons.Stats = {
 
 Rayons.UI = {
   bind: function() {
-    $('form.ajax').on('submit', Rayons.UI.ajax_submit);
+    $(document).delegate('form.ajax', 'submit', Rayons.UI.ajax_submit);
     $('a.login, a.import').on('click', Rayons.UI.show_editing_form);
     $('a.random').on('click', Rayons.UI.scroll_to_random);
     $('.toggle-controls a').on('click', Rayons.UI.toggle_editing_bar);
