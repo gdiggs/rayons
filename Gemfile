@@ -15,12 +15,12 @@ gem 'typhoeus'
 gem 'jist'
 gem 'chartkick'
 gem 'groupdate'
+gem 'sass-rails'
+gem 'haml-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails'
-  gem 'haml-rails'
   gem 'jquery-rails'
   gem 'uglifier'
   gem 'turbo-sprockets-rails3'
