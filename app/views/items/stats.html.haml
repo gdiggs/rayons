@@ -1,7 +1,7 @@
 - content_for :title, "Stats"
 
-= cache("item_charts_#{Item.unscoped.maximum(:updated_at).to_i}_1") do
-  .content
+= cache("item_charts_#{Item.unscoped.maximum(:updated_at).to_i}_2") do
+  .content#stats
     %h1 Stats for #{Item.count} items:
 
     .switcher
