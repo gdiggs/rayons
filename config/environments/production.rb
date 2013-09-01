@@ -9,9 +9,10 @@ Rayons::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+  client = Dalli::Client.new
   config.action_dispatch.rack_cache = {
-    :metastore    => Dalli::Client.new,
-    :entitystore  => 'file:tmp/cache/rack/body',
+    :metastore    => client,
+    :entitystore  => client,
     :allow_reload => false
   }
 
