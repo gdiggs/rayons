@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '1.9.3', :engine => 'rbx', :engine_version => '2.0.0.m8'
 
-gem 'rails', '3.2.14'
+gem 'rails', '4.0'
 gem 'pg'
 gem 'puma'
 #gem 'rails_admin'
@@ -15,12 +15,14 @@ gem 'typhoeus'
 gem 'jist'
 gem 'chartkick'
 gem 'groupdate'
-gem 'sass-rails'
+gem 'sass-rails', '~> 4.0.0'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'uglifier'
-gem 'turbo-sprockets-rails3'
 gem 'jqcloud-rails', :git => 'git://github.com/GordonDiggs/jqcloud-rails.git'
+
+# TODO: remove this
+gem 'protected_attributes'
 
 group :development do
   gem 'sextant'
