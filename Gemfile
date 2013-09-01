@@ -17,15 +17,10 @@ gem 'chartkick'
 gem 'groupdate'
 gem 'sass-rails'
 gem 'haml-rails'
-
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'jquery-rails'
-  gem 'uglifier'
-  gem 'turbo-sprockets-rails3'
-  gem 'jqcloud-rails', :git => 'git://github.com/GordonDiggs/jqcloud-rails.git'
-end
+gem 'jquery-rails'
+gem 'uglifier'
+gem 'turbo-sprockets-rails3'
+gem 'jqcloud-rails', :git => 'git://github.com/GordonDiggs/jqcloud-rails.git'
 
 group :development do
   gem 'sextant'
