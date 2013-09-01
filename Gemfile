@@ -24,6 +24,10 @@ gem 'jqcloud-rails', :git => 'git://github.com/GordonDiggs/jqcloud-rails.git'
 # TODO: remove this
 gem 'protected_attributes'
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :development do
   gem 'sextant'
   gem 'foreman'
