@@ -132,11 +132,11 @@ class ItemsController < ApplicationController
   end
 
   private
-  
+
   def can_edit_items_or_not_found
     # return 404 for non-editable things
     if cannot? :manage, Item
-      raise ActionController::RoutingError.new('Not Found')
+      render_404
     end
   end
 end

@@ -19,6 +19,15 @@ class ApplicationController < ActionController::Base
     format.json { render json: obj.errors.full_messages, status: :unprocessable_entity }
   end
 
+  # This method is from http://stackoverflow.com/a/2385821
+  def render_404
+    respond_to do |format|
+      format.html { render :file => "#{Rails.root}/public/404", :layout => false, :status => :not_found }
+      format.xml  { head :not_found }
+      format.any  { head :not_found }
+    end
+  end
+
   rescue_from CanCan::AccessDenied do |exception|
     raise ActionController::RoutingError.new('Not Found')
   end
