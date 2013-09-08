@@ -1,10 +1,10 @@
 namespace :backup do
   desc "This backs up the collection to gist"
-  task :gist do
+  task :gist => :environment do
     raise "Must have gist token in `ENV['GIST_TOKEN']`" if !ENV['GIST_TOKEN']
 
     ### GET CSV
-    csv_data = Typhoeus.get("https://x-vinyl.herokuapp.com/items.csv").response_body
+    csv_data = Item.to_csv
     csv_data = csv_data.encode("UTF-8", "ISO-8859-15")
 
     ### SAVE TO GIST

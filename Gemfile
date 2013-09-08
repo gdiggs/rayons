@@ -12,7 +12,6 @@ gem 'rack-cache'
 gem 'dalli'
 gem 'textacular', '~> 3.0', require: 'textacular/rails'
 gem 'newrelic_rpm'
-gem 'typhoeus'
 gem 'jist'
 gem 'chartkick'
 gem 'groupdate'
@@ -36,4 +35,8 @@ group :development do
   gem 'heroku'
   gem 'better_errors'
   gem 'pry-rails'
+end
+
+group :test do
+  gem 'shoulda'
 end

@@ -52,13 +52,9 @@ GEM
       warden (~> 1.2.3)
     dotenv (0.8.0)
     erubis (2.7.0)
-    ethon (0.6.0)
-      ffi (>= 1.3.0)
-      mime-types (~> 1.18)
     excon (0.25.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    ffi (1.9.0)
     foreman (0.63.0)
       dotenv (>= 0.7)
       thor (>= 0.13.6)
@@ -146,6 +142,12 @@ GEM
       sprockets-rails (~> 2.0.0)
     sextant (0.2.4)
       rails (>= 3.2)
+    shoulda (3.5.0)
+      shoulda-context (~> 1.0, >= 1.0.1)
+      shoulda-matchers (>= 1.4.1, < 3.0)
+    shoulda-context (1.1.5)
+    shoulda-matchers (2.3.0)
+      activesupport (>= 3.0.0)
     slop (3.4.6)
     sprockets (2.10.0)
       hike (~> 1.2)
@@ -165,8 +167,6 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    typhoeus (0.6.4)
-      ethon (~> 0.6.0)
     tzinfo (0.3.37)
     uglifier (2.1.2)
       execjs (>= 0.3.0)
@@ -202,6 +202,6 @@ DEPENDENCIES
   rails_12factor
   sass-rails (~> 4.0.0)
   sextant
+  shoulda
   textacular (~> 3.0)
-  typhoeus
   uglifier
