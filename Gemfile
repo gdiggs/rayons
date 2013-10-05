@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
-ruby '1.9.3', :engine => 'rbx', :engine_version => '2.0.0.m8'
+ruby '2.1.0', :engine => 'rbx', :engine_version => '2.0.0'
 
+gem "rubysl", "~> 2.0"
 gem 'rails', '3.2.14'
 gem 'pg'
 gem 'puma'
