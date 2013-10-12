@@ -8,7 +8,6 @@ class Item < ActiveRecord::Base
   default_scope where(:deleted => false)
 
   SORT_ORDER = ['artist', 'title', 'year', 'label', 'format'].freeze
-  STAT_FIELDS = (Item.column_names - ["created_at", "updated_at", "id", "deleted"]).freeze
 
   def self.growth_by_week
     times = Item.group_by_week(:created_at).order('week asc').count
@@ -43,18 +42,7 @@ class Item < ActiveRecord::Base
   end
 
   def self.stats_for_field(field)
-    data = {}
-    stats = self.count(field, :group => field, :order => "count_#{field} DESC")
-
-    stats.each do |val, count|
-      if count == 1
-        data["Other"] = data["Other"].to_i + 1
-      else
-        data[val.to_s] = count
-      end
-    end
-
-    data
+    self.count(field, :group => field, :order => "count_#{field} DESC")
   end
 
   def self.search(query = "")
