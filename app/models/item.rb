@@ -9,6 +9,11 @@ class Item < ActiveRecord::Base
 
   SORT_ORDER = ['artist', 'title', 'year', 'label', 'format'].freeze
 
+  def self.counts_by_day
+    times = Item.group_by_day(:created_at).order('day asc').count
+    Hash[times.map { |k, v| [Time.parse(k).to_i, v] }]
+  end
+
   def self.growth_by_week
     times = Item.group_by_week(:created_at).order('week asc').count
     result = {}

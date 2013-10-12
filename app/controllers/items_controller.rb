@@ -1,6 +1,11 @@
 class ItemsController < ApplicationController
   before_filter :can_edit_items_or_not_found, :only => [:new, :edit, :create, :update, :import, :destroy]
 
+  # GET /items/counts_by_day.json
+  def counts_by_day
+    render json: Item.counts_by_day
+  end
+
   # GET /
   # GET /items
   # GET /items.json

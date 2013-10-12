@@ -13,6 +13,7 @@ Rayons::Application.routes.draw do
       get 'random'
       get 'time_machine'
       get 'words_for_field'
+      get 'counts_by_day'
     end
   end
 
