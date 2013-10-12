@@ -1,3 +1,4 @@
+//= require d3.v3.min
 //= require jquery
 //= require jquery_ujs
 //= require jquery.easing.min
