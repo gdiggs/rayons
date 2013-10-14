@@ -19,3 +19,6 @@
 /.rbx
 
 latest.dump
+
+public/items/
+public/stats.html
