@@ -38,16 +38,12 @@ class Item < ActiveRecord::Base
     }
   end
 
-  def self.stats
-    results = {}
-    STAT_FIELDS.each do |field|
-      results[field] = self.stats_for_field(field)
-    end
-    results
-  end
-
   def self.stats_for_field(field)
     self.count(field, :group => field, :order => "count_#{field} DESC")
+  end
+
+  def self.price_stats
+    self.count(:price_paid, :group => :price_paid, :order => "to_number(price_paid, '9999999.99')")
   end
 
   def self.search(query = "")

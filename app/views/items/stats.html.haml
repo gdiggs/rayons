@@ -24,7 +24,7 @@
       %h2 Price Paid
       %p
         %em Prices paid fewer than 5 times are excluded
-      = column_chart Item.stats_for_field(:price_paid).select { |k,v| v >= 5 }, :library => google_column_charts_options
+      = column_chart Item.price_stats.select { |k,v| v >= 5 }, :library => google_column_charts_options
 
       %h2 Month added
       = column_chart items_per_month, :library => google_column_charts_options
