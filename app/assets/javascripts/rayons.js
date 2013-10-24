@@ -78,6 +78,22 @@ Rayons.Stats = {
     });
 
     $('.switcher a').click(Rayons.Stats.switch_view);
+
+    var cal = new CalHeatMap();
+    cal.init({
+      start: new Date(2012, 1, 1), // February 1, 2012
+      cellSize: 10,
+      range: 24,
+      domain: "month",
+      subDomain: "day",
+      legend: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      legendColors: {
+        min: "#efefef",
+        max: "#2c6079"
+      },
+      displayLegend: false,
+      data: '/items/counts_by_day.json'
+    });
   },
 
   switch_view: function(e) {

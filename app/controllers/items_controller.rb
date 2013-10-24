@@ -1,5 +1,15 @@
 class ItemsController < ApplicationController
   before_filter :can_edit_items_or_not_found, :only => [:new, :edit, :create, :update, :import, :destroy]
+  after_filter :expire_pages, :only => [:new, :edit, :create, :update, :import, :destroy]
+
+  caches_page :stats, :counts_by_day
+  caches_action :words_for_field, :cache_path => Proc.new { |c| c.params[:field] }
+
+
+  # GET /items/counts_by_day.json
+  def counts_by_day
+    render json: Item.counts_by_day
+  end
 
   # GET /
   # GET /items
@@ -138,5 +148,11 @@ class ItemsController < ApplicationController
     if cannot? :manage, Item
       render_404
     end
+  end
+
+  def expire_pages
+    expire_page :action => :stats
+    expire_page :action => :counts_by_day
+    expire_page :action => :words_for_field
   end
 end

@@ -1,37 +1,55 @@
 - content_for :title, "Stats"
 
-= cache("item_charts_#{Item.unscoped.maximum(:updated_at).to_i}_2") do
-  .content#stats
-    %h1 Stats for #{Item.count} items:
+.content#stats
+  %h1 Stats for #{Item.count} items:
 
-    .switcher
-      %a.active{ :href => 'javascript:', 'data-target' => '.graphs' } Graphs
-      |
-      %a{ :href => 'javascript:', 'data-target' => '.texts' } Words
-      |
-      %a{ :href => '/items/time_machine' } Time Machine
+  .switcher
+    %a.active{ :href => 'javascript:', 'data-target' => '.graphs' } Graphs
+    |
+    %a{ :href => 'javascript:', 'data-target' => '.texts' } Words
+    |
+    %a{ :href => '/items/time_machine' } Time Machine
 
-    .graphs
-      - Item::STAT_FIELDS.each do |field|
-        %h2= field.titleize
-        = pie_chart Item.stats_for_field(field), :height => '600px', :library => google_pie_charts_options
+  .graphs
+    %h2 Year
+    = column_chart Item.stats_for_field(:year), :library => google_column_charts_options
 
-      %h2 Month added
-      = column_chart items_per_month, :library => google_column_charts_options
+    %h2 Format
+    = pie_chart Item.stats_for_field(:format), :height => '600px', :library => google_pie_charts_options
 
-      %h2 Day of week added
-      = column_chart items_per_day_of_week, :library => google_column_charts_options
+    %h2 Condition
+    = pie_chart Item.stats_for_field(:condition), :height => '600px', :library => google_pie_charts_options
 
-      %h2 Size over time
-      = line_chart Item.growth_by_week, :library => google_column_charts_options
+    %h2 Price Paid
+    %p
+      %em Prices paid fewer than 5 times are excluded
+    = column_chart Item.price_stats.select { |k,v| v >= 5 }, :library => google_column_charts_options
 
-    .texts.none
-      - ['title', 'artist', 'label', 'year'].each do |field|
-        %h2 #{field.titleize} Frequency
-        .frequency{ 'data-field' => field }
+    %h2 Month added
+    = column_chart items_per_month, :library => google_column_charts_options
 
-      %h2 Price Stats
-      %h3 Minimum: #{sprintf("$%0.02f", @prices[:min_price])}
-      %h3 Maximum: #{sprintf("$%0.02f",@prices[:max_price])}
-      %h3 Average: #{sprintf("$%0.02f", @prices[:avg_price])}
-      %h3 Median: #{sprintf("$%0.02f", @prices[:median_price])}
+    %h2 Day of week added
+    = column_chart items_per_day_of_week, :library => google_column_charts_options
+
+    %h2 Size over time
+    = line_chart Item.growth_by_week, :library => google_column_charts_options
+
+    %h2 Items added per day
+    #cal-heatmap
+
+  .texts.none
+    - [:artist, :label, :color].each do |field|
+      .column
+        %h2 Top 10 #{field.to_s.titleize.pluralize}
+        = top_10(field)
+    %div{ :style => 'clear:both;' }
+
+    - ['title', 'artist', 'label', 'year'].each do |field|
+      %h2 #{field.titleize} Frequency
+      .frequency{ 'data-field' => field }
+
+    %h2 Price Stats
+    %h3 Minimum: #{sprintf("$%0.02f", @prices[:min_price])}
+    %h3 Maximum: #{sprintf("$%0.02f",@prices[:max_price])}
+    %h3 Average: #{sprintf("$%0.02f", @prices[:avg_price])}
+    %h3 Median: #{sprintf("$%0.02f", @prices[:median_price])}

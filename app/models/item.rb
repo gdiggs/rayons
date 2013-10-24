@@ -8,7 +8,11 @@ class Item < ActiveRecord::Base
   default_scope { where(:deleted => false) }
 
   SORT_ORDER = ['artist', 'title', 'year', 'label', 'format'].freeze
-  STAT_FIELDS = (Item.column_names - ["created_at", "updated_at", "id", "deleted"]).freeze
+
+  def self.counts_by_day
+    times = Item.group_by_day(:created_at).order('day asc').count
+    Hash[times.map { |k, v| [Time.parse(k).to_i, v] }]
+  end
 
   def self.growth_by_week
     times = Item.group_by_week(:created_at).order('week asc').count
@@ -34,27 +38,12 @@ class Item < ActiveRecord::Base
     }
   end
 
-  def self.stats
-    results = {}
-    STAT_FIELDS.each do |field|
-      results[field] = self.stats_for_field(field)
-    end
-    results
+  def self.stats_for_field(field)
+    self.count(field, :group => field, :order => "count_#{field} DESC")
   end
 
-  def self.stats_for_field(field)
-    data = {}
-    stats = self.count(field, :group => field, :order => "count_#{field} DESC")
-
-    stats.each do |val, count|
-      if count == 1
-        data["Other"] = data["Other"].to_i + 1
-      else
-        data[val.to_s] = count
-      end
-    end
-
-    data
+  def self.price_stats
+    self.count(:price_paid, :group => :price_paid, :order => "to_number(price_paid, '9999999.99')")
   end
 
   def self.search(query = "")
