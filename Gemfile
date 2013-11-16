@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 ruby "2.1.0", :engine => "rbx", :engine_version => "2.2.0"
 
-gem "psych"
 gem "rubysl", '2.0.14'
 gem 'rails', '3.2.15'
 gem 'pg'
