@@ -39,14 +39,14 @@ GEM
     arel (3.0.3)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
-    better_errors (0.9.0)
+    better_errors (1.0.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
     builder (3.0.4)
     cancan (1.6.10)
     chartkick (1.2.0)
     coderay (1.0.9)
-    colorize (0.5.8)
+    colorize (0.6.0)
     dalli (2.6.4)
     devise (3.2.1)
       bcrypt-ruby (~> 3.0)
@@ -57,8 +57,7 @@ GEM
     dotenv (0.8.0)
     erubis (2.7.0)
     excon (0.25.3)
-    execjs (1.4.0)
-      multi_json (~> 1.0)
+    execjs (2.0.2)
     foreman (0.63.0)
       dotenv (>= 0.7)
       thor (>= 0.13.6)
@@ -71,7 +70,7 @@ GEM
       activesupport (>= 3.1, < 4.1)
       haml (>= 3.1, < 4.1)
       railties (>= 3.1, < 4.1)
-    heroku (2.40.0)
+    heroku (3.0.1)
       heroku-api (~> 0.3.7)
       launchy (>= 0.3.2)
       netrc (~> 0.7.7)
@@ -88,7 +87,7 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
-    launchy (2.3.0)
+    launchy (2.4.0)
       addressable (~> 2.3)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -142,7 +141,7 @@ GEM
       json (~> 1.4)
     rest-client (1.6.7)
       mime-types (>= 1.16)
-    rubyzip (0.9.9)
+    rubyzip (1.1.0)
     sass (3.2.10)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -171,13 +170,13 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbo-sprockets-rails3 (0.3.8)
+    turbo-sprockets-rails3 (0.3.10)
       railties (> 3.2.8, < 4.0.0)
       sprockets (>= 2.0.0)
     tzinfo (0.3.38)
-    uglifier (2.1.2)
+    uglifier (2.3.1)
       execjs (>= 0.3.0)
-      multi_json (~> 1.0, >= 1.0.2)
+      json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
 
@@ -185,16 +184,16 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  better_errors
+  better_errors (= 1.0.1)
   cancan
   chartkick
-  colorize
+  colorize (= 0.6.0)
   dalli
   devise (= 3.2.1)
   foreman
   groupdate
   haml-rails
-  heroku
+  heroku (= 3.0.1)
   jist
   jqcloud-rails!
   jquery-rails
@@ -209,5 +208,5 @@ DEPENDENCIES
   sextant
   shoulda
   textacular (~> 3.0)
-  turbo-sprockets-rails3
-  uglifier
+  turbo-sprockets-rails3 (= 0.3.10)
+  uglifier (= 2.3.1)

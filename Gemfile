@@ -22,17 +22,17 @@ gem 'haml-rails'
 # in production environments by default.
 group :assets do
   gem 'jquery-rails'
-  gem 'uglifier'
-  gem 'turbo-sprockets-rails3'
+  gem 'uglifier', '2.3.1'
+  gem 'turbo-sprockets-rails3', '0.3.10'
   gem 'jqcloud-rails', :git => 'git://github.com/GordonDiggs/jqcloud-rails.git'
 end
 
 group :development do
   gem 'sextant'
   gem 'foreman'
-  gem 'colorize'
-  gem 'heroku'
-  gem 'better_errors'
+  gem 'colorize', '0.6.0'
+  gem 'heroku', '3.0.1'
+  gem 'better_errors', '1.0.1'
   gem 'pry-rails'
 end
 
