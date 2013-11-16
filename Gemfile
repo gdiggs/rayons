@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.1.0", :engine => "rbx", :engine_version => "2.1.1"
+ruby "2.1.0", :engine => "rbx", :engine_version => "2.2.0"
 
 gem "psych"
 gem "rubysl", '2.0.14'
