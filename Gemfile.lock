@@ -111,6 +111,7 @@ GEM
     psych (2.0.1)
     puma (2.6.0)
       rack (>= 1.1, < 2.0)
+    racc (1.4.10)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -405,6 +406,7 @@ DEPENDENCIES
   pry-rails
   psych
   puma (= 2.6.0)
+  racc
   rails (= 3.2.15)
   rubysl (= 2.0.14)
   sass-rails
