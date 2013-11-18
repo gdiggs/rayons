@@ -8,6 +8,7 @@ gem 'rails', '4.0.1'
 gem 'pg', '0.17.0'
 gem 'puma', '2.6.0'
 gem 'rails_12factor'
+gem 'json', '1.8.1'
 #gem 'rails_admin'
 gem 'devise', '3.2.1'
 gem 'cancan'
@@ -24,6 +25,11 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'uglifier', '2.3.1'
 gem 'jqcloud-rails', :git => 'git://github.com/GordonDiggs/jqcloud-rails.git'
+
+# TODO: remove this
+gem 'protected_attributes'
+gem 'actionpack-page_caching'
+gem 'rails-observers'
 
 group :development do
   gem 'sextant'

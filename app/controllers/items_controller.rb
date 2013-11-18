@@ -1,9 +1,9 @@
 class ItemsController < ApplicationController
   before_filter :can_edit_items_or_not_found, :only => [:new, :edit, :create, :update, :import, :destroy]
-  after_filter :expire_pages, :only => [:new, :edit, :create, :update, :import, :destroy]
+  #after_filter :expire_pages, :only => [:new, :edit, :create, :update, :import, :destroy]
 
   caches_page :stats, :counts_by_day
-  caches_action :words_for_field, :cache_path => Proc.new { |c| c.params[:field] }
+  #caches_action :words_for_field, :cache_path => Proc.new { |c| c.params[:field] }
 
 
   # GET /items/counts_by_day.json
