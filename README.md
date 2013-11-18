@@ -1,4 +1,5 @@
 [![Code Climate](https://codeclimate.com/github/GordonDiggs/rayons.png)](https://codeclimate.com/github/GordonDiggs/rayons)
+[![Dependency Status](https://gemnasium.com/GordonDiggs/rayons.png)](https://gemnasium.com/GordonDiggs/rayons)
 
 ## Rayons
 
