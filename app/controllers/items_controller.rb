@@ -151,8 +151,8 @@ class ItemsController < ApplicationController
   end
 
   def expire_pages
-    expire_page :action => :stats
-    expire_page :action => :counts_by_day
-    expire_page :action => :words_for_field
+    expire_page :controller => :items, :action => :stats
+    expire_page :controller => :items, :action => :counts_by_day
+    expire_page :controller => :items, :action => :words_for_field
   end
 end
