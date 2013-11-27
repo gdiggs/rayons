@@ -29,6 +29,14 @@ class ItemsController < ApplicationController
     end
   end
 
+  # GET /items/latest.json
+  def latest
+    number_of_items = params[:num].to_i
+    number_of_items = 5 if number_of_items.zero?
+    @items = Item.order('created_at DESC').limit(number_of_items)
+    render json: @items
+  end
+
   # GET /items/1
   # GET /items/1.json
   def show
