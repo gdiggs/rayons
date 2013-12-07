@@ -55,6 +55,8 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     dotenv (0.8.0)
+    dropbox-sdk (1.6.2)
+      json
     erubis (2.7.0)
     excon (0.25.3)
     execjs (2.0.2)
@@ -401,6 +403,7 @@ DEPENDENCIES
   colorize (= 0.6.0)
   dalli
   devise (= 3.2.2)
+  dropbox-sdk
   foreman
   groupdate
   haml-rails

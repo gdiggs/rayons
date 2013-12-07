@@ -33,6 +33,10 @@ $ grunt
 
 *NOTE: You must have node 0.8 or higher*
 
+### Dropbox Backup Setup
+
+You can back up the collection by using `rake backup:dropbox`. Before you can do this, you must create an application on Dropbox and follow [these instructions](https://www.dropbox.com/developers/core/start/ruby) to get your Dropbox access token.
+
 ### License
 
 Rayons is licensed under the MIT License
