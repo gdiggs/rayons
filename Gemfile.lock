@@ -112,7 +112,7 @@ GEM
     pry-rails (0.3.2)
       pry (>= 0.9.10)
     psych (2.0.1)
-    puma (2.6.0)
+    puma (2.7.1)
       rack (>= 1.1, < 2.0)
     racc (1.4.10)
     rack (1.4.5)
@@ -416,7 +416,7 @@ DEPENDENCIES
   pg (= 0.17.0)
   pry-rails
   psych
-  puma (= 2.6.0)
+  puma (= 2.7.1)
   racc
   rails (= 3.2.16)
   rails_12factor

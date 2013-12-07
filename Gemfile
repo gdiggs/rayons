@@ -6,7 +6,7 @@ gem "racc"
 gem "rubysl", '2.0.14'
 gem 'rails', '3.2.16'
 gem 'pg', '0.17.0'
-gem 'puma', '2.6.0'
+gem 'puma', '2.7.1'
 gem 'rails_12factor'
 #gem 'rails_admin'
 gem 'devise', '3.2.2'
