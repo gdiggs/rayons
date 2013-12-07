@@ -370,7 +370,7 @@ GEM
       railties (> 3.2.8, < 4.0.0)
       sprockets (>= 2.0.0)
     tzinfo (0.3.38)
-    uglifier (2.3.1)
+    uglifier (2.3.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     warden (1.2.3)
@@ -407,4 +407,4 @@ DEPENDENCIES
   shoulda
   textacular (~> 3.0)
   turbo-sprockets-rails3 (= 0.3.10)
-  uglifier (= 2.3.1)
+  uglifier (= 2.3.2)

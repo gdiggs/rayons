@@ -25,7 +25,7 @@ gem 'haml-rails'
 # in production environments by default.
 group :assets do
   gem 'jquery-rails'
-  gem 'uglifier', '2.3.1'
+  gem 'uglifier', '2.3.2'
   gem 'turbo-sprockets-rails3', '0.3.10'
   gem 'jqcloud-rails', :git => 'git://github.com/GordonDiggs/jqcloud-rails.git'
 end
