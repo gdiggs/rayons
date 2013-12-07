@@ -99,7 +99,7 @@ GEM
     minitest (4.7.5)
     multi_json (1.8.2)
     netrc (0.7.7)
-    newrelic_rpm (3.6.9.171)
+    newrelic_rpm (3.7.0.177)
     orm_adapter (0.5.0)
     pg (0.17.0)
     polyglot (0.3.3)
@@ -409,7 +409,7 @@ DEPENDENCIES
   jqcloud-rails!
   jquery-rails
   memcachier
-  newrelic_rpm (= 3.6.9.171)
+  newrelic_rpm (= 3.7.0.177)
   pg (= 0.17.0)
   pry-rails
   psych
