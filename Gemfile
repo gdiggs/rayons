@@ -34,7 +34,6 @@ group :development do
   gem 'sextant'
   gem 'foreman'
   gem 'colorize', '0.6.0'
-  gem 'heroku', '3.0.1'
   gem 'better_errors', '1.0.1'
   gem 'pry-rails'
 end

@@ -35,7 +35,6 @@ GEM
     activesupport (3.2.16)
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
-    addressable (2.3.5)
     arel (3.0.3)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
@@ -58,7 +57,6 @@ GEM
     dropbox-sdk (1.6.2)
       json
     erubis (2.7.0)
-    excon (0.25.3)
     execjs (2.0.2)
     ffi2-generators (0.1.1)
     foreman (0.63.0)
@@ -73,14 +71,6 @@ GEM
       activesupport (>= 3.1, < 4.1)
       haml (>= 3.1, < 4.1)
       railties (>= 3.1, < 4.1)
-    heroku (3.0.1)
-      heroku-api (~> 0.3.7)
-      launchy (>= 0.3.2)
-      netrc (~> 0.7.7)
-      rest-client (~> 1.6.1)
-      rubyzip
-    heroku-api (0.3.15)
-      excon (~> 0.25.1)
     hike (1.2.3)
     i18n (0.6.9)
     jist (1.5.1)
@@ -90,8 +80,6 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
-    launchy (2.4.0)
-      addressable (~> 2.3)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -100,7 +88,6 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.8.2)
-    netrc (0.7.7)
     newrelic_rpm (3.7.0.177)
     orm_adapter (0.5.0)
     pg (0.17.0)
@@ -144,8 +131,6 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
     rubysl (2.0.14)
       rubysl-abbrev (~> 2.0)
       rubysl-base64 (~> 2.0)
@@ -353,7 +338,6 @@ GEM
     rubysl-xmlrpc (2.0.0)
     rubysl-yaml (2.0.3)
     rubysl-zlib (2.0.1)
-    rubyzip (1.1.0)
     sass (3.2.10)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -406,7 +390,6 @@ DEPENDENCIES
   foreman
   groupdate
   haml-rails
-  heroku (= 3.0.1)
   jist
   jqcloud-rails!
   jquery-rails
