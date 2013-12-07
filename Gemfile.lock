@@ -111,7 +111,6 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.2)
       pry (>= 0.9.10)
-    psych (2.0.1)
     puma (2.7.1)
       rack (>= 1.1, < 2.0)
     racc (1.4.10)
@@ -415,7 +414,6 @@ DEPENDENCIES
   newrelic_rpm (= 3.7.0.177)
   pg (= 0.17.0)
   pry-rails
-  psych
   puma (= 2.7.1)
   racc
   rails (= 3.2.16)
