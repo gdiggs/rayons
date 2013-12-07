@@ -48,7 +48,7 @@ GEM
     coderay (1.0.9)
     colorize (0.6.0)
     dalli (2.6.4)
-    devise (3.2.1)
+    devise (3.2.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
@@ -400,7 +400,7 @@ DEPENDENCIES
   chartkick
   colorize (= 0.6.0)
   dalli
-  devise (= 3.2.1)
+  devise (= 3.2.2)
   foreman
   groupdate
   haml-rails
