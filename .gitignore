@@ -19,6 +19,6 @@
 /.rbx
 
 latest.dump
-
+.DS_Store
 public/items/
 public/stats.html
