@@ -3,7 +3,7 @@ ruby "2.1.0", :engine => "rbx", :engine_version => "2.2.1"
 
 gem 'racc'
 gem "rubysl", '2.0.15'
-gem 'rails', '4.0.1'
+gem 'rails', '4.0.2'
 gem 'pg', '0.17.0'
 gem 'puma', '2.7.1'
 gem 'rails_12factor'
