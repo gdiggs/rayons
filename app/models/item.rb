@@ -5,7 +5,7 @@ class Item < ActiveRecord::Base
 
   scope :added_on_day, lambda { |date| where ["created_at >= ? AND created_at <= ?", date.to_date, (date+1.day).to_date] }
 
-  default_scope where(:deleted => false)
+  default_scope { where(:deleted => false) }
 
   SORT_ORDER = ['artist', 'title', 'year', 'label', 'format'].freeze
 
