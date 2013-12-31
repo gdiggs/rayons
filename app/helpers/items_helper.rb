@@ -23,7 +23,7 @@ module ItemsHelper
   def items_per_month
     result = {}
     Item.group_by_month(:created_at).order('month asc').count.map do |k,v|
-      result[Time.parse(k).strftime("%b %Y")] = v
+      result[k.strftime("%b %Y")] = v
     end
     result
   end
