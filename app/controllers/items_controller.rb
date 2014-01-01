@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   after_filter :expire_pages, :only => [:new, :edit, :create, :update, :import, :destroy]
 
   caches_page :stats, :counts_by_day
-  caches_action :words_for_field, :cache_path => Proc.new { |c| c.params[:field] }
+  caches_action :words_for_field, :cache_path => Proc.new { |c| "words_for_field_#{c.params[:field]}" }
 
 
   # GET /items/counts_by_day.json
