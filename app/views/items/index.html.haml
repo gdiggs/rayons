@@ -22,8 +22,8 @@
           - if params[:sort] == 'created_at' 
             = params[:direction] == 'ASC' ? "\u2191" : "\u2193"
 
-    -# cache ["items_markup", Item.unscoped.maximum(:updated_at).to_i, can?(:manage, Item), params] do
-    = render :partial => 'items/item', :collection => @items, :as => :item
+    = cache ["items_markup", Item.unscoped.maximum(:updated_at).to_i, can?(:manage, Item), params] do
+      = render :partial => 'items/item', :collection => @items, :as => :item
 
 #editing-bar
   %span #{@items.count} items.
