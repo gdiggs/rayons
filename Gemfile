@@ -29,6 +29,7 @@ gem 'jquery-rails'
 gem 'uglifier', '2.4.0'
 gem 'jqcloud-rails', :git => 'git://github.com/GordonDiggs/jqcloud-rails.git'
 gem "autoprefixer-rails"
+gem 'librato-rails'
 
 # TODO: remove this
 gem 'protected_attributes'
