@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :default_error_response
 
+  def blitz
+    render :text => 42
+  end
+
   def check_responsive
     if params[:exclude_responsive]
       if params[:exclude_responsive] == 'false'
