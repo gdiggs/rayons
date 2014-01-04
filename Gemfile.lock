@@ -38,6 +38,8 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.1)
     atomic (1.1.14)
+    autoprefixer-rails (1.0.20140103)
+      execjs
     bcrypt-ruby (3.1.2)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
@@ -172,6 +174,7 @@ PLATFORMS
 DEPENDENCIES
   actionpack-action_caching
   actionpack-page_caching
+  autoprefixer-rails
   better_errors (= 1.1.0)
   cancan
   chartkick

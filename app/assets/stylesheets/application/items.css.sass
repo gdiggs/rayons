@@ -3,7 +3,7 @@ html
 
 body
   :background #66aacc
-  :background-image -webkit-linear-gradient(top, #6AACCC, #2C6079)
+  :background-image linear-gradient(top, #6AACCC, #2C6079)
   :color #888
   :font-family 'Arial', serif
   :text-align center
@@ -40,7 +40,6 @@ form
   :margin-bottom 20px
   :padding 10px
   :border-radius 5px
-  :-moz-border-radius 5px
   &.error
     :background #FB4C1E
 
@@ -51,7 +50,6 @@ form
   :margin 0 auto
   :background white
   :padding 20px
-  :-moz-border-radius 15px
   :border-radius 15px
   h1
     :font-family inherit
@@ -62,16 +60,12 @@ form
   input
     :font-size 13px
     &[type=text]
-      :-webkit-border-radius 3px
-      :-moz-border-radius 3px
       :border-radius 3px
       :border 1px solid #444
       :padding 3px 5px
       :color #222
     &:focus
       :outline none
-      :-webkit-box-shadow 0px 0px 6px #FBBE1E
-      :-moz-box-shadow 0px 0px 6px #FBBE1E
       :box-shadow 0px 0px 6px #FBBE1E
   #add-new
     :width 98%
@@ -115,7 +109,6 @@ form
   :position fixed
   :background #222
   :opacity 0.9
-  :-moz-opacity 0.9
   :bottom 0
   :left 0
   :line-height 20px
