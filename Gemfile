@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
-#ruby "2.1.0", :engine => "rbx", :engine_version => "2.2.1"
-ruby "2.0.0"
+ruby "2.1.0", :engine => "rbx", :engine_version => "2.2.1"
 
-#gem 'racc'
-#gem "rubysl", '2.0.15'
+# using this ref until this bug is fixed: https://github.com/tenderlove/racc/issues/36
+gem 'racc', :ref => '7fc11c668d7d2fdc9815248b1c41ce40765b9881'
+gem "rubysl", '2.0.15'
 gem 'rails', '4.0.2'
 gem 'pg', '0.17.1'
 gem 'puma', '2.7.1'
