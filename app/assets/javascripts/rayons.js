@@ -35,7 +35,9 @@ Rayons.Item = {
         $row = $this.parents('tr');
 
     $row.find('td:not(.edit):not(.save)').each(function() {
-      $(this).html("<input type=text name="+$(this).attr('class')+" value='" + $(this).html().replace(/'/, '&apos;') + "' />");
+      var text = $(this).find('a').length > 0 ? $(this).find('a').attr('href') : $(this).html().replace(/'/, '&apos;');
+
+      $(this).html("<input type=text name="+$(this).attr('class')+" value='" + $.trim(text) + "' />");
     });
 
     $this.parent().hide().siblings('td.save').show();

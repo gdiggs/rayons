@@ -1,6 +1,8 @@
 class Item < ActiveRecord::Base
   attr_accessible :artist, :condition, :format, :label, :price_paid, :title, :year, :color, :discogs_url
 
+  before_validation :blank_discogs
+
   validates_presence_of :price_paid
   validates_format_of :discogs_url, :with => URI::regexp(['http', 'https']), :allow_nil => true
 
@@ -112,5 +114,10 @@ class Item < ActiveRecord::Base
   end
 
   class InvalidFieldError < RuntimeError; end
+
+  private
+  def blank_discogs
+    self.discogs_url = nil if self.discogs_url.blank?
+  end
 
 end

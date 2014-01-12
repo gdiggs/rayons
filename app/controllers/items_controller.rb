@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_filter :can_edit_items_or_not_found, :only => [:new, :edit, :create, :update, :import, :destroy]
+  before_filter :edit_discogs_param, :only => [:index, :create, :update]
   after_filter :expire_pages, :only => [:new, :edit, :create, :update, :import, :destroy]
 
   caches_page :stats, :counts_by_day
@@ -21,7 +22,7 @@ class ItemsController < ApplicationController
       params[:sort] ||= Item::SORT_ORDER[0]
       @items = Item.sorted(params[:sort], params[:direction])
       @items = @items.search(params[:search]) if params[:search].present?
-      @field_headers = ['Title', 'Artist', 'Year', 'Label', 'Format', 'Condition', 'Color', 'Price Paid']
+      @field_headers = ['Title', 'Artist', 'Year', 'Label', 'Format', 'Condition', 'Color', 'Price Paid', 'Discogs']
     end
 
     respond_to do |format|
@@ -164,5 +165,12 @@ class ItemsController < ApplicationController
     expire_page :controller => :items, :action => :stats
     expire_page :controller => :items, :action => :counts_by_day
     expire_page :controller => :items, :action => :words_for_field
+  end
+
+  def edit_discogs_param
+    params[:sort] = 'discogs_url' if params[:sort] == 'discogs'
+    if params[:item]
+      params[:item][:discogs_url] ||= params[:item][:discogs]
+    end
   end
 end

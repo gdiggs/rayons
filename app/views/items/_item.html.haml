@@ -7,6 +7,9 @@
   %td.condition= item.condition
   %td.color= item.color
   %td.price_paid= item.price_paid
+  %td.discogs_url
+    - if item.discogs_url.present?
+      %a{ :href => item.discogs_url, :target => '_blank' } link
   %td.added_on= item.created_at.strftime('%m.%d.%y')
   - if can? :manage, Item
     %td.edit
