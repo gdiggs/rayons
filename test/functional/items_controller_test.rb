@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class ItemsControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+
   context 'when logged in' do
     setup do
       @item = items(:one)

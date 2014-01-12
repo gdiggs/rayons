@@ -1,7 +1,8 @@
 class Item < ActiveRecord::Base
-  attr_accessible :artist, :condition, :format, :label, :price_paid, :title, :year, :color
+  attr_accessible :artist, :condition, :format, :label, :price_paid, :title, :year, :color, :discogs_url
 
   validates_presence_of :price_paid
+  validates_format_of :discogs_url, :with => URI::regexp(['http', 'https']), :allow_nil => true
 
   scope :added_on_day, lambda { |date| where ["created_at >= ? AND created_at <= ?", date.to_date, (date+1.day).to_date] }
 
@@ -63,7 +64,7 @@ class Item < ActiveRecord::Base
   end
 
   def self.to_csv
-    headers = ['title', 'artist', 'year', 'label', 'format', 'condition', 'color', 'price_paid', 'created_at', 'updated_at']
+    headers = ['title', 'artist', 'year', 'label', 'format', 'condition', 'color', 'price_paid', 'discogs_url', 'created_at', 'updated_at']
     csv = CSV.generate do |c|
       c << headers
       Item.all.each do |item|

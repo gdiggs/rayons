@@ -44,4 +44,5 @@ end
 
 group :test do
   gem 'shoulda'
+  gem 'minitest-display'
 end
