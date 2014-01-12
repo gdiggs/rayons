@@ -33,4 +33,7 @@ Rayons::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  config.action_view.logger = nil
+  config.log_level = :fatal
 end
