@@ -21,34 +21,28 @@ module ItemsHelper
   end
 
   def items_per_month
-    Librato.measure "items.items_per_month" do
-      result = {}
-      Item.group_by_month(:created_at).order('month asc').count.map do |k,v|
-        result[k.strftime("%b %Y")] = v
-      end
-      result
+    result = {}
+    Item.group_by_month(:created_at).order('month asc').count.map do |k,v|
+      result[k.strftime("%b %Y")] = v
     end
+    result
   end
 
   def items_per_day_of_week
-    Librato.measure "items.items_per_day_of_week" do
-      days_of_week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-      result = {}
-      Item.group_by_day_of_week(:created_at).order("day_of_week asc").count.map do |k,v|
-        result[days_of_week[k.to_i]] = v
-      end
-      result
+    days_of_week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    result = {}
+    Item.group_by_day_of_week(:created_at).order("day_of_week asc").count.map do |k,v|
+      result[days_of_week[k.to_i]] = v
     end
+    result
   end
 
   def top_10(field)
-    Librato.measure "items.top_10.#{field}" do
-      @total_count ||= Item.count
-      Item.stats_for_field(field).first(10).map do |value, count|
-        percentage = count*100.0 / @total_count
-        "<p><strong>#{value}</strong>: #{count}: <em>#{percentage.round(2)}%</em></p>"
-      end.join.html_safe
-    end
+    @total_count ||= Item.count
+    Item.stats_for_field(field).first(10).map do |value, count|
+      percentage = count*100.0 / @total_count
+      "<p><strong>#{value}</strong>: #{count}: <em>#{percentage.round(2)}%</em></p>"
+    end.join.html_safe
   end
 
 end
