@@ -69,7 +69,6 @@ GEM
     foreman (0.63.0)
       dotenv (>= 0.7)
       thor (>= 0.13.6)
-    gd-racc (1.4.11)
     groupdate (1.0.4)
       activerecord (>= 3.0.0)
     haml (4.0.4)
@@ -119,6 +118,7 @@ GEM
       pry (>= 0.9.10)
     puma (2.7.1)
       rack (>= 1.1, < 2.0)
+    racc (1.4.11)
     rack (1.5.2)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -403,7 +403,6 @@ DEPENDENCIES
   devise (= 3.2.2)
   dropbox-sdk
   foreman
-  gd-racc
   groupdate
   haml-rails
   jist
@@ -416,6 +415,7 @@ DEPENDENCIES
   protected_attributes
   pry-rails
   puma (= 2.7.1)
+  racc (= 1.4.11)
   rack-cache
   rails (= 4.0.2)
   rails-observers

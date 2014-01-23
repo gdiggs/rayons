@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
 ruby "2.1.0", :engine => "rbx", :engine_version => "2.2.3"
 
-# using this ref until this bug is fixed: https://github.com/tenderlove/racc/issues/36
-gem 'gd-racc'
+gem 'racc', '1.4.11'
 gem "rubysl", '2.0.15'
 gem 'rails', '4.0.2'
 gem 'pg', '0.17.1'
