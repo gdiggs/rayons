@@ -42,11 +42,11 @@ class Item < ActiveRecord::Base
   end
 
   def self.stats_for_field(field)
-    self.count(field, :group => field, :order => "count_#{field} DESC")
+    self.select(field).group(field).order("count_#{field} DESC").count
   end
 
   def self.price_stats
-    self.count(:price_paid, :group => :price_paid, :order => "to_number(price_paid, '9999999.99')")
+    self.select(:price_paid).group(:price_paid).order("to_number(price_paid, '9999999.99')").count
   end
 
   def self.search(query = "")
