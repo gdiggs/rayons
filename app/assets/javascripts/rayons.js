@@ -4,8 +4,7 @@ Rayons.Item = {
   bind: function() {
     $(document).delegate('a.delete', 'click', Rayons.Item.destroy)
                .delegate('a.edit', 'click', Rayons.Item.edit)
-               .delegate('a.save', 'click', Rayons.Item.save)
-               .delegate('input[name="search"]', 'keyup', _.debounce(Rayons.Item.search, 200));
+               .delegate('a.save', 'click', Rayons.Item.save);
   },
 
   // Delete an item using ajax, then show the message and fade out the row.
@@ -68,18 +67,7 @@ Rayons.Item = {
       }
     });
     return false;
-  },
-
-  search: function() {
-    var term = $('input[name="search"]').val(),
-        $rows = $('tr:not(:first)').hide(),
-        matching_regex = new RegExp(term, 'i');
-
-    $rows.filter(function() {
-      return matching_regex.test($(this).find('td:not(.edit):not(.save)').text())
-    }).show();
   }
-
 };
 
 Rayons.Stats = {
