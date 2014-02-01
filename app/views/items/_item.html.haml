@@ -11,7 +11,7 @@
     - if item.discogs_url.present?
       %a{ :href => item.discogs_url, :target => '_blank' } link
   %td.added_on= item.created_at.strftime('%m.%d.%y')
-  - if @can_edit
+  - if policy(item).edit?
     %td.edit
       %a.edit{ :href => item_path(item) } e
       \/
