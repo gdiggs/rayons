@@ -67,7 +67,7 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @item = Item.new(params[:item])
+    @item = Item.new(item_params)
 
     respond_to do |format|
       if @item.save
@@ -86,7 +86,7 @@ class ItemsController < ApplicationController
     params[:item] = params[:item].reject { |k,v| !Item.column_names.include?(k) }
 
     respond_to do |format|
-      if @item.update_attributes(params[:item])
+      if @item.update_attributes(item_params)
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
         format.json { head :no_content }
       else
@@ -165,5 +165,9 @@ class ItemsController < ApplicationController
     if params[:item]
       params[:item][:discogs_url] ||= params[:item][:discogs]
     end
+  end
+
+  def item_params
+    params.require(:item).permit(:artist, :condition, :format, :label, :price_paid, :title, :year, :color, :discogs_url)
   end
 end

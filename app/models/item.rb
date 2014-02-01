@@ -1,6 +1,4 @@
 class Item < ActiveRecord::Base
-  attr_accessible :artist, :condition, :format, :label, :price_paid, :title, :year, :color, :discogs_url
-
   before_validation :blank_discogs
 
   validates_presence_of :price_paid
