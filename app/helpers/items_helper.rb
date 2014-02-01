@@ -45,4 +45,8 @@ module ItemsHelper
     end.join.html_safe
   end
 
+  def field_headers
+    ['Title', 'Artist', 'Year', 'Label', 'Format', 'Condition', 'Color', 'Price Paid', 'Discogs']
+  end
+
 end

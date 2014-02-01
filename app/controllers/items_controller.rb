@@ -21,11 +21,10 @@ class ItemsController < ApplicationController
     params[:sort] ||= Item::SORT_ORDER[0]
     @items = Item.sorted(params[:sort], params[:direction])
     @items = @items.search(params[:search]) if params[:search].present?
-    @field_headers = ['Title', 'Artist', 'Year', 'Label', 'Format', 'Condition', 'Color', 'Price Paid', 'Discogs']
     @can_edit = policy(Item).edit?
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @items }
       format.csv { send_data Item.to_csv, :filename => "rayons_#{Time.now.to_i}.csv" }
     end
@@ -140,7 +139,6 @@ class ItemsController < ApplicationController
 
   # GET /items/time_machine
   def time_machine
-    @field_headers = ['Title', 'Artist', 'Year', 'Label', 'Format', 'Condition', 'Color', 'Price Paid', 'Added On']
     @month_ago = Item.sorted.added_on_day 1.month.ago
     @six_months_ago = Item.sorted.added_on_day 6.months.ago
     @year_ago = Item.sorted.added_on_day 1.year.ago
