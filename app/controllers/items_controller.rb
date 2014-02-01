@@ -19,8 +19,7 @@ class ItemsController < ApplicationController
   def index
     params[:direction] ||= 'ASC'
     params[:sort] ||= Item::SORT_ORDER[0]
-    @items = Item.sorted(params[:sort], params[:direction])
-    @items = @items.search(params[:search]) if params[:search].present?
+    @items = Item.sorted(params[:sort], params[:direction]).search(params[:search])
     @can_edit = policy(Item).edit?
 
     respond_to do |format|

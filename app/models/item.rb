@@ -50,7 +50,9 @@ class Item < ActiveRecord::Base
   end
 
   def self.search(query = "")
-    if query == query.to_i.to_s
+    if !query.present?
+      self.all
+    elsif query == query.to_i.to_s
       self.basic_search(query) | self.where(['year = ?', query])
     else
       self.basic_search(query)
