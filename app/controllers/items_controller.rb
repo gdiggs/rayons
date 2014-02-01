@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_filter :can_edit_items_or_not_found, :only => [:new, :edit, :create, :update, :import, :destroy]
+  before_filter :authorize_item, :only => [:new, :edit, :create, :update, :import, :destroy]
   before_filter :edit_discogs_param, :only => [:index, :create, :update]
   after_filter :expire_pages, :only => [:new, :edit, :create, :update, :import, :destroy]
 
@@ -22,6 +22,7 @@ class ItemsController < ApplicationController
     @items = Item.sorted(params[:sort], params[:direction])
     @items = @items.search(params[:search]) if params[:search].present?
     @field_headers = ['Title', 'Artist', 'Year', 'Label', 'Format', 'Condition', 'Color', 'Price Paid', 'Discogs']
+    @can_edit = policy(Item).edit?
 
     respond_to do |format|
       format.html # index.html.erb
@@ -152,11 +153,8 @@ class ItemsController < ApplicationController
 
   private
 
-  def can_edit_items_or_not_found
-    # return 404 for non-editable things
-    if cannot? :manage, Item
-      render_404
-    end
+  def authorize_item
+    authorize Item
   end
 
   def expire_pages

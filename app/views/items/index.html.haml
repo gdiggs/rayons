@@ -1,5 +1,5 @@
 .content#items
-  - if can? :manage, Item
+  - if @can_edit
     #add-new
       %form.ajax{ :action => '/items', :method => 'post' }
         = token_tag(nil)
@@ -22,7 +22,7 @@
           - if params[:sort] == 'created_at' 
             = params[:direction] == 'ASC' ? "\u2191" : "\u2193"
 
-    = cache ["items_markup2", Item.unscoped.maximum(:updated_at).to_i, can?(:manage, Item), params.slice(:sort, :direction, :search)] do
+    = cache ["items_markup2", Item.unscoped.maximum(:updated_at).to_i, @can_edit, params.slice(:sort, :direction, :search)] do
       = render :partial => 'items/item', :collection => @items, :as => :item
 
 #editing-bar
@@ -30,7 +30,7 @@
   %a{ :href => '/stats' } stats
   %a.export{ :href => '/items.csv' } export csv
   %a.random{ :href => 'javascript:' } random
-  - if can? :manage, Item 
+  - if @can_edit
     %a.logout{ :href => '/logout' } disable editing
     %a.import{ :href => '' } import csv
     %form{ :action => '/items/import', :method => 'post', :enctype => 'multipart/form-data'}

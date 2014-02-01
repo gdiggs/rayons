@@ -57,9 +57,9 @@ class ItemsControllerTest < ActionController::TestCase
 
   context 'when not logged in' do
     context '#create' do
-      should 'return a 404' do
+      should 'return a 403' do
         post :create
-        assert_response :missing
+        assert_response :forbidden
       end
     end
   end

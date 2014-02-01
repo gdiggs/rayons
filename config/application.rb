@@ -17,5 +17,7 @@ module Rayons
     # config.time_zone = 'Central Time (US & Canada)'
 
     config.i18n.enforce_available_locales = true
+
+    config.autoload_paths += Dir["#{config.root}/app/policies/**"]
   end
 end
