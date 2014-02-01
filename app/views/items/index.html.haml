@@ -22,7 +22,7 @@
           - if params[:sort] == 'created_at' 
             = params[:direction] == 'ASC' ? "\u2191" : "\u2193"
 
-    = cache ["items_markup2", Item.unscoped.maximum(:updated_at).to_i, can?(:manage, Item), params.slice(:sort, :direction)] do
+    = cache ["items_markup2", Item.unscoped.maximum(:updated_at).to_i, can?(:manage, Item), params.slice(:sort, :direction, :search)] do
       = render :partial => 'items/item', :collection => @items, :as => :item
 
 #editing-bar
