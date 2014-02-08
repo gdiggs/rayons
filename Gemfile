@@ -41,4 +41,5 @@ group :test do
   gem 'turn'
   gem 'rubinius-coverage'
   gem 'coveralls', require: false
+  gem 'spin'
 end

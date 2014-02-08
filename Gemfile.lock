@@ -362,6 +362,7 @@ GEM
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
     slop (3.4.7)
+    spin (0.7.1)
     sprockets (2.10.1)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -428,6 +429,7 @@ DEPENDENCIES
   sass-rails
   sextant
   shoulda
+  spin
   textacular (~> 3.0)
   turn
   uglifier (= 2.4.0)

@@ -55,6 +55,25 @@ class ItemsControllerTest < ActionController::TestCase
     end
   end
 
+  context '#stats' do
+    should 'set title' do
+      get :stats
+      assert_select 'title', "Rayons\n| Stats"
+    end
+  end
+
+  context '#index' do
+    should 'set flash error' do
+      get :index, {}, nil, {:error => 'sup'}
+      assert_select '.message.error', 'sup'
+    end
+
+    should 'set flash notice' do
+      get :index, {}, nil, {:notice => 'sup'}
+      assert_select '.message', 'sup'
+    end
+  end
+
   context 'when not logged in' do
     context '#create' do
       should 'return a 403' do

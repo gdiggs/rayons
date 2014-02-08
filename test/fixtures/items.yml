@@ -7,7 +7,7 @@ one:
   label: MyText
   format: MyText
   condition: MyText
-  price_paid: MyText
+  price_paid: '$5.99'
 
 two:
   title: MyText
@@ -16,4 +16,4 @@ two:
   label: MyText
   format: MyText
   condition: MyText
-  price_paid: MyText
+  price_paid: '$5.99'
