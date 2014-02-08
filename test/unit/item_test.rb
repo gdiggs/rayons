@@ -20,4 +20,16 @@ class ItemTest < ActiveSupport::TestCase
       assert !item.errors.include?(:discogs_url)
     end
   end
+
+  context '.search' do
+    should 'search year with an integer' do
+      item = Item.create!(:year => 1989, :price_paid => '$5.00')
+      assert Item.search('1989').include?(item)
+    end
+
+    should 'search with a search query' do
+      item = Item.create!(:artist => 'NOFX', :price_paid => '$5.00')
+      assert Item.search('NOFX').include?(item)
+    end
+  end
 end
