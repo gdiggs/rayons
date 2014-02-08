@@ -39,4 +39,6 @@ end
 group :test do
   gem 'shoulda'
   gem 'turn'
+  gem 'rubinius-coverage'
+  gem 'coveralls', require: false
 end
