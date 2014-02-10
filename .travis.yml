@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - rbx-2.2.4
+  - rbx-2.2.5
 env:
   - DB=postgresql
 script:

@@ -1,8 +1,6 @@
 source 'https://rubygems.org'
-ruby "2.1.0", :engine => "rbx", :engine_version => "2.2.4"
+ruby "2.1.0", :engine => "rbx", :engine_version => "2.2.5"
 
-gem 'racc', '1.4.11'
-gem "rubysl", '2.0.15'
 gem 'rails', '4.0.2'
 gem 'pg', '0.17.1'
 gem 'puma', '2.7.1'
