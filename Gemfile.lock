@@ -91,6 +91,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    marco-polo (1.1.0)
     memcachier (0.0.2)
     method_source (0.8.2)
     mime-types (1.25.1)
@@ -209,6 +210,7 @@ DEPENDENCIES
   jist
   jqcloud-rails!
   jquery-rails (= 3.1.0)
+  marco-polo
   memcachier
   newrelic_rpm (= 3.7.1.188)
   pg (= 0.17.1)

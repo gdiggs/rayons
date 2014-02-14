@@ -25,13 +25,14 @@ gem 'jquery-rails', '3.1.0'
 gem 'uglifier', '2.4.0'
 gem 'jqcloud-rails', :git => 'git://github.com/GordonDiggs/jqcloud-rails.git'
 gem "autoprefixer-rails", '1.0.20140130'
+gem 'pry-rails'
+gem 'marco-polo'
 
 group :development do
   gem 'sextant'
   gem 'foreman'
   gem 'colorize', '0.6.0'
   gem 'better_errors', '1.1.0'
-  gem 'pry-rails'
 end
 
 group :test do
