@@ -39,7 +39,7 @@ GEM
     ansi (1.4.3)
     arel (4.0.1)
     atomic (1.1.14)
-    autoprefixer-rails (1.0.20140130)
+    autoprefixer-rails (1.0.20140203)
       execjs
     bcrypt-ruby (3.1.2)
     better_errors (1.1.0)
@@ -97,7 +97,7 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.8.4)
-    newrelic_rpm (3.7.1.188)
+    newrelic_rpm (3.7.2.192)
     orm_adapter (0.5.0)
     pg (0.17.1)
     polyglot (0.3.3)
@@ -196,7 +196,7 @@ PLATFORMS
 DEPENDENCIES
   actionpack-action_caching
   actionpack-page_caching
-  autoprefixer-rails (= 1.0.20140130)
+  autoprefixer-rails (= 1.0.20140203)
   better_errors (= 1.1.0)
   chartkick
   colorize (= 0.6.0)
@@ -212,7 +212,7 @@ DEPENDENCIES
   jquery-rails (= 3.1.0)
   marco-polo
   memcachier
-  newrelic_rpm (= 3.7.1.188)
+  newrelic_rpm (= 3.7.2.192)
   pg (= 0.17.1)
   pry-rails
   puma (= 2.7.1)
