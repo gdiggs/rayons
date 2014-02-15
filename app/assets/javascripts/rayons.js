@@ -61,7 +61,11 @@ Rayons.Item = {
       type: 'PUT',
       success: function(response) {
         $link.parents('tr').find('td:not(.edit):not(.save)').each(function() {
-          $(this).html($(this).find('input').val());
+          var val = $(this).find('input').val();
+          if($(this).is('.discogs_url')) {
+            val = "<a href='"+val+"' target='_blank'>link</a>"
+          }
+          $(this).html(val);
         });
         $link.parent().hide().siblings('td.edit').show();
       }
