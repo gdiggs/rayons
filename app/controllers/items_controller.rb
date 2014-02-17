@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
 
   caches_page :stats, :counts_by_day
   caches_action :words_for_field, :cache_path => Proc.new { |c| "words_for_field_#{c.params[:field]}" }
+  caches_action :show, :cache_path => Proc.new { |c| "item_show_#{c.request.format}_#{c.params[:id]}" }
 
   # GET /items/counts_by_day.json
   def counts_by_day
@@ -41,11 +42,9 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
 
-    cache @item do
-      respond_to do |format|
-        format.html { @release = DiscogsRelease.new(@item) }
-        format.json { render json: @item }
-      end
+    respond_to do |format|
+      format.html { @release = DiscogsRelease.new(@item) }
+      format.json { render json: @item }
     end
   end
 
@@ -159,6 +158,7 @@ class ItemsController < ApplicationController
     expire_page :controller => :items, :action => :stats
     expire_page :controller => :items, :action => :counts_by_day
     expire_page :controller => :items, :action => :words_for_field
+    expire_page :controller => :items, :action => :show
   end
 
   def edit_discogs_param
