@@ -1,4 +1,5 @@
 require 'discogs'
+require 'typhoeus'
 
 class DiscogsRelease
   attr_accessor :release
@@ -12,7 +13,14 @@ class DiscogsRelease
   end
 
   def image_url
-    images.first.uri rescue nil
+    images.first.uri.gsub('http://api.discogs.com', 'http://s.pixogs.com') rescue nil
+  end
+
+  def image
+    if image_url
+       t = Typhoeus.get(image_url)
+       Base64.encode64 t.body
+    end
   end
 
   def method_missing(meth, *args, &block)

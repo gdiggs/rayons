@@ -28,6 +28,7 @@ gem "autoprefixer-rails", '1.0.20140203'
 gem 'pry-rails'
 gem 'marco-polo'
 gem 'discogs-wrapper', require: false
+gem 'typhoeus', require: false
 
 group :development do
   gem 'sextant'

@@ -5,26 +5,30 @@
     %br
     #{@item.format} released in #{@item.year} on #{@item.label}
 
-  %p
-    %b Condition:
-    = @item.condition
-  %p
-    %b Price paid:
-    = @item.price_paid
-  - if @release
-    %p
-      %b Genre:
-      = @release.genres.join(', ')
-    %p
-      %b Style:
-      = @release.styles.join(', ')
-    - if @release.tracklist
-      .tracklist
-        %b Tracklist
-        %ul
-          - @release.tracklist.each do |track|
-            %li #{track.position}: #{track.title}
-    %p
-      %a{ href: @item.discogs_url, target: '_blank' } Discogs Link
+  - if @release.image
+    .left.image
+      %img{ src: "data:image/png;base64,#{@release.image}" }
 
-    -#%img{ src: @release.image_url }
+  .left
+    %p
+      %b Condition:
+      = @item.condition
+    %p
+      %b Price paid:
+      = @item.price_paid
+    - if @item.discogs_url.present?
+      %p
+        %b Genre:
+        = @release.genres.join(', ')
+      %p
+        %b Style:
+        = @release.styles.join(', ')
+      - if @release.tracklist
+        .tracklist
+          %b Tracklist
+          %ul
+            - @release.tracklist.each do |track|
+              %li #{track.position}: #{track.title}
+      %p
+        %a{ href: @item.discogs_url, target: '_blank' } Discogs Link
+
