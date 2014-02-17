@@ -41,11 +41,11 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
 
-    respond_to do |format|
-      format.html do
-        @release = DiscogsRelease.new(@item)
+    cache @item do
+      respond_to do |format|
+        format.html { @release = DiscogsRelease.new(@item) }
+        format.json { render json: @item }
       end
-      format.json { render json: @item }
     end
   end
 
