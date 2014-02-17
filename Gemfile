@@ -27,6 +27,7 @@ gem 'jqcloud-rails', :git => 'git://github.com/GordonDiggs/jqcloud-rails.git'
 gem "autoprefixer-rails", '1.0.20140203'
 gem 'pry-rails'
 gem 'marco-polo'
+gem 'discogs-wrapper', require: false
 
 group :development do
   gem 'sextant'

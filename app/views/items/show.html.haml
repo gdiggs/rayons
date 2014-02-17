@@ -1,27 +1,30 @@
-%p#notice= notice
+.content#item_show
+  %h1
+    #{@item.artist} -
+    %em= @item.title
+    %br
+    #{@item.format} released in #{@item.year} on #{@item.label}
 
-%p
-  %b Title:
-  = @item.title
-%p
-  %b Artist:
-  = @item.artist
-%p
-  %b Year:
-  = @item.year
-%p
-  %b Label:
-  = @item.label
-%p
-  %b Format:
-  = @item.format
-%p
-  %b Condition:
-  = @item.condition
-%p
-  %b Price paid:
-  = @item.price_paid
+  %p
+    %b Condition:
+    = @item.condition
+  %p
+    %b Price paid:
+    = @item.price_paid
+  - if @release
+    %p
+      %b Genre:
+      = @release.genres.join(', ')
+    %p
+      %b Style:
+      = @release.styles.join(', ')
+    - if @release.tracklist
+      .tracklist
+        %b Tracklist
+        %ul
+          - @release.tracklist.each do |track|
+            %li #{track.position}: #{track.title}
+    %p
+      %a{ href: @item.discogs_url, target: '_blank' } Discogs Link
 
-= link_to 'Edit', edit_item_path(@item)
-\|
-= link_to 'Back', items_path
+    -#%img{ src: @release.image_url }

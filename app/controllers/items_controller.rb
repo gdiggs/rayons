@@ -43,7 +43,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { @release = DiscogsRelease.new(@item) }
       format.json { render json: @item }
     end
   end
