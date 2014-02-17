@@ -18,8 +18,8 @@ class DiscogsRelease
 
   def image
     if image_url
-       t = Typhoeus.get(image_url)
-       Base64.encode64 t.body
+      t = Typhoeus.get(image_url)
+      Base64.encode64 t.body
     end
   end
 

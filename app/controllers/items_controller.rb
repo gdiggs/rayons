@@ -6,7 +6,6 @@ class ItemsController < ApplicationController
   caches_page :stats, :counts_by_day
   caches_action :words_for_field, :cache_path => Proc.new { |c| "words_for_field_#{c.params[:field]}" }
 
-
   # GET /items/counts_by_day.json
   def counts_by_day
     render json: Item.counts_by_day
@@ -43,7 +42,9 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
 
     respond_to do |format|
-      format.html { @release = DiscogsRelease.new(@item) }
+      format.html do
+        @release = DiscogsRelease.new(@item)
+      end
       format.json { render json: @item }
     end
   end
