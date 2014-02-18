@@ -4,8 +4,8 @@ class ItemsController < ApplicationController
   after_filter :expire_pages, :only => [:new, :edit, :create, :update, :import, :destroy]
 
   caches_page :stats, :counts_by_day
-  caches_action :words_for_field, :cache_path => Proc.new { |c| "words_for_field_#{c.params[:field]}" }
-  caches_action :show, :cache_path => Proc.new { |c| "item_show_#{c.request.format}_#{c.params[:id]}" }
+  caches_action :words_for_field, :cache_path => Proc.new { |c| "words_for_field_#{c.params[:field]}_#{Item.unscoped.maximum(:updated_at).to_i}" }
+  caches_action :show, :if => Proc.new{ |c| !c.request.format.json? }
 
   # GET /items/counts_by_day.json
   def counts_by_day
@@ -157,7 +157,6 @@ class ItemsController < ApplicationController
   def expire_pages
     expire_page :controller => :items, :action => :stats
     expire_page :controller => :items, :action => :counts_by_day
-    expire_page :controller => :items, :action => :words_for_field
     expire_page :controller => :items, :action => :show
   end
 

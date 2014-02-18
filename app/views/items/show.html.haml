@@ -7,7 +7,7 @@
 
   - if @release.image
     .left.image
-      %img{ src: "data:image/png;base64,#{@release.image}" }
+      %img{ src: @release.image_url }
 
   .left
     %p
