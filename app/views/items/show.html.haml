@@ -5,7 +5,7 @@
     %br
     #{@item.format} released in #{@item.year} on #{@item.label}
 
-  - if @release.image
+  - if @release.image_url
     .left.image
       %img{ src: @release.image_url }
 
