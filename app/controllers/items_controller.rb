@@ -157,7 +157,7 @@ class ItemsController < ApplicationController
   def expire_pages
     expire_page :controller => :items, :action => :stats
     expire_page :controller => :items, :action => :counts_by_day
-    expire_page :controller => :items, :action => :show
+    expire_page :controller => :items, :action => :show, :id => @item.id if @item
   end
 
   def edit_discogs_param
