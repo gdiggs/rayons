@@ -17,5 +17,5 @@ class ItemPolicy
   def new?
     @user.admin?
   end
-  [:create?, :edit?, :update?, :destroy?].each { |meth| alias_method meth, :new? }
+  [:create?, :edit?, :update?, :import?, :destroy?].each { |meth| alias_method meth, :new? }
 end
