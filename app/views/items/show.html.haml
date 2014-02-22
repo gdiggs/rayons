@@ -33,5 +33,11 @@
             - @release.tracklist.each do |track|
               %li #{track.position}: #{track.title}
       %p
+        %b Notes:
+        %br
+        - @release.notes.lines.each do |line|
+          = line
+          %br
+      %p
         %a{ href: @item.discogs_url, target: '_blank' } Discogs Link
 
