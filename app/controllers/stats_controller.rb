@@ -1,5 +1,5 @@
 class StatsController < ApplicationController
-  caches_page :stats, :counts_by_day
+  caches_page :index, :counts_by_day
   caches_action :words_for_field, :cache_path => Proc.new { |c| "words_for_field_#{c.params[:field]}_#{Item.unscoped.maximum(:updated_at).to_i}" }
 
   # GET /stats/counts_by_day.json
