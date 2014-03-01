@@ -17,8 +17,6 @@ class ItemsController < ApplicationController
   # GET /items.json
   # GET /items.csv
   def index
-    params[:direction] ||= 'ASC'
-    params[:sort] ||= Item::SORT_ORDER[0]
     @items = Item.sorted(params[:sort], params[:direction]).search(params[:search])
     @can_edit = policy(Item).edit?
 

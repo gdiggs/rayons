@@ -58,6 +58,9 @@ class Item < ActiveRecord::Base
   end
 
   def self.sorted(first = SORT_ORDER[0], direction = 'ASC')
+    first ||= SORT_ORDER[0]
+    direction ||= 'ASC'
+
     first = "to_number(price_paid, '9999999.99')" if first == 'price_paid'
     sort_order = [first] + (SORT_ORDER - [first])
     sort_order = sort_order.map { |s| "#{s} #{direction}" }
