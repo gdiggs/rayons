@@ -38,15 +38,17 @@ GEM
       tzinfo (~> 0.3.37)
     ansi (1.4.3)
     arel (4.0.2)
-    atomic (1.1.14)
-    autoprefixer-rails (1.0.20140203)
+    atomic (1.1.15)
+    autoprefixer-rails (1.1.20140226)
       execjs
-    bcrypt-ruby (3.1.2)
+    bcrypt (3.1.7)
+    bcrypt-ruby (3.1.5)
+      bcrypt (>= 3.1.3)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
     builder (3.1.4)
-    chartkick (1.2.1)
+    chartkick (1.2.2)
     coderay (1.1.0)
     colorize (0.6.0)
     coveralls (0.7.0)
@@ -56,7 +58,7 @@ GEM
       term-ansicolor
       thor
     dalli (2.7.0)
-    devise (3.2.2)
+    devise (3.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
@@ -102,7 +104,7 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.8.4)
-    newrelic_rpm (3.7.2.192)
+    newrelic_rpm (3.7.2.195)
     orm_adapter (0.5.0)
     pg (0.17.1)
     polyglot (0.3.4)
@@ -112,7 +114,7 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.2)
       pry (>= 0.9.10)
-    puma (2.7.1)
+    puma (2.8.0)
       rack (>= 1.1, < 2.0)
     pundit (0.2.2)
       activesupport (>= 3.0.0)
@@ -179,8 +181,8 @@ GEM
     textacular (3.1.0)
       activerecord (>= 3.0, < 4.1)
     thor (0.18.1)
-    thread_safe (0.1.3)
-      atomic
+    thread_safe (0.2.0)
+      atomic (>= 1.1.7, < 2)
     tilt (1.4.1)
     tins (1.0.0)
     treetop (1.4.15)
@@ -203,13 +205,13 @@ PLATFORMS
 DEPENDENCIES
   actionpack-action_caching
   actionpack-page_caching
-  autoprefixer-rails (= 1.0.20140203)
+  autoprefixer-rails (= 1.1.20140226)
   better_errors (= 1.1.0)
-  chartkick
+  chartkick (= 1.2.2)
   colorize (= 0.6.0)
   coveralls
   dalli (= 2.7.0)
-  devise (= 3.2.2)
+  devise (= 3.2.3)
   discogs-wrapper
   dropbox-sdk
   foreman
@@ -220,10 +222,10 @@ DEPENDENCIES
   jquery-rails (= 3.1.0)
   marco-polo
   memcachier
-  newrelic_rpm (= 3.7.2.192)
+  newrelic_rpm (= 3.7.2.195)
   pg (= 0.17.1)
   pry-rails
-  puma (= 2.7.1)
+  puma (= 2.8.0)
   pundit (= 0.2.2)
   rack-cache
   rails (= 4.0.3)
