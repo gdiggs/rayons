@@ -77,7 +77,7 @@ Rayons.Item = {
 Rayons.Stats = {
   bind: function() {
     $.each($('.frequency'), function(i, freq) {
-      $.getJSON('/items/words_for_field?field='+$(freq).data('field'), function(response) {
+      $.getJSON('/stats/words_for_field?field='+$(freq).data('field'), function(response) {
         $(freq).jQCloud(response);
       });
     });
@@ -97,7 +97,7 @@ Rayons.Stats = {
         max: "#2c6079"
       },
       displayLegend: false,
-      data: '/items/counts_by_day.json'
+      data: '/stats/counts_by_day.json'
     });
   },
 

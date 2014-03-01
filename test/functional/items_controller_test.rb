@@ -55,13 +55,6 @@ class ItemsControllerTest < ActionController::TestCase
     end
   end
 
-  context '#stats' do
-    should 'set title' do
-      get :stats
-      assert_select 'title', "Rayons\n| Stats"
-    end
-  end
-
   context '#index' do
     should 'set flash error' do
       get :index, {}, nil, {:error => 'sup'}
