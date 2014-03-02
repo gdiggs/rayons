@@ -31,9 +31,26 @@ class ItemsControllerTest < ActionController::TestCase
       assert_response :success
     end
 
-    should "show item" do
-      get :show, id: @item
-      assert_response :success
+    context '#show' do
+      context 'with a discogs url' do
+        setup do
+          @item.update_attribute(:discogs_url, 'http://example.com')
+          release_stub = stub(:image_url => 'http://img',
+                              :genres => ['Rock'],
+                              :styles => ['Punk'],
+                              :tracklist => [],
+                              :notes => 'Best record ever'
+                             )
+          DiscogsRelease.expects(:new).with(@item).returns(release_stub)
+          get :show, id: @item
+        end
+
+        should respond_with :success
+
+        should 'render image' do
+          assert_select "img[src=http://img]"
+        end
+      end
     end
 
     should "get edit" do

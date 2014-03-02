@@ -40,6 +40,7 @@ end
 group :test do
   gem 'shoulda'
   gem 'turn'
+  gem 'mocha'
   gem 'rubinius-coverage'
   gem 'coveralls', require: false
   gem 'spin'
