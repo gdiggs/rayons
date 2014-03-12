@@ -38,8 +38,8 @@ group :development do
 end
 
 group :test do
-  gem 'shoulda'
-  gem 'turn'
+  gem 'rspec-rails'
+  gem 'assert_difference'
   gem 'mocha'
   gem 'rubinius-coverage'
   gem 'coveralls', require: false

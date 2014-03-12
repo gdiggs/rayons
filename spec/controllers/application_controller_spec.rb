@@ -1,4 +1,4 @@
-require 'test_helper'
+require 'spec_helper'
 
 class TestController < ApplicationController
   def index
@@ -6,9 +6,8 @@ class TestController < ApplicationController
   end
 end
 
-class ApplicationControllerTest < ActionController::TestCase
-
-  setup do
+describe ApplicationController do
+  before do
     Rayons::Application.routes.append do
       get 'test_application' => "test#index"
     end
@@ -18,13 +17,13 @@ class ApplicationControllerTest < ActionController::TestCase
     @controller = TestController.new
   end
 
-  context '#check_responsive' do
-    should 'set the cookie' do
+  describe '#check_responsive' do
+    it 'should set the cookie' do
       get :index, :exclude_responsive => true
       assert_equal true, cookies[:exclude_responsive]
     end
 
-    should 'delete the cookie' do
+    it 'should delete the cookie' do
       get :index, :exclude_responsive => 'false'
       assert_nil cookies[:exclude_responsive]
     end
