@@ -11,7 +11,7 @@ Rails was chosen over Sinatra mainly for the chainability and ease of ActiveReco
 
 ### Setup
 
-Rayons requires a Postgres installation and is tested on ruby 1.9.3.
+Rayons requires a Postgres installation.
 
 ```bash
 $ gem install bundler
