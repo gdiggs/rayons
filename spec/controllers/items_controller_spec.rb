@@ -1,17 +1,17 @@
-require 'test_helper'
+require 'spec_helper'
 
-class ItemsControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
+describe ItemsController do
+  render_views
 
-  context 'when logged in' do
-    setup do
+  describe 'when logged in' do
+    before do
       @item = items(:one)
       @user = users(:admin)
       sign_in @user
     end
 
-    context '#create' do
-      should "create item" do
+    describe '#create' do
+      it "should create item" do
         assert_difference('Item.count') do
           post :create, item: { artist: @item.artist, condition: @item.condition, format: @item.format, label: @item.label, price_paid: @item.price_paid, title: @item.title, year: @item.year }
         end
@@ -20,20 +20,20 @@ class ItemsControllerTest < ActionController::TestCase
       end
     end
 
-    should "get index" do
+    it "should get index" do
       get :index
       assert_response :success
-      assert_not_nil assigns(:items)
+      assert !assigns(:items).nil?
     end
 
-    should "get new" do
+    it "should get new" do
       get :new
       assert_response :success
     end
 
-    context '#show' do
-      context 'with a discogs url' do
-        setup do
+    describe '#show' do
+      describe 'with a discogs url' do
+        before do
           @item.update_attribute(:discogs_url, 'http://example.com')
           release_stub = stub(:image_url => 'http://img',
                               :genres => ['Rock'],
@@ -43,27 +43,26 @@ class ItemsControllerTest < ActionController::TestCase
                              )
           DiscogsRelease.expects(:new).with(@item).returns(release_stub)
           get :show, id: @item
+          assert_response :success
         end
 
-        should respond_with :success
-
-        should 'render image' do
+        it 'should render image' do
           assert_select "img[src=http://img]"
         end
       end
     end
 
-    should "get edit" do
+    it "should get edit" do
       get :edit, id: @item
       assert_response :success
     end
 
-    should "update item" do
+    it "should update item" do
       put :update, id: @item, item: { artist: @item.artist, condition: @item.condition, format: @item.format, label: @item.label, price_paid: @item.price_paid, title: @item.title, year: @item.year }
       assert_redirected_to item_path(assigns(:item))
     end
 
-    should "destroy item" do
+    it "should destroy item" do
       assert_difference('Item.count', -1) do
         delete :destroy, id: @item
       end
@@ -72,21 +71,21 @@ class ItemsControllerTest < ActionController::TestCase
     end
   end
 
-  context '#index' do
-    should 'set flash error' do
+  describe '#index' do
+    it 'should set flash error' do
       get :index, {}, nil, {:error => 'sup'}
       assert_select '.message.error', 'sup'
     end
 
-    should 'set flash notice' do
+    it 'should set flash notice' do
       get :index, {}, nil, {:notice => 'sup'}
       assert_select '.message', 'sup'
     end
   end
 
-  context 'when not logged in' do
-    context '#create' do
-      should 'return a 403' do
+  describe 'when not logged in' do
+    describe '#create' do
+      it 'should return a 403' do
         post :create
         assert_response :forbidden
       end
@@ -94,3 +93,4 @@ class ItemsControllerTest < ActionController::TestCase
   end
 
 end
+
