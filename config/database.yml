@@ -10,6 +10,6 @@ test:
   database: rayons_test
 
 production:
+  url: <%= ENV['DATABASE_URL'] %>
   adapter: postgresql
   encoding: unicode
-  database: rayons_production
