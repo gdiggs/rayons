@@ -41,7 +41,6 @@ group :test do
   gem 'rspec-rails'
   gem 'assert_difference'
   gem 'mocha'
-  gem 'rubinius-coverage'
   gem 'coveralls', require: false
   gem 'spin'
 end
