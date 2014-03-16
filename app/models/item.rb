@@ -48,6 +48,7 @@ class Item < ActiveRecord::Base
   end
 
   def self.search(query = "")
+    query = query.to_s
     if !query.present?
       self.all
     elsif query == query.to_i.to_s

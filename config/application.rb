@@ -21,5 +21,7 @@ module Rayons
     config.autoload_paths += Dir["#{config.root}/app/policies/**"]
 
     config.log_tags = [:uuid]
+
+    config.active_record.schema_format = :sql
   end
 end
