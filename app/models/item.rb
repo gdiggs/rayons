@@ -69,13 +69,19 @@ class Item < ActiveRecord::Base
     self.order(sort_order.join(','))
   end
 
+  # Generate CSV of items and yield each row to a block
   def self.to_csv
     headers = ['title', 'artist', 'year', 'label', 'format', 'condition', 'color', 'price_paid', 'discogs_url', 'created_at', 'updated_at']
-    csv = CSV.generate do |c|
-      c << headers
-      Item.all.each do |item|
-        c << headers.map { |h| item.send(h) }
-      end
+    csv = ''
+
+    csv += CSV::Row.new(headers, headers, true).to_s
+    yield CSV::Row.new(headers, headers, true).to_s if block_given?
+
+    Item.find_each(batch_size: 50) do |item|
+      values = headers.map { |h| item.send(h) }
+      row = CSV::Row.new(headers, values, false).to_s
+      yield row if block_given?
+      csv += row
     end
     csv
   end

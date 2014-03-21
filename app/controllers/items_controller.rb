@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  include ApplicationHelper
+
   before_filter :authorize_item, :only => [:new, :edit, :create, :update, :import, :destroy]
   before_filter :edit_discogs_param, :only => [:index, :create, :update]
   after_filter :expire_pages, :only => [:new, :edit, :create, :update, :import, :destroy]
@@ -16,7 +18,19 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: @items }
-      format.csv { send_data Item.to_csv, :filename => "rayons_#{Time.now.to_i}.csv" }
+      format.csv do
+        set_streaming_headers
+        filename = "rayons_#{Time.now.to_i}.csv"
+        headers["Content-Type"] = "text/csv"
+        headers["Content-disposition"] = "attachment; filename=\"#{filename}\""
+
+        response.status = 200
+
+        # Stream output to client
+        self.response_body = Enumerator.new do |e|
+          Item.to_csv { |i| e << i }
+        end
+      end
     end
   end
 
