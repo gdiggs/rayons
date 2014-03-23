@@ -31,7 +31,6 @@ gem 'discogs-wrapper', require: false
 gem 'typhoeus', require: false
 
 group :development do
-  gem 'sextant'
   gem 'foreman'
   gem 'colorize', '0.6.0'
   gem 'better_errors', '1.1.0'
