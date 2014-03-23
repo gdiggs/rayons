@@ -29,6 +29,7 @@ gem 'pry-rails'
 gem 'marco-polo'
 gem 'discogs-wrapper', require: false
 gem 'typhoeus', require: false
+gem 'kaminari'
 
 group :development do
   gem 'foreman'

@@ -1,6 +1,6 @@
 #editing-bar
   - if @items
-    %span #{@items.size} items.
+    %span= page_entries_info @items
   %a{ :href => '/stats' } stats
   %a.export{ :href => '/items.csv' } export csv
   %a{ :href => random_items_path } random

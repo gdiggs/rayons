@@ -22,7 +22,9 @@
           - if params[:sort] == 'created_at' 
             = params[:direction] == 'ASC' ? "\u2191" : "\u2193"
 
-    = cache ["items_markup3", Item.unscoped.maximum(:updated_at).to_i, @can_edit, params.slice(:sort, :direction, :search)] do
+    = cache ["items_markup3", Item.unscoped.maximum(:updated_at).to_i, @can_edit, params.slice(:sort, :direction, :search, :page)] do
       = render :partial => 'items/item', :collection => @items, :as => :item
+
+  = paginate @items
 
 = render 'editing_bar'

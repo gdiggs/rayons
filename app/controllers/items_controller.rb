@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
   # GET /items.json
   # GET /items.csv
   def index
-    @items = Item.sorted(params[:sort], params[:direction]).search(params[:search])
+    @items = Item.sorted(params[:sort], params[:direction]).search(params[:search]).page(params[:page].to_i)
     @can_edit = policy(Item).edit?
 
     respond_to do |format|
