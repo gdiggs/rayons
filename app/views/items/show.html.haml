@@ -22,10 +22,10 @@
     - if @item.discogs_url.present?
       %p
         %b Genre:
-        = @release.genres.join(', ')
+        = @release.genres.to_a.join(', ')
       %p
         %b Style:
-        = @release.styles.join(', ')
+        = @release.styles.to_a.join(', ')
       - if @release.tracklist
         .tracklist
           %b Tracklist
@@ -42,3 +42,4 @@
       %p
         %a{ href: @item.discogs_url, target: '_blank' } Discogs Link
 
+= render 'editing_bar'
