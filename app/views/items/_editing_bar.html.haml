@@ -22,7 +22,7 @@
     = cookies[:exclude_responsive] ? 'enable' : 'disable'
     responsive
   %form.search{ :action => '/', :method => 'get' }
-    %input{ :type => 'text', :name => 'search', :placeholder => 'Search', :value => params[:search] }
+    %input{ :type => 'search', :name => 'search', :placeholder => 'Search', :value => params[:search] }
 .toggle-controls
   %a{ :href => '' } hide controls
 
