@@ -1,7 +1,7 @@
 - content_for :title, "Stats"
 
 .content#stats
-  %h1 Stats for #{Item.count} items:
+  %h1 Stats for #{number_with_delimiter(Item.count)} items:
 
   .switcher
     %a.active{ :href => 'javascript:', 'data-target' => '.graphs' } Graphs

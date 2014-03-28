@@ -5,6 +5,14 @@ GIT
     jqcloud-rails (1.0.4)
       jquery-rails
 
+GIT
+  remote: git://github.com/GordonDiggs/kaminari.git
+  revision: 260bec18033e41a17783b1e323f09dd6aa67e0d3
+  specs:
+    kaminari (0.15.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -98,9 +106,6 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
-    kaminari (0.15.1)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -234,7 +239,7 @@ DEPENDENCIES
   jist
   jqcloud-rails!
   jquery-rails (= 3.1.0)
-  kaminari
+  kaminari!
   marco-polo
   memcachier
   mocha
