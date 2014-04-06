@@ -1,5 +1,4 @@
 require 'discogs'
-require 'typhoeus'
 
 class DiscogsRelease
   attr_accessor :release

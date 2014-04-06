@@ -28,7 +28,6 @@ gem "autoprefixer-rails", '1.1.20140302'
 gem 'pry-rails'
 gem 'marco-polo'
 gem 'discogs-wrapper', require: false
-gem 'typhoeus', require: false
 gem 'kaminari'
 gem 'draper'
 
