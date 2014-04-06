@@ -39,7 +39,6 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.0)
-    assert_difference (0.5.0)
     atomic (1.1.16)
     autoprefixer-rails (1.1.20140302)
       execjs
@@ -224,7 +223,6 @@ PLATFORMS
 DEPENDENCIES
   actionpack-action_caching
   actionpack-page_caching
-  assert_difference
   autoprefixer-rails (= 1.1.20140302)
   better_errors (= 1.1.0)
   chartkick (= 1.2.2)

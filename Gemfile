@@ -40,7 +40,6 @@ end
 
 group :test do
   gem 'rspec-rails', '2.14.2'
-  gem 'assert_difference'
   gem 'mocha'
   gem 'coveralls', require: false
   gem 'spin'

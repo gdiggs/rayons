@@ -21,6 +21,5 @@ RSpec.configure do |config|
   config.order = "random"
   config.global_fixtures = :all
   config.include Devise::TestHelpers, type: :controller
-  config.include AssertDifference
   config.render_views
 end

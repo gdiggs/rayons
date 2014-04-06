@@ -12,10 +12,10 @@ describe ItemsController do
 
     describe '#create' do
       it "should create item" do
-        assert_difference('Item.count') do
-          post :create, item: { artist: @item.artist, condition: @item.condition, format: @item.format, label: @item.label, price_paid: @item.price_paid, title: @item.title, year: @item.year }
-        end
+        original_item_count = Item.count
+        post :create, item: { artist: @item.artist, condition: @item.condition, format: @item.format, label: @item.label, price_paid: @item.price_paid, title: @item.title, year: @item.year }
 
+        assert_equal original_item_count+1, Item.count
         assert_redirected_to item_path(assigns(:item))
       end
     end
@@ -63,10 +63,10 @@ describe ItemsController do
     end
 
     it "should destroy item" do
-      assert_difference('Item.count', -1) do
-        delete :destroy, id: @item
-      end
+      original_item_count = Item.count
+      delete :destroy, id: @item
 
+      assert_equal original_item_count-1, Item.count
       assert_redirected_to items_path
     end
   end
