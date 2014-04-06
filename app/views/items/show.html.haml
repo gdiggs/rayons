@@ -1,10 +1,13 @@
 - content_for :title, "#{@item.artist} - #{@item.title}"
+
 .content#item_show
   %h1
     #{@item.artist} -
     %em= @item.title
     %br
     #{@item.format} released in #{@item.year} on #{@item.label}
+    %br
+    Added on #{@item.created_at.strftime('%A, %B %-d, %Y')}
 
   - if @release.image_url
     .left.image
