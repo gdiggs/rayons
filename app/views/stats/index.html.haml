@@ -48,6 +48,12 @@
       %h2 #{field.titleize} Frequency
       .frequency{ 'data-field' => field }
 
+    %h2 Discogs URL progress
+    %p
+      %strong #{discogs_percent}
+      of items have a Discogs URL set.
+      %a{ :href => random_discogsless_url } Add another.
+
     %h2 Price Stats
     %h3 Minimum: #{sprintf("$%0.02f", @prices[:min_price])}
     %h3 Maximum: #{sprintf("$%0.02f",@prices[:max_price])}

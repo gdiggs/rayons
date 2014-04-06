@@ -1,4 +1,9 @@
 module ItemsHelper
+  def discogs_percent
+    number_with_url = Item.where('discogs_url IS NOT NULL').count
+    "#{number_with_delimiter(number_with_url)} / #{number_with_delimiter(Item.count)}"
+  end
+
   def google_column_charts_options
     {
       backgroundColor: 'white',
@@ -35,6 +40,10 @@ module ItemsHelper
       result[days_of_week[k.to_i]] = v
     end
     result
+  end
+
+  def random_discogsless_url
+    item_url(Item.where('discogs_url IS NULL').sample)
   end
 
   def top_10(field)
