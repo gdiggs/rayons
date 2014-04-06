@@ -1,5 +1,7 @@
-require 'coveralls'
-Coveralls.wear!('rails')
+if ENV['COVERAGE']
+  require 'coveralls'
+  Coveralls.wear!('rails')
+end
 
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)

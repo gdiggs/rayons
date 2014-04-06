@@ -34,12 +34,12 @@ gem 'draper'
 
 group :development do
   gem 'foreman'
-  gem 'colorize', '0.6.0'
+  gem 'colorize', '0.7.1'
   gem 'better_errors', '1.1.0'
 end
 
 group :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '2.14.2'
   gem 'assert_difference'
   gem 'mocha'
   gem 'coveralls', require: false
