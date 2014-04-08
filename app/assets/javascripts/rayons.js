@@ -84,6 +84,10 @@ Rayons.Stats = {
 
     $('.switcher a').click(Rayons.Stats.switch_view);
 
+    if(window.location.hash === '#Words') {
+      $('a[data-target=".texts"]').click();
+    }
+
     var cal = new CalHeatMap();
     cal.init({
       start: new Date(2012, 1, 1), // February 1, 2012
@@ -114,6 +118,8 @@ Rayons.Stats = {
 
     $($this.data('target')).fadeIn(600);
     $this.addClass('active');
+
+    window.location.hash = $this.text();
 
     return false;
   }
