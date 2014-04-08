@@ -4,7 +4,7 @@
     %title
       Rayons
       - if yield(:title).present?
-        = "\u2669 #{yield :title}"
+        = "\u2669 #{yield :title}".html_safe
     %link{ :href=>"#{request.protocol}fonts.googleapis.com/css?family=Monoton", :rel=>"stylesheet", :type=>"text/css" }
     %link{ :rel=>"icon", :type=>"images/png", :href=>"/icon.png" }
     %meta{ :name=>"viewport", :content=>"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" }
