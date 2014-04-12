@@ -26,11 +26,7 @@ module ItemsHelper
   end
 
   def items_per_month
-    result = {}
-    Item.group_by_month(:created_at).order('month asc').count.map do |k,v|
-      result[k.strftime("%b %Y")] = v
-    end
-    result
+    Item.group_by_month(:created_at, format: '%b %Y').order('month asc').count
   end
 
   def items_per_day_of_week
