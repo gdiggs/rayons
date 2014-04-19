@@ -24,5 +24,6 @@ Rayons::Application.routes.draw do
   end
 
   get '/mu-9306e982-5e21cfff-5e7a9bbe-e08bb3ce', :to => 'application#blitz'
+  get '/opensearch.xml', :to => 'application#opensearch'
   root :to => "items#index"
 end

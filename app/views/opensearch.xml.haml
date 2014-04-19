@@ -1,0 +1,9 @@
+!!! XML
+
+%OpenSearchDescription{ xmlns: "http://a9.com/-/spec/opensearch/1.1/", "xmlns:moz" => "http://www.mozilla.org/2006/browser/search/"}
+  %shortName Rayons
+  %Description Rayons Collection #{Rails.env if !Rails.env.production?}
+  %Url{ type: 'text/html', method: 'get', template: "#{root_url}?search={searchTerms}" }
+  %Image{ height: 16, width: 16, type: "image/vnd.microsoft.icon" } #{root_url}/favicon.ico
+  %moz:SearchForm #{root_url}?search={searchTerms}
+  %Url{ type: "application/opensearchdescription+xml", rel: "self", template: "http://my-site.com/opensearch.xml" }

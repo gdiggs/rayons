@@ -25,6 +25,10 @@ class ApplicationController < ActionController::Base
     format.json { render json: obj.errors.full_messages, status: :unprocessable_entity }
   end
 
+  def opensearch
+    render '/opensearch.xml', :layout => false
+  end
+
   def render_403
     respond_to do |format|
       format.html { render :file => "#{Rails.root}/public/403", :layout => false, :status => :forbidden }
