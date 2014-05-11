@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby "2.1.0", :engine => "rbx", :engine_version => "2.2.5"
+ruby "2.1.0", :engine => "rbx", :engine_version => "2.2.6"
 
-gem 'rails', '4.1.0'
+gem 'rails', '4.1.1'
 gem 'pg', '0.17.1'
 gem 'puma', '2.8.1'
 gem 'rails_12factor'
