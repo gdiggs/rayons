@@ -23,7 +23,7 @@
     %p
       %b Price paid:
       = @item.price_paid
-    - if @item.discogs_url.present?
+    - if @release.extra_info?
       %p
         %b Genre:
         = @release.genres.to_a.join(', ')

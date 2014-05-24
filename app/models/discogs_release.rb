@@ -9,6 +9,13 @@ class DiscogsRelease
       discogs_id = item.discogs_url.gsub(/.*\/release\/(\d+)/, '\1')
       self.release = @wrapper.get_release(discogs_id)
     end
+
+  rescue Errno::ETIMEDOUT
+    self.release = nil
+  end
+
+  def extra_info?
+    release.present?
   end
 
   def image_url
