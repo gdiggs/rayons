@@ -39,7 +39,8 @@ describe ItemsController do
                               :genres => ['Rock'],
                               :styles => ['Punk'],
                               :tracklist => [],
-                              :notes => 'Best record ever'
+                              :notes => 'Best record ever',
+                              :extra_info? => true
                              )
           DiscogsRelease.expects(:new).with(@item).returns(release_stub)
           get :show, id: @item
