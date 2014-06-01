@@ -69,6 +69,12 @@ class Item < ActiveRecord::Base
     self.order(sort_order.join(','))
   end
 
+  def self.to_json_sql
+    sql = self.all.to_sql
+    sql = "SELECT array_to_json(array_agg(row_to_json(t))) FROM (#{sql}) t;"
+    connection.select_value(sql)
+  end
+
   # Generate CSV of items and yield each row to a block
   def self.to_csv
     headers = ['title', 'artist', 'year', 'label', 'format', 'condition', 'color', 'price_paid', 'discogs_url', 'created_at', 'updated_at']

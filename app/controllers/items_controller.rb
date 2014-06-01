@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @items }
+      format.json { render json: @items.to_json_sql }
       format.csv do
         set_streaming_headers
         filename = "rayons_#{Time.now.to_i}.csv"
