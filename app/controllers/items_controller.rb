@@ -17,8 +17,10 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-        @items = Item.sorted(params[:sort], params[:direction]).search(params[:search]).page(params[:page].to_i)
-        render json: @items
+        page = [params[:page].to_i, 1].max
+        @items = Item.sorted(params[:sort], params[:direction]).search(params[:search]).page(page)
+        pagination = PageEntriesInfoDecorator.new(@items)
+        render json: {items: @items, page: page}.merge(pagination.as_json)
       end
       format.csv do
         set_streaming_headers
