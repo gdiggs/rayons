@@ -23,6 +23,7 @@
             - if params[:sort] == 'created_at' 
               = params[:direction] == 'ASC' ? "\u2191" : "\u2193"
     %tbody.js-items
+  .js-pagination
   .loader.js-loader
     - 12.times do
       %li
