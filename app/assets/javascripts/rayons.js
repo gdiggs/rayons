@@ -53,11 +53,8 @@ Rayons.Item = {
     $('.js-items').fadeOut();
     $('.js-loader').fadeIn();
     $.getJSON('/items.json', window.filter_options, function(response) {
-      var markup = '',
-          template = $('#item_template').html();
-      $.each(response, function(i, item) {
-        markup += Mustache.render(template, item);
-      });
+      var template = $('#item_template').html(),
+          markup = _.map(response, function(item) { return Mustache.render(template, item); }).join();
 
       $('.js-loader').fadeOut(200, function() {
         $('.js-items').html(markup).show()
