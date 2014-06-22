@@ -5,6 +5,7 @@ Rayons.Item = {
     $(document).delegate('a.delete', 'click', Rayons.Item.destroy)
                .delegate('a.edit', 'click', Rayons.Item.edit)
                .delegate('a.save', 'click', Rayons.Item.save);
+    Rayons.Item.getItems();
   },
 
   // Delete an item using ajax, then show the message and fade out the row.
@@ -46,6 +47,25 @@ Rayons.Item = {
     }, 100);
 
     return false;
+  },
+
+  getItems: function() {
+    $('.js-items').fadeOut();
+    $('.js-loader').fadeIn();
+    $.getJSON('/items.json', function(response) {
+      console.log("resp", response);
+      var markup = '',
+          template = $('#item_template').html();
+      $.each(response, function(i, item) {
+        markup += Mustache.render(template, item);
+      });
+
+      console.log("result", markup);
+      $('.js-loader').fadeOut(200, function() {
+        $('.js-items').html(markup).show()
+      });
+    });
+
   },
 
   save: function(e) {

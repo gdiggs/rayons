@@ -12,12 +12,14 @@ class ItemsController < ApplicationController
   # GET /items.json
   # GET /items.csv
   def index
-    @items = Item.sorted(params[:sort], params[:direction]).search(params[:search]).page(params[:page].to_i)
     @can_edit = policy(Item).edit?
 
     respond_to do |format|
       format.html
-      format.json { render json: @items }
+      format.json do
+        @items = Item.sorted(params[:sort], params[:direction]).search(params[:search]).page(params[:page].to_i)
+        render json: @items
+      end
       format.csv do
         set_streaming_headers
         filename = "rayons_#{Time.now.to_i}.csv"

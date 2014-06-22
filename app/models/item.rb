@@ -118,6 +118,14 @@ class Item < ActiveRecord::Base
     items
   end
 
+  def added_on
+    created_at.strftime('%m.%d.%y')
+  end
+
+  def as_json(options = {})
+    super(options.merge(:methods => :added_on))
+  end
+
   def destroy
     self.deleted = true
     self.save!

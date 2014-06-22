@@ -5,5 +5,6 @@
 //= require jqcloud
 //= require underscore-min
 //= require cal-heatmap.min
+//= require mustache
 //= require rayons
 //= require items
