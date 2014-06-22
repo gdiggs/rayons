@@ -52,15 +52,13 @@ Rayons.Item = {
   getItems: function() {
     $('.js-items').fadeOut();
     $('.js-loader').fadeIn();
-    $.getJSON('/items.json', function(response) {
-      console.log("resp", response);
+    $.getJSON('/items.json', window.filter_options, function(response) {
       var markup = '',
           template = $('#item_template').html();
       $.each(response, function(i, item) {
         markup += Mustache.render(template, item);
       });
 
-      console.log("result", markup);
       $('.js-loader').fadeOut(200, function() {
         $('.js-items').html(markup).show()
       });

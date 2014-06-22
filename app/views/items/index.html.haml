@@ -29,3 +29,6 @@
 
 = render 'editing_bar'
 = render :partial => '/items/template'
+
+:javascript
+  window.filter_options = #{params.slice(:sort, :direction, :search, :page).to_json};
