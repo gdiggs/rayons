@@ -60,7 +60,7 @@ Rayons.Item = {
 
       $('.js-loader').fadeOut(200, function() {
         $('.js-items-page-info').text(first + ' - ' + last + ' of ' + response.total_count + ' items');
-        $('.js-items').html(markup).show()
+        $('.js-items').html(markup).fadeIn(200);
         $('.js-pagination').html(response.pagination);
       });
     });

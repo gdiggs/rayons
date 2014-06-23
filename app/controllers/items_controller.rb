@@ -17,13 +17,14 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-        cache ["items_json", Item.unscoped.maximum(:updated_at).to_i, params.slice(:sort, :direction, :search, :page)] do
+        json = Rails.cache.fetch(["items_json", Item.unscoped.maximum(:updated_at).to_i, params.slice(:sort, :direction, :search, :page)]) do
           page = [params[:page].to_i, 1].max
           @items = Item.sorted(params[:sort], params[:direction]).search(params[:search]).page(page)
           pagination = PageEntriesInfoDecorator.new(@items)
           markup = render_to_string(partial: 'items/pagination', formats: [:html]).gsub(/.json/, '')
-          render json: {items: @items, page: page, pagination: markup}.merge(pagination.as_json)
+          {items: @items, page: page, pagination: markup}.merge(pagination.as_json).to_json
         end
+        render text: json
       end
       format.csv do
         set_streaming_headers
