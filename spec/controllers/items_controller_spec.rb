@@ -23,7 +23,6 @@ describe ItemsController do
     it "should get index" do
       get :index
       assert_response :success
-      assert !assigns(:items).nil?
     end
 
     it "should get new" do
