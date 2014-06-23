@@ -152,6 +152,7 @@ Rayons.UI = {
     $('a.random').on('click', Rayons.UI.scroll_to_random);
     $('.toggle-controls a').on('click', Rayons.UI.toggle_editing_bar);
     $('a[data-sort]').click(Rayons.UI.sort);
+    $('.js-search').submit(Rayons.UI.search);
   },
 
   // bind to form submission (adding/updating an item)
@@ -195,6 +196,19 @@ Rayons.UI = {
     return false;
   },
 
+  search: function(e) {
+    var $form = $(e.target),
+        search_term = $form.find('input').val();
+
+    window.history.pushState({}, '', window.location.origin+'?search='+search_term);
+    window.filter_options = {
+      search: search_term
+    };
+    Rayons.Item.getItems();
+
+    return false;
+  },
+
   show_editing_form: function(e) {
     $('#editing-bar form').show();
     $(e.target).hide();
@@ -222,7 +236,7 @@ Rayons.UI = {
       direction = 'ASC';
     }
 
-    var new_url = $.query.set("direction", direction).set("sort", $this.data('sort')).toString();
+    var new_url = $.query.set("direction", direction).set("sort", $this.data('sort')).set("search", window.filter_options.search).toString();
     window.history.pushState({}, '', window.location.origin+new_url);
 
     $('table').data('direction', direction).data('sort', $this.data('sort'));

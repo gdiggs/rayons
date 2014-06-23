@@ -13,15 +13,11 @@
         - field_headers.each do |field|
           %th
             - sort = field.parameterize('_')
-            %a{ :href => '', 'data-sort' => sort, :class => ('current' if params[:sort] == sort) }
+            %a{ :href => '', 'data-sort' => sort }
               = field
-              - if params[:sort] == sort
-                = params[:direction] == 'ASC' ? "\u2191" : "\u2193"
         %th
-          %a{ :href => '', 'data-sort' => 'created_at', :class => ('current' if params[:sort] == 'created_at') }
+          %a{ :href => '', 'data-sort' => 'created_at'}
             Added On
-            - if params[:sort] == 'created_at' 
-              = params[:direction] == 'ASC' ? "\u2191" : "\u2193"
     %tbody.js-items
   .js-pagination
   .loader.js-loader
