@@ -222,7 +222,14 @@ Rayons.UI = {
       direction = 'ASC';
     }
 
-    window.location.href = window.location.href + delim + 'sort='+$this.data('sort')+'&direction='+direction;
+    var new_url = $.query.set("direction", direction).set("sort", $this.data('sort')).toString();
+    window.history.pushState({}, '', window.location.origin+new_url);
+
+    $('table').data('direction', direction).data('sort', $this.data('sort'));
+
+    window.filter_options.sort = $this.data('sort');
+    window.filter_options.direction = direction;
+    Rayons.Item.getItems();
     return false;
   },
 
