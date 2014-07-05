@@ -32,13 +32,13 @@ gem 'kaminari', '0.16.1'
 gem 'draper', '1.3.1'
 
 group :development do
-  gem 'foreman'
+  gem 'foreman', '0.74.0'
   gem 'better_errors', '1.1.0'
 end
 
 group :test do
   gem 'rspec-rails', '3.0.1'
-  gem 'mocha'
+  gem 'mocha', '1.1.0'
   gem 'coveralls', require: false
   gem 'spin'
 end
