@@ -37,7 +37,7 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails', '2.14.2'
+  gem 'rspec-rails', '3.0.1'
   gem 'mocha'
   gem 'coveralls', require: false
   gem 'spin'
