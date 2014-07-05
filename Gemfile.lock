@@ -39,14 +39,14 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
-    autoprefixer-rails (1.1.20140410)
+    autoprefixer-rails (2.1.0.20140628)
       execjs
     bcrypt (3.1.7)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
     builder (3.2.2)
-    chartkick (1.2.4)
+    chartkick (1.3.2)
     coderay (1.1.0)
     coveralls (0.7.0)
       multi_json (~> 1.3)
@@ -54,7 +54,7 @@ GEM
       simplecov (>= 0.7)
       term-ansicolor
       thor
-    dalli (2.7.0)
+    dalli (2.7.2)
     devise (3.2.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -62,10 +62,12 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    discogs-wrapper (1.1.4)
+    discogs-wrapper (2.0.0)
+      hashie (~> 2.1)
+      oauth (~> 0.4.7)
     docile (1.1.3)
     dotenv (0.10.0)
-    draper (1.3.0)
+    draper (1.3.1)
       actionpack (>= 3.0)
       activemodel (>= 3.0)
       activesupport (>= 3.0)
@@ -73,7 +75,7 @@ GEM
     dropbox-sdk (1.6.3)
       json
     erubis (2.7.0)
-    execjs (2.0.2)
+    execjs (2.2.1)
     foreman (0.63.0)
       dotenv (>= 0.7)
       thor (>= 0.13.6)
@@ -86,21 +88,22 @@ GEM
       activesupport (>= 4.0.1)
       haml (>= 3.1, < 5.0)
       railties (>= 4.0.1)
+    hashie (2.1.2)
     hike (1.2.3)
     i18n (0.6.9)
     jist (1.5.1)
       json
-    jquery-rails (3.1.0)
+    jquery-rails (3.1.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
-    kaminari (0.15.1)
+    kaminari (0.16.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    marco-polo (1.2.0)
+    marco-polo (1.2.1)
     memcachier (0.0.2)
     metaclass (0.0.4)
     method_source (0.8.2)
@@ -109,7 +112,8 @@ GEM
     mocha (1.0.0)
       metaclass (~> 0.0.1)
     multi_json (1.10.1)
-    newrelic_rpm (3.7.3.204)
+    newrelic_rpm (3.9.0.229)
+    oauth (0.4.7)
     orm_adapter (0.5.0)
     pg (0.17.1)
     polyglot (0.3.5)
@@ -119,7 +123,7 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.2)
       pry (>= 0.9.10)
-    puma (2.8.1)
+    puma (2.8.2)
       rack (>= 1.1, < 2.0)
     pundit (0.2.3)
       activesupport (>= 3.0.0)
@@ -151,7 +155,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.3.2)
-    request_store (1.0.5)
+    request_store (1.0.6)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rspec-core (2.14.8)
@@ -201,7 +205,7 @@ GEM
       polyglot (>= 0.3.1)
     tzinfo (1.2.1)
       thread_safe (~> 0.1)
-    uglifier (2.5.0)
+    uglifier (2.5.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     warden (1.2.3)
@@ -213,29 +217,29 @@ PLATFORMS
 DEPENDENCIES
   actionpack-action_caching
   actionpack-page_caching
-  autoprefixer-rails (= 1.1.20140410)
+  autoprefixer-rails (= 2.1.0.20140628)
   better_errors (= 1.1.0)
-  chartkick (= 1.2.4)
+  chartkick (= 1.3.2)
   coveralls
-  dalli (= 2.7.0)
+  dalli (= 2.7.2)
   devise (= 3.2.4)
-  discogs-wrapper
-  draper
+  discogs-wrapper (= 2.0.0)
+  draper (= 1.3.1)
   dropbox-sdk
   foreman
   groupdate (= 2.2.1)
   haml-rails
   jist
   jqcloud-rails!
-  jquery-rails (= 3.1.0)
-  kaminari
-  marco-polo (= 1.2.0)
+  jquery-rails (= 3.1.1)
+  kaminari (= 0.16.1)
+  marco-polo (= 1.2.1)
   memcachier
   mocha
-  newrelic_rpm (= 3.7.3.204)
+  newrelic_rpm (= 3.9.0.229)
   pg (= 0.17.1)
   pry-rails
-  puma (= 2.8.1)
+  puma (= 2.8.2)
   pundit (= 0.2.3)
   rack-cache
   rails (= 4.1.4)
@@ -245,4 +249,4 @@ DEPENDENCIES
   sass-rails
   spin
   textacular (= 3.2.0)
-  uglifier (= 2.5.0)
+  uglifier (= 2.5.1)
