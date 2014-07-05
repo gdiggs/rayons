@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby "2.1.0", :engine => "rbx", :engine_version => "2.2.7"
 
-gem 'rails', '4.1.1'
+gem 'rails', '4.1.4'
 gem 'pg', '0.17.1'
 gem 'puma', '2.8.1'
 gem 'rails_12factor'
@@ -18,7 +18,7 @@ gem 'newrelic_rpm', '3.7.3.204'
 gem 'jist'
 gem 'dropbox-sdk', require: 'dropbox_sdk'
 gem 'chartkick', '1.2.4'
-gem 'groupdate', '2.1.0'
+gem 'groupdate', '2.2.1'
 gem 'sass-rails'
 gem 'haml-rails'
 gem 'jquery-rails', '3.1.0'
