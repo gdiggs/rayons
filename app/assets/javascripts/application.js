@@ -6,6 +6,8 @@
 //= require jqcloud
 //= require underscore-min
 //= require cal-heatmap.min
+//= require flash
+//= require jquery.cookie
 //= require mustache
 //= require rayons
 //= require items

@@ -71,18 +71,6 @@ describe ItemsController do
     end
   end
 
-  describe '#index' do
-    it 'should set flash error' do
-      get :index, {}, nil, {:error => 'sup'}
-      assert_select '.message.error', 'sup'
-    end
-
-    it 'should set flash notice' do
-      get :index, {}, nil, {:notice => 'sup'}
-      assert_select '.message', 'sup'
-    end
-  end
-
   describe 'when not logged in' do
     describe '#create' do
       it 'should return a 403' do

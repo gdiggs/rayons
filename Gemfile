@@ -30,6 +30,7 @@ gem 'marco-polo', '1.2.1'
 gem 'discogs-wrapper', '2.0.0', require: false
 gem 'kaminari', '0.16.1'
 gem 'draper', '1.3.1'
+gem 'cacheable_flash'
 
 group :development do
   gem 'foreman', '0.74.0'

@@ -31,11 +31,12 @@
     %h1
       %a{ :href => '/' } Rayons
 
-    - if flash[:error]
-      .message.error= flash[:error]
-    - if flash[:message] || flash[:notice]
-      .message= flash[:message] || flash[:notice]
-    .message.none
+    .message.error.none
+    .message.notice.none
+    :javascript
+      Flash.transferFromCookies();
+      Flash.writeDataTo('error', $('.message.error'));
+      Flash.writeDataTo('notice', $('.message.notice'));
 
     = yield
 

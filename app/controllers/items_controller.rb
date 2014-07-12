@@ -123,7 +123,7 @@ class ItemsController < ApplicationController
   # POST /items/import
   def import
     @items = Item.import_csv_file(params[:file])
-    flash[:message] = "Imported #{@items.count} items"
+    flash[:notice] = "Imported #{@items.count} items"
 
   rescue => e
     flash[:error] = "Error importing: #{e}"
