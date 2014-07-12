@@ -8,7 +8,7 @@
     %link{ :href=>"#{request.protocol}fonts.googleapis.com/css?family=Monoton", :rel=>"stylesheet", :type=>"text/css" }
     %link{ :rel=>"icon", :type=>"images/png", :href=>"/icon.png" }
     %link{ href: "/opensearch.xml", rel: "search", title: "Rayons Search", type: "application/opensearchdescription+xml"}
-    %meta{ :name=>"viewport", :content=>"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" }
+    %meta{ :name=>"viewport", :content=>"width=device-width, initial-scale=1, minimumscale=1.0, maximum-scale=1, user-scalable=0" }
     = stylesheet_link_tag "application", :media => "all"
     - if !cookies[:exclude_responsive]
       = stylesheet_link_tag "responsive", :media => "all"

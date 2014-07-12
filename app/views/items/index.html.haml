@@ -11,12 +11,12 @@
     %thead
       %tr
         - field_headers.each do |field|
-          %th
+          %th{ :class => field.parameterize('_') }
             - sort = field.parameterize('_')
             %a{ :href => '', 'data-sort' => sort }
               = field
         %th
-          %a{ :href => '', 'data-sort' => 'created_at'}
+          %a.added_on{ :href => '', 'data-sort' => 'created_at'}
             Added On
     %tbody.js-items
   .js-pagination
