@@ -11,8 +11,8 @@
     "pgbackups:auto-month"
   ],
   "env": {
-    "SECRET_TOKEN": "",
-    "GIST_TOKEN": "",
-    "DROPBOX_ACCESS_TOKEN": ""
+    "SECRET_TOKEN": "REDACTED",
+    "GIST_TOKEN": "REDACTED",
+    "DROPBOX_ACCESS_TOKEN": "REDACTED"
   }
 }
