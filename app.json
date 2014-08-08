@@ -1,0 +1,22 @@
+{
+  'name': 'Rayons',
+  'description': 'Personal Record Collection Catalog',
+  'repository': 'https://github.com/GordonDiggs/rayons',
+  'success_url': '/',
+  'addons': ['heroku-postgresql:dev', 'memcachier:dev', 'newrelic:wayne', 'pgbackups:auto-month', 'scheduler:standard'],
+  'env': {
+    'DROPBOX_ACCESS_TOKEN': {
+      'description': 'Dropbox access token. Required for Dropbox backups. See README for generation guide.',
+      'required': false
+    },
+    'GIST_TOKEN': {
+      'description': 'Gist access token. Required for gist backups',
+      'required': false
+    },
+    'SECRET_TOKEN': {
+      "description": "Rails secret token",
+      "generator": "secret",
+      'required': true
+    }
+  }
+}
