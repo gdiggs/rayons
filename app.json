@@ -13,6 +13,6 @@
   "env": {
     "SECRET_TOKEN": "",
     "GIST_TOKEN": "",
-    "DROPBOX_ACCESS_TOKEN": "",
+    "DROPBOX_ACCESS_TOKEN": ""
   }
 }
