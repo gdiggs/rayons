@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ItemsController do
+describe ItemsController, :type => :controller do
   render_views
 
   describe 'when logged in' do

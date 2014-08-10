@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'discogs'
 
-describe DiscogsRelease do
+describe DiscogsRelease, :type => :model do
   before do
     @release = stub_everything(:title => 'Hit Record 2000')
     wrapper = stub_everything(:get_release => @release)
