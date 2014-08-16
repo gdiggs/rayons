@@ -6,7 +6,7 @@ class TestController < ApplicationController
   end
 end
 
-describe ApplicationController do
+describe ApplicationController, :type => :controller do
   before do
     Rayons::Application.routes.append do
       get 'test_application' => "test#index"

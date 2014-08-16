@@ -1,4 +1,5 @@
-@media only screen and (max-width: 1000px)
+// based on https://css-tricks.com/examples/ResponsiveTables/responsive.php
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px)
   body, html
     padding: 0
     margin: 0
@@ -7,14 +8,68 @@
     min-width: 0
     width: 100%
     padding: 0
-    overflow-x: scroll
-    table
-      width: 200%
     h1
       margin: 20px
-  thead th, .edit, #add-new, .import, .toggle-controls, .export, .login, .logout
+  .edit, #add-new, .import, .toggle-controls, .export, .login, .logout, .discogs, .github-link
     display: none !important
+  td.show
+    display: block !important
   .message
     width: 90%
-  .github-link
+  #item_show
+    .left
+      margin: 15px
+      width: auto
+    .image
+      margin: 0
+      padding: 0
+      width: 100%
+      img
+        width: 100%
+  /* Force table to not be like tables anymore
+  table, thead, tbody, th, td, tr
+    display: block
+  /* Hide table headers (but not display: none;, for accessibility)
+  thead tr
     display: none
+  //tr
+    border: 1px solid #ccc
+  td
+    min-height: 15px
+    max-width: none !important
+    border: none !important
+    border-bottom: 1px solid #eee !important
+    position: relative !important
+    padding: 5px !important
+    text-align: left !important
+    padding-left: 50% !important
+    &:before
+      font-style: italic
+      /* Now like a table header
+      position: absolute
+      /* Top/left values mimic padding
+      top: 6px
+      left: 6px
+      width: 45%
+      padding-right: 10px
+      white-space: nowrap
+    &:nth-of-type(1):before
+      content: "Title"
+    &:nth-of-type(2):before
+      content: "Artist"
+    &:nth-of-type(3):before
+      content: "Year"
+    &:nth-of-type(4):before
+      content: "Label"
+    &:nth-of-type(5):before
+      content: "Format"
+    &:nth-of-type(6):before
+      content: "Condition"
+    &:nth-of-type(7):before
+      content: "Color"
+    &:nth-of-type(8):before
+      content: "Price Paid"
+    &:nth-of-type(9):before
+      content: "Discogs"
+    &:nth-of-type(10):before
+      content: "Added On"

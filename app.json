@@ -1,0 +1,18 @@
+{
+  "name": "Rayons",
+  "description": "Personal Record Collection Catalog",
+  "repository": "https://github.com/GordonDiggs/rayons",
+  "success_url": "/",
+  "addons": [
+    "scheduler:standard",
+    "heroku-postgresql:dev",
+    "newrelic:wayne",
+    "memcachier:dev",
+    "pgbackups:auto-month"
+  ],
+  "env": {
+    "SECRET_TOKEN": "REDACTED",
+    "GIST_TOKEN": "REDACTED",
+    "DROPBOX_ACCESS_TOKEN": "REDACTED"
+  }
+}

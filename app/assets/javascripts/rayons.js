@@ -5,6 +5,7 @@ Rayons.Item = {
     $(document).delegate('a.delete', 'click', Rayons.Item.destroy)
                .delegate('a.edit', 'click', Rayons.Item.edit)
                .delegate('a.save', 'click', Rayons.Item.save);
+    Rayons.Item.getItems();
   },
 
   // Delete an item using ajax, then show the message and fade out the row.
@@ -46,6 +47,24 @@ Rayons.Item = {
     }, 100);
 
     return false;
+  },
+
+  getItems: function() {
+    $('.js-items').fadeOut();
+    $('.js-loader').fadeIn();
+    $.getJSON('/items.json', window.filter_options, function(response) {
+      var template = $('#item_template').html(),
+          markup = _.map(response.items, function(item) { return Mustache.render(template, item); }).join(),
+          first = response.offset_value + 1,
+          last = response.offset_value + response.limit_value;
+
+      $('.js-loader').fadeOut(200, function() {
+        $('.js-items-page-info').text(first + ' - ' + last + ' of ' + response.total_count + ' items');
+        $('.js-items').html(markup).fadeIn(200);
+        $('.js-pagination').html(response.pagination);
+      });
+    });
+
   },
 
   save: function(e) {
@@ -133,6 +152,7 @@ Rayons.UI = {
     $('a.random').on('click', Rayons.UI.scroll_to_random);
     $('.toggle-controls a').on('click', Rayons.UI.toggle_editing_bar);
     $('a[data-sort]').click(Rayons.UI.sort);
+    $('.js-search').submit(Rayons.UI.search);
   },
 
   // bind to form submission (adding/updating an item)
@@ -176,6 +196,19 @@ Rayons.UI = {
     return false;
   },
 
+  search: function(e) {
+    var $form = $(e.target),
+        search_term = $form.find('input').val();
+
+    window.history.pushState({}, '', window.location.origin+'?search='+search_term);
+    window.filter_options = {
+      search: search_term
+    };
+    Rayons.Item.getItems();
+
+    return false;
+  },
+
   show_editing_form: function(e) {
     $('#editing-bar form').show();
     $(e.target).hide();
@@ -203,7 +236,14 @@ Rayons.UI = {
       direction = 'ASC';
     }
 
-    window.location.href = window.location.href + delim + 'sort='+$this.data('sort')+'&direction='+direction;
+    var new_url = $.query.set("direction", direction).set("sort", $this.data('sort')).set("search", window.filter_options.search).toString();
+    window.history.pushState({}, '', window.location.origin+new_url);
+
+    $('table').data('direction', direction).data('sort', $this.data('sort'));
+
+    window.filter_options.sort = $this.data('sort');
+    window.filter_options.direction = direction;
+    Rayons.Item.getItems();
     return false;
   },
 

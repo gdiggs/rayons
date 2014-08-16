@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Item do
+describe Item, :type => :model do
   describe 'validation' do
     it 'should not allow invalid urls' do
       item = Item.new(:discogs_url => 'supsupsup')

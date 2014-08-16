@@ -2,8 +2,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.easing.min
+//= require jquery.query-object
 //= require jqcloud
 //= require underscore-min
 //= require cal-heatmap.min
+//= require flash
+//= require jquery.cookie
+//= require mustache
 //= require rayons
 //= require items

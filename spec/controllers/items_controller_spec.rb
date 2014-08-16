@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ItemsController do
+describe ItemsController, :type => :controller do
   render_views
 
   describe 'when logged in' do
@@ -23,7 +23,6 @@ describe ItemsController do
     it "should get index" do
       get :index
       assert_response :success
-      assert !assigns(:items).nil?
     end
 
     it "should get new" do
@@ -69,18 +68,6 @@ describe ItemsController do
 
       assert_equal original_item_count-1, Item.count
       assert_redirected_to items_path
-    end
-  end
-
-  describe '#index' do
-    it 'should set flash error' do
-      get :index, {}, nil, {:error => 'sup'}
-      assert_select '.message.error', 'sup'
-    end
-
-    it 'should set flash notice' do
-      get :index, {}, nil, {:notice => 'sup'}
-      assert_select '.message', 'sup'
     end
   end
 

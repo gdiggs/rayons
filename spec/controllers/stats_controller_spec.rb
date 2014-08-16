@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe StatsController do
+describe StatsController, :type => :controller do
   describe '#index' do
     it 'should set title' do
       get :index

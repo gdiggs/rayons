@@ -9,7 +9,7 @@ Rayons is a rails port and specification of [https://github.com/GordonDiggs/cata
 
 Rails was chosen over Sinatra mainly for the chainability and ease of ActiveRecord over DataMapper. Other advantages include better authentication, more RESTful APIs, and an admin dashboard.
 
-### Setup
+### Local Setup
 
 Rayons requires a Postgres installation.
 
@@ -22,6 +22,10 @@ $ foreman start
 ```
 
 The app will be available at [0.0.0.0:5000](http://0.0.0.0:5000). When running in production mode, the app requires SSL (Heroku supplies this automatically), and an `ENV[SECRET_TOKEN]` to be set.
+
+### Heroku Setup
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 ### Grunt
 

@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include Pundit
+  include CacheableFlash
 
   protect_from_forgery
   before_filter :check_responsive

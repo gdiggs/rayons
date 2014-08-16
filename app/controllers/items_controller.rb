@@ -12,12 +12,20 @@ class ItemsController < ApplicationController
   # GET /items.json
   # GET /items.csv
   def index
-    @items = Item.sorted(params[:sort], params[:direction]).search(params[:search]).page(params[:page].to_i)
     @can_edit = policy(Item).edit?
 
     respond_to do |format|
       format.html
-      format.json { render json: @items.to_json_sql }
+      format.json do
+        json = Rails.cache.fetch(["items_json", Item.unscoped.maximum(:updated_at).to_i, params.slice(:sort, :direction, :search, :page)]) do
+          page = [params[:page].to_i, 1].max
+          @items = Item.sorted(params[:sort], params[:direction]).search(params[:search]).page(page)
+          pagination = PageEntriesInfoDecorator.new(@items)
+          markup = render_to_string(partial: 'items/pagination', formats: [:html]).gsub(/.json/, '')
+          {items: @items.to_json_sql, page: page, pagination: markup}.merge(pagination.as_json).to_json
+        end
+        render text: json
+      end
       format.csv do
         set_streaming_headers
         filename = "rayons_#{Time.now.to_i}.csv"
@@ -115,7 +123,7 @@ class ItemsController < ApplicationController
   # POST /items/import
   def import
     @items = Item.import_csv_file(params[:file])
-    flash[:message] = "Imported #{@items.count} items"
+    flash[:notice] = "Imported #{@items.count} items"
 
   rescue => e
     flash[:error] = "Error importing: #{e}"

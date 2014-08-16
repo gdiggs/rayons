@@ -22,6 +22,16 @@ class DiscogsRelease
     images.first.uri.gsub('http://api.discogs.com', 'http://s.pixogs.com') rescue nil
   end
 
+  ['styles', 'notes'].each do |meth|
+    define_method meth do
+      if release && release.respond_to?(meth)
+        release.send(meth)
+      else
+        nil
+      end
+    end
+  end
+
   def method_missing(meth, *args, &block)
     if release && release.respond_to?(meth)
       release.send(meth, *args, &block)

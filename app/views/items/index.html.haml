@@ -8,23 +8,24 @@
         %input{ :type => 'submit', :value => 'Add' }
 
   %table{ 'data-sort' => params[:sort], 'data-direction' => params[:direction] }
-    %tr
-      - field_headers.each do |field|
+    %thead
+      %tr
+        - field_headers.each do |field|
+          %th{ :class => field.parameterize('_') }
+            - sort = field.parameterize('_')
+            %a{ :href => '', 'data-sort' => sort }
+              = field
         %th
-          - sort = field.parameterize('_')
-          %a{ :href => '', 'data-sort' => sort, :class => ('current' if params[:sort] == sort) }
-            = field
-            - if params[:sort] == sort
-              = params[:direction] == 'ASC' ? "\u2191" : "\u2193"
-      %th
-        %a{ :href => '', 'data-sort' => 'created_at', :class => ('current' if params[:sort] == 'created_at') }
-          Added On
-          - if params[:sort] == 'created_at' 
-            = params[:direction] == 'ASC' ? "\u2191" : "\u2193"
-
-    = cache ["items_markup3", Item.unscoped.maximum(:updated_at).to_i, @can_edit, params.slice(:sort, :direction, :search, :page)] do
-      = render :partial => 'items/item', :collection => @items, :as => :item
-
-  = paginate @items
+          %a.added_on{ :href => '', 'data-sort' => 'created_at'}
+            Added On
+    %tbody.js-items
+  .js-pagination
+  .loader.js-loader
+    - 12.times do
+      %li
 
 = render 'editing_bar'
+= render :partial => '/items/template'
+
+:javascript
+  window.filter_options = #{params.slice(:sort, :direction, :search, :page).to_json};
