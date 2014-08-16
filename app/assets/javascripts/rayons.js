@@ -236,7 +236,7 @@ Rayons.UI = {
       direction = 'ASC';
     }
 
-    var new_url = $.query.set("direction", direction).set("sort", $this.data('sort')).set("search", window.filter_options.search).toString();
+    var new_url = $.query.set("direction", direction).set("sort", $this.data('sort')).set("search", window.filter_options.search || '').toString();
     window.history.pushState({}, '', window.location.origin+new_url);
 
     $('table').data('direction', direction).data('sort', $this.data('sort'));

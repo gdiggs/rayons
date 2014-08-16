@@ -8,7 +8,7 @@
  * @version 2.1.7
  *
  **/
-new function(settings) { 
+new function(settings) {
   // Various Settings
   var $separator = settings.separator || '&';
   var $spaces = settings.spaces === false ? false : true;
@@ -16,7 +16,7 @@ new function(settings) {
   var $prefix = settings.prefix === false ? false : true;
   var $hash = $prefix ? settings.hash === true ? "#" : "?" : "";
   var $numbers = settings.numbers === false ? false : true;
-  
+
   jQuery.query = new function() {
     var is = function(o, t) {
       return o != undefined && o !== null && (!!t ? o.constructor == t : true);
@@ -61,46 +61,52 @@ new function(settings) {
       }
       return target;
     };
-    
+
     var queryObject = function(a) {
       var self = this;
       self.keys = {};
-      
+
       if (a.queryObject) {
         jQuery.each(a.get(), function(key, val) {
           self.SET(key, val);
         });
       } else {
+        self.parseNew.apply(self, arguments);
+      }
+      return self;
+    };
+
+    queryObject.prototype = {
+      queryObject: true,
+      parseNew: function(){
+        var self = this;
+        self.keys = {};
         jQuery.each(arguments, function() {
           var q = "" + this;
           q = q.replace(/^[?#]/,''); // remove any leading ? || #
           q = q.replace(/[;&]$/,''); // remove any trailing & || ;
           if ($spaces) q = q.replace(/[+]/g,' '); // replace +'s with spaces
-          
+
           jQuery.each(q.split(/[&;]/), function(){
             var key = decodeURIComponent(this.split('=')[0] || "");
             var val = decodeURIComponent(this.split('=')[1] || "");
-            
+
             if (!key) return;
-            
+
             if ($numbers) {
               if (/^[+-]?[0-9]+\.[0-9]*$/.test(val)) // simple float regex
                 val = parseFloat(val);
               else if (/^[+-]?[0-9]+$/.test(val)) // simple int regex
                 val = parseInt(val, 10);
             }
-            
+
             val = (!val && val !== 0) ? true : val;
-            
+
             self.SET(key, val);
           });
         });
-      }
-      return self;
-    };
-    
-    queryObject.prototype = {
-      queryObject: true,
+        return self;
+      },
       has: function(key, type) {
         var value = this.get(key);
         return is(value, type);
@@ -200,22 +206,22 @@ new function(settings) {
             return !base || base == "" ? [key].join("") : [base, "[", key, "]"].join("");
           };
           jQuery.each(obj, function(key, value) {
-            if (typeof value == 'object') 
+            if (typeof value == 'object')
               build(value, newKey(key));
             else
               addFields(chunks, newKey(key), value);
           });
         };
-        
+
         build(this.keys);
-        
+
         if (chunks.length > 0) queryString.push($hash);
         queryString.push(chunks.join($separator));
-        
+
         return queryString.join("");
       }
     };
-    
+
     return new queryObject(location.search, location.hash);
   };
 }(jQuery.query || {}); // Pass in jQuery.query as settings object

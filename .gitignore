@@ -15,7 +15,6 @@
 /tmp
 
 *.sw*
-/node_modules
 /.rbx
 
 latest.dump
@@ -24,3 +23,4 @@ public/items/
 public/stats.html
 
 coverage/
+vendor/assets/components/

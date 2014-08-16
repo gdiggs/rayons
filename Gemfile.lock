@@ -242,7 +242,6 @@ DEPENDENCIES
   haml-rails
   jist
   jqcloud-rails!
-  jquery-rails (= 3.1.1)
   kaminari (= 0.16.1)
   marco-polo (= 1.2.1)
   memcachier

@@ -3,7 +3,12 @@
   "version": "0.0.1",
   "description": "catalog some records, yo",
   "author": "Gordon Diggs",
+  "repository" : {
+    "type" : "git",
+    "url" : "http://github.com/GordonDiggs/rayons.git"
+  },
   "dependencies": {
+    "bower": "~1.3.9",
     "grunt": "~0.4.0",
     "grunt-contrib-jshint": "~0.10.0"
   },
