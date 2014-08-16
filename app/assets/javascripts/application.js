@@ -1,4 +1,4 @@
-//= require d3.v3.min
+//= require d3
 //= require jquery
 //= require jquery.easing.min
 //= require jquery.query-object
