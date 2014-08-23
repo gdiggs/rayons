@@ -31,30 +31,29 @@
 
 - content_for :nav do
   %ul
-    %li.js-items-page-info
+    %li.js-items-page-info.hide-on-mobile
     %li
       %a{ :href => '/stats' } stats
     %li
-      %a.export{ :href => '/items.csv' } export csv
+      %a.export{ :href => '/items.csv' } export
     %li
       %a{ :href => random_items_path } random
     - if @can_edit
       %li
-        %a.logout{ :href => '/logout' } disable editing
+        %a.logout{ :href => '/logout' } log out
       %li
         %a.import{ :href => '' } import csv
-        %form{ :action => '/items/import', :method => 'post', :enctype => 'multipart/form-data'}
+        %form.login{ :action => '/items/import', :method => 'post', :enctype => 'multipart/form-data'}
           = token_tag(nil)
           %input{ :type => 'file', :name => 'file' }
           %input{ :type => 'submit', :value => 'Import' }
     - else
-      editing is disabled.
       %li
-        %a.login{ :href => '' } enable now?
+        %a.login{ :href => '' } log in
         = form_tag user_session_path do
-          = text_field_tag 'user[email]', nil, :placeholder => 'Email Address'
-          = password_field_tag 'user[password]', nil, :placeholder => 'Password'
+          = text_field_tag 'user[email]', nil, :placeholder => 'Email Address', :size => 12
+          = password_field_tag 'user[password]', nil, :placeholder => 'Password', :size => 7
           %button Sign in
     %li
       %form.search.js-search{ :action => '/', :method => 'get' }
-      %input{ :type => 'search', :name => 'search', :placeholder => 'Search', :value => params[:search] }
+        %input{ :type => 'search', :name => 'search', :placeholder => 'Search', :value => params[:search], :size => 8 }
