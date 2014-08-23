@@ -1,14 +1,15 @@
 source 'https://rubygems.org'
 ruby "2.1.0", :engine => "rbx", :engine_version => "2.2.7"
 
-gem 'rails', '4.1.5'
+gem 'rails', '4.2.0.beta1'
 gem 'pg', '0.17.1'
-gem 'puma', '2.8.2'
+gem 'puma', '2.9.0'
 gem 'rails_12factor'
 gem 'actionpack-action_caching'
 gem 'actionpack-page_caching'
 gem 'rails-observers'
-gem 'devise', '3.2.4'
+gem 'devise', :git => 'https://github.com/plataformatec/devise.git', :branch => 'lm-rails-4-2'
+gem 'responders'
 gem 'pundit', '0.2.3'
 gem 'memcachier'
 gem 'rack-cache'
@@ -19,7 +20,7 @@ gem 'jist'
 gem 'dropbox-sdk', require: 'dropbox_sdk'
 gem 'chartkick', '1.3.2'
 gem 'groupdate', '2.2.1'
-gem 'sass-rails'
+gem 'sass-rails', '5.0.0.beta1'
 gem 'haml-rails'
 gem 'uglifier', '2.5.1'
 gem 'jqcloud-rails', :git => 'git://github.com/GordonDiggs/jqcloud-rails.git'
@@ -33,7 +34,6 @@ gem 'cacheable_flash'
 
 group :development do
   gem 'foreman', '0.74.0'
-  gem 'better_errors', '1.1.0'
 end
 
 group :test do
