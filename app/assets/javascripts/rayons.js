@@ -150,7 +150,6 @@ Rayons.UI = {
     $(document).delegate('form.ajax', 'submit', Rayons.UI.ajax_submit);
     $('a.login, a.import').on('click', Rayons.UI.show_editing_form);
     $('a.random').on('click', Rayons.UI.scroll_to_random);
-    $('.toggle-controls a').on('click', Rayons.UI.toggle_editing_bar);
     $('a[data-sort]').click(Rayons.UI.sort);
     $('.js-search').submit(Rayons.UI.search);
   },
@@ -210,7 +209,7 @@ Rayons.UI = {
   },
 
   show_editing_form: function(e) {
-    $('#editing-bar form').show();
+    $('header form').show();
     $(e.target).hide();
     return false;
   },
@@ -246,17 +245,4 @@ Rayons.UI = {
     Rayons.Item.getItems();
     return false;
   },
-
-  toggle_editing_bar: function(e) {
-    var $this = $(e.target);
-    if($('#editing-bar').is(':visible')) {
-      $('#editing-bar').fadeOut(400);
-      $this.text('show controls');
-    } else {
-      $('#editing-bar').fadeIn(400);
-      $this.text('hide controls');
-    }
-    return false;
-  }
-
 };

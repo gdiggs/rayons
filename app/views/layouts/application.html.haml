@@ -28,8 +28,14 @@
           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
   %body
-    %h1
-      %a{ :href => '/' } Rayons
+
+    %header
+      %a.title{ :href => '/' } Rayons
+      - if yield(:nav).present?
+        %nav
+          = yield :nav
+          
+
 
     .message.error.none
     .message.notice.none

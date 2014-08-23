@@ -19,6 +19,50 @@ h1
     :color #FBBE1E
     :text-decoration none
 
+header
+  background: #222
+  opacity: 0.9
+  width: 100%
+  height: 50px
+  position: fixed
+  top: 0
+  left: 0
+  z-index: 100
+  font-size: 14px
+  .title
+    :font-family 'Monoton', cursive
+    :color #FBBE1E
+    :text-decoration none
+    :font-size 30px
+    :float left
+    :padding-left 10px
+  nav
+    float: right
+  ul
+    list-style: none
+    margin: 0px
+  li
+    display: inline-block
+    float: left
+    padding: 15px 10px
+  form
+    :display none
+    &.search
+      :display inline
+
+#menu-icon
+  display: hidden
+  width: 40px
+  height: 40px
+  background: #4c8fec url(../img/menu-icon.png) center
+
+a:hover#menu-icon
+  background-color: #444
+  border-radius: 4px 4px 0 0
+
+.current
+  color: #2262AD
+
 .pagination
   padding-top: 20px
   font-size: 18px
@@ -58,6 +102,7 @@ form
   :min-width 925px
   :width 90%
   :margin 0 auto
+  :margin-top 80px
   :background white
   :padding 20px
   :border-radius 15px

@@ -24,8 +24,37 @@
     - 12.times do
       %li
 
-= render 'editing_bar'
 = render :partial => '/items/template'
 
 :javascript
   window.filter_options = #{params.slice(:sort, :direction, :search, :page).to_json};
+
+- content_for :nav do
+  %ul
+    %li.js-items-page-info
+    %li
+      %a{ :href => '/stats' } stats
+    %li
+      %a.export{ :href => '/items.csv' } export csv
+    %li
+      %a{ :href => random_items_path } random
+    - if @can_edit
+      %li
+        %a.logout{ :href => '/logout' } disable editing
+      %li
+        %a.import{ :href => '' } import csv
+        %form{ :action => '/items/import', :method => 'post', :enctype => 'multipart/form-data'}
+          = token_tag(nil)
+          %input{ :type => 'file', :name => 'file' }
+          %input{ :type => 'submit', :value => 'Import' }
+    - else
+      editing is disabled.
+      %li
+        %a.login{ :href => '' } enable now?
+        = form_tag user_session_path do
+          = text_field_tag 'user[email]', nil, :placeholder => 'Email Address'
+          = password_field_tag 'user[password]', nil, :placeholder => 'Password'
+          %button Sign in
+    %li
+      %form.search.js-search{ :action => '/', :method => 'get' }
+      %input{ :type => 'search', :name => 'search', :placeholder => 'Search', :value => params[:search] }
