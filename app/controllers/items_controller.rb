@@ -12,19 +12,17 @@ class ItemsController < ApplicationController
   # GET /items.json
   # GET /items.csv
   def index
-    @can_edit = policy(Item).edit?
-
     respond_to do |format|
-      format.html
+      format.html { @can_edit = policy(Item).edit? }
       format.json do
-        json = Rails.cache.fetch(["items_json", Item.unscoped.maximum(:updated_at).to_i, params.slice(:sort, :direction, :search, :page)]) do
-          page = [params[:page].to_i, 1].max
-          @items = Item.sorted(params[:sort], params[:direction]).search(params[:search]).page(page)
-          pagination = PageEntriesInfoDecorator.new(@items)
-          markup = render_to_string(partial: 'items/pagination', formats: [:html]).gsub(/.json/, '')
-          {items: @items, page: page, pagination: markup}.merge(pagination.as_json).to_json
+        presenter = ItemJSONPresenter.new(params.slice(:sort, :direction, :search, :page))
+
+        body = Rails.cache.fetch presenter.cache_key do
+          markup = render_to_string(:partial => 'items/pagination', formats: [:html], locals: {:items => presenter.items})
+          presenter.as_json.merge(pagination: markup).to_json
         end
-        render text: json
+
+        render text: body
       end
       format.csv do
         set_streaming_headers
@@ -57,17 +55,6 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html { @release = DiscogsRelease.new(@item) }
-      format.json { render json: @item }
-    end
-  end
-
-  # GET /items/new
-  # GET /items/new.json
-  def new
-    @item = Item.new
-
-    respond_to do |format|
-      format.html # new.html.erb
       format.json { render json: @item }
     end
   end

@@ -25,11 +25,6 @@ describe ItemsController, :type => :controller do
       assert_response :success
     end
 
-    it "should get new" do
-      get :new
-      assert_response :success
-    end
-
     describe '#show' do
       describe 'with a discogs url' do
         before do

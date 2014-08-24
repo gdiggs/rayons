@@ -6,7 +6,7 @@ Rayons::Application.routes.draw do
     get "logout", :to => "devise/sessions#destroy"
   end
 
-  resources :items do
+  resources :items, except: [:new] do
     collection do
       post 'import'
       get 'random'

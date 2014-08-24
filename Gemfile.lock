@@ -276,7 +276,6 @@ DEPENDENCIES
   rails (= 4.2.0.beta1)
   rails-observers
   rails_12factor
-  responders
   rspec-rails (= 3.0.2)
   sass-rails (= 5.0.0.beta1)
   spin
