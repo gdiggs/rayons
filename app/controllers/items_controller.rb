@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   include ApplicationHelper
+  include ActionController::Live
 
   before_filter :authorize_item, :only => [:new, :edit, :create, :update, :import, :destroy]
   before_filter :edit_discogs_param, :only => [:index, :create, :update]
@@ -26,16 +27,10 @@ class ItemsController < ApplicationController
       end
       format.csv do
         set_streaming_headers
-        filename = "rayons_#{Time.now.to_i}.csv"
-        headers["Content-Type"] = "text/csv"
-        headers["Content-disposition"] = "attachment; filename=\"#{filename}\""
-
-        response.status = 200
-
-        # Stream output to client
-        self.response_body = Enumerator.new do |e|
-          Item.to_csv { |i| e << i }
-        end
+        headers.merge!({"Content-Type" => "text/csv",
+                        "Content-disposition" => "attachment; filename=\"rayons_#{Time.now.to_i}.csv\""})
+        Item.to_csv { |row| response.stream.write row }
+        response.stream.close
       end
     end
   end
