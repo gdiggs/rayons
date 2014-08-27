@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
         presenter = ItemJSONPresenter.new(params.slice(:sort, :direction, :search, :page))
 
         body = Rails.cache.fetch presenter.cache_key do
-          markup = render_to_string(:partial => 'items/pagination', formats: [:html], locals: {:items => presenter.items})
+          markup = render_to_string(:partial => 'items/pagination', formats: [:html], locals: {:items => presenter.items}).gsub(/.json/, '')
           presenter.as_json.merge(pagination: markup).to_json
         end
 
