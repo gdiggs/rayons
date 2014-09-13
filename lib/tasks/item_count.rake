@@ -3,9 +3,8 @@ namespace :item_count do
   task :backfill => :environment do
     start_date = Item.unscoped.order('created_at ASC').select('created_at').first.created_at.to_date
     (start_date..Date.today).each do |date|
-      item_count = Item.unscoped.where(['created_at < ?', date.end_of_day]).count - Item.unscoped.where(['created_at < ? AND deleted IS TRUE', date.end_of_day]).count
-      puts "On #{date}, there were #{item_count} items"
-      ItemCount.create!(date: date, num: item_count)
+      puts "Processing #{date}"
+      ItemCount.update_or_create_day(date)
     end
   end
 end

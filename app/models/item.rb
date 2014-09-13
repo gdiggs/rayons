@@ -1,5 +1,6 @@
 class Item < ActiveRecord::Base
   before_validation :blank_discogs
+  after_save :update_item_counts
 
   validates_presence_of :price_paid
   validates_format_of :discogs_url, :with => URI::regexp(['http', 'https']), :allow_nil => true
@@ -126,6 +127,10 @@ class Item < ActiveRecord::Base
   private
   def blank_discogs
     self.discogs_url = nil if self.discogs_url.blank?
+  end
+
+  def update_item_counts
+    ItemCount.update_or_create_day created_at.to_date
   end
 
 end
