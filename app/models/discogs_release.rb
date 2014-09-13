@@ -1,4 +1,5 @@
 require 'discogs'
+require 'open-uri'
 
 class DiscogsRelease
   attr_accessor :item, :release
