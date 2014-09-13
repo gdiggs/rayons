@@ -15,16 +15,6 @@ class Item < ActiveRecord::Base
     Hash[times.map { |k, v| [k.to_i, v] }]
   end
 
-  def self.growth_by_week
-    times = Item.group_by_week(:created_at).order('week asc').count
-    result = {}
-    times.values.each_with_index do |time, i|
-      # Get sum of values up to this point
-      result[times.keys[i]] = times.values[0..i].inject(:+)
-    end
-    result
-  end
-
   def self.prices
     sql = Item.select(:price_paid).sorted('price_paid').to_sql
     connection.select_values(sql).map{ |p| p.gsub(/\$/, '').to_f }
