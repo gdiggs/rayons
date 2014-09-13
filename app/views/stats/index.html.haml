@@ -32,7 +32,7 @@
     = column_chart items_per_day_of_week, :library => google_column_charts_options
 
     %h2 Size over time
-    = line_chart Item.growth_by_week, :library => google_column_charts_options
+    = line_chart ItemCount.by_week, :library => google_column_charts_options
 
     %h2 Items added per day
     #cal-heatmap

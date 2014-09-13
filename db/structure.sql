@@ -3,6 +3,7 @@
 --
 
 SET statement_timeout = 0;
+SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -27,6 +28,38 @@ SET search_path = public, pg_catalog;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
+
+--
+-- Name: item_counts; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE item_counts (
+    id integer NOT NULL,
+    num integer,
+    date date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: item_counts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE item_counts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: item_counts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE item_counts_id_seq OWNED BY item_counts.id;
+
 
 --
 -- Name: items; Type: TABLE; Schema: public; Owner: -; Tablespace: 
@@ -66,6 +99,72 @@ CREATE SEQUENCE items_id_seq
 --
 
 ALTER SEQUENCE items_id_seq OWNED BY items.id;
+
+
+--
+-- Name: playlist_items; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE playlist_items (
+    id integer NOT NULL,
+    playlist_id integer,
+    item_id integer,
+    deleted boolean,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: playlist_items_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE playlist_items_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: playlist_items_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE playlist_items_id_seq OWNED BY playlist_items.id;
+
+
+--
+-- Name: playlists; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE playlists (
+    id integer NOT NULL,
+    name character varying(255),
+    deleted boolean,
+    items_count integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: playlists_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE playlists_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: playlists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE playlists_id_seq OWNED BY playlists.id;
 
 
 --
@@ -158,7 +257,28 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY item_counts ALTER COLUMN id SET DEFAULT nextval('item_counts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY items ALTER COLUMN id SET DEFAULT nextval('items_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY playlist_items ALTER COLUMN id SET DEFAULT nextval('playlist_items_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY playlists ALTER COLUMN id SET DEFAULT nextval('playlists_id_seq'::regclass);
 
 
 --
@@ -176,11 +296,35 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 
 --
+-- Name: item_counts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY item_counts
+    ADD CONSTRAINT item_counts_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: items_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY items
     ADD CONSTRAINT items_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: playlist_items_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY playlist_items
+    ADD CONSTRAINT playlist_items_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: playlists_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY playlists
+    ADD CONSTRAINT playlists_pkey PRIMARY KEY (id);
 
 
 --
@@ -197,6 +341,13 @@ ALTER TABLE ONLY rails_admin_histories
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_item_counts_on_date; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_item_counts_on_date ON item_counts USING btree (date);
 
 
 --
@@ -362,4 +513,10 @@ INSERT INTO schema_migrations (version) VALUES ('20130609180946');
 INSERT INTO schema_migrations (version) VALUES ('20140112194406');
 
 INSERT INTO schema_migrations (version) VALUES ('20140316192819');
+
+INSERT INTO schema_migrations (version) VALUES ('20140412181630');
+
+INSERT INTO schema_migrations (version) VALUES ('20140412181914');
+
+INSERT INTO schema_migrations (version) VALUES ('20140913205342');
 
