@@ -1,5 +1,4 @@
 require 'discogs'
-require 'google-search'
 
 class DiscogsRelease
   attr_accessor :item, :release
@@ -22,7 +21,10 @@ class DiscogsRelease
 
   # TODO: go back to using the discogs images somehow
   def image_url
-    @image_url ||= Google::Search::Image.new(:query => "#{item.artist} #{item.title.gsub(/\(.*\)/, '')} cover").first.uri rescue nil
+    return @image_url if @image_url
+    query = URI.encode("#{item.artist} #{item.title.gsub(/\(.*\)/, '')} cover")
+    response = JSON.parse(open("http://ajax.googleapis.com/ajax/services/search/images?v=1.0&rsz=8&start=1&q=#{query}").read)
+    @image_url = response['responseData']['results'].first['url'] rescue nil
   end
 
   ['styles', 'notes'].each do |meth|
