@@ -32,11 +32,11 @@ gem 'draper', '1.3.1'
 gem 'cacheable_flash'
 
 group :development do
-  gem 'foreman', '0.74.0'
+  gem 'foreman', '0.75.0'
 end
 
 group :test do
-  gem 'rspec-rails', '3.0.2'
+  gem 'rspec-rails', '3.1.0'
   gem 'mocha', '1.1.0'
   gem 'coveralls', require: false
   gem 'spin'

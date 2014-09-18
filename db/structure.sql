@@ -102,72 +102,6 @@ ALTER SEQUENCE items_id_seq OWNED BY items.id;
 
 
 --
--- Name: playlist_items; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE playlist_items (
-    id integer NOT NULL,
-    playlist_id integer,
-    item_id integer,
-    deleted boolean,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: playlist_items_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE playlist_items_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: playlist_items_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE playlist_items_id_seq OWNED BY playlist_items.id;
-
-
---
--- Name: playlists; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE playlists (
-    id integer NOT NULL,
-    name character varying(255),
-    deleted boolean,
-    items_count integer,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: playlists_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE playlists_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: playlists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE playlists_id_seq OWNED BY playlists.id;
-
-
---
 -- Name: rails_admin_histories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -271,20 +205,6 @@ ALTER TABLE ONLY items ALTER COLUMN id SET DEFAULT nextval('items_id_seq'::regcl
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY playlist_items ALTER COLUMN id SET DEFAULT nextval('playlist_items_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY playlists ALTER COLUMN id SET DEFAULT nextval('playlists_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY rails_admin_histories ALTER COLUMN id SET DEFAULT nextval('rails_admin_histories_id_seq'::regclass);
 
 
@@ -309,22 +229,6 @@ ALTER TABLE ONLY item_counts
 
 ALTER TABLE ONLY items
     ADD CONSTRAINT items_pkey PRIMARY KEY (id);
-
-
---
--- Name: playlist_items_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY playlist_items
-    ADD CONSTRAINT playlist_items_pkey PRIMARY KEY (id);
-
-
---
--- Name: playlists_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY playlists
-    ADD CONSTRAINT playlists_pkey PRIMARY KEY (id);
 
 
 --

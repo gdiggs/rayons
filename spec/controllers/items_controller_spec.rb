@@ -29,7 +29,7 @@ describe ItemsController, :type => :controller do
       describe 'with a discogs url' do
         before do
           @item.update_attribute(:discogs_url, 'http://example.com')
-          release_stub = stub(:image_url => 'http://img',
+          release_stub = stub(:image_url => 'sup',
                               :genres => ['Rock'],
                               :styles => ['Punk'],
                               :tracklist => [],
@@ -42,7 +42,7 @@ describe ItemsController, :type => :controller do
         end
 
         it 'should render image' do
-          assert_select "img[src=http://img]"
+          assert_select "img[src=sup]"
         end
       end
     end
