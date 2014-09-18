@@ -4,6 +4,6 @@ rvm:
 env:
   - DB=postgresql
 script:
-  - RAILS_ENV=test COVERAGE=true bundle exec rake db:migrate && bundle exec rspec
+  - grunt && RAILS_ENV=test COVERAGE=true bundle exec rake db:migrate && bundle exec rspec
 before_script:
-  - psql -c 'create database rayons_test;' -U postgres && npm install
+  - psql -c 'create database rayons_test;' -U postgres && npm install -g grunt-cli && npm install
