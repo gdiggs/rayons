@@ -54,9 +54,16 @@ Rayons.Item = {
     $('.js-loader').fadeIn();
     $.getJSON('/items.json', window.filter_options, function(response) {
       var template = $('#item_template').html(),
-          markup = _.map(response.items, function(item) { return Mustache.render(template, item); }).join(),
           first = response.offset_value + 1,
-          last = response.offset_value + response.limit_value;
+          last = response.offset_value + response.limit_value,
+          markup = '';
+
+      _.each(response.items, function(item) {
+        if(item.notes && item.notes.length > 50) {
+          item.notes = item.notes.substring(0, 50) + '...';
+        }
+        markup += Mustache.render(template, item);
+      });
 
       $('.js-loader').fadeOut(200, function() {
         $('.js-items-page-info').text(first + ' - ' + last + ' of ' + response.total_count + ' items');

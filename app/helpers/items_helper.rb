@@ -51,7 +51,7 @@ module ItemsHelper
   end
 
   def field_headers
-    ['Title', 'Artist', 'Year', 'Label', 'Format', 'Condition', 'Color', 'Price Paid', 'Discogs']
+    ['Title', 'Artist', 'Year', 'Label', 'Format', 'Condition', 'Color', 'Price Paid', 'Discogs', 'Notes']
   end
 
 end

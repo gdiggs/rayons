@@ -39,13 +39,13 @@
       - if @release.notes
         %p
           %b Notes:
-          - @item.notes.to_s.lines.each do |line|
-            %br
-            = line
           %br
-          - @release.notes.lines.each do |line|
+          - @item.notes.to_s.lines.each do |line|
             = line
             %br
+          - @release.notes.lines.each do |line|
+            %br
+            = line
       %p
         %a{ href: @item.discogs_url, target: '_blank' } Discogs Link
 
