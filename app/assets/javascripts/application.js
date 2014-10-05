@@ -9,4 +9,7 @@
 //= require jquery.cookie
 //= require mustache
 //= require rayons
+//= require rayons.item
+//= require rayons.stats
+//= require rayons.ui
 //= require items
