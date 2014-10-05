@@ -78,12 +78,11 @@ Rayons.UI = {
   sort: function(e) {
     var $this = $(e.target),
         direction = $('table').data('direction'),
-        current_sort = $('table').data('sort'),
-        delim = window.location.href.indexOf('?') == -1 ? '?' : '&';
+        current_sort = $('table').data('sort');
 
     // swap direction if we're using the same sorting column
-    if($this.data('sort') == current_sort) {
-      if(direction == 'ASC') {
+    if($this.data('sort') === current_sort) {
+      if(direction === 'ASC') {
         direction = 'DESC';
       } else {
         direction = 'ASC';

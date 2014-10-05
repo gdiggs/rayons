@@ -20,7 +20,7 @@ Rayons.Item = {
           'authenticity_token': $('[name=authenticity_token]').val()
         },
         dataType: 'json',
-        success: function(response) {
+        success: function() {
           Rayons.UI.show_message("Item deleted!");
           $link.parents('tr').remove();
         }
@@ -85,7 +85,7 @@ Rayons.Item = {
       data: data,
       dataType: 'json',
       type: 'PUT',
-      success: function(response) {
+      success: function() {
         $link.parents('tr').find('td:not(.edit):not(.save)').each(function() {
           var val = $(this).find('input').val();
           if($(this).is('.discogs_url')) {
