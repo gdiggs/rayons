@@ -53,17 +53,9 @@ Rayons.Item = {
     $('.js-items').fadeOut();
     $('.js-loader').fadeIn();
     $.getJSON('/items.json', window.filter_options, function(response) {
-      var template = $('#item_template').html(),
-          first = response.offset_value + 1,
+      var first = response.offset_value + 1,
           last = response.offset_value + response.limit_value,
-          markup = '';
-
-      _.each(response.items, function(item) {
-        if(item.notes && item.notes.length > 50) {
-          item.notes = item.notes.substring(0, 50) + '...';
-        }
-        markup += Mustache.render(template, item);
-      });
+          markup = _.map(response.items, function(item) { return Rayons.Item.render(item); });
 
       $('.js-loader').fadeOut(200, function() {
         $('.js-items-page-info').text(first + ' - ' + last + ' of ' + response.total_count + ' items');
@@ -72,6 +64,14 @@ Rayons.Item = {
       });
     });
 
+  },
+
+  render: function(item) {
+    var template = $('#item_template').html();
+    if(item.notes && item.notes.length > 50) {
+      item.notes = item.notes.substring(0, 50) + '...';
+    }
+    return Mustache.render(template, item);
   },
 
   save: function(e) {
@@ -162,7 +162,7 @@ Rayons.UI = {
   },
 
   // bind to form submission (adding/updating an item)
-  // show the message and add the row to the bottom of the table
+  // show the message and add the row to the top of the table
   ajax_submit: function(e) {
     var $form = $(e.target);
 
@@ -171,10 +171,12 @@ Rayons.UI = {
       type: $form.attr('method'),
       data: $form.serialize(),
       dataType: 'json',
-      success: function(response) {
-        console.log("RESP", response);
+      success: function(item) {
+        console.log("RESP", item);
         Rayons.UI.show_message("Item created!");
-        $(response.item_markup).insertAfter('table tr:first');
+        var markup = Rayons.Item.render(item);
+
+        $(markup).insertAfter('table tr:first');
         $form.find('input[type=text]').val('');
       },
       error: function(response) {
