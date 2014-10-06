@@ -6,22 +6,7 @@ module.exports = function(grunt) {
     jshint: {
       files: ["app/**/*.js"],
       options: {
-        eqeqeq: true,
-        undef: true,
-        unused: true,
-        globals: {
-          '$': true,
-          jQuery: true,
-          console: true,
-          module: true,
-          document: true,
-          window: true,
-          Rayons: true,
-          confirm: true,
-          '_': true,
-          Mustache: true,
-          CalHeatMap: true
-        }
+        jshintrc: true
       }
     }
   });
