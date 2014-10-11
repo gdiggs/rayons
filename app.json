@@ -4,7 +4,6 @@
   "repository": "https://github.com/GordonDiggs/rayons",
   "success_url": "/",
   "addons": [
-    "loggly:mole",
     "memcachier:dev",
     "newrelic:wayne",
     "pgbackups:auto-month",
