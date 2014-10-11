@@ -4,11 +4,12 @@
   "repository": "https://github.com/GordonDiggs/rayons",
   "success_url": "/",
   "addons": [
-    "scheduler:standard",
-    "heroku-postgresql:dev",
-    "newrelic:wayne",
+    "loggly:mole",
     "memcachier:dev",
-    "pgbackups:auto-month"
+    "newrelic:wayne",
+    "pgbackups:auto-month",
+    "scheduler:standard",
+    "heroku-postgresql:hobby-dev"
   ],
   "env": {
     "BUILDPACK_URL": "https://github.com/ddollar/heroku-buildpack-multi.git",
