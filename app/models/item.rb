@@ -62,17 +62,17 @@ class Item < ActiveRecord::Base
 
   # Generate CSV of items and yield each row to a block
   def self.to_csv
-    headers = ['title', 'artist', 'year', 'label', 'format', 'condition', 'color', 'price_paid', 'discogs_url', 'created_at', 'updated_at']
+    headers = Item.column_names - ['id', 'deleted']
     csv = ''
 
-    csv += CSV::Row.new(headers, headers, true).to_s
-    yield CSV::Row.new(headers, headers, true).to_s if block_given?
+    csv << CSV::Row.new(headers, headers, true).to_s
+    yield csv if block_given?
 
     Item.find_each(batch_size: 50) do |item|
-      values = headers.map { |h| item.send(h) }
+      values = item.attributes.values_at(*headers)
       row = CSV::Row.new(headers, values, false).to_s
       yield row if block_given?
-      csv += row
+      csv << row
     end
     csv
   end
