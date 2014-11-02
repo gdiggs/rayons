@@ -2,8 +2,9 @@ class ItemsController < ApplicationController
   include ApplicationHelper
   include ActionController::Live
 
-  before_filter :authorize_item, :only => [:new, :edit, :create, :update, :import, :destroy]
+  before_filter :authorize_item, :only => [:new, :edit, :create, :update, :import, :destroy, :show]
   before_filter :edit_discogs_param, :only => [:index, :create, :update]
+  before_filter :set_variant, :only => [:show]
   after_filter :expire_pages, :only => [:new, :edit, :create, :update, :import, :destroy]
 
   caches_action :show, :if => Proc.new{ |c| !c.request.format.json? }
@@ -147,5 +148,9 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:artist, :condition, :format, :label, :price_paid, :title, :year, :color, :notes, :discogs_url)
+  end
+
+  def set_variant
+    request.variant = :editable if policy(:item).update?
   end
 end

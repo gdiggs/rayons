@@ -48,7 +48,8 @@
             = line
       %p
         %a{ href: @item.discogs_url, target: '_blank' } Discogs Link
-      = yield :item_show_extra
+    %p
+      %a{ href: edit_item_path(@item) } Edit
 
 - content_for :nav do
   %ul
@@ -59,5 +60,8 @@
     %li
       %a{ :href => random_items_path } random
     %li
+      %a.logout{ :href => '/logout' } log out
+    %li
       %form.search{ :action => '/', :method => 'get' }
         %input{ :type => 'search', :name => 'search', :placeholder => 'Search', :value => params[:search] }
+
