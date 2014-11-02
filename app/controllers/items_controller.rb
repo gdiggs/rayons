@@ -5,9 +5,6 @@ class ItemsController < ApplicationController
   before_filter :authorize_item, :only => [:new, :edit, :create, :update, :import, :destroy, :show]
   before_filter :edit_discogs_param, :only => [:index, :create, :update]
   before_filter :set_variant, :only => [:show]
-  after_filter :expire_pages, :only => [:new, :edit, :create, :update, :import, :destroy]
-
-  caches_action :show, :if => Proc.new{ |c| !c.request.format.json? }
 
   # GET /
   # GET /items
@@ -50,7 +47,12 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
 
     respond_to do |format|
-      format.html { @release = DiscogsRelease.new(@item) }
+      format.html do
+        render text: (cache [@item, request.variant] do
+          @release = DiscogsRelease.new(@item)
+          render_to_string
+        end)
+      end
       format.json { render json: @item }
     end
   end
@@ -131,12 +133,6 @@ class ItemsController < ApplicationController
 
   def authorize_item
     authorize Item
-  end
-
-  def expire_pages
-    expire_page :controller => :stats, :action => :index
-    expire_page :controller => :stats, :action => :counts_by_day
-    expire_action :controller => :items, :action => :show, :id => @item.id if @item
   end
 
   def edit_discogs_param
