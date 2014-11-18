@@ -132,7 +132,7 @@ GEM
       sprockets-rails (~> 2.0)
     rails-observers (0.1.2)
       activemodel (~> 4.0)
-    rails_12factor (0.0.2)
+    rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
     rails_serve_static_assets (0.0.2)
