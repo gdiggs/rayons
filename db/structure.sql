@@ -74,8 +74,8 @@ CREATE TABLE items (
     format text,
     condition text,
     price_paid text,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
     color text,
     deleted boolean DEFAULT false,
     discogs_url text,
@@ -103,6 +103,71 @@ ALTER SEQUENCE items_id_seq OWNED BY items.id;
 
 
 --
+-- Name: items_playlists; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE items_playlists (
+    id integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    playlist_id integer,
+    item_id integer,
+    deleted boolean
+);
+
+
+--
+-- Name: items_playlists_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE items_playlists_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: items_playlists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE items_playlists_id_seq OWNED BY items_playlists.id;
+
+
+--
+-- Name: playlists; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE playlists (
+    id integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    name text,
+    deleted boolean
+);
+
+
+--
+-- Name: playlists_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE playlists_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: playlists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE playlists_id_seq OWNED BY playlists.id;
+
+
+--
 -- Name: rails_admin_histories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -114,8 +179,8 @@ CREATE TABLE rails_admin_histories (
     "table" character varying(255),
     month smallint,
     year bigint,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
 );
 
 
@@ -163,8 +228,8 @@ CREATE TABLE users (
     last_sign_in_at timestamp without time zone,
     current_sign_in_ip character varying(255),
     last_sign_in_ip character varying(255),
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
     admin boolean DEFAULT false NOT NULL
 );
 
@@ -206,6 +271,20 @@ ALTER TABLE ONLY items ALTER COLUMN id SET DEFAULT nextval('items_id_seq'::regcl
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY items_playlists ALTER COLUMN id SET DEFAULT nextval('items_playlists_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY playlists ALTER COLUMN id SET DEFAULT nextval('playlists_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY rails_admin_histories ALTER COLUMN id SET DEFAULT nextval('rails_admin_histories_id_seq'::regclass);
 
 
@@ -230,6 +309,22 @@ ALTER TABLE ONLY item_counts
 
 ALTER TABLE ONLY items
     ADD CONSTRAINT items_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: items_playlists_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY items_playlists
+    ADD CONSTRAINT items_playlists_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: playlists_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY playlists
+    ADD CONSTRAINT playlists_pkey PRIMARY KEY (id);
 
 
 --
@@ -323,6 +418,13 @@ CREATE INDEX index_items_on_updated_at ON items USING btree (updated_at);
 --
 
 CREATE INDEX index_items_on_year ON items USING btree (year);
+
+
+--
+-- Name: index_items_playlists_on_playlist_id_and_item_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_items_playlists_on_playlist_id_and_item_id ON items_playlists USING btree (playlist_id, item_id);
 
 
 --
@@ -429,4 +531,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140316192819');
 INSERT INTO schema_migrations (version) VALUES ('20140913205342');
 
 INSERT INTO schema_migrations (version) VALUES ('20140928174302');
+
+INSERT INTO schema_migrations (version) VALUES ('20141123183754');
+
+INSERT INTO schema_migrations (version) VALUES ('20141123222643');
 

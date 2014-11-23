@@ -1,4 +1,6 @@
 class Item < ActiveRecord::Base
+  has_and_belongs_to_many :playlists
+
   before_validation :blank_discogs
   after_save :update_item_counts
 
