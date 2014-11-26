@@ -1,0 +1,16 @@
+- lists = @item.playlists
+
+- if lists.present?
+  %p
+    %b Playlists
+    %br
+    %ul
+      - lists.each do |list|
+        %li
+          %a{ href: playlist_path(list) }= list.name
+      - if local_assigns[:editable]
+        %li
+          %form{ action: playlists_path, method: 'POST' }
+            %input{ type: 'text', placeholder: 'Add To Playlist', name: 'playlist[name]' }
+            %input{ type: 'hidden', name: 'item_id', value: @item.id }
+  
