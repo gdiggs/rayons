@@ -43,7 +43,7 @@ class Item < ActiveRecord::Base
     if !query.present?
       self.all
     elsif query == query.to_i.to_s
-      self.basic_search(query) | self.where(['year = ?', query])
+      self.basic_search(query).merge(self.where(['year = ?', query]))
     else
       self.basic_search(query)
     end
