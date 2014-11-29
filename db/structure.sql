@@ -74,8 +74,8 @@ CREATE TABLE items (
     format text,
     condition text,
     price_paid text,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
     color text,
     deleted boolean DEFAULT false,
     discogs_url text,
@@ -114,8 +114,8 @@ CREATE TABLE rails_admin_histories (
     "table" character varying(255),
     month smallint,
     year bigint,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
 );
 
 
@@ -163,8 +163,8 @@ CREATE TABLE users (
     last_sign_in_at timestamp without time zone,
     current_sign_in_ip character varying(255),
     last_sign_in_ip character varying(255),
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
     admin boolean DEFAULT false NOT NULL
 );
 
