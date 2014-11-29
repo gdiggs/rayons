@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby "2.1.0", :engine => "rbx", :engine_version => "2.2.10"
 
-gem 'rails', '~> 4.1'
+gem 'rails', '4.2.0.rc1'
 gem 'pg', '0.17.1'
 gem 'puma', '2.9.1'
 gem 'rails_12factor'
@@ -29,7 +29,7 @@ gem 'draper', '1.4.0'
 gem 'cacheable_flash'
 
 group :development do
-  gem 'foreman', '0.75.0'
+  gem 'web-console'
 end
 
 group :test do
