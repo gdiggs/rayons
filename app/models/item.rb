@@ -11,33 +11,6 @@ class Item < ActiveRecord::Base
 
   SORT_ORDER = ['artist', 'title', 'year', 'label', 'format'].freeze
 
-  def self.counts_by_day
-    times = Item.group_by_day(:created_at).order('day asc').count
-    Hash[times.map { |k, v| [k.to_i, v] }]
-  end
-
-  def self.prices
-    sql = Item.select(:price_paid).sorted('price_paid').to_sql
-    connection.select_values(sql).map{ |p| p.gsub(/\$/, '').to_f }
-  end
-
-  def self.significant_prices
-    {
-      :max_price => Item.prices.last.round(2),
-      :min_price => Item.prices.first.round(2),
-      :avg_price => Item.prices.average.round(2),
-      :median_price => Item.prices.median.round(2)
-    }
-  end
-
-  def self.stats_for_field(field)
-    self.select(field).group(field).order("count_#{field} DESC").count
-  end
-
-  def self.price_stats
-    self.select(:price_paid).group(:price_paid).order("to_number(price_paid, '9999999.99')").count
-  end
-
   def self.search(query = "")
     query = query.to_s
     if !query.present?
@@ -78,15 +51,6 @@ class Item < ActiveRecord::Base
     csv
   end
 
-  def self.words_for_field(field)
-    raise InvalidFieldError if !Item.column_names.include?(field.to_s)
-
-    # Get a hash of the words in a field
-    items = Item.select(field.to_sym).map{ |i| i.send(field.to_sym).to_s.split(/[\s\/,\(\)]+/) }.flatten.group_by{ |v| v }
-    # return the frequency of each word
-    Hash[items.map{|k,v| [k, v.count] }]
-  end
-
   # Import a csv file object and create an Item object for each row
   #
   # @param [File] file The csv file to be read
@@ -122,8 +86,6 @@ class Item < ActiveRecord::Base
     self.deleted = true
     self.save!
   end
-
-  class InvalidFieldError < RuntimeError; end
 
   private
   def blank_discogs
