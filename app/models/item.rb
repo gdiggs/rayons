@@ -16,7 +16,7 @@ class Item < ActiveRecord::Base
     if !query.present?
       self.all
     elsif query == query.to_i.to_s
-      ids = Item.basic_search(1989).map(&:id)
+      ids = Item.basic_search(query).map(&:id)
       self.where(['year = ? OR id IN (?)', query, ids])
     else
       self.basic_search(query)
