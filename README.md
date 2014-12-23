@@ -5,19 +5,16 @@
 
 ## Rayons
 
-Rayons is a rails port and specification of [https://github.com/GordonDiggs/cataloguais](https://github.com/GordonDiggs/cataloguais). While cataloguais sought to be a reusable, generalized, way to catalog anything, Rayons is more specialized for a record collection.
-
-Rails was chosen over Sinatra mainly for the chainability and ease of ActiveRecord over DataMapper. Other advantages include better authentication, more RESTful APIs, and an admin dashboard.
+Rayons is a rails application dedicated to catalogging a record collection. It offers authentication, management of the collection, as well as statistics on the collection.
 
 ### Local Setup
 
-Rayons requires a Postgres installation.
+Rayons requires [Postgresql](http://www.postgresql.org/), as well as [npm](https://www.npmjs.com/). Npm is used with bower for vendored javascripts.
 
 ```bash
-$ gem install bundler
 $ bundle install
-$ rake db:create
-$ rake db:migrate
+$ rake db:create db:migrate
+$ npm install
 $ foreman start
 ```
 
@@ -35,8 +32,6 @@ Rayons comes with [Grunt](http://gruntjs.com) for js hinting. Install and run it
 $ npm install -g grunt-cli
 $ grunt
 ```
-
-*NOTE: You must have node 0.8 or higher*
 
 ### Dropbox Backup Setup
 
