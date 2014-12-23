@@ -18,7 +18,7 @@ $ npm install
 $ foreman start
 ```
 
-The app will be available at [0.0.0.0:5000](http://0.0.0.0:5000). When running in production mode, the app requires SSL (Heroku supplies this automatically), and an `ENV[SECRET_TOKEN]` to be set.
+The app will be available at [0.0.0.0:5000](http://0.0.0.0:5000). When running in production mode, the app requires SSL (Heroku supplies this automatically), and an `ENV['SECRET_TOKEN']` to be set.
 
 ### Heroku Setup
 
