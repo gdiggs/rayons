@@ -13,7 +13,6 @@
   "env": {
     "BUILDPACK_URL": "https://github.com/ddollar/heroku-buildpack-multi.git",
     "SECRET_TOKEN": "REDACTED",
-    "GIST_TOKEN": "REDACTED",
     "DROPBOX_ACCESS_TOKEN": "REDACTED"
   }
 }
