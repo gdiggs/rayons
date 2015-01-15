@@ -10,6 +10,7 @@
   %td.discogs_url
     - if item.discogs_url.present?
       %a{ :href => item.discogs_url, :target => '_blank' } link
+  %td.notes= item.notes
   %td.added_on= item.created_at.strftime('%m.%d.%y')
   %td.edit<
     %a{ :href => item_path(item) }> s
