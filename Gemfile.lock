@@ -116,6 +116,7 @@ GEM
     mocha (1.1.0)
       metaclass (~> 0.0.1)
     multi_json (1.10.1)
+    mustache (1.0.0)
     newrelic_rpm (3.9.8.273)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
@@ -257,6 +258,7 @@ DEPENDENCIES
   marco-polo (= 1.2.1)
   memcachier
   mocha (= 1.1.0)
+  mustache
   newrelic_rpm (= 3.9.8.273)
   pg (= 0.17.1)
   pry-rails

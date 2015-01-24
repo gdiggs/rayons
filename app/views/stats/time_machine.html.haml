@@ -2,32 +2,11 @@
 - table_headers = field_headers + ['Added On']
 
 .content.time-machine
-  %h2 Added One Month Ago
-  - if @month_ago.any?
+  - @time_machine.items.each do |date, items|
+    %h2 Added on #{date.strftime('%A, %B %-d, %Y')}
     %table
       %tr
         - table_headers.each do |field|
           %th= field
-      = render :partial => 'items/item', :collection => @month_ago, :as => :item, :cache => true
-  - else
-    Nothing added a month ago today!
-
-  %h2 Added Six Months Ago
-  - if @six_months_ago.any?
-    %table
-      %tr
-        - table_headers.each do |field|
-          %th= field
-      = render :partial => 'items/item', :collection => @six_months_ago, :as => :item, :cache => true
-  - else
-    Nothing added six months ago today!
-
-  %h2 Added A Year Ago
-  - if @year_ago.any?
-    %table
-      %tr
-        - table_headers.each do |field|
-          %th= field
-      = render :partial => 'items/item', :collection => @year_ago, :as => :item, :cache => true
-  - else
-    Nothing added a year ago today!
+      - items.each do |item|
+        = Mustache.render(@mustache_template, item).html_safe

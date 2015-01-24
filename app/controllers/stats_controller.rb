@@ -18,9 +18,13 @@ class StatsController < ApplicationController
 
   # GET /stats/time_machine
   def time_machine
-    @month_ago = Item.sorted.added_on_day 1.month.ago
-    @six_months_ago = Item.sorted.added_on_day 6.months.ago
-    @year_ago = Item.sorted.added_on_day 1.year.ago
+    @time_machine = TimeMachine.new
+    respond_to do |format|
+      format.json { render text: @time_machine.to_json }
+      format.html do
+        @mustache_template = render_to_string partial: '/items/template'
+      end
+    end
   end
 
   # GET /stats/words_for_field

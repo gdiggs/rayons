@@ -26,6 +26,7 @@ gem 'discogs-wrapper', '2.0.0', require: false
 gem 'kaminari', '0.16.1'
 gem 'draper', '1.4.0'
 gem 'cacheable_flash'
+gem 'mustache'
 
 group :development do
   gem 'web-console'

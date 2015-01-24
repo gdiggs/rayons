@@ -24,7 +24,7 @@
     - 12.times do
       %li
 
-= render :partial => '/items/template'
+%script#item_template{ type: 'text/template' }= render :partial => '/items/template'
 
 :javascript
   window.filter_options = #{params.slice(:sort, :direction, :search, :page).to_json};
