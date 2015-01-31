@@ -1,4 +1,8 @@
+require 'memoist'
+
 class TimeMachine
+  extend Memoist
+
   attr_reader :base_date
 
   def initialize(date = Time.now)
@@ -10,22 +14,21 @@ class TimeMachine
   end
 
   def items
-    return @items if @items
+    result = {}
 
-    @items = {}
     i = 1
     date = base_date - i.years
 
     while date >= start_date do
       if (items = Item.where(created_at: date..date.end_of_day)).present?
-        @items[date] = items
+        result[date] = items
       end
 
       i += 1
       date = base_date - i.years
     end
 
-    @items
+    result
   end
 
   def as_json
@@ -35,6 +38,8 @@ class TimeMachine
   def to_json
     as_json.to_json
   end
+
+  memoize :items
 
   private
   def start_date

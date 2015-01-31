@@ -27,6 +27,7 @@ gem 'kaminari', '0.16.1'
 gem 'draper', '1.4.0'
 gem 'cacheable_flash'
 gem 'mustache'
+gem 'memoist', require: false
 
 group :development do
   gem 'web-console'

@@ -108,6 +108,7 @@ GEM
       mime-types (>= 1.16, < 3)
     marco-polo (1.2.1)
     memcachier (0.0.2)
+    memoist (0.11.0)
     metaclass (0.0.4)
     method_source (0.8.2)
     mime-types (2.4.3)
@@ -257,6 +258,7 @@ DEPENDENCIES
   kaminari (= 0.16.1)
   marco-polo (= 1.2.1)
   memcachier
+  memoist
   mocha (= 1.1.0)
   mustache
   newrelic_rpm (= 3.9.8.273)

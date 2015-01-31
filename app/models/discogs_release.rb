@@ -1,7 +1,10 @@
 require 'discogs'
+require 'memoist'
 require 'open-uri'
 
 class DiscogsRelease
+  extend Memoist
+
   attr_accessor :item, :release
 
   def initialize(item)
@@ -22,10 +25,9 @@ class DiscogsRelease
 
   # TODO: go back to using the discogs images somehow
   def image_url
-    return @image_url if @image_url
     query = URI.encode("#{item.artist} #{item.title.gsub(/\(.*\)/, '')} cover")
     response = JSON.parse(open("http://ajax.googleapis.com/ajax/services/search/images?v=1.0&rsz=8&start=1&q=#{query}").read)
-    @image_url = response['responseData']['results'].first['url'] rescue nil
+    response['responseData']['results'].first['url'] rescue nil
   end
 
   ['styles', 'notes'].each do |meth|
@@ -49,4 +51,6 @@ class DiscogsRelease
   def respond_to?(meth)
     super || (release && release.respond_to?(meth))
   end
+
+  memoize :image_url
 end
