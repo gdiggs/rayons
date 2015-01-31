@@ -2,11 +2,15 @@
 - table_headers = field_headers + ['Added On']
 
 .content.time-machine
-  - @time_machine.items.each do |date, items|
-    %h2 Added on #{date.strftime('%A, %B %-d, %Y')}
-    %table
-      %tr
-        - table_headers.each do |field|
-          %th= field
-      - items.each do |item|
-        = Mustache.render(@mustache_template, item).html_safe
+  - if @time_machine.has_items?
+    - @time_machine.items.each do |date, items|
+      %h2 Added on #{date.strftime('%A, %B %-d, %Y')}
+      %table
+        %tr
+          - table_headers.each do |field|
+            %th= field
+        - items.each do |item|
+          = Mustache.render(@mustache_template, item).html_safe
+  - else
+    %h2
+      %em No items added on #{Time.now.strftime('%B %-d')}

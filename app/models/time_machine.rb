@@ -5,6 +5,10 @@ class TimeMachine
     @base_date = date.to_date
   end
 
+  def has_items?
+    items.present?
+  end
+
   def items
     return @items if @items
 
