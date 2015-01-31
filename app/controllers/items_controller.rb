@@ -13,23 +13,8 @@ class ItemsController < ApplicationController
   def index
     respond_to do |format|
       format.html { @can_edit = policy(Item).edit? }
-      format.json do
-        presenter = ItemJSONPresenter.new(params.slice(:sort, :direction, :search, :page))
-
-        body = Rails.cache.fetch presenter.cache_key do
-          markup = render_to_string(:partial => 'items/pagination', formats: [:html], locals: {:items => presenter.items}).gsub(/.json/, '')
-          presenter.as_json.merge(pagination: markup).to_json
-        end
-
-        render text: body
-      end
-      format.csv do
-        set_streaming_headers
-        headers.merge!({"Content-Type" => "text/csv",
-                        "Content-disposition" => "attachment; filename=\"rayons_#{Time.now.to_i}.csv\""})
-        Item.to_csv { |row| response.stream.write row }
-        response.stream.close
-      end
+      format.json { index_json }
+      format.csv  { index_csv }
     end
   end
 
@@ -148,5 +133,24 @@ class ItemsController < ApplicationController
 
   def set_variant
     request.variant = :editable if policy(:item).update?
+  end
+
+  def index_json
+    presenter = ItemJSONPresenter.new(params.slice(:sort, :direction, :search, :page))
+
+    body = Rails.cache.fetch presenter.cache_key do
+      markup = render_to_string(:partial => 'items/pagination', formats: [:html], locals: {:items => presenter.items}).gsub(/.json/, '')
+      presenter.as_json.merge(pagination: markup).to_json
+    end
+
+    render text: body
+  end
+
+  def index_csv
+    set_streaming_headers
+    headers.merge!({"Content-Type" => "text/csv",
+                    "Content-disposition" => "attachment; filename=\"rayons_#{Time.now.to_i}.csv\""})
+    Item.to_csv { |row| response.stream.write row }
+    response.stream.close
   end
 end
