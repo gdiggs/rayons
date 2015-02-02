@@ -50,6 +50,7 @@
         %a{ href: @item.discogs_url, target: '_blank' } Discogs Link
     %p
       %a{ href: edit_item_path(@item) } Edit
+    = render partial: 'lists', locals: { editable: true }
 
 - content_for :nav do
   %ul
