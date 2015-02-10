@@ -13,4 +13,4 @@
           = Mustache.render(@mustache_template, item).html_safe
   - else
     %h2
-      %em No items added on #{Time.now.strftime('%B %-d')}
+      %em No items added on #{@time_machine.base_date.strftime('%B %-d')}

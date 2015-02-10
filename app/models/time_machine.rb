@@ -32,7 +32,7 @@ class TimeMachine
   end
 
   def as_json
-    {items: items}
+    {date: @base_date, items: items}
   end
 
   def to_json
@@ -43,6 +43,6 @@ class TimeMachine
 
   private
   def start_date
-    @start_date ||= Item.minimum(:created_at)
+    @start_date ||= Item.minimum(:created_at).midnight
   end
 end

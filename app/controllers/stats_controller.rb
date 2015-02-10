@@ -18,7 +18,8 @@ class StatsController < ApplicationController
 
   # GET /stats/time_machine
   def time_machine
-    @time_machine = TimeMachine.new
+    date = Time.local(Time.now.year, params[:month], params[:day]) if (params[:month] && params[:day])
+    @time_machine = TimeMachine.new(date)
     respond_to do |format|
       format.json { render text: @time_machine.to_json }
       format.html do
