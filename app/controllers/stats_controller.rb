@@ -1,5 +1,6 @@
 class StatsController < ApplicationController
-  before_filter :initialize_item_stats
+  before_filter :initialize_item_stats, only: :index
+  before_filter :initialize_time_machine, only: :time_machine
 
   # GET /stats/counts_by_day.json
   def counts_by_day
@@ -18,8 +19,6 @@ class StatsController < ApplicationController
 
   # GET /stats/time_machine
   def time_machine
-    date = Time.local(Time.now.year, params[:month], params[:day]) if (params[:month] && params[:day])
-    @time_machine = TimeMachine.new(date)
     respond_to do |format|
       format.json { render text: @time_machine.to_json }
       format.html do
@@ -40,4 +39,12 @@ class StatsController < ApplicationController
     @item_stats = ItemStats.new
   end
 
+  def initialize_time_machine
+    if params[:month] && params[:day]
+      date = Time.local(Time.now.year, params[:month], params[:day])
+      @time_machine = TimeMachine.new(date)
+    else
+      @time_machine = TimeMachine.new
+    end
+  end
 end
