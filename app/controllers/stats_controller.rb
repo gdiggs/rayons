@@ -1,5 +1,5 @@
 class StatsController < ApplicationController
-  before_filter :initialize_item_stats, only: :index
+  before_filter :initialize_item_stats, except: :time_machine
   before_filter :initialize_time_machine, only: :time_machine
 
   # GET /stats/counts_by_day.json
