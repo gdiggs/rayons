@@ -12,6 +12,9 @@
     = stylesheet_link_tag "application", :media => "all"
     - if !cookies[:exclude_responsive]
       = stylesheet_link_tag "responsive", :media => "all"
+
+    - if ENV['BUGSNAG_API_KEY']
+      %script{ "data-apikey" => ENV['BUGSNAG_API_KEY'], :src => "//d2wy8f7a9ursnm.cloudfront.net/bugsnag-2.min.js" }
     = javascript_include_tag "//www.google.com/jsapi", "chartkick"
     = javascript_include_tag "application"
     = csrf_meta_tags
