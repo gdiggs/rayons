@@ -36,13 +36,13 @@
           %ul
             - @release.tracklist.each do |track|
               %li #{track.position}: #{track.title}
-      - if @item.notes.present? || @release.notes.present?
-        %p
-          %b Notes:
+    - if @release.notes.present?
+      %p
+        %b Notes:
+        %br
+        - @release.notes.to_s.lines.each do |line|
+          = line
           %br
-          - @release.notes.to_s.lines.each do |line|
-            = line
-            %br
       %p
         %a{ href: @item.discogs_url, target: '_blank' } Discogs Link
       = yield :item_show_extra
