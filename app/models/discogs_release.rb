@@ -30,14 +30,14 @@ class DiscogsRelease
     response['responseData']['results'].first['url'] rescue nil
   end
 
-  ['styles', 'notes'].each do |meth|
-    define_method meth do
-      if release && release.respond_to?(meth)
-        release.send(meth)
-      else
-        nil
-      end
-    end
+  def styles
+    release.styles if release
+  end
+
+  def notes
+    notes = item.notes.to_s + "\n"
+    notes << release.notes.to_s if release
+    notes.strip
   end
 
   def method_missing(meth, *args, &block)
@@ -52,5 +52,5 @@ class DiscogsRelease
     super || (release && release.respond_to?(meth))
   end
 
-  memoize :image_url
+  memoize :image_url, :notes
 end
