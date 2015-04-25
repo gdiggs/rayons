@@ -37,6 +37,6 @@ end
 group :test do
   gem 'rspec-rails', '3.2.1'
   gem 'mocha', '1.1.0'
-  gem 'coveralls', '0.7.11', require: false
+  gem "codeclimate-test-reporter", group: :test, require: nil
   gem 'spin'
 end
