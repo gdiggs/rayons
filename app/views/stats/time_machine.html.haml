@@ -4,7 +4,7 @@
 .content.time-machine
   - if @time_machine.has_items?
     - @time_machine.items.each do |date, items|
-      %h2 Added on #{date.strftime('%A, %B %-d, %Y')}
+      %h2 #{pluralize(items.count, 'item')} added on #{date.strftime('%A, %B %-d, %Y')}
       %table
         %tr
           - table_headers.each do |field|
