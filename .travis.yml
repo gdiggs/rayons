@@ -8,8 +8,7 @@ env:
   global:
     secure: BiFwabvcPOzPPN/w6eC2ZwIL7pITFPvAOl0pjHMUWL7OgcjPfqDtiexTjLdWNOm0U7Qg6+lhmiT8sXJv0HzbkBny+O6QUQDcPcwspZximDdbMyefl1GXU+VfS18/1Uphs1L8V2doPJPATaEUNGnQ0qsdB0dgjFNGd+ddAp81tes=
 script:
-- grunt && RAILS_ENV=test COVERAGE=true bundle exec rake db:migrate && bundle exec
-  rspec
+- grunt && RAILS_ENV=test bundle exec rake db:migrate && bundle exec rspec
 before_install:
 - 'echo ''gem: --no-ri --no-rdoc'' > ~/.gemrc'
 before_script:
