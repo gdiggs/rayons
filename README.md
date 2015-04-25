@@ -1,7 +1,7 @@
 [![Code Climate](https://codeclimate.com/github/GordonDiggs/rayons.png)](https://codeclimate.com/github/GordonDiggs/rayons)
 [![Dependency Status](https://gemnasium.com/GordonDiggs/rayons.png)](https://gemnasium.com/GordonDiggs/rayons)
 [![Build Status](https://travis-ci.org/GordonDiggs/rayons.png?branch=master)](https://travis-ci.org/GordonDiggs/rayons)
-[![Coverage Status](https://coveralls.io/repos/GordonDiggs/rayons/badge.png?branch=master)](https://coveralls.io/r/GordonDiggs/rayons?branch=master)
+[![Test Coverage](https://codeclimate.com/github/GordonDiggs/rayons/badges/coverage.svg)](https://codeclimate.com/github/GordonDiggs/rayons)
 
 ## Rayons
 
