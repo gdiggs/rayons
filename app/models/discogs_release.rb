@@ -8,7 +8,7 @@ class DiscogsRelease
   attr_accessor :item, :release
 
   def initialize(item)
-    @wrapper = Discogs::Wrapper.new("Rayons #{Rails.env}")
+    @wrapper = Discogs::Wrapper.new("Rayons #{Rails.env}", app_key: ENV['DISCOGS_APP_KEY'], app_secret: ENV['DISCOGS_APP_SECRET'])
     self.item = item
     if item.discogs_url.present?
       discogs_id = item.discogs_url.gsub(/.*\/release\/(\d+)/, '\1')
@@ -25,9 +25,8 @@ class DiscogsRelease
 
   # TODO: go back to using the discogs images somehow
   def image_url
-    query = URI.encode("#{item.artist} #{item.title.gsub(/\(.*\)/, '')} cover")
-    response = JSON.parse(open("http://ajax.googleapis.com/ajax/services/search/images?v=1.0&rsz=8&start=1&q=#{query}").read)
-    response['responseData']['results'].first['url'] rescue nil
+    img = release.images.select { |i| i['type'] == "primary" }.sort_by { |i| i['width'] }.last || {}
+    img['uri']
   end
 
   def styles

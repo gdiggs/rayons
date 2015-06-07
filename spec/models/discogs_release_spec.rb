@@ -5,7 +5,7 @@ describe DiscogsRelease, :type => :model do
   before do
     @release = stub_everything(:title => 'Hit Record 2000', :notes => 'Probably the best')
     wrapper = stub_everything(:get_release => @release)
-    Discogs::Wrapper.stubs(:new).with(anything).returns(wrapper)
+    Discogs::Wrapper.stubs(:new).returns(wrapper)
     @item = items(:one)
     @item.update_attribute(:discogs_url, 'http://example.com')
     @discogs_release = DiscogsRelease.new(@item)

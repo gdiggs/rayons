@@ -62,7 +62,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    discogs-wrapper (2.0.0)
+    discogs-wrapper (2.1.1)
       hashie (~> 2.1)
       oauth (~> 0.4.7)
     docile (1.1.5)
@@ -244,7 +244,7 @@ DEPENDENCIES
   codeclimate-test-reporter
   dalli (= 2.7.2)
   devise
-  discogs-wrapper (= 2.0.0)
+  discogs-wrapper (= 2.1.1)
   draper (= 1.4.0)
   dropbox-sdk
   groupdate (= 2.4.0)
