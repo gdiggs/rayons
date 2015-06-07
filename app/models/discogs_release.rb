@@ -25,8 +25,10 @@ class DiscogsRelease
 
   # TODO: go back to using the discogs images somehow
   def image_url
-    img = release.images.select { |i| i['type'] == "primary" }.sort_by { |i| i['width'] }.last || {}
-    img['uri']
+    if release
+      img = release.images.select { |i| i['type'] == "primary" }.sort_by { |i| i['width'] }.last || {}
+      img['uri']
+    end
   end
 
   def styles

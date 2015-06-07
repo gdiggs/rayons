@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html do
-        render text: (cache [@item, request.variant] do
+        render text: (cache [@item, request.variant, '1'] do
           @release = DiscogsRelease.new(@item)
           render_to_string
         end)
