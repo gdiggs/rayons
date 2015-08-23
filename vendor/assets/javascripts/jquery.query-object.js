@@ -5,7 +5,7 @@
  * Date: 2009/8/13
  *
  * @author Blair Mitchelmore
- * @version 2.1.7
+ * @version 2.2.2
  *
  **/
 new function(settings) {
@@ -96,7 +96,7 @@ new function(settings) {
             if ($numbers) {
               if (/^[+-]?[0-9]+\.[0-9]*$/.test(val)) // simple float regex
                 val = parseFloat(val);
-              else if (/^[+-]?[0-9]+$/.test(val)) // simple int regex
+              else if (/^[+-]?[1-9][0-9]*$/.test(val)) // simple int regex
                 val = parseInt(val, 10);
             }
 
@@ -138,11 +138,28 @@ new function(settings) {
       set: function(key, val) {
         return this.copy().SET(key, val);
       },
-      REMOVE: function(key) {
+      REMOVE: function(key, val) {
+        if (val) {
+          var target = this.GET(key);
+          if (is(target, Array)) {
+            for (tval in target) {
+                target[tval] = target[tval].toString();
+            }
+            var index = $.inArray(val, target);
+            if (index >= 0) {
+              key = target.splice(index, 1);
+              key = key[index];
+            } else {
+              return;
+            }
+          } else if (val != target) {
+              return;
+          }
+        }
         return this.SET(key, null).COMPACT();
       },
-      remove: function(key) {
-        return this.copy().REMOVE(key);
+      remove: function(key, val) {
+        return this.copy().REMOVE(key, val);
       },
       EMPTY: function() {
         var self = this;

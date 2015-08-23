@@ -1,0 +1,24 @@
+.content#item_search
+  %h1 Advanced Search
+
+  = form_for(:q, url: "/", method: "GET") do |f|
+    - %w[title artist label color notes].each do |field|
+      .term
+        = f.label field, "#{field.titleize}:"
+        = f.text_field field
+
+    .term
+      = f.label :year
+      = f.fields_for :years do |years|
+        = years.number_field :minimum, value: @presenter.minimum_year
+        to
+        = years.number_field :maximum, value: @presenter.maximum_year
+
+    - %w[format condition].each do |field|
+      .term
+        = f.label field, "#{field.titleize}:"
+        = f.select field do
+          = options_for_select [""] + @presenter.send(field.pluralize)
+
+    .term
+      %input{ type: "submit", value: "Search" }

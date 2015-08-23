@@ -27,7 +27,7 @@
 %script#item_template{ type: 'text/template' }= render :partial => '/items/template'
 
 :javascript
-  window.filter_options = #{params.slice(:sort, :direction, :search, :page).to_json};
+  window.filter_options = #{params.slice(:sort, :direction, :search, :q, :page).to_json};
 
 - content_for :nav do
   %ul
@@ -57,3 +57,5 @@
     %li
       %form.search.js-search{ :action => '/', :method => 'get' }
         %input.search-input{ :type => 'search', :name => 'search', :placeholder => 'Search', :value => params[:search] }
+    %li
+      %a.advanced-serach{ href: search_items_path } advanced

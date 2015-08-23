@@ -11,6 +11,7 @@ Rayons::Application.routes.draw do
       post 'import'
       get 'random'
       get 'latest'
+      get 'search'
       get '/page/:page', :action => :index
     end
   end

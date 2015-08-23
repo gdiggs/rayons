@@ -23,6 +23,20 @@ class Item < ActiveRecord::Base
     end
   end
 
+  def self.advanced_search(query = {})
+    if !query.present?
+      self.all
+    else
+      query = query.select { |term, value| value.present? }
+      if years = query.delete("years")
+        ids = Item.basic_search(query).map(&:id)
+        self.where(["id IN (?) AND year BETWEEN ? AND ?", ids, years["minimum"], years["maximum"]])
+      else
+        self.basic_search(query)
+      end
+    end
+  end
+
   def self.sorted(first = SORT_ORDER[0], direction = 'ASC')
     first ||= SORT_ORDER[0]
     direction ||= 'ASC'

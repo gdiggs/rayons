@@ -114,6 +114,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def search
+    @presenter = ItemSearchPresenter.new
+  end
+
   private
 
   def authorize_item
@@ -136,7 +140,12 @@ class ItemsController < ApplicationController
   end
 
   def index_json
-    presenter = ItemJSONPresenter.new(params.slice(:sort, :direction, :search, :page))
+    if params[:q]
+      params[:q] = params[:q].permit(:title, :artist, :format, :label, :color, :condition, :notes, :years => [:minimum, :maximum])
+      presenter = ItemAdvancedSearchJSONPresenter.new(params.slice(:sort, :direction, :q, :page))
+    else
+      presenter = ItemJSONPresenter.new(params.slice(:sort, :direction, :search, :page))
+    end
 
     body = Rails.cache.fetch presenter.cache_key do
       markup = render_to_string(:partial => 'items/pagination', formats: [:html], locals: {:items => presenter.items}).gsub(/.json/, '')
