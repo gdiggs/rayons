@@ -29,8 +29,12 @@ class Item < ActiveRecord::Base
     else
       query = query.select { |term, value| value.present? }
       if years = query.delete("years")
-        ids = Item.basic_search(query).map(&:id)
-        self.where(["id IN (?) AND year BETWEEN ? AND ?", ids, years["minimum"], years["maximum"]])
+        if query.present?
+          ids = Item.basic_search(query).map(&:id)
+          self.where(["id IN (?) AND year BETWEEN ? AND ?", ids, years["minimum"], years["maximum"]])
+        else
+          self.where(["year BETWEEN ? AND ?", years["minimum"], years["maximum"]])
+        end
       else
         self.basic_search(query)
       end
