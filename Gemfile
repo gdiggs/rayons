@@ -23,7 +23,7 @@ gem 'uglifier', '~> 2.7.2'
 gem "autoprefixer-rails", '~> 4.0.2.2'
 gem 'pry-rails'
 gem 'marco-polo', '~> 1.2.1'
-gem 'discogs-wrapper', '~> 2.1.1', require: false
+gem 'discogs-wrapper', '2.1.1', require: false
 gem 'kaminari', '~> 0.16.1'
 gem 'draper', '~> 1.4.0'
 gem 'cacheable_flash'
