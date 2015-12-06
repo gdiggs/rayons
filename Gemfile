@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-ruby "2.2.0"
 
 gem 'rails', '~> 4.2.5'
 gem 'pg', '~> 0.18.4'
@@ -8,7 +7,6 @@ gem 'rails_12factor'
 gem 'rails-observers'
 gem 'devise'
 gem 'pundit', '~> 0.3.0'
-gem 'memcachier'
 gem 'rack-cache'
 gem 'dalli', '~> 2.7.2'
 gem 'textacular', '~> 3.2.1'
