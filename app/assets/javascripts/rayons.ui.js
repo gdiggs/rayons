@@ -100,5 +100,5 @@ Rayons.UI = {
     window.filter_options.direction = direction;
     Rayons.Item.getItems();
     return false;
-  },
+  }
 };

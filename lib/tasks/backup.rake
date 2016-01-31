@@ -5,6 +5,6 @@ namespace :backup do
 
     client = DropboxClient.new(ENV['DROPBOX_ACCESS_TOKEN'])
     csv_data = Item.to_csv
-    response = client.put_file("rayons_backup_#{Time.now.to_i}.csv", csv_data)
+    client.put_file("rayons_backup_#{Time.now.to_i}.csv", csv_data)
   end
 end

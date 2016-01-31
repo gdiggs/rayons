@@ -7,7 +7,7 @@ class PageEntriesInfoDecorator < Draper::CollectionDecorator
 
   alias :last_page :last_page?
 
-  def as_json(*args)
+  def as_json(*)
     result = {}
     [:total_pages, :limit_value, :offset_value, :limit_value, :last_page, :total_count].each do |meth|
       result[meth] = self.send(meth)
