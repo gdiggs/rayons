@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   include Pundit
   include CacheableFlash
 
-  protect_from_forgery
+  protect_from_forgery with: :exception
   before_filter :check_responsive
 
   helper_method :default_error_response
