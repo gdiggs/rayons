@@ -28,6 +28,7 @@ gem 'cacheable_flash'
 gem 'mustache'
 gem 'memoist', require: false
 gem 'bugsnag'
+gem 'clockwork'
 
 group :development do
   gem 'web-console'

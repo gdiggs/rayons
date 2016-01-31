@@ -22,4 +22,4 @@ COPY . /app
 RUN bundle exec rake assets:precompile --trace && \
     bundle exec rake assets:clean
 
-CMD ["bundle", "exec", "rails", "server", "--binding", "0.0.0.0"]
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
