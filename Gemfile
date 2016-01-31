@@ -18,7 +18,7 @@ gem 'sass'
 gem 'sass-rails', '~> 5.0.1'
 gem 'haml-rails'
 gem 'uglifier', '~> 2.7.2'
-gem "autoprefixer-rails", '~> 4.0.2.2'
+gem "autoprefixer-rails"
 gem 'pry-rails'
 gem 'marco-polo', '~> 1.2.1'
 gem 'discogs-wrapper', '2.1.1', require: false

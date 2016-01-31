@@ -1,4 +1,4 @@
-FROM ruby:2.2.3
+FROM ruby:2.3.0
 MAINTAINER Gordon Diggs <gordon@gordondiggs.com>
 
 RUN apt-get update && \
