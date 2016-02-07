@@ -1,0 +1,107 @@
+$dark_blue: #2c6079;
+$dark_gray: #222;
+$gray: #888;
+$light_blue: #66aacc;
+$orange: #BF5A3F;
+$red: #fb4c1e;
+$white: #f3f3f3;
+$yellow: #FBBE1E;
+
+html {
+  min-height: 100%;
+}
+
+body {
+  background-color: $light_blue;
+  background-image: linear-gradient(top, $light_blue, $dark_blue);
+  color: $gray;
+  font-size: 15px;
+}
+
+a:link, a:visited, a:hover, a:active {
+  color: $orange;
+  &:hover {
+    color: $orange;
+    text-decoration: none;
+  }
+}
+
+.message {
+  width: 900px;
+  background: $yellow;
+  color: black;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  &.error {
+    background: $red;
+  }
+}
+
+.navbar-default {
+  background: none;
+  .container-fluid {
+    background: none;
+  }
+  .navbar-brand {
+    color: $yellow;
+    font-family: "Monoton", cursive;
+    font-size: 30px;
+    text-decoration: none;
+    &:hover {
+      color: $yellow;
+    }
+  }
+  .navbar-nav > li > a {
+    color: $white;
+  }
+}
+
+.table {
+  th, td {
+    text-align: center;
+  }
+  tbody {
+    tr:hover {
+      color: $orange;
+    }
+    tr:nth-of-type(odd) {
+      background-color: #ddd;
+    }
+    td {
+      border: 1px solid #aaa;
+    }
+  }
+}
+
+.container-fluid {
+  background: white;
+  border-radius: 5px;
+  color: $dark_gray;
+  width: 90%;
+}
+
+.navbar-bottom {
+  color: $white;
+  padding: 20px;
+  a {
+    color: $yellow;
+  }
+}
+
+#add-new {
+  padding-bottom: 20px;
+  padding-top: 20px;
+  input, button {
+    margin: 0 1px;
+    &[type=text] {
+      width: 9%;
+    }
+  }
+}
+
+#cal-heatmap {
+  overflow: scroll;
+  padding-bottom: 15px;
+}

@@ -7,8 +7,8 @@
           %li= msg
 
   - (Item.column_names - ['id', 'created_at', 'updated_at', 'deleted']).each do |field|
-    .field
+    .form-group
       = f.label field
-      = f.text_field field
-  .actions
-    = f.submit 'Save'
+      = f.text_field field, class: "form-control"
+  .form-group
+    %button.btn.btn-primary{ type: "submit" } Save

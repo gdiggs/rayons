@@ -1,24 +1,30 @@
-.content#items
-  - if @can_edit
-    #add-new
-      %form.ajax{ :action => '/items', :method => 'post' }
-        = token_tag(nil)
-        - field_headers.each do |field|
-          %input{ :type => 'text', :name => "item[#{field.parameterize('_')}]", :placeholder => field }
-        %input{ :type => 'submit', :value => 'Add' }
+.container-fluid#items
+  #add-new.text-center
+    - if @can_edit
+      %form.form-inline.ajax{ :action => '/items', :method => 'post' }
+        .form-group
+          = token_tag(nil)
+          - field_headers.each do |field|
+            %input.form-control{ :type => 'text', :name => "item[#{field.parameterize('_')}]", :placeholder => field }
+          %button.btn.btn-primary{ :type => 'submit' } Add
 
-  %table{ 'data-sort' => params[:sort], 'data-direction' => params[:direction] }
-    %thead
-      %tr
-        - field_headers.each do |field|
-          %th{ :class => field.parameterize('_') }
-            - sort = field.parameterize('_')
-            %a{ :href => '', 'data-sort' => sort }
-              = field
-        %th
-          %a.added_on{ :href => '', 'data-sort' => 'created_at'}
-            Added On
-    %tbody.js-items
+  .table-responsive
+    %table.table{ 'data-sort' => params[:sort], 'data-direction' => params[:direction] }
+      %thead
+        %tr
+          - field_headers.each do |field|
+            %th{ :class => "item-#{field.parameterize('_')}" }
+              - sort = field.parameterize('_')
+              %a{ :href => '', 'data-sort' => sort }
+                - if field == "Price Paid"
+                  Paid
+                - else
+                  = field
+          %th
+            %a.added_on{ :href => '', 'data-sort' => 'created_at'}
+              Added
+          %th
+      %tbody.js-items
   .js-pagination
   .loader.js-loader
     - 12.times do
@@ -30,8 +36,9 @@
   window.filter_options = #{params.slice(:sort, :direction, :search, :q, :page).to_json};
 
 - content_for :nav do
-  %ul
-    %li.js-items-page-info.hide-on-mobile
+  %ul.nav.navbar-nav.pull-right
+    %li
+      %a.js-items-page-info
     %li
       %a{ :href => '/stats' } stats
     %li
@@ -43,19 +50,23 @@
         %a.logout{ :href => '/logout' } log out
       %li
         %a.import{ :href => '' } import csv
-        %form.login{ :action => '/items/import', :method => 'post', :enctype => 'multipart/form-data'}
-          = token_tag(nil)
-          %input{ :type => 'file', :name => 'file' }
-          %input{ :type => 'submit', :value => 'Import' }
+        %form.navbar-form.login.collapse{ :action => '/items/import', :method => 'post', :enctype => 'multipart/form-data'}
+          .form-group
+            = token_tag(nil)
+            %input.form-control{ :type => 'file', :name => 'file' }
+            %input.form-control{ :type => 'submit', :value => 'Import' }
     - else
       %li
         %a.login{ :href => '' } log in
-        = form_tag user_session_path do
-          = text_field_tag 'user[email]', nil, :placeholder => 'Email Address', :size => 12
-          = password_field_tag 'user[password]', nil, :placeholder => 'Password', :size => 7
-          %button Sign in
+      %li
+        = form_tag user_session_path, class: "navbar-form collapse" do
+          .form-group
+            = text_field_tag 'user[email]', nil, :placeholder => 'Email Address', class: "form-control"
+            = password_field_tag 'user[password]', nil, :placeholder => 'Password', class: "form-control"
+          %button.btn.btn-default{ type: "submit" } Sign in
     %li
-      %form.search.js-search{ :action => '/', :method => 'get' }
-        %input.search-input{ :type => 'search', :name => 'search', :placeholder => 'Search', :value => params[:search] }
+      %form.search.navbar-form.js-search{ :action => '/', :method => 'get' }
+        .form-group
+          %input.search-input.form-control{ :type => 'search', :name => 'search', :placeholder => 'Search', :value => params[:search] }
     %li
-      %a.advanced-serach{ href: search_items_path } advanced
+      %a{ href: search_items_path } advanced

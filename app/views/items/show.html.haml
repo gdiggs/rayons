@@ -1,54 +1,54 @@
 - content_for :title, "#{@item.artist} - #{@item.title}"
 
-.content#item_show
+.container-fluid#item_show
   %h1
     #{@item.artist} -
     %em= @item.title
-    %br
+  %h2
     #{@item.format} released in #{@item.year} on #{@item.label}
-    %br
+  %h3
     Added on #{@item.created_at.strftime('%A, %B %-d, %Y')}
 
-  - if @release.image_url
-    .left.image
-      %img{ src: @release.image_url }
-
-  .left
-    %p
-      %b Condition:
-      = @item.condition
-    %p
-      %b Color:
-      = @item.color
-    %p
-      %b Price paid:
-      = @item.price_paid
-    - if @release.extra_info?
-      %p
-        %b Genre:
-        = @release.genres.to_a.join(', ')
-      %p
-        %b Style:
-        = @release.styles.to_a.join(', ')
-      - if @release.tracklist
-        .tracklist
-          %b Tracklist
-          %ul
-            - @release.tracklist.each do |track|
-              %li #{track.position}: #{track.title}
-    - if @release.notes.present?
-      %p
-        %b Notes:
+  .row
+    - if @release.image_url.present?
+      .col-md-4.image
+        %img.img-responsive{ src: @release.image_url }
         %br
-        - @release.notes.to_s.lines.each do |line|
-          = line
-          %br
+    .col-md-8
       %p
-        %a{ href: @item.discogs_url, target: '_blank' } Discogs Link
-      = yield :item_show_extra
+        %b Condition:
+        = @item.condition
+      %p
+        %b Color:
+        = @item.color
+      %p
+        %b Price paid:
+        = @item.price_paid
+      - if @release.extra_info?
+        %p
+          %b Genre:
+          = @release.genres.to_a.join(', ')
+        %p
+          %b Style:
+          = @release.styles.to_a.join(', ')
+        - if @release.tracklist
+          .tracklist
+            %b Tracklist
+            %ul
+              - @release.tracklist.each do |track|
+                %li #{track.position}: #{track.title}
+      - if @release.notes.present?
+        %p
+          %b Notes:
+          %br
+          - @release.notes.to_s.lines.each do |line|
+            = line.html_safe
+            %br
+        %p
+          %a{ href: @item.discogs_url, target: '_blank' } Discogs Link
 
 - content_for :nav do
-  %ul
+  %ul.nav.navbar-nav.pull-right
     %li
       %a{ :href => '/stats' } stats
     %li
@@ -56,5 +56,10 @@
     %li
       %a{ :href => random_items_path } random
     %li
-      %form.search{ :action => '/', :method => 'get' }
-        %input{ :type => 'search', :name => 'search', :placeholder => 'Search', :value => params[:search] }
+      %a.logout{ :href => '/logout' } log out
+    %li
+      %form.search.navbar-form.js-search{ :action => '/', :method => 'get' }
+        .form-group
+          %input.search-input.form-control{ :type => 'search', :name => 'search', :placeholder => 'Search', :value => params[:search] }
+
+

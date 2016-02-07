@@ -8,10 +8,8 @@
     %link{ :href=>"#{request.protocol}fonts.googleapis.com/css?family=Monoton", :rel=>"stylesheet", :type=>"text/css" }
     %link{ :rel=>"icon", :type=>"images/png", :href=>"/icon.png" }
     %link{ href: "/opensearch.xml", rel: "search", title: "Rayons Search", type: "application/opensearchdescription+xml"}
-    %meta{ :name=>"viewport", :content=>"width=device-width, initial-scale=1, minimumscale=1.0, maximum-scale=1, user-scalable=0" }
+    %meta{ :content => "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no", :name => "viewport" }
     = stylesheet_link_tag "application", :media => "all"
-    - if !cookies[:exclude_responsive]
-      = stylesheet_link_tag "responsive", :media => "all"
 
     - if ENV['BUGSNAG_API_KEY']
       %script{ "data-apikey" => ENV['BUGSNAG_API_KEY'], :src => "//d2wy8f7a9ursnm.cloudfront.net/bugsnag-2.min.js" }
@@ -31,14 +29,15 @@
 
   %body
 
-    %header
-      %a.title{ :href => '/' } Rayons
-      - if yield(:nav).present?
-        %nav
+    %nav.nav.navbar-default
+      .container-fluid
+        .navbar-header
+          %a.navbar-brand{ :href => '/' } Rayons
+        - if yield(:nav).present?
           = yield :nav
 
-    .message.error.none
-    .message.notice.none
+    .message.error.collapse.text-center
+    .message.notice.collapse.text-center
     :javascript
       Flash.transferFromCookies();
       Flash.writeDataTo('error', $('.message.error'));
@@ -46,11 +45,12 @@
 
     = yield
 
-    .footer
-      Created by
-      %a{ :href => 'http://www.gordondiggs.com/', :target => '_blank' } Gordon Diggs
-      in 2013.
-      %a{ :href => 'https://github.com/GordonDiggs/rayons', target: '_blank' } Fork me on Github
+    %nav.nav.navbar-default.navbar-bottom
+      .container.text-center
+        Created by
+        %a{ :href => 'http://www.gordondiggs.com/', :target => '_blank' } Gordon Diggs
+        in 2013.
+        %a{ :href => 'https://github.com/GordonDiggs/rayons', target: '_blank' } Fork me on Github
 
-    .print-footer
+    .print-footer.hidden
       Printed on #{Time.now.strftime("%a %b %-d %Y at %H:%M")} at #{request.url}

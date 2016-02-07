@@ -1,9 +1,9 @@
 - content_for :title, "Stats"
 
-.content#stats
+.container-fluid#stats
   %h1 Stats for #{number_with_delimiter(Item.count)} items:
 
-  .switcher
+  %h2.text-center.switcher
     %a.active{ :href => 'javascript:', 'data-target' => '.graphs' } Graphs
     |
     %a{ :href => 'javascript:', 'data-target' => '.texts' } Words
@@ -37,16 +37,13 @@
     %h2 Items added per day
     #cal-heatmap
 
-  .texts.none
-    - [:artist, :label, :color].each do |field|
-      .column
-        %h2 Top 10 #{field.to_s.titleize.pluralize}
-        = top_10(field)
+  .texts.collapse.text-center
+    .row
+      - [:artist, :label, :color].each do |field|
+        .col-md-4
+          %h2 Top 10 #{field.to_s.titleize.pluralize}
+          = top_10(field)
     %div{ :style => 'clear:both;' }
-
-    - ['title', 'artist', 'label', 'year'].each do |field|
-      %h2 #{field.titleize} Frequency
-      .frequency{ 'data-field' => field }
 
     %h2 Discogs URL progress
     %p

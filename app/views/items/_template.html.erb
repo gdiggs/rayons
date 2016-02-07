@@ -1,28 +1,20 @@
 <tr data-id='{{id}}'>
-  <td class='title'>{{title}}</td>
-  <td class='artist'>{{artist}}</td>
-  <td class='year'>{{year}}</td>
-  <td class='label'>{{label}}</td>
-  <td class='format'>{{format}}</td>
-  <td class='condition'>{{condition}}</td>
-  <td class='color'>{{color}}</td>
-  <td class='price_paid'>{{price_paid}}</td>
-  <td class='discogs_url'>
+  <td class='item-title'>{{title}}</td>
+  <td class='item-artist'>{{artist}}</td>
+  <td class='item-year'>{{year}}</td>
+  <td class='item-label'>{{label}}</td>
+  <td class='item-format'>{{format}}</td>
+  <td class='item-condition'>{{condition}}</td>
+  <td class='item-color'>{{color}}</td>
+  <td class='item-price_paid'>{{price_paid}}</td>
+  <td class='item-discogs_url'>
     {{#discogs_url}}
       <a href='{{discogs_url}}' target='_blank'>link</a>
     {{/discogs_url}}
   </td>
-  <td class='notes'>{{notes}}</td>
-  <td class='added_on'>{{added_on}}</td>
-  <td class='edit'>
-    <a href='/items/{{id}}'>s</a><% if policy(Item).edit? %>/<a class='edit' href='/items/{{id}}'>e</a>/<a class='delete' href='/items/{{id}}'>d</a><% end %>
-  </td>
-  <% if policy(Item).edit? %>
-    <td class='save none'>
-      <a class='save' href='/items/{{id}}'>save</a>
-    </td>
-  <% end %>
-  <td class='show none'>
-    <a href='/items/{{id}}'>Full Page</a>
+  <td class='item-notes'>{{notes}}</td>
+  <td class='item-added_on'>{{added_on}}</td>
+  <td class='item-edit'>
+    <a href='/items/{{id}}'>s</a><% if policy(Item).edit? %>/<a class='item-edit' href='/items/{{id}}/edit'>e</a>/<a class='item-delete' href='/items/{{id}}'>d</a><% end %>
   </td>
 </tr>

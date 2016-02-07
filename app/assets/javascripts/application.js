@@ -2,7 +2,6 @@
 //= require jquery
 //= require jquery.easing.min
 //= require jquery.query-object
-//= require jqcloud-1.0.4
 //= require underscore-min
 //= require cal-heatmap.min
 //= require flash
