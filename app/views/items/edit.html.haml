@@ -1,6 +1,10 @@
-.content
+.container-fluid
+  %h1 Edit
+
   = render 'form'
 
-  = link_to 'Show', @item
-  \|
-  = link_to 'Back', items_path
+  .row
+    .col-md-12
+      = link_to 'Show', @item
+      \|
+      = link_to 'Back', :back

@@ -2,12 +2,6 @@ Rayons = Rayons || {};
 
 Rayons.Stats = {
   bind: function() {
-    $.each($('.frequency'), function(i, freq) {
-      $.getJSON('/stats/words_for_field?field='+$(freq).data('field'), function(response) {
-        $(freq).jQCloud(response);
-      });
-    });
-
     $('.switcher a').click(Rayons.Stats.switch_view);
 
     if(window.location.hash === '#Words') {

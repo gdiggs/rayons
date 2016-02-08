@@ -4,7 +4,6 @@ Rayons.UI = {
   bind: function() {
     $(document).delegate('form.ajax', 'submit', Rayons.UI.ajax_submit);
     $('a.login, a.import').on('click', Rayons.UI.show_editing_form);
-    $('a.random').on('click', Rayons.UI.scroll_to_random);
     $('a[data-sort]').click(Rayons.UI.sort);
     $('.js-search').submit(Rayons.UI.search);
   },
@@ -24,7 +23,7 @@ Rayons.UI = {
         Rayons.UI.show_message("Item created!");
         var markup = Rayons.Item.render(item);
 
-        $(markup).insertAfter('table tr:first');
+        $(markup).insertBefore('table tbody tr:first');
         $form.find('input[type=text]').val('');
       },
       error: function(response) {
@@ -32,22 +31,6 @@ Rayons.UI = {
         Rayons.UI.show_message(json.join('! '));
       }
     });
-
-    return false;
-  },
-
-  // select random data row, highlight it and scroll the window
-  // to it
-  scroll_to_random: function() {
-    $('tr.hover').removeClass('hover');
-    var rows = $('tr[data-id]:not(.edit)'),
-        index = Math.floor(Math.random() * rows.length),
-        $row = $(rows[index]);
-
-    $row.addClass('hover');
-    $('html, body').animate( {
-      scrollTop: $row.offset().top
-    }, {duration: 1200, easing: "easeInQuad"});
 
     return false;
   },
@@ -66,7 +49,7 @@ Rayons.UI = {
   },
 
   show_editing_form: function(e) {
-    $('header form').show();
+    $('nav form').show();
     $(e.target).hide();
     return false;
   },

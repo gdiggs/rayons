@@ -17,7 +17,7 @@ class ItemJSONPresenter
   end
 
   def cache_key
-    [self.class.name, Item.unscoped.maximum(:updated_at).to_i, sort, direction, search, page]
+    [self.class.name, Item.unscoped.maximum(:updated_at).to_i, sort, direction, search, page, 2]
   end
 
   def items

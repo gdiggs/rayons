@@ -1,14 +1,15 @@
 - content_for :title, "Time Machine"
 - table_headers = field_headers + ['Added On']
 
-.content.time-machine
+.container-fluid.time-machine.text-center
   - if @time_machine.has_items?
     - @time_machine.items.each do |date, items|
       %h2 #{pluralize(items.count, 'item')} added on #{date.strftime('%A, %B %-d, %Y')}
-      %table
-        %tr
+      %table.table
+        %thead
           - table_headers.each do |field|
             %th= field
+          %th
         - items.each do |item|
           = Mustache.render(@mustache_template, item).html_safe
   - else
