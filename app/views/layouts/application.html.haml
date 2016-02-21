@@ -15,6 +15,7 @@
       %script{ "data-apikey" => ENV['BUGSNAG_API_KEY'], :src => "//d2wy8f7a9ursnm.cloudfront.net/bugsnag-2.min.js" }
     = javascript_include_tag "//www.google.com/jsapi", "chartkick"
     = javascript_include_tag "application"
+    %script{ crossorigin: "anonymous", integrity: "sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS", src: "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" }
     = csrf_meta_tags
 
     - if ENV['GOOGLE_ANALYTICS_CODE']
@@ -32,9 +33,16 @@
     %nav.nav.navbar-default
       .container-fluid
         .navbar-header
+          - if yield(:nav).present?
+            %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#collapsed-nav", "data-toggle" => "collapse", :type => "button"}
+              %span.sr-only Toggle navigation
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
           %a.navbar-brand{ :href => '/' } Rayons
         - if yield(:nav).present?
-          = yield :nav
+          .collapse.navbar-collapse.pull-right#collapsed-nav
+            = yield :nav
 
     .message.error.collapse.text-center
     .message.notice.collapse.text-center

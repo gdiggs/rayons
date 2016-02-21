@@ -36,7 +36,7 @@
   window.filter_options = #{params.slice(:sort, :direction, :search, :q, :page).to_json};
 
 - content_for :nav do
-  %ul.nav.navbar-nav.pull-right
+  %ul.nav.navbar-nav
     %li
       %a.js-items-page-info
     %li

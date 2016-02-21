@@ -95,13 +95,20 @@ a:link, a:visited, a:hover, a:active {
   padding-top: 20px;
   input, button {
     margin: 0 1px;
-    &[type=text] {
-      width: 9%;
-    }
+  }
+}
+
+@media (min-width: 768px) {
+  #add-new input[type=text] {
+    width: 9%;
   }
 }
 
 #cal-heatmap {
   overflow: scroll;
   padding-bottom: 15px;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: $yellow
 }
