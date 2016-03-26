@@ -27,5 +27,6 @@ Rayons::Application.routes.draw do
   get '/stats/time_machine/:month/:day', :to => 'stats#time_machine'
   get '/mu-9306e982-5e21cfff-5e7a9bbe-e08bb3ce', :to => 'application#blitz'
   get '/opensearch.xml', :to => 'application#opensearch'
+  get '/status', to: 'application#status'
   root :to => "items#index"
 end

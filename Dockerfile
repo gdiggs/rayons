@@ -22,4 +22,6 @@ COPY . /app
 RUN bundle exec rake assets:precompile --trace && \
     bundle exec rake assets:clean
 
+RUN git rev-parse HEAD > /app/REVISION
+
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]

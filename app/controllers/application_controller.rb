@@ -30,6 +30,13 @@ class ApplicationController < ActionController::Base
     render '/opensearch.xml', :layout => false
   end
 
+  def status
+    render json: {
+      ok: true,
+      revision: Rails.configuration.git_revision,
+    }
+  end
+
   def render_403
     respond_to do |format|
       format.html { render :file => "#{Rails.root}/public/403", :layout => false, :status => :forbidden }
