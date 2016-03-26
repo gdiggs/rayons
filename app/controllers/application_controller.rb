@@ -3,22 +3,14 @@ class ApplicationController < ActionController::Base
   include CacheableFlash
 
   protect_from_forgery with: :exception
-  before_filter :check_responsive
+
+  force_ssl except: [:status], if: Proc.new { Rails.env.production? }
+
 
   helper_method :default_error_response
 
   def blitz
     render :text => 42
-  end
-
-  def check_responsive
-    if params[:exclude_responsive]
-      if params[:exclude_responsive] == 'false'
-        cookies.delete(:exclude_responsive)
-      else
-        cookies[:exclude_responsive] = true
-      end
-    end
   end
 
   def default_error_response(format, action, obj)
