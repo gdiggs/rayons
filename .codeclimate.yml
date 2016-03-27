@@ -22,6 +22,9 @@ engines:
     enabled: true
   scss-lint:
     enabled: true
+    checks:
+      EmptyLineBetweenBlocks:
+        enabled: false
 ratings:
   paths:
   - Gemfile.lock

@@ -1,24 +1,27 @@
-$dark_blue: #2c6079;
-$dark_gray: #222;
+$dark-blue: #2c6079;
+$dark-gray: #222;
 $gray: #888;
-$light_blue: #66aacc;
-$orange: #BF5A3F;
+$light-blue: #66aacc;
+$orange: #bf5a3f;
 $red: #fb4c1e;
 $white: #f3f3f3;
-$yellow: #FBBE1E;
+$yellow: #fbbe1e;
 
 html {
   min-height: 100%;
 }
 
 body {
-  background-color: $light_blue;
-  background-image: linear-gradient(top, $light_blue, $dark_blue);
+  background-color: $light-blue;
+  background-image: linear-gradient(top, $light-blue, $dark-blue);
   color: $gray;
   font-size: 15px;
 }
 
-a:link, a:visited, a:hover, a:active {
+a:link,
+a:visited,
+a:hover,
+a:active {
   color: $orange;
   &:hover {
     color: $orange;
@@ -78,7 +81,7 @@ a:link, a:visited, a:hover, a:active {
 .container-fluid {
   background: white;
   border-radius: 5px;
-  color: $dark_gray;
+  color: $dark-gray;
   width: 90%;
 }
 
