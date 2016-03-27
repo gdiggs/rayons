@@ -89,6 +89,9 @@ Style/ModuleFunction:
 Style/ExtraSpacing:
   AllowForAlignment: false
 
+Style/RegexpLiteral:
+  Enabled: false
+
 ################################################################################
 # Performance
 ################################################################################
