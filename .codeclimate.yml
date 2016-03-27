@@ -20,11 +20,6 @@ engines:
     enabled: true
   rubocop:
     enabled: true
-  scss-lint:
-    enabled: true
-    checks:
-      EmptyLineBetweenBlocks:
-        enabled: false
 ratings:
   paths:
   - Gemfile.lock
