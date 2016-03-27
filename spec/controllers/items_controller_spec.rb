@@ -1,9 +1,9 @@
-require 'spec_helper'
+require "spec_helper"
 
-describe ItemsController, :type => :controller do
+describe ItemsController, type: :controller do
   render_views
 
-  describe 'when logged in' do
+  describe "when logged in" do
     before do
       @item = items(:one)
       @user = users(:admin)
@@ -15,7 +15,7 @@ describe ItemsController, :type => :controller do
         original_item_count = Item.count
         post :create, item: { artist: @item.artist, condition: @item.condition, format: @item.format, label: @item.label, price_paid: @item.price_paid, title: @item.title, year: @item.year }
 
-        assert_equal original_item_count+1, Item.count
+        assert_equal original_item_count + 1, Item.count
         assert_redirected_to item_path(assigns(:item))
       end
     end
@@ -26,22 +26,22 @@ describe ItemsController, :type => :controller do
     end
 
     describe '#show' do
-      describe 'with a discogs url' do
+      describe "with a discogs url" do
         before do
-          @item.update_attribute(:discogs_url, 'http://example.com')
-          release_stub = stub(:image_url => 'sup',
-                              :genres => ['Rock'],
-                              :styles => ['Punk'],
-                              :tracklist => [],
-                              :notes => 'Best record ever',
-                              :extra_info? => true
+          @item.update_attribute(:discogs_url, "http://example.com")
+          release_stub = stub(image_url: "sup",
+                              genres: ["Rock"],
+                              styles: ["Punk"],
+                              tracklist: [],
+                              notes: "Best record ever",
+                              extra_info?: true,
                              )
           DiscogsRelease.expects(:new).with(@item).returns(release_stub)
           get :show, id: @item
           assert_response :success
         end
 
-        it 'should render image' do
+        it "should render image" do
           assert_select "img[src=sup]"
         end
       end
@@ -61,19 +61,17 @@ describe ItemsController, :type => :controller do
       original_item_count = Item.count
       delete :destroy, id: @item
 
-      assert_equal original_item_count-1, Item.count
+      assert_equal original_item_count - 1, Item.count
       assert_redirected_to items_path
     end
   end
 
-  describe 'when not logged in' do
+  describe "when not logged in" do
     describe '#create' do
-      it 'should return a 403' do
+      it "should return a 403" do
         post :create
         assert_response :forbidden
       end
     end
   end
-
 end
-

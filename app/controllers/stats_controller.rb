@@ -22,7 +22,7 @@ class StatsController < ApplicationController
     respond_to do |format|
       format.json { render text: @time_machine.to_json }
       format.html do
-        @mustache_template = render_to_string partial: '/items/template'
+        @mustache_template = render_to_string partial: "/items/template"
       end
     end
   end
@@ -30,11 +30,12 @@ class StatsController < ApplicationController
   # GET /stats/words_for_field
   def words_for_field
     render json: (cache [:words_for_field, params[:field], Item.unscoped.maximum(:updated_at).to_i] do
-      @item_stats.words_for_field(params[:field]).map{ |k,v| {text: k, weight: v} if v > 1 }.compact.to_json
+      @item_stats.words_for_field(params[:field]).map { |k, v| { text: k, weight: v } if v > 1 }.compact.to_json
     end)
   end
 
   private
+
   def initialize_item_stats
     @item_stats = ItemStats.new
   end

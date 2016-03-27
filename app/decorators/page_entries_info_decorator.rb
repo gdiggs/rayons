@@ -5,12 +5,12 @@ class PageEntriesInfoDecorator < Draper::CollectionDecorator
     h.number_with_delimiter(object.total_count)
   end
 
-  alias :last_page :last_page?
+  alias last_page last_page?
 
   def as_json(*)
     result = {}
     [:total_pages, :limit_value, :offset_value, :limit_value, :last_page, :total_count].each do |meth|
-      result[meth] = self.send(meth)
+      result[meth] = send(meth)
     end
     result
   end

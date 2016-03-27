@@ -1,6 +1,6 @@
-require 'discogs'
-require 'memoist'
-require 'open-uri'
+require "discogs"
+require "memoist"
+require "open-uri"
 
 class DiscogsRelease
   extend Memoist
@@ -8,7 +8,7 @@ class DiscogsRelease
   attr_accessor :item, :release
 
   def initialize(item)
-    @wrapper = Discogs::Wrapper.new("Rayons #{Rails.env}", app_key: ENV['DISCOGS_APP_KEY'], app_secret: ENV['DISCOGS_APP_SECRET'])
+    @wrapper = Discogs::Wrapper.new("Rayons #{Rails.env}", app_key: ENV["DISCOGS_APP_KEY"], app_secret: ENV["DISCOGS_APP_SECRET"])
     self.item = item
     if item.discogs_url.present?
       discogs_id = item.discogs_url.gsub(/.*\/release\/(\d+)/, '\1')
@@ -26,8 +26,8 @@ class DiscogsRelease
   # TODO: go back to using the discogs images somehow
   def image_url
     if release
-      img = release.images.select { |i| i['type'] == "primary" }.sort_by { |i| i['width'] }.last || {}
-      img['uri']
+      img = release.images.select { |i| i["type"] == "primary" }.sort_by { |i| i["width"] }.last || {}
+      img["uri"]
     end
   end
 

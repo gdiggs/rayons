@@ -9,7 +9,7 @@ class ItemJSONPresenter
   end
 
   def as_json
-    {items: items, page: page}.merge(pagination.as_json)
+    { items: items, page: page }.merge(pagination.as_json)
   end
 
   def to_json

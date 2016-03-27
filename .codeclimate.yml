@@ -6,45 +6,37 @@ engines:
     - 34d3e6567ab79d882ebb0ff81dcd99d041bc425a7ca8ccc9073e612e8094b7fb
   bundler-audit:
     enabled: true
-  csslint:
-    enabled: true
-  coffeelint:
-    enabled: true
   duplication:
     enabled: true
     config:
       languages:
       - ruby
       - javascript
-      - python
-      - php
   eslint:
     enabled: true
   fixme:
     enabled: true
+  markdownlint:
+    enabled: true
   rubocop:
+    enabled: true
+  scss-lint:
     enabled: true
 ratings:
   paths:
   - Gemfile.lock
-  - "**.erb"
   - "**.haml"
   - "**.rb"
-  - "**.rhtml"
-  - "**.slim"
-  - "**.css"
-  - "**.coffee"
-  - "**.inc"
   - "**.js"
-  - "**.jsx"
-  - "**.module"
-  - "**.php"
-  - "**.py"
+  - "**.md"
+  - "**.scss"
 exclude_paths:
+- app/assets/stylesheets/application/jqcloud.css.scss
 - config/**/*
 - db/**/*
 - node_modules/**/*
 - script/**/*
 - spec/**/*
+- tmp/**/*
 - vendor/**/*
 - .rubocop.yml

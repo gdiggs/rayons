@@ -1,6 +1,6 @@
-require File.expand_path('../boot', __FILE__)
+require File.expand_path("../boot", __FILE__)
 
-require 'rails/all'
+require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -24,7 +24,7 @@ module Rayons
 
     config.active_record.schema_format = :sql
 
-    config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
+    config.assets.paths << Rails.root.join("vendor", "assets", "components")
 
     # via https://gist.github.com/afeld/5704079
 
@@ -32,10 +32,10 @@ module Rayons
     config.assets.precompile.shift
 
     # Explicitly register the extensions we are interested in compiling
-    config.assets.precompile.push(Proc.new do |path|
+    config.assets.precompile.push(proc do |path|
       File.extname(path).in? [
-        '.png',  '.gif', '.jpg', '.jpeg', '.svg', # Images
-        '.eot',  '.otf', '.svc', '.woff', '.ttf', # Fonts
+        ".png", ".gif", ".jpg", ".jpeg", ".svg", # Images
+        ".eot", ".otf", ".svc", ".woff", ".ttf", # Fonts
       ]
     end)
   end
