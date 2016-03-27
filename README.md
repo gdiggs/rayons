@@ -24,15 +24,6 @@ The app will be available at [0.0.0.0:5000](http://0.0.0.0:5000). When running i
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-### Grunt
-
-Rayons comes with [Grunt](http://gruntjs.com) for js hinting. Install and run it with:
-
-```bash
-$ npm install -g grunt-cli
-$ grunt
-```
-
 ### Dropbox Backup Setup
 
 You can back up the collection by using `rake backup:dropbox`. Before you can do this, you must create an application on Dropbox and follow [these instructions](https://www.dropbox.com/developers/core/start/ruby) to get your Dropbox access token.
