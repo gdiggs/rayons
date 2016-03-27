@@ -1,4 +1,4 @@
-require 'memoist'
+require "memoist"
 
 class TimeMachine
   extend Memoist
@@ -19,7 +19,7 @@ class TimeMachine
     i = 1
     date = base_date - i.years
 
-    while date >= start_date do
+    while date >= start_date
       if (items = Item.where(created_at: date..date.end_of_day)).present?
         result[date] = items
       end
@@ -32,7 +32,7 @@ class TimeMachine
   end
 
   def as_json
-    {date: @base_date, items: items}
+    { date: @base_date, items: items }
   end
 
   def to_json
@@ -42,6 +42,7 @@ class TimeMachine
   memoize :items
 
   private
+
   def start_date
     @start_date ||= Item.minimum(:created_at).midnight
   end

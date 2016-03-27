@@ -8,9 +8,7 @@
     "url" : "http://github.com/GordonDiggs/rayons.git"
   },
   "dependencies": {
-    "bower": "~1.3.9",
-    "grunt": "~0.4.0",
-    "grunt-contrib-jshint": "~0.10.0"
+    "bower": "~1.3.9"
   },
   "engine": "node >= 0.8.7",
   "devDependencies": {
