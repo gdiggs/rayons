@@ -31,6 +31,8 @@ You can also use Rayons as a Docker container. To build:
 docker build --rm -t gordondiggs/rayons .
 ```
 
+Alternatively, use `docker-compose` with the included configuration.
+
 ## Dropbox Backup Setup
 
 You can back up the collection by using `rake backup:dropbox`. Before you can
