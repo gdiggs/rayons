@@ -1,21 +1,17 @@
 FROM ruby:2.3.0
 MAINTAINER Gordon Diggs <gordon@gordondiggs.com>
 
-RUN apt-get update && \
-    apt-get install -y build-essential nodejs npm
+# Node is needed for uglifier
+RUN curl -sL https://deb.nodesource.com/setup_5.x | bash - && \
+    apt-get install -y nodejs
+
+WORKDIR /app
 
 COPY Gemfile* /app/
-RUN cd /app && \
-    bundle install --without development:test --path vendor/bundle --binstubs vendor/bundle/bin -j4 --deployment
-
-COPY package.json /app/package.json
-COPY node_modules /app/node_modules
-RUN cd /app && npm install
+RUN bundle install --without development:test --path vendor/bundle --binstubs vendor/bundle/bin -j4 --deployment
 
 ENV RAILS_ENV production
 ENV LANG C.UTF-8
-
-WORKDIR /app
 
 COPY . /app
 

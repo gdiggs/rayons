@@ -1,5 +1,5 @@
 //= require d3
-//= require jquery
+//= require jquery-2.1.1
 //= require jquery.easing.min
 //= require jquery.query-object
 //= require underscore-min
