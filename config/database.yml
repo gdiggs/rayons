@@ -14,4 +14,4 @@ production:
   database: rayons_production
   adapter: postgresql
   encoding: unicode
-  pool: 5
+  pool: 16
