@@ -13,7 +13,8 @@ describe ItemsController, type: :controller do
     describe '#create' do
       it "should create item" do
         original_item_count = Item.count
-        post :create, item: { artist: @item.artist, condition: @item.condition, format: @item.format, label: @item.label, price_paid: @item.price_paid, title: @item.title, year: @item.year }
+        post :create,
+          params: { item: { artist: @item.artist, condition: @item.condition, format: @item.format, label: @item.label, price_paid: @item.price_paid, title: @item.title, year: @item.year } }
 
         assert_equal original_item_count + 1, Item.count
         assert_redirected_to item_path(assigns(:item))
@@ -37,7 +38,7 @@ describe ItemsController, type: :controller do
                               extra_info?: true,
                              )
           DiscogsRelease.expects(:new).with(@item).returns(release_stub)
-          get :show, id: @item
+          get :show, params: { id: @item }
           assert_response :success
         end
 
@@ -48,18 +49,22 @@ describe ItemsController, type: :controller do
     end
 
     it "should get edit" do
-      get :edit, id: @item
+      get :edit, params: { id: @item }
       assert_response :success
     end
 
     it "should update item" do
-      put :update, id: @item, item: { artist: @item.artist, condition: @item.condition, format: @item.format, label: @item.label, price_paid: @item.price_paid, title: @item.title, year: @item.year }
+      put :update,
+        params: {
+          id: @item,
+          item: { artist: @item.artist, condition: @item.condition, format: @item.format, label: @item.label, price_paid: @item.price_paid, title: @item.title, year: @item.year }
+        }
       assert_redirected_to item_path(assigns(:item))
     end
 
     it "should destroy item" do
       original_item_count = Item.count
-      delete :destroy, id: @item
+      delete :destroy, params: { id: @item }
 
       assert_equal original_item_count - 1, Item.count
       assert_redirected_to items_path

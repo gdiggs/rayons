@@ -5,7 +5,7 @@
         .form-group
           = token_tag(nil)
           - field_headers.each do |field|
-            %input.form-control{ :type => 'text', :name => "item[#{field.parameterize('_')}]", :placeholder => field }
+            %input.form-control{ :type => 'text', :name => "item[#{field.parameterize(separator: "_")}]", :placeholder => field }
           %button.btn.btn-primary{ :type => 'submit' } Add
 
   .table-responsive
@@ -13,8 +13,8 @@
       %thead
         %tr
           - field_headers.each do |field|
-            %th{ :class => "item-#{field.parameterize('_')}" }
-              - sort = field.parameterize('_')
+            %th{ :class => "item-#{field.parameterize(separator: "_")}" }
+              - sort = field.parameterize(separator: "_")
               %a{ :href => '', 'data-sort' => sort }
                 - if field == "Price Paid"
                   Paid

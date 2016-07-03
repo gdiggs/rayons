@@ -1,6 +1,6 @@
 class StatsController < ApplicationController
-  before_filter :initialize_item_stats, except: :time_machine
-  before_filter :initialize_time_machine, only: :time_machine
+  before_action :initialize_item_stats, except: :time_machine
+  before_action :initialize_time_machine, only: :time_machine
 
   # GET /stats/counts_by_day.json
   def counts_by_day
@@ -11,7 +11,7 @@ class StatsController < ApplicationController
 
   # GET /stats
   def index
-    render text: (cache [:stats, Item.unscoped.maximum(:updated_at).to_i] do
+    render html: (cache [:stats, Item.unscoped.maximum(:updated_at).to_i] do
       @prices = @item_stats.significant_prices
       render_to_string
     end)
@@ -20,7 +20,7 @@ class StatsController < ApplicationController
   # GET /stats/time_machine
   def time_machine
     respond_to do |format|
-      format.json { render text: @time_machine.to_json }
+      format.json { render json: @time_machine.to_json }
       format.html do
         @mustache_template = render_to_string partial: "/items/template"
       end

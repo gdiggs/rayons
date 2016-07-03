@@ -1,11 +1,11 @@
-class PageEntriesInfoDecorator < Draper::CollectionDecorator
-  delegate :total_pages, :limit_value, :offset_value, :limit_value, :last_page?, :model_name
-
+class PageEntriesInfoDecorator < SimpleDelegator
   def total_count
-    h.number_with_delimiter(object.total_count)
+    ActiveSupport::NumberHelper.number_to_delimited(super)
   end
 
-  alias last_page last_page?
+  def last_page
+    last_page?
+  end
 
   def as_json(*)
     result = {}

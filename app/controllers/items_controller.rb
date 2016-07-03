@@ -2,9 +2,9 @@ class ItemsController < ApplicationController
   include ApplicationHelper
   include ActionController::Live
 
-  before_filter :authorize_item, only: [:new, :edit, :create, :update, :import, :destroy, :show]
-  before_filter :edit_discogs_param, only: [:index, :create, :update]
-  before_filter :set_variant, only: [:show]
+  before_action :authorize_item, only: [:new, :edit, :create, :update, :import, :destroy, :show]
+  before_action :edit_discogs_param, only: [:index, :create, :update]
+  before_action :set_variant, only: [:show]
 
   # GET /
   # GET /items
@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html do
-        render text: (cache [@item, request.variant, "1"] do
+        render html: (cache [@item, request.variant, "1"] do
           @release = DiscogsRelease.new(@item)
           render_to_string
         end)
@@ -152,7 +152,7 @@ class ItemsController < ApplicationController
       presenter.as_json.merge(pagination: markup).to_json
     end
 
-    render text: body
+    render json: body
   end
 
   def index_csv
