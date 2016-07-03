@@ -26,13 +26,13 @@ module ItemsHelper
   end
 
   def items_per_month
-    Item.group_by_month(:created_at, format: "%b %Y").order("month asc").count
+    Item.group_by_month(:created_at, format: "%b %Y").count
   end
 
   def items_per_day_of_week
     days_of_week = %w(Sunday Monday Tuesday Wednesday Thursday Friday Saturday)
     result = {}
-    Item.group_by_day_of_week(:created_at).order("day_of_week asc").count.map do |k, v|
+    Item.group_by_day_of_week(:created_at).count.map do |k, v|
       result[days_of_week[k.to_i]] = v
     end
     result

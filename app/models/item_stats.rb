@@ -4,8 +4,8 @@ class ItemStats
   extend Memoist
 
   def counts_by_day
-    times = Item.group_by_day(:created_at).order("day asc").count
-    Hash[times.map { |k, v| [k.to_i, v] }]
+    times = Item.group_by_day(:created_at).count
+    Hash[times.map { |k, v| [k.midnight.to_i, v] }]
   end
 
   def prices
