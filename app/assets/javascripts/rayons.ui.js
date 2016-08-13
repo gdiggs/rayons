@@ -49,7 +49,7 @@ Rayons.UI = {
   },
 
   show_editing_form: function(e) {
-    $('nav form').show();
+    $(e.target).siblings("form").show();
     $(e.target).hide();
     return false;
   },

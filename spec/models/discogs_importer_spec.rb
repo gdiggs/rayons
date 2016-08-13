@@ -1,0 +1,90 @@
+require "spec_helper"
+require "discogs"
+
+describe DiscogsImporter, type: :model do
+  describe "#import" do
+    it "creates an Item" do
+      id = "3916848"
+      url = "https://www.discogs.com/NOFX-The-Decline/release/3916848"
+      release = {
+        "styles"=>["Punk"],
+        "videos"=>
+        [
+          {
+            "duration"=>1101,
+            "description"=>"NOFX - The Decline (Official Full Album Version)",
+            "embed"=>true,
+            "uri"=>"https://www.youtube.com/watch?v=qnFVMkTWaBw",
+            "title"=>"NOFX - The Decline (Official Full Album Version)"
+          }
+        ],
+        "series"=>[],
+        "labels"=>
+        [
+          {
+            "name"=>"Fat Wreck Chords", "entity_type"=>"1", "catno"=>"FAT605", "resource_url"=>"https://api.discogs.com/labels/33296", "id"=>33296, "entity_type_name"=>"Label"
+          }
+        ],
+        "year"=>1999,
+        "community"=>
+        {
+          "status"=>"Accepted",
+          "rating"=>{"count"=>7, "average"=>5.0},
+          "have"=>41,
+          "contributors"=>
+          [
+            {"username"=>"throckk", "resource_url"=>"https://api.discogs.com/users/throckk"}, {"username"=>"br00tal", "resource_url"=>"https://api.discogs.com/users/br00tal"}
+          ],
+          "want"=>279,
+          "submitter"=>{"username"=>"throckk", "resource_url"=>"https://api.discogs.com/users/throckk"},
+          "data_quality"=>"Needs Vote"
+        },
+        "artists"=>[
+          {"join"=>"", "name"=>"NOFX (3)", "anv"=>"", "tracks"=>"", "role"=>"", "resource_url"=>"https://api.discogs.com/artists/253281", "id"=>253281}
+        ],
+        "images"=>[
+          {"uri"=>"", "height"=>200, "width"=>200, "resource_url"=>"", "type"=>"primary", "uri150"=>""}
+        ],
+        "format_quantity"=>1,
+        "id"=>3916848,
+        "genres"=>["Rock"],
+        "thumb"=>"",
+        "num_for_sale"=>0,
+        "title"=>"The Decline",
+        "date_changed"=>"2013-09-25T11:48:28-07:00",
+        "master_id"=>39614,
+        "lowest_price"=>nil,
+        "status"=>"Accepted",
+        "released_formatted"=>"23 Nov 1999",
+        "estimated_weight"=>230,
+        "master_url"=>"https://api.discogs.com/masters/39614",
+        "released"=>"1999-11-23",
+        "date_added"=>"2012-10-01T14:43:19-07:00",
+        "tracklist"=>
+        [
+          {"duration"=>"", "position"=>"A1", "type_"=>"track", "title"=>"The Decline"}, {"duration"=>"", "position"=>"B1", "type_"=>"track", "title"=>"Clams Have Feelings Too"}
+        ],
+        "extraartists"=>[],
+        "country"=>"US",
+        "notes"=>"155 on clear vinyl.  B-side is an alternate version of Clams Have Feelings Too.",
+        "identifiers"=>[],
+        "companies"=>[],
+        "uri"=>"https://www.discogs.com/NOFX-The-Decline/release/3916848",
+        "formats"=>[{"descriptions"=>["LP"], "text"=>"Clear Vinyl", "name"=>"Vinyl", "qty"=>"1"}],
+        "resource_url"=>"https://api.discogs.com/releases/3916848",
+        "data_quality"=>"Needs Vote"
+      }
+
+      Discogs::Wrapper.any_instance.expects(:get_release).with(id).returns(release)
+
+      item = DiscogsImporter.new(url).import
+
+      expect(item).to be_a(Item)
+      expect(item).to be_valid
+      expect(item.artist).to eq("NOFX")
+      expect(item.title).to eq("The Decline")
+      expect(item.discogs_url).to eq(url)
+      expect(item.format).to eq("12\"")
+    end
+  end
+end
