@@ -42,12 +42,17 @@
     %li
       %a{ :href => '/stats' } stats
     %li
-      %a.export{ :href => '/items.csv' } export
-    %li
       %a{ :href => random_items_path } random
     - if @can_edit
       %li
         %a.logout{ :href => '/logout' } log out
+      %li
+        %a.import{ :href => '' } import
+        %form.navbar-form.login.collapse{ :action => '/items/import_discogs', :method => 'post'}
+          .form-group
+            = token_tag(nil)
+            %input.form-control{ :type => 'text', :name => 'url', :placeholder => "Discogs URL" }
+            %input.form-control{ :type => 'submit', :value => 'Import' }
       %li
         %a.import{ :href => '' } import csv
         %form.navbar-form.login.collapse{ :action => '/items/import', :method => 'post', :enctype => 'multipart/form-data'}
@@ -58,7 +63,6 @@
     - else
       %li
         %a.login{ :href => '' } log in
-      %li
         = form_tag user_session_path, class: "navbar-form collapse" do
           .form-group
             = text_field_tag 'user[email]', nil, :placeholder => 'Email Address', class: "form-control"

@@ -9,6 +9,7 @@ Rayons::Application.routes.draw do
   resources :items, except: [:new] do
     collection do
       post "import"
+      post "import_discogs"
       get "random"
       get "latest"
       get "search"

@@ -103,6 +103,17 @@ class ItemsController < ApplicationController
     redirect_to "/"
   end
 
+  # POST /items/import_discogs
+  def import_discogs
+    @item = DiscogsImporter.new(params[:url]).import
+    redirect_to edit_item_path(@item)
+  rescue => e
+    flash[:error] = "Error importing: #{e}"
+    Rails.logger.warn("!!! Error importing CSV: #{e}")
+    Rails.logger.warn(e.backtrace.join("\n"))
+    redirect_to "/"
+  end
+
   # GET /items/random
   # GET /items/random.json
   def random

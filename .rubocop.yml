@@ -92,6 +92,9 @@ Style/ExtraSpacing:
 Style/RegexpLiteral:
   Enabled: false
 
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
 ################################################################################
 # Performance
 ################################################################################
