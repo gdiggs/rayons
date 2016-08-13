@@ -2,12 +2,16 @@
 -- PostgreSQL database dump
 --
 
+-- Dumped from database version 9.5.3
+-- Dumped by pg_dump version 9.5.3
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
+SET row_security = off;
 
 --
 -- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
@@ -30,7 +34,19 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: item_counts; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: item_counts; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE item_counts (
@@ -62,7 +78,7 @@ ALTER SEQUENCE item_counts_id_seq OWNED BY item_counts.id;
 
 
 --
--- Name: items; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: items; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE items (
@@ -103,7 +119,7 @@ ALTER SEQUENCE items_id_seq OWNED BY items.id;
 
 
 --
--- Name: rails_admin_histories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: rails_admin_histories; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE rails_admin_histories (
@@ -139,7 +155,7 @@ ALTER SEQUENCE rails_admin_histories_id_seq OWNED BY rails_admin_histories.id;
 
 
 --
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE schema_migrations (
@@ -148,7 +164,7 @@ CREATE TABLE schema_migrations (
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: users; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE users (
@@ -217,7 +233,15 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 
 --
--- Name: item_counts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: item_counts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY item_counts
@@ -225,7 +249,7 @@ ALTER TABLE ONLY item_counts
 
 
 --
--- Name: items_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: items_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY items
@@ -233,7 +257,7 @@ ALTER TABLE ONLY items
 
 
 --
--- Name: rails_admin_histories_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: rails_admin_histories_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY rails_admin_histories
@@ -241,7 +265,15 @@ ALTER TABLE ONLY rails_admin_histories
 
 
 --
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY users
@@ -249,184 +281,158 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: index_item_counts_on_date; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_item_counts_on_date; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_item_counts_on_date ON item_counts USING btree (date);
 
 
 --
--- Name: index_items_on_artist; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_items_on_artist; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_items_on_artist ON items USING btree (artist);
 
 
 --
--- Name: index_items_on_color; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_items_on_color; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_items_on_color ON items USING btree (color);
 
 
 --
--- Name: index_items_on_condition; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_items_on_condition; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_items_on_condition ON items USING btree (condition);
 
 
 --
--- Name: index_items_on_created_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_items_on_created_at; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_items_on_created_at ON items USING btree (created_at);
 
 
 --
--- Name: index_items_on_format; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_items_on_format; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_items_on_format ON items USING btree (format);
 
 
 --
--- Name: index_items_on_label; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_items_on_label; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_items_on_label ON items USING btree (label);
 
 
 --
--- Name: index_items_on_price_paid; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_items_on_price_paid; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_items_on_price_paid ON items USING btree (price_paid);
 
 
 --
--- Name: index_items_on_title; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_items_on_title; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_items_on_title ON items USING btree (title);
 
 
 --
--- Name: index_items_on_updated_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_items_on_updated_at; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_items_on_updated_at ON items USING btree (updated_at);
 
 
 --
--- Name: index_items_on_year; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_items_on_year; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_items_on_year ON items USING btree (year);
 
 
 --
--- Name: index_rails_admin_histories; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_rails_admin_histories; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_rails_admin_histories ON rails_admin_histories USING btree (item, "table", month, year);
 
 
 --
--- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
 
 
 --
--- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
 
 
 --
--- Name: items_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: items_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX items_to_tsvector_idx ON items USING gin (to_tsvector('english'::regconfig, title));
 
 
 --
--- Name: items_to_tsvector_idx1; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: items_to_tsvector_idx1; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX items_to_tsvector_idx1 ON items USING gin (to_tsvector('english'::regconfig, artist));
 
 
 --
--- Name: items_to_tsvector_idx2; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: items_to_tsvector_idx2; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX items_to_tsvector_idx2 ON items USING gin (to_tsvector('english'::regconfig, label));
 
 
 --
--- Name: items_to_tsvector_idx3; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: items_to_tsvector_idx3; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX items_to_tsvector_idx3 ON items USING gin (to_tsvector('english'::regconfig, format));
 
 
 --
--- Name: items_to_tsvector_idx4; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: items_to_tsvector_idx4; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX items_to_tsvector_idx4 ON items USING gin (to_tsvector('english'::regconfig, condition));
 
 
 --
--- Name: items_to_tsvector_idx5; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: items_to_tsvector_idx5; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX items_to_tsvector_idx5 ON items USING gin (to_tsvector('english'::regconfig, color));
 
 
 --
--- Name: items_to_tsvector_idx6; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: items_to_tsvector_idx6; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX items_to_tsvector_idx6 ON items USING gin (to_tsvector('english'::regconfig, notes));
 
 
 --
--- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
-
-
---
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO "$user",public;
+SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('20130223220750');
+INSERT INTO schema_migrations (version) VALUES ('20130223220750'), ('20130223223654'), ('20130224014932'), ('20130224014933'), ('20130224161425'), ('20130224180111'), ('20130609180946'), ('20140112194406'), ('20140316192819'), ('20140913205342'), ('20140928174302');
 
-INSERT INTO schema_migrations (version) VALUES ('20130223223654');
-
-INSERT INTO schema_migrations (version) VALUES ('20130224014932');
-
-INSERT INTO schema_migrations (version) VALUES ('20130224014933');
-
-INSERT INTO schema_migrations (version) VALUES ('20130224161425');
-
-INSERT INTO schema_migrations (version) VALUES ('20130224180111');
-
-INSERT INTO schema_migrations (version) VALUES ('20130609180946');
-
-INSERT INTO schema_migrations (version) VALUES ('20140112194406');
-
-INSERT INTO schema_migrations (version) VALUES ('20140316192819');
-
-INSERT INTO schema_migrations (version) VALUES ('20140913205342');
-
-INSERT INTO schema_migrations (version) VALUES ('20140928174302');
 
