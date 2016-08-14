@@ -15,7 +15,7 @@ describe DiscogsRelease, type: :model do
     assert_equal @release.title, @discogs_release.title
   end
 
-  describe '#notes' do
+  describe "#notes" do
     before do
       @item.update_attribute(:notes, "OK")
     end

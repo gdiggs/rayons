@@ -6,7 +6,7 @@ class Array
 
   # Get the median value for an array of numbers (Fixnum or Float)
   def median
-    if count == 0
+    if count.zero?
       nil
     elsif count.odd?
       sort[count / 2]

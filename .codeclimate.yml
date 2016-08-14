@@ -12,6 +12,8 @@ engines:
       languages:
       - ruby
       - javascript
+    exclude_paths:
+      - spec/
   eslint:
     enabled: true
   fixme:
@@ -30,11 +32,8 @@ ratings:
   - "**.scss"
 exclude_paths:
 - app/assets/stylesheets/application/jqcloud.css.scss
-- config/**/*
-- db/**/*
 - node_modules/**/*
 - script/**/*
-- spec/**/*
 - tmp/**/*
 - vendor/**/*
 - .rubocop.yml

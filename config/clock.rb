@@ -1,5 +1,6 @@
 require "./config/boot"
 require "./config/environment"
+require "dropbox_backup"
 
 module Clockwork
   configure do |config|
@@ -7,11 +8,7 @@ module Clockwork
   end
 
   every(1.day, "Backup to Dropbox", at: "01:00") do
-    raise "Must have Dropbox access key in `ENV['DROPBOX_ACCESS_TOKEN']`" unless ENV["DROPBOX_ACCESS_TOKEN"]
-
-    client = DropboxClient.new(ENV["DROPBOX_ACCESS_TOKEN"])
-    csv_data = Item.to_csv
-    response = client.put_file("rayons_backup_#{Time.now.to_i}.csv", csv_data)
+    DropboxBackup.new.backup
   end
 
   every(1.day, "Backfill Item Counts", at: "00:00") do

@@ -10,11 +10,11 @@ describe ItemsController, type: :controller do
       sign_in @user
     end
 
-    describe '#create' do
+    describe "#create" do
       it "should create item" do
         original_item_count = Item.count
         post :create,
-          params: { item: { artist: @item.artist, condition: @item.condition, format: @item.format, label: @item.label, price_paid: @item.price_paid, title: @item.title, year: @item.year } }
+             params: { item: { artist: @item.artist, condition: @item.condition, format: @item.format, label: @item.label, price_paid: @item.price_paid, title: @item.title, year: @item.year } }
 
         assert_equal original_item_count + 1, Item.count
         assert_redirected_to item_path(assigns(:item))
@@ -26,7 +26,7 @@ describe ItemsController, type: :controller do
       assert_response :success
     end
 
-    describe '#show' do
+    describe "#show" do
       describe "with a discogs url" do
         before do
           @item.update_attribute(:discogs_url, "http://example.com")
@@ -35,8 +35,7 @@ describe ItemsController, type: :controller do
                               styles: ["Punk"],
                               tracklist: [],
                               notes: "Best record ever",
-                              extra_info?: true,
-                             )
+                              extra_info?: true)
           DiscogsRelease.expects(:new).with(@item).returns(release_stub)
           get :show, params: { id: @item }
           assert_response :success
@@ -55,10 +54,10 @@ describe ItemsController, type: :controller do
 
     it "should update item" do
       put :update,
-        params: {
-          id: @item,
-          item: { artist: @item.artist, condition: @item.condition, format: @item.format, label: @item.label, price_paid: @item.price_paid, title: @item.title, year: @item.year }
-        }
+          params: {
+            id: @item,
+            item: { artist: @item.artist, condition: @item.condition, format: @item.format, label: @item.label, price_paid: @item.price_paid, title: @item.title, year: @item.year },
+          }
       assert_redirected_to item_path(assigns(:item))
     end
 
@@ -72,7 +71,7 @@ describe ItemsController, type: :controller do
   end
 
   describe "when not logged in" do
-    describe '#create' do
+    describe "#create" do
       it "should return a 403" do
         post :create
         assert_response :forbidden
