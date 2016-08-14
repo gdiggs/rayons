@@ -49,7 +49,7 @@ class DiscogsRelease
     end
   end
 
-  def respond_to?(meth)
+  def respond_to_missing?(meth)
     super || (release && release.respond_to?(meth))
   end
 

@@ -11,7 +11,7 @@ module Clockwork
 
     client = DropboxClient.new(ENV["DROPBOX_ACCESS_TOKEN"])
     csv_data = Item.to_csv
-    response = client.put_file("rayons_backup_#{Time.now.to_i}.csv", csv_data)
+    client.put_file("rayons_backup_#{Time.now.to_i}.csv", csv_data)
   end
 
   every(1.day, "Backfill Item Counts", at: "00:00") do

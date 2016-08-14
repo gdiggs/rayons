@@ -1,14 +1,14 @@
 require "spec_helper"
 
 describe StatsController, type: :controller do
-  describe '#index' do
+  describe "#index" do
     it "should set title" do
       get :index
       assert_select "title", "Rayons\n\u2669 Stats"
     end
   end
 
-  describe '#time_machine' do
+  describe "#time_machine" do
     it "should assign a time machine" do
       get :time_machine
       time_machine = assigns(:time_machine)
