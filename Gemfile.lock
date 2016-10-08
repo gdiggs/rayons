@@ -114,7 +114,6 @@ GEM
     mocha (1.1.0)
       metaclass (~> 0.0.1)
     mustache (1.0.3)
-    newrelic_rpm (3.16.0.318)
     nio4r (1.2.1)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
@@ -255,7 +254,6 @@ DEPENDENCIES
   memoist
   mocha (~> 1.1.0)
   mustache
-  newrelic_rpm
   pg (~> 0.18.4)
   pry-rails
   puma
