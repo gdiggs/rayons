@@ -47,6 +47,10 @@ class DiscogsImporter
     FORMATS[fmt] || fmt
   end
 
+  def label
+    clean_field(discogs_release["labels"].first["name"]).gsub(/ Records\Z/, "")
+  end
+
   def item_attributes
     {
       artist: artist,
@@ -54,7 +58,7 @@ class DiscogsImporter
       condition: "",
       discogs_url: url,
       format: format,
-      label: clean_field(discogs_release["labels"].first["name"]),
+      label: label,
       price_paid: "$0.00",
       title: discogs_release["title"],
       year: discogs_release["year"],

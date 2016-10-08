@@ -22,7 +22,7 @@ describe DiscogsImporter, type: :model do
         "labels" =>
         [
           {
-            "name" => "Fat Wreck Chords", "entity_type" => "1", "catno" => "FAT605", "resource_url" => "https://api.discogs.com/labels/33296", "id" => 33_296, "entity_type_name" => "Label"
+            "name" => "Fat Records", "entity_type" => "1", "catno" => "FAT605", "resource_url" => "https://api.discogs.com/labels/33296", "id" => 33_296, "entity_type_name" => "Label"
           },
         ],
         "year" => 1999,
@@ -85,6 +85,7 @@ describe DiscogsImporter, type: :model do
       expect(item.title).to eq("The Decline")
       expect(item.discogs_url).to eq(url)
       expect(item.format).to eq("12\"")
+      expect(item.label).to eq("Fat")
     end
   end
 end
