@@ -28,14 +28,9 @@ gem "memoist", require: false
 gem "bugsnag"
 gem "clockwork"
 
-group :development do
-  gem "web-console"
-end
-
 group :test do
   gem "rails-controller-testing"
   gem "rspec-rails", "~> 3.5.0"
-  gem "mocha", "~> 1.1.0"
+  gem "rspec-mocks"
   gem "codeclimate-test-reporter", group: :test, require: nil
-  gem "spin"
 end

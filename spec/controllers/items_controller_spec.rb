@@ -16,40 +16,19 @@ describe ItemsController, type: :controller do
         post :create,
              params: { item: { artist: @item.artist, condition: @item.condition, format: @item.format, label: @item.label, price_paid: @item.price_paid, title: @item.title, year: @item.year } }
 
-        assert_equal original_item_count + 1, Item.count
-        assert_redirected_to item_path(assigns(:item))
+        expect(Item.count).to eq original_item_count + 1
+        expect(subject).to redirect_to item_path(assigns(:item))
       end
     end
 
     it "should get index" do
       get :index
-      assert_response :success
-    end
-
-    describe "#show" do
-      describe "with a discogs url" do
-        before do
-          @item.update_attribute(:discogs_url, "http://example.com")
-          release_stub = stub(image_url: "sup",
-                              genres: ["Rock"],
-                              styles: ["Punk"],
-                              tracklist: [],
-                              notes: "Best record ever",
-                              extra_info?: true)
-          DiscogsRelease.expects(:new).with(@item).returns(release_stub)
-          get :show, params: { id: @item }
-          assert_response :success
-        end
-
-        it "should render image" do
-          assert_select "img[src=sup]"
-        end
-      end
+      expect(response).to be_success
     end
 
     it "should get edit" do
       get :edit, params: { id: @item }
-      assert_response :success
+      expect(response).to be_success
     end
 
     it "should update item" do
@@ -58,15 +37,15 @@ describe ItemsController, type: :controller do
             id: @item,
             item: { artist: @item.artist, condition: @item.condition, format: @item.format, label: @item.label, price_paid: @item.price_paid, title: @item.title, year: @item.year },
           }
-      assert_redirected_to item_path(assigns(:item))
+      expect(subject).to redirect_to item_path(assigns(:item))
     end
 
     it "should destroy item" do
       original_item_count = Item.count
       delete :destroy, params: { id: @item }
 
-      assert_equal original_item_count - 1, Item.count
-      assert_redirected_to items_path
+      expect(Item.count).to eq original_item_count - 1
+      expect(subject).to redirect_to items_path
     end
   end
 
@@ -74,7 +53,7 @@ describe ItemsController, type: :controller do
     describe "#create" do
       it "should return a 403" do
         post :create
-        assert_response :forbidden
+        expect(response).to be_forbidden
       end
     end
   end

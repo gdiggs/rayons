@@ -75,7 +75,8 @@ describe DiscogsImporter, type: :model do
         "data_quality" => "Needs Vote",
       }
 
-      Discogs::Wrapper.any_instance.expects(:get_release).with(id).returns(release)
+      wrapper = double(get_release: release)
+      expect(Discogs::Wrapper).to receive(:new).and_return(wrapper)
 
       item = DiscogsImporter.new(url).import
 
