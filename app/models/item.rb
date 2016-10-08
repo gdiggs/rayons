@@ -1,4 +1,6 @@
 class Item < ActiveRecord::Base
+  include SoftDeletion
+
   before_validation :blank_discogs
   after_save :update_item_counts
 
@@ -6,8 +8,6 @@ class Item < ActiveRecord::Base
   validates_format_of :discogs_url, with: URI.regexp(%w(http https)), allow_nil: true
 
   scope :added_on_day, ->(date) { where ["created_at >= ? AND created_at <= ?", date.to_date, (date + 1.day).to_date] }
-
-  default_scope { where(deleted: false) }
 
   SORT_ORDER = %w(artist title year label format).freeze
 
@@ -98,11 +98,6 @@ class Item < ActiveRecord::Base
 
   def as_json(options = {})
     super(options.merge(methods: :added_on))
-  end
-
-  def destroy
-    self.deleted = true
-    save!
   end
 
   private
