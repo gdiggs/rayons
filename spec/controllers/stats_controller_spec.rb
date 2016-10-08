@@ -4,7 +4,7 @@ describe StatsController, type: :controller do
   describe "#index" do
     it "should set title" do
       get :index
-      assert_select "title", "Rayons\n\u2669 Stats"
+      expect(response.body).to match "<title>\nRayons\n\u2669 Stats\n</title>"
     end
   end
 
