@@ -1,5 +1,4 @@
 require "spec_helper"
-require "discogs"
 
 describe DiscogsImporter, type: :model do
   describe "#import" do
@@ -76,7 +75,7 @@ describe DiscogsImporter, type: :model do
       }
 
       wrapper = double(get_release: release)
-      expect(Discogs::Wrapper).to receive(:new).and_return(wrapper)
+      expect(DiscogsWrapper).to receive(:new).and_return(wrapper)
 
       item = DiscogsImporter.new(url).import
 

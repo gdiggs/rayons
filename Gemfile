@@ -20,7 +20,7 @@ gem "uglifier"
 gem "autoprefixer-rails"
 gem "pry-rails"
 gem "marco-polo", "~> 1.2.1"
-gem "discogs-wrapper", "2.1.1", require: false
+gem "hashie"
 gem "kaminari"
 gem "cacheable_flash"
 gem "mustache"
