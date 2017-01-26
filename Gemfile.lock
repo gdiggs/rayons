@@ -66,9 +66,6 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    discogs-wrapper (2.1.1)
-      hashie (~> 2.1)
-      oauth (~> 0.4.7)
     docile (1.1.5)
     dropbox-sdk (1.6.5)
       json
@@ -86,7 +83,7 @@ GEM
       haml (>= 4.0.6, < 5.0)
       html2haml (>= 1.0.1)
       railties (>= 4.0.1)
-    hashie (2.1.2)
+    hashie (3.4.6)
     html2haml (2.0.0)
       erubis (~> 2.7.0)
       haml (~> 4.0.0)
@@ -114,7 +111,6 @@ GEM
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
-    oauth (0.4.7)
     orm_adapter (0.5.0)
     pg (0.18.4)
     pkg-config (1.1.7)
@@ -236,10 +232,10 @@ DEPENDENCIES
   codeclimate-test-reporter
   dalli (~> 2.7.2)
   devise
-  discogs-wrapper (= 2.1.1)
   dropbox-sdk
   groupdate
   haml-rails
+  hashie
   kaminari
   marco-polo (~> 1.2.1)
   memoist
@@ -260,4 +256,4 @@ DEPENDENCIES
   uglifier
 
 BUNDLED WITH
-   1.12.5
+   1.14.3

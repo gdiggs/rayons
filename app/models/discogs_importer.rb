@@ -1,5 +1,3 @@
-require "discogs"
-
 class DiscogsImporter
   FORMATS = {
     "45 RPM" => '7"',
@@ -27,11 +25,7 @@ class DiscogsImporter
   end
 
   def discogs_wrapper
-    @discogs_wrapper ||= Discogs::Wrapper.new(
-      "Rayons #{Rails.env}",
-      app_key: ENV["DISCOGS_APP_KEY"],
-      app_secret: ENV["DISCOGS_APP_SECRET"],
-    )
+    @discogs_wrapper ||= DiscogsWrapper.new
   end
 
   def clean_field(str)

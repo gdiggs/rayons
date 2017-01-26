@@ -1,11 +1,10 @@
 require "spec_helper"
-require "discogs"
 
 describe DiscogsRelease, type: :model do
   before do
     @release = double(title: "Hit Record 2000", notes: "Probably the best")
     wrapper = double(get_release: @release)
-    expect(Discogs::Wrapper).to receive(:new).and_return(wrapper)
+    expect(DiscogsWrapper).to receive(:new).and_return(wrapper)
     @item = items(:one)
     @item.update_attribute(:discogs_url, "http://example.com")
     @discogs_release = DiscogsRelease.new(@item)

@@ -1,4 +1,3 @@
-require "discogs"
 require "memoist"
 require "open-uri"
 
@@ -8,7 +7,7 @@ class DiscogsRelease
   attr_accessor :item, :release
 
   def initialize(item)
-    @wrapper = Discogs::Wrapper.new("Rayons #{Rails.env}", app_key: ENV["DISCOGS_APP_KEY"], app_secret: ENV["DISCOGS_APP_SECRET"])
+    @wrapper = DiscogsWrapper.new
     self.item = item
     if item.discogs_url.present?
       discogs_id = item.discogs_url.gsub(/.*\/release\/(\d+)/, '\1')
