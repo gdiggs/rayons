@@ -39,3 +39,4 @@ exclude_paths:
 - tmp/**/*
 - vendor/**/*
 - .rubocop.yml
+- spec/**/*
