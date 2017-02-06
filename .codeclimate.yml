@@ -40,3 +40,4 @@ exclude_paths:
 - vendor/**/*
 - .rubocop.yml
 - spec/**/*
+- lib/**/*
