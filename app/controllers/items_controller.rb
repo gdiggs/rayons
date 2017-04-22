@@ -12,8 +12,11 @@ class ItemsController < ApplicationController
   # GET /items.csv
   def index
     respond_to do |format|
-      format.html { @can_edit = policy(Item).edit? }
-      format.json { index_json }
+      format.html do
+        @can_edit = policy(Item).edit?
+        @presenter = index_presenter
+      end
+      format.json { render json: index_presenter.as_json }
       format.csv { index_csv }
     end
   end
@@ -150,20 +153,13 @@ class ItemsController < ApplicationController
     request.variant = :editable if policy(:item).update?
   end
 
-  def index_json
+  def index_presenter
     if params[:q]
       params[:q] = params[:q].permit(:title, :artist, :format, :label, :color, :condition, :notes, years: [:minimum, :maximum])
-      presenter = ItemAdvancedSearchJSONPresenter.new(params.slice(:sort, :direction, :q, :page))
+      ItemAdvancedSearchJSONPresenter.new(params.slice(:sort, :direction, :q, :page))
     else
-      presenter = ItemJSONPresenter.new(params.slice(:sort, :direction, :search, :page))
+      ItemJSONPresenter.new(params.slice(:sort, :direction, :search, :page))
     end
-
-    body = Rails.cache.fetch presenter.cache_key do
-      markup = render_to_string(partial: "items/pagination", formats: [:html], locals: { items: presenter.items }).gsub(/.json/, "")
-      presenter.as_json.merge(pagination: markup).to_json
-    end
-
-    render json: body
   end
 
   def index_csv

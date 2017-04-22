@@ -1,0 +1,22 @@
+%tr{"data-id" => "#{item.id}"}
+  %td.item-title #{item.title}
+  %td.item-artist #{item.artist}
+  %td.item-year #{item.year}
+  %td.item-label #{item.label}
+  %td.item-format #{item.format}
+  %td.item-condition #{item.condition}
+  %td.item-color #{item.color}
+  %td.item-price_paid #{item.price_paid}
+  %td.item-discogs_url
+    - if item.discogs_url
+      %a{:href => "#{item.discogs_url}", :target => "_blank"} link
+  %td.item-notes #{item.notes}
+  %td.item-added_on #{item.added_on}
+  %td.item-edit<
+    %a{:href => "/items/#{item.id}"}> s
+    - if @can_edit
+      \/
+      %a.item-edit{:href => "/items/#{item.id}/edit"}> e
+      \/
+      %a.item-delete{:href => "/items/#{item.id}"}> d
+

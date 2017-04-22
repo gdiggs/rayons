@@ -6,7 +6,6 @@
 //= require cal-heatmap.min
 //= require flash
 //= require jquery.cookie
-//= require mustache
 //= require rayons
 //= require rayons.item
 //= require rayons.stats

@@ -5,7 +5,6 @@ class ItemAdvancedSearchJSONPresenter < ItemJSONPresenter
   end
 
   def items
-    Rails.logger.info "ASRERE #{search}"
     Item.sorted(sort, direction).advanced_search(search).page(page)
   end
 end

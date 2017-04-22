@@ -5,7 +5,6 @@ Rayons.UI = {
     $(document).delegate('form.ajax', 'submit', Rayons.UI.ajax_submit);
     $('a.login, a.import').on('click', Rayons.UI.show_editing_form);
     $('a[data-sort]').click(Rayons.UI.sort);
-    $('.js-search').submit(Rayons.UI.search);
   },
 
   // bind to form submission (adding/updating an item)
@@ -31,19 +30,6 @@ Rayons.UI = {
         Rayons.UI.show_message(json.join('! '));
       }
     });
-
-    return false;
-  },
-
-  search: function(e) {
-    var $form = $(e.target),
-        search_term = $form.find('input').val();
-
-    window.history.pushState({}, '', window.location.origin+'?search='+search_term);
-    window.filter_options = {
-      search: search_term
-    };
-    Rayons.Item.getItems();
 
     return false;
   },
@@ -75,13 +61,7 @@ Rayons.UI = {
     }
 
     var new_url = $.query.set("direction", direction).set("sort", $this.data('sort')).set("search", window.filter_options.search || '').toString();
-    window.history.pushState({}, '', window.location.origin+new_url);
-
-    $('table').data('direction', direction).data('sort', $this.data('sort'));
-
-    window.filter_options.sort = $this.data('sort');
-    window.filter_options.direction = direction;
-    Rayons.Item.getItems();
+    window.location = new_url;
     return false;
   }
 };
