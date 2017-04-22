@@ -21,9 +21,7 @@ class StatsController < ApplicationController
   def time_machine
     respond_to do |format|
       format.json { render json: @time_machine.to_json }
-      format.html do
-        @mustache_template = render_to_string partial: "/items/template"
-      end
+      format.html
     end
   end
 

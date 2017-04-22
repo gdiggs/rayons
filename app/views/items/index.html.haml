@@ -1,6 +1,6 @@
 .container-fluid#items
-  #add-new.text-center
-    - if @can_edit
+  - if @can_edit
+    #add-new.text-center
       %form.form-inline.ajax{ :action => '/items', :method => 'post' }
         .form-group
           = token_tag(nil)
@@ -24,13 +24,10 @@
             %a.added_on{ :href => '', 'data-sort' => 'created_at'}
               Added
           %th
-      %tbody.js-items
-  .js-pagination
-  .loader.js-loader
-    - 12.times do
-      %li
-
-%script#item_template{ type: 'text/template' }= render :partial => '/items/template'
+      %tbody
+        - cache(@presenter.cache_key, "html") do
+          = render @presenter.items
+  = paginate @presenter.items
 
 :javascript
   window.filter_options = #{params.slice(:sort, :direction, :search, :q, :page).to_json};
@@ -38,7 +35,7 @@
 - content_for :nav do
   %ul.nav.navbar-nav
     %li
-      %a.js-items-page-info
+      %a= page_entries_info @presenter.items
     %li
       %a{ :href => '/stats' } stats
     %li
@@ -69,8 +66,4 @@
             = password_field_tag 'user[password]', nil, :placeholder => 'Password', class: "form-control"
           %button.btn.btn-default{ type: "submit" } Sign in
     %li
-      %form.search.navbar-form.js-search{ :action => '/', :method => 'get' }
-        .form-group
-          %input.search-input.form-control{ :type => 'search', :name => 'search', :placeholder => 'Search', :value => params[:search] }
-    %li
-      %a{ href: search_items_path } advanced
+      %a{ href: search_items_path } advanced search

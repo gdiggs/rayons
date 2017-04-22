@@ -10,8 +10,7 @@
           - table_headers.each do |field|
             %th= field
           %th
-        - items.each do |item|
-          = Mustache.render(@mustache_template, item).html_safe
+        = render items
   - else
     %h2
       %em No items added on #{@time_machine.base_date.strftime('%B %-d')}
