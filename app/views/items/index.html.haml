@@ -25,7 +25,7 @@
               Added
           %th
       %tbody
-        - cache(@presenter.cache_key, "html") do
+        - cache("#{@presenter.cache_key}/html") do
           = render @presenter.items
   = paginate @presenter.items
 
