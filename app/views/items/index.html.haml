@@ -1,6 +1,6 @@
 .container-fluid#items
-  #add-new.text-center
-    - if @can_edit
+  - if @can_edit
+    #add-new.text-center
       %form.form-inline.ajax{ :action => '/items', :method => 'post' }
         .form-group
           = token_tag(nil)
@@ -66,8 +66,4 @@
             = password_field_tag 'user[password]', nil, :placeholder => 'Password', class: "form-control"
           %button.btn.btn-default{ type: "submit" } Sign in
     %li
-      %form.search.navbar-form.js-search{ :action => '/', :method => 'get' }
-        .form-group
-          %input.search-input.form-control{ :type => 'search', :name => 'search', :placeholder => 'Search', :value => params[:search] }
-    %li
-      %a{ href: search_items_path } advanced
+      %a{ href: search_items_path } advanced search
