@@ -1,12 +1,17 @@
-development:
+default: &default
   adapter: postgresql
   encoding: unicode
-  database: rayons_development
   pool: 5
+  username: postgres
+  password: 
+  host: localhost
+
+development:
+  <<: *default
+  database: rayons_development
 
 test:
-  adapter: postgresql
-  encoding: unicode
+  <<: *default
   database: rayons_test
 
 production:
