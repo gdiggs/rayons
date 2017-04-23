@@ -30,7 +30,7 @@ jobs:
       - run: if [ "$CIRCLE_BRANCH" != "master" ]; then exit 1; fi
       - checkout
       - setup_remote_docker
-      - run: apt-get update -qq && apt-get install -y build-essential awscli
+      - run: apt-get update -qq && apt-get install -y build-essential awscli jq
       - run: 
           name: Install ecs-deploy
           command: |
