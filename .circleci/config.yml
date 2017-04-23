@@ -24,29 +24,12 @@ jobs:
             fi
   deploy:
     docker:
-      - image: ruby:2.3.0
+      - image: gordondiggs/rayons-docker-deploy
     working_directory: ~/rayons
     steps:
       - run: if [ "$CIRCLE_BRANCH" != "master" ]; then exit 1; fi
       - checkout
       - setup_remote_docker
-      - run: apt-get update -qq && apt-get install -y build-essential python-pip jq
-      - run: pip install awscli --upgrade --user
-      - run: aws --version
-      - run: 
-          name: Install ecs-deploy
-          command: |
-            set -ex
-            curl https://raw.githubusercontent.com/silinternational/ecs-deploy/develop/ecs-deploy > /bin/ecs-deploy
-            chmod +x /bin/ecs-deploy
-      - run:
-          name: Install Docker client
-          command: |
-            set -ex
-            VER="17.03.0-ce"
-            curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz
-            tar -xz -C /tmp -f /tmp/docker-$VER.tgz
-            mv /tmp/docker/* /usr/bin
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       - run: docker build --rm -t gordondiggs/rayons:b$CIRCLE_BUILD_NUM .
       - run: docker push gordondiggs/rayons:b$CIRCLE_BUILD_NUM
