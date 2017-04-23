@@ -5,7 +5,7 @@
 //= require underscore-min
 //= require cal-heatmap.min
 //= require flash
-//= require jquery.cookie
+//= require js.cookie
 //= require rayons
 //= require rayons.item
 //= require rayons.stats
