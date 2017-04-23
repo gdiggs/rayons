@@ -36,7 +36,7 @@ jobs:
           command: |
             set -ex
             curl https://raw.githubusercontent.com/silinternational/ecs-deploy/develop/ecs-deploy > /bin/ecs-deploy
-            chmod +x ecs-deploy
+            chmod +x /bin/ecs-deploy
       - run:
           name: Install Docker client
           command: |
