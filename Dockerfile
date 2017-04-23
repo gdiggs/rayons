@@ -2,7 +2,7 @@ FROM ruby:2.3.0
 MAINTAINER Gordon Diggs <gordon@gordondiggs.com>
 
 # Node is needed for uglifier
-RUN curl -sL https://deb.nodesource.com/setup_5.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
     apt-get install -y nodejs
 
 WORKDIR /app
