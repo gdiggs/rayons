@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all
 
-    render json: @items
+    paginate json: @items
   end
 
   # GET /items/1
