@@ -202,6 +202,8 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
+    skylight (1.3.1)
+      activesupport (>= 3.0.0)
     slop (3.6.0)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
@@ -259,8 +261,12 @@ DEPENDENCIES
   rspec-rails (~> 3.5.0)
   sass
   sass-rails (~> 5.0.1)
+  skylight
   textacular (~> 4.0.0)
   uglifier
 
+RUBY VERSION
+   ruby 2.4.2p198
+
 BUNDLED WITH
-   1.14.3
+   1.15.4

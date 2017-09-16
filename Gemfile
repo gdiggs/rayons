@@ -28,6 +28,7 @@ gem "mustache"
 gem "memoist", require: false
 gem "bugsnag"
 gem "clockwork"
+gem "skylight"
 
 group :test do
   gem "rails-controller-testing"
