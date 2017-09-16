@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: ruby:2.3.0
+      - image: ruby:2.4.2
       - image: postgres:9.4.10
         environment:
           POSTGRES_USER: postgres
