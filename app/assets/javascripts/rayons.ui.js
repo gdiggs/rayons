@@ -18,11 +18,7 @@ Rayons.UI = {
       data: $form.serialize(),
       dataType: 'json',
       success: function(item) {
-        console.log("RESP", item);
         Rayons.UI.show_message("Item created!");
-        var markup = Rayons.Item.render(item);
-
-        $(markup).insertBefore('table tbody tr:first');
         $form.find('input[type=text]').val('');
       },
       error: function(response) {
