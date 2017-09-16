@@ -25,14 +25,6 @@ The app will be available at [0.0.0.0:5000](http://0.0.0.0:5000). When running
 in production mode, the app requires SSL (Heroku supplies this automatically),
 and an `ENV['SECRET_TOKEN']` to be set.
 
-You can also use Rayons as a Docker container. To build:
-
-```bash
-docker build --rm -t gordondiggs/rayons .
-```
-
-Alternatively, use `docker-compose` with the included configuration.
-
 ## Dropbox Backup Setup
 
 You can back up the collection by using `rake backup:dropbox`. Before you can
