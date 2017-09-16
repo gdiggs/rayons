@@ -18,4 +18,10 @@ module Clockwork
       ItemCount.update_or_create_day(date)
     end
   end
+
+  every(1.day, "Send Time Machine Email", at: "06:00") do
+    User.all.each do |user|
+      TimeMachineMailer.daily_summary(user).deliver
+    end
+  end
 end

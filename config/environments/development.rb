@@ -23,4 +23,6 @@ Rayons::Application.configure do
   config.active_record.migration_error = :page_load
 
   config.log_level = :debug
+
+  config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
 end

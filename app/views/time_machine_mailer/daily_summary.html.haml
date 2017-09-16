@@ -1,0 +1,17 @@
+- table_headers = field_headers + ['Added On']
+
+%h1 Daily summary for items in Rayons
+
+.container-fluid.time-machine
+  - if @time_machine.has_items?
+    - @time_machine.items.each do |date, items|
+      %h2.text-center #{pluralize(items.count, 'item')} added on #{date.strftime('%A, %B %-d, %Y')}
+      %table.table
+        %thead
+          - table_headers.each do |field|
+            %th= field
+          %th
+        = render items
+  - else
+    %h2
+      %em No items added on #{@time_machine.base_date.strftime('%B %-d')}
