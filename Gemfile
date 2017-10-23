@@ -29,6 +29,7 @@ gem "memoist", require: false
 gem "bugsnag"
 gem "clockwork"
 gem "skylight"
+gem "timber", "~> 2.3"
 
 group :test do
   gem "rails-controller-testing"
