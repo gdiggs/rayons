@@ -5,6 +5,7 @@ SecureHeaders::Configuration.default do |config|
       'unsafe-inline'
       'self'
       d2wy8f7a9ursnm.cloudfront.net
+      www.google-analytics.com
       www.gstatic.com
     ],
     style_src: %w[
