@@ -5,7 +5,6 @@
       Rayons
       - if yield(:title).present?
         = "\u2669 #{yield :title}".html_safe
-    %link{ :href=>"#{request.protocol}fonts.googleapis.com/css?family=Monoton", :rel=>"stylesheet", :type=>"text/css" }
     %link{ :rel=>"icon", :type=>"images/png", :href=>"/icon.png" }
     %link{ href: "/opensearch.xml", rel: "search", title: "Rayons Search", type: "application/opensearchdescription+xml"}
     %meta{ :content => "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no", :name => "viewport" }
@@ -13,9 +12,8 @@
 
     - if ENV['BUGSNAG_API_KEY']
       %script{ "data-apikey" => ENV['BUGSNAG_API_KEY'], :src => "//d2wy8f7a9ursnm.cloudfront.net/bugsnag-2.min.js" }
-    = javascript_include_tag "//www.google.com/jsapi", "chartkick"
+    = javascript_include_tag "//www.gstatic.com/charts/loader.js"    
     = javascript_include_tag "application"
-    %script{ crossorigin: "anonymous", integrity: "sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS", src: "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" }
     = csrf_meta_tags
 
     - if ENV['GOOGLE_ANALYTICS_CODE']

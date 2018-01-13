@@ -30,6 +30,7 @@ gem "bugsnag"
 gem "clockwork"
 gem "skylight"
 gem "timber", "~> 2.3"
+gem "secure_headers"
 
 group :test do
   gem "rails-controller-testing"
