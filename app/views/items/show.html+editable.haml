@@ -45,7 +45,7 @@
             = line.html_safe
             %br
         %p
-          %a{ href: @item.discogs_url, target: '_blank' } Discogs Link
+          %a{ href: @item.discogs_url, target: '_blank', rel: "noopener noreferrer" } Discogs Link
       %p
         %a{ href: edit_item_path(@item) } Edit
 
