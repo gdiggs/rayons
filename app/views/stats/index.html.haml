@@ -12,27 +12,27 @@
 
   .graphs
     %h2 Year
-    = column_chart @item_stats.stats_for_field(:year), :library => google_column_charts_options
+    = column_chart @item_stats.stats_for_field(:year), :library => column_charts_options
 
     %h2 Format
-    = pie_chart @item_stats.stats_for_field(:format), :height => '600px', :library => google_pie_charts_options
+    = pie_chart @item_stats.stats_for_field(:format), :height => '600px'
 
     %h2 Condition
-    = pie_chart @item_stats.stats_for_field(:condition), :height => '600px', :library => google_pie_charts_options
+    = pie_chart @item_stats.stats_for_field(:condition), :height => '600px'
 
     %h2 Price Paid
     %p
       %em Prices paid fewer than 5 times are excluded
-    = column_chart @item_stats.price_stats.select { |k,v| v >= 5 }, :library => google_column_charts_options
+    = column_chart @item_stats.price_stats.select { |k,v| v >= 5 }, :library => column_charts_options
 
     %h2 Month added
-    = column_chart items_per_month, :library => google_column_charts_options
+    = column_chart items_per_month, :library => column_charts_options
 
     %h2 Day of week added
-    = column_chart items_per_day_of_week, :library => google_column_charts_options
+    = column_chart items_per_day_of_week, :library => column_charts_options
 
     %h2 Size over time
-    = line_chart ItemCount.by_week, :library => google_column_charts_options
+    = line_chart ItemCount.by_week, :library => column_charts_options
 
     %h2 Items added per day
     #cal-heatmap

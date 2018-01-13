@@ -12,7 +12,6 @@
 
     - if ENV['BUGSNAG_API_KEY']
       %script{ "data-apikey" => ENV['BUGSNAG_API_KEY'], :src => "//d2wy8f7a9ursnm.cloudfront.net/bugsnag-2.min.js" }
-    = javascript_include_tag "//www.gstatic.com/charts/loader.js"    
     = javascript_include_tag "application"
     = csrf_meta_tags
 

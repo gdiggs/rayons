@@ -4,6 +4,7 @@
 //= require jquery.query-object
 //= require underscore-min
 //= require cal-heatmap.min
+//= require highcharts
 //= require chartkick
 //= require bootstrap.min
 //= require flash

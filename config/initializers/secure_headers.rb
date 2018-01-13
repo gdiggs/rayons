@@ -1,7 +1,6 @@
 SecureHeaders::Configuration.default do |config|
   config.csp.merge!(
     script_src: %w[
-      'unsafe-eval'
       'unsafe-inline'
       'self'
       d2wy8f7a9ursnm.cloudfront.net
