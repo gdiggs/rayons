@@ -9,7 +9,7 @@
   %td.item-price_paid #{item.price_paid}
   %td.item-discogs_url
     - if item.discogs_url
-      %a{:href => "#{item.discogs_url}", :target => "_blank"} link
+      %a{:href => "#{item.discogs_url}", :target => "_blank", rel: "noopener noreferrer"} link
   %td.item-notes #{item.notes}
   %td.item-added_on #{item.added_on}
   %td.item-edit<

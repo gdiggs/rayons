@@ -54,9 +54,9 @@
     %nav.nav.navbar-default.navbar-bottom
       .container.text-center
         Created by
-        %a{ :href => 'http://www.gordondiggs.com/', :target => '_blank' } Gordon Diggs
+        %a{ :href => 'http://www.gordondiggs.com/', :target => '_blank', rel: "noopener noreferrer" } Gordon Diggs
         in 2013.
-        %a{ :href => 'https://github.com/GordonDiggs/rayons', target: '_blank' } Fork me on Github
+        %a{ :href => 'https://github.com/GordonDiggs/rayons', target: '_blank', rel: "noopener noreferrer" } Fork me on Github
 
     .print-footer.hidden
       Printed on #{Time.now.strftime("%a %b %-d %Y at %H:%M")} at #{request.url}
