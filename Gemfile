@@ -34,7 +34,7 @@ gem "secure_headers"
 
 group :test do
   gem "rails-controller-testing"
-  gem "rspec-rails", "~> 3.5.0"
+  gem "rspec-rails", "~> 3.7.2"
   gem "rspec-mocks"
   gem "codeclimate-test-reporter", "0.6.0", group: :test, require: nil
 end
