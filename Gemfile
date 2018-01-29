@@ -36,5 +36,5 @@ group :test do
   gem "rails-controller-testing"
   gem "rspec-rails", "~> 3.5.0"
   gem "rspec-mocks"
-  gem "codeclimate-test-reporter", "0.6.0", group: :test, require: nil
+  gem "codeclimate-test-reporter", "1.0.8", group: :test, require: nil
 end
