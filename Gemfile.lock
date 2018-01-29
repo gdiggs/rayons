@@ -55,8 +55,6 @@ GEM
     clockwork (2.0.2)
       activesupport
       tzinfo
-    codeclimate-test-reporter (0.6.0)
-      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
     crass (1.0.3)
@@ -255,7 +253,6 @@ DEPENDENCIES
   cacheable_flash
   chartkick
   clockwork
-  codeclimate-test-reporter (= 0.6.0)
   dalli (~> 2.7.2)
   devise
   dropbox-sdk
@@ -279,6 +276,7 @@ DEPENDENCIES
   sass
   sass-rails (~> 5.0.1)
   secure_headers
+  simplecov
   skylight
   textacular (~> 4.0.0)
   timber (~> 2.3)
