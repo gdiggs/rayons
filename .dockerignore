@@ -1,7 +1,0 @@
-log/
-spec/
-tmp/
-.bundle/
-coverage/
-public/items/
-public/stats.html
