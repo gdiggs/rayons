@@ -225,8 +225,8 @@ GEM
       sprockets (>= 3.0.0)
     stackable_flash (0.1.1)
     temple (0.8.0)
-    textacular (4.0.1)
-      activerecord (>= 3.0, < 5.1)
+    textacular (5.0.1)
+      activerecord (>= 3.0, < 5.2)
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
@@ -278,7 +278,7 @@ DEPENDENCIES
   secure_headers
   simplecov
   skylight
-  textacular (~> 4.0.0)
+  textacular (~> 5.0.1)
   timber (~> 2.3)
   uglifier
 
