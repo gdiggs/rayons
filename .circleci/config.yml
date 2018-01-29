@@ -1,6 +1,8 @@
 version: 2
 jobs:
   build:
+    environment:
+      CC_TEST_REPORTER_ID: 19f491a1648f433b68957bd670b0083611a090819d872817041cd2da2acb10a0
     docker:
       - image: ruby:2.4.2
       - image: postgres:9.4.10
@@ -10,6 +12,16 @@ jobs:
     steps:
       - checkout
       - run: apt-get update -qq && apt-get install -y build-essential nodejs postgresql-client
+      - run:
+          name: Setup Code Climate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
       - run: bundle install -j4
       - run: bundle exec rake db:create db:migrate RAILS_ENV=test
-      - run: bundle exec rake
+      - run:
+          name: Run tests
+          command: |
+            ./cc-test-reporter before-build
+            bundle exec rake
+            ./cc-test-reporter after-build
