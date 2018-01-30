@@ -30,7 +30,7 @@
   = paginate @presenter.items
 
 :javascript
-  window.filter_options = #{params.slice(:sort, :direction, :search, :q, :page).to_json};
+  window.filter_options = #{params.slice(:sort, :direction, :search, :q, :page).to_json.html_safe};
 
 - content_for :nav do
   %ul.nav.navbar-nav
