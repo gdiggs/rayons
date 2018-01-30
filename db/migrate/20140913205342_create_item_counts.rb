@@ -1,4 +1,4 @@
-class CreateItemCounts < ActiveRecord::Migration
+class CreateItemCounts < ActiveRecord::Migration[5.0]
   def change
     create_table :item_counts do |t|
       t.integer :num
