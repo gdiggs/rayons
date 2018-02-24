@@ -23,3 +23,5 @@ public/items/
 public/stats.html
 
 coverage/
+
+.env
