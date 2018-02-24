@@ -11,10 +11,10 @@
 
   .row
     - if @release.image_url.present?
-      .col-md-4.image
+      .col-md-4.image.album-art
         %img.img-responsive{ src: @release.image_url }
         %br
-    .col-md-8
+    .col-md-7
       %p
         %b Condition:
         = @item.condition

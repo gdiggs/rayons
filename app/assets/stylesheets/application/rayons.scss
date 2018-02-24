@@ -94,3 +94,10 @@ a:active {
   overflow: scroll;
   padding-bottom: 15px;
 }
+
+.album-art {
+  margin-right: 20px;
+  img {
+    box-shadow: 10px 10px 38px rgba(0, 0, 0, 0.80);
+  }
+}
