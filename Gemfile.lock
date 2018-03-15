@@ -66,7 +66,7 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.3)
-    docile (1.1.5)
+    docile (1.3.0)
     dropbox-sdk (1.6.5)
       json
     erubis (2.7.0)
@@ -209,8 +209,8 @@ GEM
     secure_headers (5.0.4)
       useragent (>= 0.15.0)
     sexp_processor (4.10.0)
-    simplecov (0.15.1)
-      docile (~> 1.1.0)
+    simplecov (0.16.0)
+      docile (~> 1.1)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
