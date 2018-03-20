@@ -52,8 +52,7 @@ GEM
       json
       stackable_flash (>= 0.0.7)
     chartkick (2.3.2)
-    clockwork (2.0.2)
-      activesupport
+    clockwork (2.0.3)
       tzinfo
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
@@ -91,7 +90,7 @@ GEM
       haml (>= 4.0, < 6)
       nokogiri (>= 1.6.0)
       ruby_parser (~> 3.5)
-    i18n (0.9.3)
+    i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     json (2.1.0)
     kaminari (1.1.1)
@@ -232,7 +231,7 @@ GEM
     tilt (2.0.8)
     timber (2.6.1)
       msgpack (~> 1.0)
-    tzinfo (1.2.4)
+    tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (4.1.6)
       execjs (>= 0.3.0, < 3)
