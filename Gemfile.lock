@@ -73,8 +73,8 @@ GEM
     ffi (1.9.23)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    groupdate (3.2.0)
-      activesupport (>= 3)
+    groupdate (4.0.0)
+      activesupport (>= 4.2)
     haml (5.0.4)
       temple (>= 0.8.0)
       tilt
