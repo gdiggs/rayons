@@ -213,7 +213,7 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    skylight (1.6.0)
+    skylight (1.6.1)
       activesupport (>= 3.0.0)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
