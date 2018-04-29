@@ -12,7 +12,7 @@ Rayons.Stats = {
     cal.init({
       start: new Date(2012, 1, 1), // February 1, 2012
       cellSize: 10,
-      range: 72,
+      range: 120,
       domain: "month",
       subDomain: "day",
       legend: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
