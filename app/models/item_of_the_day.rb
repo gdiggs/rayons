@@ -15,10 +15,9 @@ class ItemOfTheDay
   def as_json(*)
     {
       uid: "item:#{item.id}",
-      updateDate: Date.today,
+      updateDate: Date.today.midnight.strftime("%Y-%m-%dT%H:%M:%S.0Z"),
       titleText: "Today's record of the day",
       mainText: item_description,
-      redirectionUrl: "https://rayons.info/items/#{item.id}",
     }
   end
 
