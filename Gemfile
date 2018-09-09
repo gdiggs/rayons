@@ -37,4 +37,5 @@ group :test do
   gem "rspec-rails", "~> 3.7.2"
   gem "rspec-mocks"
   gem "simplecov", require: false
+  gem "timecop"
 end

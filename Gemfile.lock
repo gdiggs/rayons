@@ -232,6 +232,7 @@ GEM
     tilt (2.0.8)
     timber (2.6.1)
       msgpack (~> 1.0)
+    timecop (0.9.1)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (4.1.16)
@@ -279,6 +280,7 @@ DEPENDENCIES
   skylight
   textacular (~> 5.1.0)
   timber (~> 2.3)
+  timecop
   uglifier
 
 RUBY VERSION

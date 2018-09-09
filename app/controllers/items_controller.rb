@@ -128,6 +128,14 @@ class ItemsController < ApplicationController
     end
   end
 
+  # GET /items/daily.json
+  # Used for Alexa Flash Briefing Skill
+  def daily
+    @item = ItemOfTheDay.new
+
+    render json: @item
+  end
+
   def search
     @presenter = ItemSearchPresenter.new
   end
