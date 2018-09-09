@@ -49,6 +49,14 @@ describe ItemsController, type: :controller do
     end
   end
 
+  describe "#daily" do
+    it "should return the right format" do
+      get :daily
+
+      expect(response).to be_success
+    end
+  end
+
   describe "when not logged in" do
     describe "#create" do
       it "should return a 403" do
