@@ -18,7 +18,7 @@ class ItemOfTheDay
       updateDate: Date.today,
       titleText: "Today's record of the day",
       mainText: item_description,
-      redirctionUrl: "",
+      redirectionUrl: "https://rayons.info/items/#{item.id}",
     }
   end
 
