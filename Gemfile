@@ -34,7 +34,7 @@ gem "secure_headers"
 
 group :test do
   gem "rails-controller-testing"
-  gem "rspec-rails", "~> 3.7.2"
+  gem "rspec-rails", "~> 3.8.0"
   gem "rspec-mocks"
   gem "simplecov", require: false
   gem "timecop"
