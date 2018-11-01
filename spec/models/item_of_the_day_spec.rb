@@ -21,7 +21,7 @@ describe ItemOfTheDay, type: :model do
       result = iotd.as_json
       item = iotd.item
 
-      expect(result[:updateDate]).to eq(Date.today)
+      expect(result[:updateDate].to_date).to eq(Date.today)
       expect(result[:mainText]).to include(item.title, item.artist)
     end
   end
