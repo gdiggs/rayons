@@ -30,13 +30,11 @@ Rayons::Application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_files = true
+  config.public_file_server.enabled = true
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
-
-  config.assets.compile = true
 
   # Generate digests for assets URLs.
   config.assets.digest = true
