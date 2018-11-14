@@ -22,8 +22,6 @@ module Rayons
 
     config.log_tags = [:uuid]
 
-    config.active_record.schema_format = :sql
-
     config.assets.paths << Rails.root.join("vendor", "assets", "components")
 
     # via https://gist.github.com/afeld/5704079

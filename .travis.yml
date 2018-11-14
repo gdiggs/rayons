@@ -1,0 +1,23 @@
+dist: trusty
+language: generic
+sudo: required
+
+env:
+  global:
+    - CC_TEST_REPORTER_ID=19f491a1648f433b68957bd670b0083611a090819d872817041cd2da2acb10a0
+
+install:
+  - sudo /etc/init.d/postgresql stop
+  # Install CC Test Reporter
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+
+before_script:
+  - ./cc-test-reporter before-build
+
+script:
+  - docker-compose up -d
+  - make test
+
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

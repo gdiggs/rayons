@@ -10,23 +10,23 @@ the collection.
 
 ## Local Setup
 
-Rayons requires [Postgresql](http://www.postgresql.org/), as well as
-[npm](https://www.npmjs.com/). Npm is used with bower for vendored javascripts.
+Rayons requires Docker/Docker Compose to run:
 
 ```bash
-bundle install
-rake db:create db:migrate
-npm install
-foreman start
+make dev
 ```
 
 The app will be available at [0.0.0.0:5000](http://0.0.0.0:5000). When running
 in production mode, the app requires SSL (Heroku supplies this automatically),
 and an `ENV['SECRET_TOKEN']` to be set.
 
+## Tests
+
+You can run tests with `make test`.
+
 ## Dropbox Backup Setup
 
-You can back up the collection by using `rake backup:dropbox`. Before you can
+You can back up the collection by using `docker-compose run web rake backup:dropbox`. Before you can
 do this, you must create an application on Dropbox and follow
 [these instructions](https://www.dropbox.com/developers/core/start/ruby) to get
 your Dropbox access token.
