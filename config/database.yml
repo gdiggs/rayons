@@ -16,7 +16,6 @@ test:
 
 production:
   url: <%= ENV['DATABASE_URL'] %>
-  database: rayons_production
   adapter: postgresql
   encoding: unicode
   pool: 16

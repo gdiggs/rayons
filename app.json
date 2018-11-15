@@ -90,12 +90,5 @@
     "papertrail",
     "heroku-postgresql"
   ],
-  "buildpacks": [
-    {
-      "url": "https://github.com/gdiggs/heroku-buildpack-sourceversion"
-    },
-    {
-      "url": "heroku/ruby"
-    }
-  ]
+  "stack": "container"
 }
