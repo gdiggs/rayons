@@ -25,4 +25,6 @@ Rayons::Application.configure do
   config.log_level = :debug
 
   config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
+
+  config.reload_classes_only_on_change = false
 end
