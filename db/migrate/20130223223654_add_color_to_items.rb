@@ -1,4 +1,4 @@
-class AddColorToItems < ActiveRecord::Migration
+class AddColorToItems < ActiveRecord::Migration[4.2]
   def change
     add_column :items, :color, :text
   end
