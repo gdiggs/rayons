@@ -23,7 +23,7 @@ class ItemStats
   end
 
   def stats_for_field(field)
-    stats = Item.select(field).group(field).order("count_#{field} DESC").count
+    stats = Item.select(field).group(field).order(field).count
     others = stats.select { |k,v| v <= 10 }.count
     stats.select { |k,v| v > 10 }.merge("Other" => others)
   end

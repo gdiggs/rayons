@@ -11,7 +11,7 @@ class StatsController < ApplicationController
 
   # GET /stats
   def index
-    render html: (cache [:stats, Item.unscoped.maximum(:updated_at).to_i] do
+    render html: (cache [:item_stats, Item.unscoped.maximum(:updated_at).to_i] do
       @prices = @item_stats.significant_prices
       render_to_string
     end)
