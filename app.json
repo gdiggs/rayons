@@ -1,0 +1,101 @@
+{
+  "name": "rayons",
+  "scripts": {
+  },
+  "env": {
+    "BUGSNAG_API_KEY": {
+      "required": true
+    },
+    "DISCOGS_APP_KEY": {
+      "required": true
+    },
+    "DISCOGS_APP_SECRET": {
+      "required": true
+    },
+    "DROPBOX_ACCESS_TOKEN": {
+      "required": true
+    },
+    "GIST_TOKEN": {
+      "required": true
+    },
+    "GOOGLE_ANALYTICS_CODE": {
+      "required": true
+    },
+    "LANG": {
+      "required": true
+    },
+    "MAILGUN_API_KEY": {
+      "required": true
+    },
+    "MAILGUN_DOMAIN": {
+      "required": true
+    },
+    "MAILGUN_PUBLIC_KEY": {
+      "required": true
+    },
+    "MAILGUN_SMTP_LOGIN": {
+      "required": true
+    },
+    "MAILGUN_SMTP_PASSWORD": {
+      "required": true
+    },
+    "MAILGUN_SMTP_PORT": {
+      "required": true
+    },
+    "MAILGUN_SMTP_SERVER": {
+      "required": true
+    },
+    "MEMCACHEDCLOUD_PASSWORD": {
+      "required": true
+    },
+    "MEMCACHEDCLOUD_SERVERS": {
+      "required": true
+    },
+    "MEMCACHEDCLOUD_USERNAME": {
+      "required": true
+    },
+    "PAPERTRAIL_API_TOKEN": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    },
+    "RAILS_ENV": {
+      "required": true
+    },
+    "RAILS_LOG_TO_STDOUT": {
+      "required": true
+    },
+    "RAILS_SERVE_STATIC_FILES": {
+      "required": true
+    },
+    "SECRET_KEY_BASE": {
+      "required": true
+    },
+    "SKYLIGHT_AUTHENTICATION": {
+      "required": true
+    }
+  },
+  "formation": {
+    "worker": {
+      "quantity": 1
+    },
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+    "mailgun",
+    "memcachedcloud",
+    "papertrail",
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/gdiggs/heroku-buildpack-sourceversion"
+    },
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}
