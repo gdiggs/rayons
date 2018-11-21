@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 gem "rails", "~> 5.0.0"
-gem "pg", "~> 0.18.4"
+gem "pg", "~> 1.1.3"
 gem "puma"
 gem "rails_12factor"
 gem "devise"
