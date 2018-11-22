@@ -1,4 +1,4 @@
-class AddIndexesForSearching < ActiveRecord::Migration[4.2]
+class AddIndexesForSearching < ActiveRecord::Migration
   def change
     query = ""
     %w(title artist label format condition color).each do |attr|

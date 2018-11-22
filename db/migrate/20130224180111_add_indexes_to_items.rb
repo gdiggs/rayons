@@ -1,4 +1,4 @@
-class AddIndexesToItems < ActiveRecord::Migration[4.2]
+class AddIndexesToItems < ActiveRecord::Migration
   def change
     add_index :items, :title
     add_index :items, :artist
