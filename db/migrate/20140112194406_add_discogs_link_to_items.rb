@@ -1,4 +1,4 @@
-class AddDiscogsLinkToItems < ActiveRecord::Migration[4.2]
+class AddDiscogsLinkToItems < ActiveRecord::Migration
   def change
     add_column :items, :discogs_url, :text
   end
