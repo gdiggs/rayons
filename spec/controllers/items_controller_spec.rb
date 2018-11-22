@@ -26,6 +26,11 @@ describe ItemsController, type: :controller do
       expect(response).to be_success
     end
 
+    it "should search" do
+      get :index, params: { search: "NOFX" }
+      expect(response).to be_success
+    end
+
     it "should get edit" do
       get :edit, params: { id: @item }
       expect(response).to be_success
