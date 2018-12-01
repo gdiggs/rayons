@@ -1,0 +1,5 @@
+.bundle
+coverage/
+.env*
+latest.dump
+tmp/
