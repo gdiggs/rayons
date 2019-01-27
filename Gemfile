@@ -30,6 +30,7 @@ gem "clockwork"
 gem "skylight"
 gem "timber"
 gem "secure_headers"
+gem "alexa_verifier", git: "https://github.com/sidoh/alexa_verifier.git"
 
 group :test do
   gem "rails-controller-testing"

@@ -16,6 +16,12 @@ GIT
     kaminari-core (1.1.1)
 
 GIT
+  remote: https://github.com/sidoh/alexa_verifier.git
+  revision: bfb49d091cfbef661f9b1ff7a858cb5d9d09f473
+  specs:
+    alexa_verifier (1.0.0)
+
+GIT
   remote: https://github.com/textacular/textacular.git
   revision: 76d1a8dc722ba52fdd87bbf215dbe4a243d1c34a
   specs:
@@ -257,6 +263,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  alexa_verifier!
   autoprefixer-rails
   bootstrap-sass
   bugsnag
