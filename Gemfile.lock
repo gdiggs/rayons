@@ -69,7 +69,7 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
-    bugsnag (6.10.0)
+    bugsnag (6.11.0)
       concurrent-ruby (~> 1.0)
     builder (3.2.3)
     cacheable_flash (1.0.0)
@@ -79,7 +79,7 @@ GEM
     clockwork (2.0.3)
       tzinfo
     coderay (1.1.2)
-    concurrent-ruby (1.1.3)
+    concurrent-ruby (1.1.4)
     crass (1.0.4)
     dalli (2.7.9)
     devise (4.5.0)
