@@ -1,31 +1,25 @@
 class ItemAlexaPresenter
-  attr_accessor :intent, :slots
+  attr_accessor :intent, :slots, :launch_request
 
   INTENTS = {
     formatted: "FormattedItem",
     random: "RandomItem",
+    stop: "AMAZON.StopIntent",
   }.freeze
+  LAUNCH_REQUEST_TYPE = "LaunchRequest".freeze
 
   def initialize(params)
+    @launch_request = params.fetch(:request, {})[:type] == LAUNCH_REQUEST_TYPE
     @intent = params.fetch(:request, {}).fetch(:intent, {})[:name]
     @slots = params.fetch(:request, {}).fetch(:intent, {})[:slots]
   end
 
   def as_json(*)
-    {
-      version: "1.0",
-      card: {
-        title: "The Record Collection",
-        type: "Simple",
-        content: item_description,
-      },
-      response: {
-        outputSpeech: {
-          type: "SSML",
-          ssml: item_description,
-        },
-      },
-    }
+    if launch_request
+      launch_request_response
+    else
+      item_response
+    end
   end
 
   def item
@@ -43,7 +37,9 @@ class ItemAlexaPresenter
 
   def item_description
     result = "<speak>"
-    if item
+    if intent == INTENTS[:stop]
+      result << "<p>Happy listening!</p>"
+    elsif item
       result << "<p>You should listen to \"<emphasis>#{item.title}</emphasis>\" by <emphasis>#{item.artist}</emphasis>"
       result << " on <emphasis>#{item.label}</emphasis>" if item.label
       result << ".</p> <p>It is a <emphasis>#{item["format"].gsub(/"/, " inch")}</emphasis> record"
@@ -54,5 +50,34 @@ class ItemAlexaPresenter
     end
     result << "</speak>"
     result
+  end
+
+  def launch_request_response
+    {
+      version: "1.0",
+      response: {
+        outputSpeech: {
+          type: "PlainText",
+          text: 'Welcome to The Record Collection! You can ask me "what I should listen to" or for a specific format with "ask the record collection for a 12 inch record."'
+        },
+      },
+    }
+  end
+
+  def item_response
+    {
+      version: "1.0",
+      card: {
+        title: "The Record Collection",
+        type: "Simple",
+        content: item_description,
+      },
+      response: {
+        outputSpeech: {
+          type: "SSML",
+          ssml: item_description,
+        },
+      },
+    }
   end
 end
