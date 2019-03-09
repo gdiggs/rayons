@@ -1,0 +1,20 @@
+en:
+  pagy:
+    nav:
+      prev: "&lsaquo;&nbsp;Prev"
+      next: "Next&nbsp;&rsaquo;"
+      gap: "&hellip;"
+    info:
+      single_page:
+        zero: "No %{item_name} found"
+        one: "<b>1</b> %{item_name}"
+        other: "<b>%{count}</b> %{item_name}"
+      multiple_pages: "<b>%{from}-%{to}</b> of <b>%{count}</b> %{item_name}"
+      item_name:
+        zero: "items"
+        one: "item"
+        other: "items"
+    compact: "Page %{page_input} of %{pages}"
+    items:
+      one: "Show %{items_input} item per page"
+      other: "Show %{items_input} items per page"

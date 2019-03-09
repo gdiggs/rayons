@@ -1,4 +1,5 @@
 class ItemJSONPresenter
+  include Pagy::Backend
   attr_reader :sort, :direction, :search, :page
 
   def initialize(options = {})
@@ -9,7 +10,12 @@ class ItemJSONPresenter
   end
 
   def as_json
-    { items: items, page: page }.merge(pagination.as_json)
+    {
+      count: pagination.count,
+      items: items,
+      page: page,
+      pages: pagination.pages,
+    }
   end
 
   def to_json
@@ -21,10 +27,22 @@ class ItemJSONPresenter
   end
 
   def items
-    Item.sorted(sort, direction).search(search).page(page)
+    pagy_objects[1]
   end
 
   def pagination
-    PageEntriesInfoDecorator.new(items)
+    pagy_objects[0]
+  end
+
+  private
+
+  def params
+    {
+      page: page,
+    }
+  end
+
+  def pagy_objects
+    @pagy_objects ||= pagy(Item.sorted(sort, direction).search(search))
   end
 end

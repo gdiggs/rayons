@@ -4,7 +4,9 @@ class ItemAdvancedSearchJSONPresenter < ItemJSONPresenter
     @search = options[:q].dup
   end
 
-  def items
-    Item.sorted(sort, direction).advanced_search(search).page(page)
+  private
+
+  def pagy_objects
+    @pagy_objects ||= pagy(Item.sorted(sort, direction).advanced_search(search))
   end
 end

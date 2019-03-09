@@ -27,7 +27,7 @@
       %tbody
         - cache("#{@presenter.cache_key}/html") do
           = render @presenter.items
-  = paginate @presenter.items
+  .text-center!= pagy_bootstrap_nav @presenter.pagination
 
 :javascript
   window.filter_options = #{params.slice(:sort, :direction, :search, :q, :page).to_json.html_safe};
@@ -35,7 +35,7 @@
 - content_for :nav do
   %ul.nav.navbar-nav
     %li
-      %a= page_entries_info @presenter.items
+      %a!= pagy_info @presenter.pagination
     %li
       %a{ :href => '/stats' } stats
     %li

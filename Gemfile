@@ -21,7 +21,7 @@ gem "autoprefixer-rails"
 gem "pry-rails"
 gem "marco-polo"
 gem "hashie"
-gem "kaminari", git: "https://github.com/kaminari/kaminari.git"
+gem "pagy"
 gem "cacheable_flash"
 gem "mustache"
 gem "memoist", require: false
