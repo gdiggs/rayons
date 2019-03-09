@@ -12,7 +12,7 @@ class Items::AlexaController < ApplicationController
 
   def verify_alexa
     unless AlexaVerifier.valid?(request)
-      render nothing: true, status: :bad_request
+      render body: nil, status: :bad_request
     end
   end
 end
