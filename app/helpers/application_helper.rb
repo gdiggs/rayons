@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Pagy::Frontend
+
   def set_streaming_headers
     headers["X-Accel-Buffering"] = "no"
     headers["Cache-Control"] ||= "no-cache"
