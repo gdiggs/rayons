@@ -24,6 +24,8 @@ Rayons::Application.configure do
 
   config.log_level = :debug
 
+  config.logger = ActiveSupport::TaggedLogging.new(ActiveSupport::Logger.new(STDOUT))
+
   config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
 
   config.reload_classes_only_on_change = false
