@@ -16,8 +16,6 @@ services:
   web:
     build: .
     command: bundle exec puma -p 5000
-    volumes:
-      - .:/app
     ports:
       - "5000:5000"
     depends_on:
@@ -25,7 +23,5 @@ services:
   worker:
     build: .
     command: bundle exec clockwork config/clock.rb
-    volumes:
-      - .:/app
     depends_on:
       - db
