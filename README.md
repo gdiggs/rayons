@@ -1,6 +1,6 @@
 [![Code Climate](https://codeclimate.com/github/GordonDiggs/rayons.png)](https://codeclimate.com/github/GordonDiggs/rayons)
 [![Test Coverage](https://codeclimate.com/github/GordonDiggs/rayons/badges/coverage.svg)](https://codeclimate.com/github/GordonDiggs/rayons)
-[![CircleCI](https://circleci.com/gh/GordonDiggs/rayons.svg)](https://circleci.com/gh/GordonDiggs/rayons)
+[![CircleCI](https://circleci.com/gh/gdiggs/rayons.svg)](https://circleci.com/gh/gdiggs/rayons)
 
 # Rayons
 
