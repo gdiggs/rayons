@@ -44,7 +44,7 @@ module ItemsHelper
   def top_10(field)
     @total_count ||= Item.count
     stats = @item_stats || ItemStats.new
-    stats.stats_for_field(field).first(10).map do |value, count|
+    stats.top_10(field).map do |value, count|
       percentage = count * 100.0 / @total_count
       "<p><strong>#{value}</strong>: #{number_with_delimiter(count)}: <em>#{percentage.round(2)}%</em></p>"
     end.join.html_safe
