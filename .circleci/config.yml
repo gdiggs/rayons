@@ -7,14 +7,13 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
+          name: Install dependencies
+          command: apk --update add make curl py-pip python-dev libffi-dev openssl-dev gcc libc-dev
+      - run:
           name: Install docker-compose
           command: |
-            apk --update add py2-pip
-            /usr/bin/pip2 install docker-compose
+            /usr/bin/pip install docker-compose
             docker-compose --version
-      - run:
-          name: Install dependencies
-          command: apk --update add make curl
       - run:
           name: Run tests
           command: |
