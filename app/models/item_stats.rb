@@ -28,6 +28,10 @@ class ItemStats
     stats.select { |k,v| v > 10 }.merge("Other" => others)
   end
 
+  def top_10(field)
+    Item.select(field).group(field).count.sort_by { |_, count| count }.last(10).reverse.to_h
+  end
+
   def price_stats
     Item.select(:price_paid).group(:price_paid).order("to_number(price_paid, '9999999.99')").count
   end
