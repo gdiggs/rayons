@@ -219,7 +219,7 @@ GEM
     sassc (2.0.1)
       ffi (~> 1.9)
       rake
-    secure_headers (6.1.0)
+    secure_headers (6.1.1)
     sexp_processor (4.12.0)
     simplecov (0.16.1)
       docile (~> 1.1)
