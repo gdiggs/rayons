@@ -3,7 +3,7 @@ volumes:
   postgres:
 services:
   db:
-    image: postgres:9.6.10
+    image: postgres:10.10
     volumes:
       - postgres:/var/lib/postgresql/data
     ports:
