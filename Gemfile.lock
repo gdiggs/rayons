@@ -69,7 +69,8 @@ GEM
       json
       stackable_flash (>= 0.0.7)
     chartkick (3.2.1)
-    clockwork (2.0.3)
+    clockwork (2.0.4)
+      activesupport
       tzinfo
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
