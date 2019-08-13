@@ -10,10 +10,10 @@ en:
         one: "<b>1</b> %{item_name}"
         other: "<b>%{count}</b> %{item_name}"
       multiple_pages: "<b>%{from}-%{to}</b> of <b>%{count}</b> %{item_name}"
-      item_name:
-        zero: "items"
-        one: "item"
-        other: "items"
+    item_name:
+      zero: "items"
+      one: "item"
+      other: "items"
     compact: "Page %{page_input} of %{pages}"
     items:
       one: "Show %{items_input} item per page"
