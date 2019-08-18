@@ -2,10 +2,14 @@
 
 .container-fluid#item_show
   %h1
-    #{@item.artist} -
+    %a{ href: root_url(search: @item.artist) }= @item.artist
+    \-
     %em= @item.title
   %h2
-    #{@item.format} released in #{@item.year} on #{@item.label}
+    #{@item.format} released in
+    %a{ href: root_url(search: @item.year) }= @item.year
+    on
+    %a{ href: root_url(search: @item.label) }= @item.label
   %h3
     Added on #{@item.created_at.strftime('%A, %B %-d, %Y')}
 
