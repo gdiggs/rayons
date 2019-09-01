@@ -6,9 +6,9 @@ GIT
 
 GIT
   remote: https://github.com/textacular/textacular.git
-  revision: 87d2d1861f7f786c802fe9ac3329c84974bd87bd
+  revision: 90e6eb4c7e21117e6340ee686b19a6dd37f4bf9f
   specs:
-    textacular (5.1.0)
+    textacular (5.2.0)
       activerecord (>= 5.0, < 6.1)
 
 GEM
