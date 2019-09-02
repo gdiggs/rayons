@@ -52,8 +52,10 @@ class DiscogsImporter
       condition: "",
       discogs_url: url,
       format: format,
+      genres: discogs_release["genres"],
       label: label,
       price_paid: "$0.00",
+      styles: discogs_release["styles"],
       title: discogs_release["title"],
       year: discogs_release["year"],
     }
