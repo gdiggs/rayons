@@ -154,7 +154,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:artist, :condition, :format, :label, :price_paid, :title, :year, :color, :notes, :discogs_url)
+    params.require(:item).permit(:artist, :condition, :format, :label, :price_paid, :title, :year, :color, :notes, :discogs_url, genres: [], styles: [])
   end
 
   def set_variant

@@ -40,8 +40,9 @@ describe ItemsController, type: :controller do
       put :update,
           params: {
             id: @item,
-            item: { artist: @item.artist, condition: @item.condition, format: @item.format, label: @item.label, price_paid: @item.price_paid, title: @item.title, year: @item.year },
+            item: { artist: @item.artist, condition: @item.condition, format: @item.format, genres: ["Fun"], label: @item.label, price_paid: @item.price_paid, title: @item.title, year: @item.year },
           }
+      expect(assigns[:item].reload.genres).to eq(["Fun"])
       expect(subject).to redirect_to item_path(assigns(:item))
     end
 

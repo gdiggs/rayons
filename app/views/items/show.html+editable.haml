@@ -28,13 +28,13 @@
       %p
         %b Price paid:
         = @item.price_paid
+      %p
+        %b Genre:
+        = @item.genres.to_a.join(', ')
+      %p
+        %b Style:
+        = @item.styles.to_a.join(', ')
       - if @release.extra_info?
-        %p
-          %b Genre:
-          = @release.genres.to_a.join(', ')
-        %p
-          %b Style:
-          = @release.styles.to_a.join(', ')
         - if @release.tracklist
           .tracklist
             %b Tracklist
