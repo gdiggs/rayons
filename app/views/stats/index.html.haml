@@ -44,6 +44,12 @@
           %h2 Top 10 #{field.to_s.titleize.pluralize}
           = top_10(field)
     %div{ :style => 'clear:both;' }
+    .row
+      - [:genres, :styles].each do |field|
+        .col-md-6
+          %h2 Top 10 #{field.to_s.titleize.pluralize}
+          = top_10(field)
+    %div{ :style => 'clear:both;' }
 
     %h2 Discogs URL progress
     %p
