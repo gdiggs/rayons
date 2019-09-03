@@ -22,7 +22,7 @@ namespace :item do
     Item.where.not(discogs_url: [nil, ""]).find_each do |item|
       next if item.genres.present? || item.styles.present?
 
-      if count % 25 == 0
+      if (count % 25).zero?
         puts "Sleeping 1 minute to wait for Discogs rate limit"
         sleep 60
       end
