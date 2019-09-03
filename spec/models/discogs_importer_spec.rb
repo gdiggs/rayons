@@ -6,7 +6,7 @@ describe DiscogsImporter, type: :model do
       id = "3916848"
       url = "https://www.discogs.com/NOFX-The-Decline/release/3916848"
       release = {
-        "styles" => ["Punk"],
+        "styles" => %w[Punk Ska],
         "videos" =>
         [
           {
@@ -86,6 +86,8 @@ describe DiscogsImporter, type: :model do
       expect(item.discogs_url).to eq(url)
       expect(item.format).to eq("12\"")
       expect(item.label).to eq("Fat")
+      expect(item.genres).to eq(["Rock"])
+      expect(item.styles).to eq(%w[Punk Ska])
     end
   end
 end

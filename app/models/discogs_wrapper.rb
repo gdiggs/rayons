@@ -2,6 +2,8 @@ require "net/https"
 require "hashie"
 
 class DiscogsWrapper
+  class ReleaseNotFoundError < StandardError; end
+
   BASE_URL = "api.discogs.com".freeze
 
   def get_release(id)
@@ -23,6 +25,8 @@ class DiscogsWrapper
     if response.code == "200"
       hash = JSON.parse(response.body)
       Hashie::Mash.new(hash)
+    elsif response.code == "404"
+      raise ReleaseNotFoundError
     else
       raise "Discogs API request failed: #{response.code} #{response.body}"
     end

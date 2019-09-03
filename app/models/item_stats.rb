@@ -29,7 +29,14 @@ class ItemStats
   end
 
   def top_10(field)
-    Item.select(field).group(field).count.sort_by { |_, count| count }.last(10).reverse.to_h
+    case field.to_sym
+    when :genres
+      top_10_genres
+    when :styles
+      top_10_styles
+    else
+      Item.select(field).group(field).count.sort_by { |_, count| count }.last(10).reverse.to_h
+    end
   end
 
   def price_stats
@@ -48,4 +55,25 @@ class ItemStats
   memoize :counts_by_day, :prices, :significant_prices, :stats_for_field, :price_stats, :words_for_field
 
   class InvalidFieldError < RuntimeError; end
+
+  private
+
+  # def top_10_genres and def top_10_styles
+  # Use metaprogramming here to prevent sql injection if the field were a method parameter
+  %w[genre style].each do |field|
+    define_method :"top_10_#{field.pluralize}" do
+      sql = <<-SQL
+        WITH info as (
+          select
+            unnest(#{field.pluralize}) as #{field}
+           from items
+        ) select
+          #{field}, count(*) as count
+          from info
+          group by #{field}
+          order by count DESC;
+      SQL
+      ActiveRecord::Base.connection.exec_query(sql).rows.first(10).to_h
+    end
+  end
 end

@@ -24,14 +24,14 @@ class DiscogsRelease
 
   # TODO: go back to using the discogs images somehow
   def image_url
-    if release && release.images
+    if release&.images
       img = release.images.select { |i| i["type"] == "primary" }.sort_by { |i| i["width"] }.last || {}
       img["uri"]
     end
   end
 
   def styles
-    release.styles if release
+    release&.styles
   end
 
   def notes

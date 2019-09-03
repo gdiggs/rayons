@@ -6,9 +6,14 @@
         - @item.errors.full_messages.each do |msg|
           %li= msg
 
-  - (Item.column_names - ['id', 'created_at', 'updated_at', 'deleted']).each do |field|
+  - (Item.column_names - %w[id created_at updated_at deleted genres styles]).each do |field|
     .form-group
       = f.label field
       = f.text_field field, class: "form-control"
+  - %w[genres styles].each do |field|
+    .form-group
+      = f.label field
+      - @item.send(field).each do |v|
+        = f.text_field field, value: v, name: "item[#{field}][]", class: "form-control"
   .form-group
     %button.btn.btn-primary{ type: "submit" } Save
