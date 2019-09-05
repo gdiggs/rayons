@@ -45,16 +45,16 @@ namespace :item do
 
     puts "title,artist,url,discogs_url"
     Item.where(discogs_url: [nil, ""]).find_each do |item|
+      if (count % 50).zero?
+        sleep 60
+      end
+      count += 1
+
       result = DiscogsWrapper.new.search_releases(item.title, item.artist)["results"].first
       discogs_url = result && "https://discogs.com#{result["uri"]}"
       url = Rails.application.routes.url_helpers.edit_item_url(item, host: ActionMailer::Base.smtp_settings[:domain])
 
       print CSV.generate_line([item.title, item.artist, url, discogs_url])
-
-      if (count % 50).zero?
-        sleep 60
-      end
-      count += 1
     end
   end
 end
