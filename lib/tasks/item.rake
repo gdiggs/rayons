@@ -45,7 +45,7 @@ namespace :item do
 
     puts "title,artist,url,discogs_url"
     Item.where(discogs_url: [nil, ""]).find_each do |item|
-      if (count % 50).zero?
+      if (count % 40).zero?
         sleep 60
       end
       count += 1
