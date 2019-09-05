@@ -38,4 +38,23 @@ namespace :item do
       next
     end
   end
+
+  desc "This suggests discogs urls for items with it missing"
+  task suggest_discogs_urls: :environment do
+    count = 1
+
+    puts "title,artist,url,discogs_url"
+    Item.where(discogs_url: [nil, ""]).find_each do |item|
+      result = DiscogsWrapper.new.search_releases(item.title, item.artist)["results"].first
+      discogs_url = result && "https://discogs.com#{result["uri"]}"
+      url = Rails.application.routes.url_helpers.edit_item_url(item, host: ActionMailer::Base.smtp_settings[:domain])
+
+      print CSV.generate_line([item.title, item.artist, url, discogs_url])
+
+      if (count % 50).zero?
+        sleep 60
+      end
+      count += 1
+    end
+  end
 end

@@ -10,12 +10,16 @@ class DiscogsWrapper
     get("/releases/#{id}")
   end
 
+  def search_releases(title, artist)
+    get("/database/search", release_title: title, artist: artist, type: "release")
+  end
+
   private
 
-  def get(path)
+  def get(path, params = {})
     request =
       Net::HTTP::Get.new(
-        path,
+        "#{path}?#{params.to_query}",
         "Authorization" => authorization,
         "User-Agent" => user_agent,
       )
