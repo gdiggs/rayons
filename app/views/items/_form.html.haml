@@ -13,7 +13,7 @@
   - %w[genres styles].each do |field|
     .form-group
       = f.label field
-      - @item.send(field).each do |v|
+      - @item.send(field).to_a.each do |v|
         = f.text_field field, value: v, name: "item[#{field}][]", class: "form-control"
   .form-group
     %button.btn.btn-primary{ type: "submit" } Save
