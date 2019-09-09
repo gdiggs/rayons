@@ -92,6 +92,22 @@ class Item < ActiveRecord::Base
     items
   end
 
+  # def self.all_genres and def self.all_styles
+  # Use metaprogramming here to prevent sql injection if the field were a method parameter
+  class << self
+    %w[genre style].each do |field|
+      define_method :"all_#{field.pluralize}" do
+        sql = <<-SQL
+          select
+            distinct unnest(#{field.pluralize}) as #{field}
+           from items
+           order by #{field}
+        SQL
+        ActiveRecord::Base.connection.exec_query(sql).rows.flatten
+      end
+    end
+  end
+
   def added_on
     created_at.strftime("%m.%d.%y")
   end

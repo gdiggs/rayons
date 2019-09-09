@@ -21,6 +21,24 @@ class ItemsController < ApplicationController
     end
   end
 
+  # GET /items/discover
+  def discover
+    base_cache_key = ["discover", Item.unscoped.maximum(:updated_at).to_i].join("/")
+    @genres = Rails.cache.fetch("#{base_cache_key}/genres") { [nil] + Item.all_genres }
+    @styles = Rails.cache.fetch("#{base_cache_key}/styles") { [nil] + Item.all_styles }
+    @formats = [nil] + ItemSearchPresenter.new.formats
+
+    if params[:q]
+      @item = ItemDiscoverPresenter.new(params[:q]).item
+
+      if @item
+        redirect_to @item, only_path: true
+      else
+        flash.now[:error] = "No item found. Try again!"
+      end
+    end
+  end
+
   # GET /items/latest.json
   def latest
     number_of_items = params[:num].to_i

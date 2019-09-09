@@ -1,0 +1,22 @@
+.container-fluid
+
+  - if flash[:error]
+    .message.error.text-center= flash[:error]
+
+  %h1 Discover
+
+  = form_for(:q, url: "/items/discover", method: "GET") do |f|
+    .form-group
+      = f.label :genre
+      = f.select :genre, @genres
+
+    .form-group
+      = f.label :style
+      = f.select :style, @styles
+
+    .form-group
+      = f.label :format
+      = f.select :format, @formats
+
+    .form-group
+      %button.btn.btn-primary.btn-large{ type: "submit" } Discover something good
