@@ -40,6 +40,8 @@
       %a{ :href => '/stats' } stats
     %li
       %a{ :href => random_items_path } random
+    %li
+      %a{ href: discover_items_path } discover
     - if @can_edit
       %li
         %a.logout{ :href => '/logout' } log out

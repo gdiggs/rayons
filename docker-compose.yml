@@ -15,7 +15,7 @@ services:
       retries: 5
   web:
     build: .
-    command: bundle exec puma -p 5000
+    command: rails server --port=5000 --binding=0.0.0.0
     ports:
       - "5000:5000"
     depends_on:
