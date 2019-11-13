@@ -14,7 +14,6 @@ Rayons::Application.routes.draw do
       post "import_discogs"
       get "random"
       get "latest"
-      get "search"
       get "/page/:page", action: :index
 
       resource :alexa, only: [], controller: "items/alexa" do

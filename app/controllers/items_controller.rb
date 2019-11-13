@@ -154,10 +154,6 @@ class ItemsController < ApplicationController
     render json: @item
   end
 
-  def search
-    @presenter = ItemSearchPresenter.new
-  end
-
   private
 
   def authorize_item
@@ -180,12 +176,7 @@ class ItemsController < ApplicationController
   end
 
   def index_presenter
-    if params[:q]
-      params[:q] = params[:q].permit(:title, :artist, :format, :label, :color, :condition, :notes, years: [:minimum, :maximum])
-      ItemAdvancedSearchJSONPresenter.new(params.slice(:sort, :direction, :q, :page))
-    else
-      ItemJSONPresenter.new(params.slice(:sort, :direction, :search, :page))
-    end
+    ItemJSONPresenter.new(params.slice(:sort, :direction, :search, :page))
   end
 
   def index_csv
