@@ -23,7 +23,6 @@ gem "marco-polo"
 gem "hashie"
 gem "pagy"
 gem "cacheable_flash"
-gem "mustache"
 gem "memoist", require: false
 gem "bugsnag"
 gem "clockwork"
