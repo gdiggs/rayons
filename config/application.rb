@@ -23,5 +23,9 @@ module Rayons
     config.log_tags = [:uuid]
 
     config.assets.paths << Rails.root.join("vendor", "assets", "components")
+
+    config.action_dispatch.rescue_responses.merge!(
+      "DiscogsWrapper::ReleaseNotFoundError" => :not_found,
+    )
   end
 end
