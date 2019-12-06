@@ -18,6 +18,4 @@ RUN bundle install --jobs "$(nproc)"
 
 COPY . .
 
-RUN git rev-parse HEAD > REVISION
-
 RUN rake RAILS_ENV=production assets:precompile
