@@ -33,7 +33,7 @@ gem "alexa_verifier", git: "https://github.com/sidoh/alexa_verifier.git"
 
 group :test do
   gem "rails-controller-testing"
-  gem "rspec-rails", "~> 3.8.2"
+  gem "rspec-rails", "~> 3.9.0"
   gem "rspec-mocks"
   gem "simplecov", require: false
   gem "timecop"
