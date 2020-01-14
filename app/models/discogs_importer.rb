@@ -37,7 +37,7 @@ class DiscogsImporter
   end
 
   def format
-    fmt = discogs_release["formats"].first["descriptions"].first
+    fmt = discogs_release["formats"].first["descriptions"]&.first
     FORMATS[fmt] || fmt
   end
 
