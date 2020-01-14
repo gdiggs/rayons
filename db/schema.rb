@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 2019_09_02_210756) do
     t.text "format"
     t.text "condition"
     t.text "price_paid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.text "color"
     t.boolean "deleted", default: false
     t.text "discogs_url"
@@ -60,29 +60,29 @@ ActiveRecord::Schema.define(version: 2019_09_02_210756) do
 
   create_table "rails_admin_histories", id: :serial, force: :cascade do |t|
     t.text "message"
-    t.string "username", limit: 255
+    t.string "username"
     t.integer "item"
-    t.string "table", limit: 255
+    t.string "table"
     t.integer "month", limit: 2
     t.bigint "year"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["item", "table", "month", "year"], name: "index_rails_admin_histories"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
-    t.string "email", limit: 255, default: "", null: false
-    t.string "encrypted_password", limit: 255, default: "", null: false
-    t.string "reset_password_token", limit: 255
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer "sign_in_count", default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip", limit: 255
-    t.string "last_sign_in_ip", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
