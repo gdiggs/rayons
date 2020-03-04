@@ -23,17 +23,17 @@ describe ItemsController, type: :controller do
 
     it "should get index" do
       get :index
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it "should search" do
       get :index, params: { search: "NOFX" }
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it "should get edit" do
       get :edit, params: { id: @item }
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it "should update item" do
@@ -59,7 +59,7 @@ describe ItemsController, type: :controller do
     it "should return the right format" do
       get :daily
 
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 

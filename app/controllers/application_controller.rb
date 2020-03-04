@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
 
   def render_403
     respond_to do |format|
-      format.html { render file: "#{Rails.root}/public/403", layout: false, status: :forbidden }
+      format.html { send_file "#{Rails.root}/public/403.html", status: :forbidden }
       format.xml { head :forbidden }
       format.any { head :forbidden }
     end

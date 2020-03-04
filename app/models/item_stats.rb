@@ -40,7 +40,7 @@ class ItemStats
   end
 
   def price_stats
-    Item.select(:price_paid).group(:price_paid).order("to_number(price_paid, '9999999.99')").count
+    Item.select(:price_paid).group(:price_paid).order(Arel.sql("to_number(price_paid, '9999999.99')")).count
   end
 
   def words_for_field(field)
