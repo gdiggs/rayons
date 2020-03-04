@@ -1,6 +1,7 @@
 {
   "name": "rayons",
   "scripts": {
+    "postdeploy": "rake db:schema:load db:seed"
   },
   "env": {
     "BUGSNAG_API_KEY": {
