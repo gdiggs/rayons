@@ -10,6 +10,6 @@ class ItemCount < ActiveRecord::Base
   def self.update_or_create_day(date)
     # number of items is the number of total items minus the number of deleted ones
     item_count = Item.unscoped.where(["created_at < ?", date.end_of_day]).count - Item.unscoped.where(["created_at < ? AND deleted IS TRUE", date.end_of_day]).count
-    ItemCount.find_or_initialize_by(date: date).update_attributes(num: item_count)
+    ItemCount.find_or_initialize_by(date: date).update(num: item_count)
   end
 end

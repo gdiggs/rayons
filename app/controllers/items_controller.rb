@@ -90,7 +90,7 @@ class ItemsController < ApplicationController
     params[:item] = params[:item].reject { |k, _| !Item.column_names.include?(k) }
 
     respond_to do |format|
-      if @item.update_attributes(item_params)
+      if @item.update(item_params)
         format.html { redirect_to @item, notice: "Item was successfully updated." }
         format.json { head :no_content }
       else

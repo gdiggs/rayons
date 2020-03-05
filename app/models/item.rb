@@ -49,7 +49,7 @@ class Item < ActiveRecord::Base
     sort_order = [first] + (SORT_ORDER - [first])
     sort_order = sort_order.map { |s| "#{s} #{direction}" }
 
-    order(sort_order.join(","))
+    order( Arel.sql(sort_order.join(",")))
   end
 
   # Generate CSV of items and yield each row to a block

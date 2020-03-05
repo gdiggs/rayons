@@ -1,6 +1,7 @@
 {
   "name": "rayons",
   "scripts": {
+    "postdeploy": "rake db:schema:load db:seed"
   },
   "env": {
     "BUGSNAG_API_KEY": {
@@ -43,18 +44,6 @@
       "required": true
     },
     "MAILGUN_SMTP_SERVER": {
-      "required": true
-    },
-    "MEMCACHEDCLOUD_PASSWORD": {
-      "required": true
-    },
-    "MEMCACHEDCLOUD_SERVERS": {
-      "required": true
-    },
-    "MEMCACHEDCLOUD_USERNAME": {
-      "required": true
-    },
-    "PAPERTRAIL_API_TOKEN": {
       "required": true
     },
     "RACK_ENV": {

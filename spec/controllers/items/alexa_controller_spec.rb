@@ -11,7 +11,7 @@ describe Items::AlexaController, type: :controller do
       expect(AlexaVerifier).to receive(:valid?).and_return(true)
 
       post :random
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 end
