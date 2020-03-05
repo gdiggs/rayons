@@ -33,6 +33,7 @@ ratings:
 exclude_paths:
 - app/assets/stylesheets/application/jqcloud.css.scss
 - db/schema.rb
+- db/seeds.rb
 - node_modules/**/*
 - script/**/*
 - tmp/**/*
