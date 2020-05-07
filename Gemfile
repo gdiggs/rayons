@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "rails", "~> 6.0.2"
+gem "rails", "~> 6.0.3"
 gem "pg"
 gem "puma"
 gem "rails_12factor"
