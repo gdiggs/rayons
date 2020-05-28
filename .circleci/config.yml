@@ -2,18 +2,10 @@ version: 2
 jobs:
   build:
     docker:
-      - image: docker:18.03.0-ce-git
+      - image: cimg/base:2020.05
     steps:
       - checkout
       - setup_remote_docker
-      - run:
-          name: Install dependencies
-          command: apk --update add make curl py-pip python-dev libffi-dev openssl-dev gcc libc-dev
-      - run:
-          name: Install docker-compose
-          command: |
-            /usr/bin/pip install docker-compose
-            docker-compose --version
       - run:
           name: Run tests
           command: |
