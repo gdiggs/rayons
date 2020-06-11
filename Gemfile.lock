@@ -6,9 +6,9 @@ GIT
 
 GIT
   remote: https://github.com/textacular/textacular.git
-  revision: 9a1fb46de04ba876005b994be7f2596a4b1d59c0
+  revision: 823b1d5e9cc6e14dc14ee4884c06b4528c69438a
   specs:
-    textacular (5.2.0)
+    textacular (5.3.0)
       activerecord (>= 5.0, < 6.1)
 
 GEM
@@ -122,7 +122,7 @@ GEM
       haml (>= 4.0, < 6)
       nokogiri (>= 1.6.0)
       ruby_parser (~> 3.5)
-    i18n (1.8.2)
+    i18n (1.8.3)
       concurrent-ruby (~> 1.0)
     json (2.3.0)
     loofah (2.5.0)
