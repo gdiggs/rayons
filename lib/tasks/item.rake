@@ -70,6 +70,8 @@ namespace :item do
         sleep 60
       end
 
+      puts "Updating #{item.id}: #{item.title} (#{item.artist})"
+
       release = DiscogsRelease.new(item)
       tracklist = release.tracklist
 
