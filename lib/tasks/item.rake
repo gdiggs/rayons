@@ -57,4 +57,42 @@ namespace :item do
       print CSV.generate_line([item.title, item.artist, url, discogs_url])
     end
   end
+
+  desc "This backfills tracks from Discogs"
+  task backfill_tracks: :environment do
+    count = 1
+
+    Item.where.not(discogs_url: [nil, ""]).find_each do |item|
+      next if item.tracks.exists?
+
+      if (count % 25).zero?
+        puts "Sleeping 1 minute to wait for Discogs rate limit"
+        sleep 60
+      end
+
+      release = DiscogsRelease.new(item)
+      tracklist = release.tracklist
+
+      tracklist.each do |entry|
+        artist = item.artist
+
+        if entry["artists"]
+          artist = entry["artists"].first["name"].gsub(/\(\d+\)$/, "").strip
+        end
+
+        item.tracks.create!(
+          artist: artist,
+          duration: entry["duration"],
+          name: entry["title"],
+          number: entry["position"],
+        )
+      end
+
+      count += 1
+    rescue DiscogsWrapper::ReleaseNotFoundError
+      puts "Skipping #{item.id}: #{item.title} (#{item.artist}). Discogs release not found"
+      count += 1
+      next
+    end
+  end
 end
