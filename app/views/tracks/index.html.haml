@@ -5,7 +5,7 @@
       with name "#{params[:name]}"
     - if params[:artist]
       by "#{params[:artist]}"
-    (#{@track_finder.tracks.count})
+    (#{number_with_delimiter(@track_finder.tracks.count)})
 
   = form_with(url: tracks_path, method: "GET") do |f|
     .form-group
