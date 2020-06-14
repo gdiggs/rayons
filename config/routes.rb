@@ -1,5 +1,4 @@
 Rayons::Application.routes.draw do
-  resources :tracks
   devise_for :users
 
   devise_scope :user do
@@ -28,6 +27,12 @@ Rayons::Application.routes.draw do
       get "counts_by_day"
       get "time_machine"
       get "words_for_field"
+    end
+  end
+
+  resources :tracks, only: [:index] do
+    collection do
+      get "find"
     end
   end
 

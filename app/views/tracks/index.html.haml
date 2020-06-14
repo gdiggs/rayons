@@ -1,29 +1,38 @@
-%h1 Listing tracks
+.container-fluid
+  %h1
+    Tracks
+    - if params[:name]
+      with name "#{params[:name]}"
+    - if params[:artist]
+      by "#{params[:artist]}"
+    (#{@track_finder.tracks.count})
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Number
-      %th Artist
-      %th Duration
-      %th Item
-      %th
-      %th
-      %th
+  = form_with(url: tracks_path, method: "GET") do |f|
+    .form-group
+      = f.label :name
+      = f.select :name, @names, selected: params[:name]
 
-  %tbody
-    - @tracks.each do |track|
+    .form-group
+      = f.label :artist
+      = f.select :artist, @artists, selected: params[:artist]
+
+    .form-group
+      %button.btn.btn-primary.btn-large{ type: "submit" } Find tracks
+
+  %table.table
+    %thead
       %tr
-        %td= track.name
-        %td= track.number
-        %td= track.artist
-        %td= track.duration
-        %td= track.item
-        %td= link_to 'Show', track
-        %td= link_to 'Edit', edit_track_path(track)
-        %td= link_to 'Destroy', track, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Track', new_track_path
+        %th{ scope: "col" } Artist
+        %th{ scope: "col" } Name
+        %th{ scope: "col" } Duration
+        %th{ scope: "col" } Item
+        %th{ scope: "col" } Number
+    %tbody
+      - @track_finder.tracks.each do |track|
+        %tr
+          %td= track.artist
+          %td= track.name
+          %td= track.duration
+          %td
+            %a{ href: item_path(track.item) }= track.item.title
+          %td= track.number
