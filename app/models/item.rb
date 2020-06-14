@@ -5,6 +5,8 @@ class Item < ActiveRecord::Base
   validates_presence_of :price_paid
   validates_format_of :discogs_url, with: URI.regexp(%w(http https)), allow_nil: true
 
+  has_many :tracks
+
   scope :added_on_day, ->(date) { where ["created_at >= ? AND created_at <= ?", date.to_date, (date + 1.day).to_date] }
 
   default_scope { where(deleted: false) }

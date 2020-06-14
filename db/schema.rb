@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_02_210756) do
+ActiveRecord::Schema.define(version: 2020_06_14_155616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,17 @@ ActiveRecord::Schema.define(version: 2019_09_02_210756) do
     t.index ["item", "table", "month", "year"], name: "index_rails_admin_histories"
   end
 
+  create_table "tracks", force: :cascade do |t|
+    t.string "name"
+    t.string "number"
+    t.string "artist"
+    t.string "duration"
+    t.bigint "item_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_tracks_on_item_id"
+  end
+
   create_table "users", id: :serial, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -88,4 +99,5 @@ ActiveRecord::Schema.define(version: 2019_09_02_210756) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "tracks", "items"
 end

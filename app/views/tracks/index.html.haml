@@ -1,0 +1,38 @@
+.container-fluid
+  %h1
+    Tracks
+    - if params[:name]
+      with name "#{params[:name]}"
+    - if params[:artist]
+      by "#{params[:artist]}"
+    (#{@track_finder.tracks.count})
+
+  = form_with(url: tracks_path, method: "GET") do |f|
+    .form-group
+      = f.label :name
+      = f.select :name, @names, selected: params[:name]
+
+    .form-group
+      = f.label :artist
+      = f.select :artist, @artists, selected: params[:artist]
+
+    .form-group
+      %button.btn.btn-primary.btn-large{ type: "submit" } Find tracks
+
+  %table.table
+    %thead
+      %tr
+        %th{ scope: "col" } Artist
+        %th{ scope: "col" } Name
+        %th{ scope: "col" } Duration
+        %th{ scope: "col" } Item
+        %th{ scope: "col" } Number
+    %tbody
+      - @track_finder.tracks.each do |track|
+        %tr
+          %td= track.artist
+          %td= track.name
+          %td= track.duration
+          %td
+            %a{ href: item_path(track.item) }= track.item.title
+          %td= track.number
