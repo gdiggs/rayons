@@ -9,7 +9,26 @@ class DiscogsImporter
   end
 
   def import
-    Item.create!(item_attributes)
+    Item.transaction do
+      item = Item.create!(item_attributes)
+
+      tracklist.each do |entry|
+        artist = item.artist
+
+        if entry["artists"]
+          artist = clean_field(entry["artists"].first["name"])
+        end
+
+        item.tracks.create!(
+          artist: artist,
+          duration: entry["duration"],
+          name: entry["title"],
+          number: entry["position"],
+        )
+      end
+
+      item
+    end
   end
 
   private
@@ -43,6 +62,10 @@ class DiscogsImporter
 
   def label
     clean_field(discogs_release["labels"].first["name"]).gsub(/ Records\Z/, "")
+  end
+
+  def tracklist
+    discogs_release["tracklist"]
   end
 
   def item_attributes

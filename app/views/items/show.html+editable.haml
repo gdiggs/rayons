@@ -34,7 +34,19 @@
       %p
         %b Style:
         = @item.styles.to_a.join(', ')
-      - if @release.extra_info?
+      - if @item.tracks.exists?
+        .tracklist
+          %b Tracklist
+          %ul
+            - @item.tracks.each do |track|
+              %li
+                %strong= track.number
+                - if track.artist != @item.artist
+                  #{track.artist} -
+                = track.name
+                - if track.duration.present?
+                  (#{track.duration})
+      - elsif @release.extra_info?
         - if @release.tracklist
           .tracklist
             %b Tracklist

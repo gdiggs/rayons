@@ -1,4 +1,5 @@
 Rayons::Application.routes.draw do
+  resources :tracks
   devise_for :users
 
   devise_scope :user do
