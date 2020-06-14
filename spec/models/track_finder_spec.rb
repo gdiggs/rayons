@@ -8,7 +8,7 @@ describe TrackFinder do
 
     finder = TrackFinder.new(name: "The Longest Line")
 
-    expect(finder.tracks.count).to eq(1)
+    expect(finder.count).to eq(1)
     expect(finder.tracks).to include(track)
   end
 
@@ -19,7 +19,7 @@ describe TrackFinder do
 
     finder = TrackFinder.new(artist: "NOFX")
 
-    expect(finder.tracks.count).to eq(1)
+    expect(finder.count).to eq(1)
     expect(finder.tracks).to include(track)
   end
 
@@ -30,7 +30,7 @@ describe TrackFinder do
 
     finder = TrackFinder.new(artist: "NOFX", name: "Linoleum")
 
-    expect(finder.tracks.count).to eq(1)
+    expect(finder.count).to eq(1)
     expect(finder.tracks).to include(track)
   end
 end

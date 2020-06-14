@@ -1,7 +1,7 @@
 require "memoist"
 
 class ItemOfTheDay
-  CACHE_VERSION = 1
+  CACHE_VERSION = 2
 
   def item
     @item ||=

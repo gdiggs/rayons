@@ -11,6 +11,8 @@ describe ItemOfTheDay, type: :model do
         ItemOfTheDay.new.item,
       ]
 
+      pp items
+
       expect(items.uniq.count).to eq(1)
     end
   end
