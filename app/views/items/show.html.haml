@@ -38,7 +38,7 @@
         .tracklist
           %b Tracklist
           %ul
-            - @item.tracks.each do |track|
+            - @item.tracks.order(:number).each do |track|
               %li
                 %strong= track.number
                 - if track.artist != @item.artist
