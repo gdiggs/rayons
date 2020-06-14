@@ -1,16 +1,16 @@
 .container-fluid
   %h1
     Tracks
-    - if params[:name]
+    - if params[:name].present?
       with name "#{params[:name]}"
-    - if params[:artist]
+    - if params[:artist].present?
       by "#{params[:artist]}"
-    (#{number_with_delimiter(@track_finder.tracks.count)})
+    (#{number_with_delimiter(@track_finder.count)})
 
   = form_with(url: tracks_path, method: "GET") do |f|
     .form-group
       = f.label :name
-      = f.select :name, @names, selected: params[:name]
+      = f.text_field :name, value: params[:name]
 
     .form-group
       = f.label :artist

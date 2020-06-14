@@ -6,10 +6,14 @@ class TrackFinder
 
   def tracks
     tracks = Track.includes(:item).order(:artist, :name)
-    tracks = tracks.where(name: name) if name.present?
+    tracks = tracks.basic_search(name: name) if name.present?
     tracks = tracks.where(artist: artist) if artist.present?
 
     tracks
+  end
+
+  def count
+    tracks.count(:id)
   end
 
   private
