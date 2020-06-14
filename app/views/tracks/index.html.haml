@@ -28,7 +28,7 @@
         %th{ scope: "col" } Item
         %th{ scope: "col" } Number
     %tbody
-      - @track_finder.tracks.each do |track|
+      - @tracks.each do |track|
         %tr
           %td= track.artist
           %td= track.name
@@ -36,3 +36,5 @@
           %td
             %a{ href: item_path(track.item) }= track.item.title
           %td= track.number
+
+  != pagy_bootstrap_nav(@pagy)
