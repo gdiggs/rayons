@@ -65,7 +65,7 @@ class DiscogsImporter
   end
 
   def tracklist
-    discogs_release["tracklist"]
+    discogs_release["tracklist"].filter { |t| t["position"].present? }
   end
 
   def item_attributes

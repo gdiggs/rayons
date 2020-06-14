@@ -76,6 +76,8 @@ namespace :item do
       tracklist = release.tracklist
 
       tracklist.each do |entry|
+        next if entry["position"].blank?
+
         artist = item.artist
 
         if entry["artists"]

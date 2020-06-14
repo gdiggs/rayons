@@ -230,7 +230,7 @@ describe DiscogsImporter, type: :model do
         "date_added" => "2012-10-01T14:43:19-07:00",
         "tracklist" =>
         [
-          { "duration" => "18:00", "position" => "A1", "type_" => "track", "title" => "The Decline" }, { "duration" => "", "position" => "B1", "type_" => "track", "title" => "Clams Have Feelings Too" }
+          { "duration" => "18:00", "position" => "A1", "type_" => "track", "title" => "The Decline" }, { "duration" => "", "position" => "B1", "type_" => "track", "title" => "Clams Have Feelings Too" }, {"position"=>"", "type_"=>"track", "title"=>"", "duration"=>""}
         ],
         "extraartists" => [],
         "country" => "US",
