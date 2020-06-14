@@ -23,4 +23,15 @@ describe Track, type: :model do
       expect(track.errors).to include :name
     end
   end
+
+  describe "#destroy" do
+    it "should soft delete" do
+      track = Track.create!(name: "Sup", artist: "Cool Folk", item: Item.last)
+
+      track.destroy
+
+      expect(track).to be_deleted
+      expect(Track.unscoped.find(track.id)).to be_present
+    end
+  end
 end

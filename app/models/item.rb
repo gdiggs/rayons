@@ -121,6 +121,7 @@ class Item < ActiveRecord::Base
   def destroy
     self.deleted = true
     save!
+    tracks.destroy_all
   end
 
   private

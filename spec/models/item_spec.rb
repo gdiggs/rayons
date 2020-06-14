@@ -32,4 +32,14 @@ describe Item, type: :model do
       expect(Item.search("NOFX")).to include(item)
     end
   end
+
+  describe "#destroy" do
+    it "should also destroy any tracks" do
+      item = Item.create!(artist: "NOFX", price_paid: "$5.00")
+      track = item.tracks.create(artist: "NOFX", name: "Hello")
+
+      item.destroy
+      expect(Track.find_by_id(track.id)).to be_nil
+    end
+  end
 end
