@@ -26,7 +26,6 @@ gem "cacheable_flash"
 gem "memoist", require: false
 gem "bugsnag"
 gem "clockwork"
-gem "skylight"
 gem "timber"
 gem "secure_headers"
 gem "alexa_verifier", git: "https://github.com/sidoh/alexa_verifier.git"
