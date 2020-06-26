@@ -237,7 +237,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    secure_headers (6.3.0)
+    secure_headers (6.3.1)
     sexp_processor (4.15.0)
     simplecov (0.18.5)
       docile (~> 1.1)
