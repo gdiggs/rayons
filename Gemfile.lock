@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: https://github.com/textacular/textacular.git
-  revision: 823b1d5e9cc6e14dc14ee4884c06b4528c69438a
+  revision: 767273e7b2e8b42acf84b7433a885d8fe82b94fd
   specs:
     textacular (5.3.0)
       activerecord (>= 5.0, < 6.1)
@@ -267,7 +267,7 @@ GEM
     websocket-driver (0.7.2)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.3.0)
+    zeitwerk (2.3.1)
 
 PLATFORMS
   ruby
