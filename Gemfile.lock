@@ -81,7 +81,7 @@ GEM
     cacheable_flash (1.0.0)
       json
       stackable_flash (>= 0.0.7)
-    chartkick (3.3.1)
+    chartkick (3.3.2)
     clockwork (2.0.4)
       activesupport
       tzinfo
