@@ -3,11 +3,13 @@ volumes:
   postgres:
 services:
   db:
-    image: postgres:11.4
+    image: postgres:12.4
     volumes:
       - postgres:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=databas3 # only for local
     healthcheck:
       test: "pg_isready -h localhost -p 5432 -q -U postgres"
       interval: 3s
