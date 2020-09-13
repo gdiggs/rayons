@@ -1,0 +1,32 @@
+.container-fluid
+  %h1 "#{@track.name}" by #{@track.artist}
+
+  .row
+    .col-md-7
+      %p
+        %strong Duration:
+        = @track.duration
+      %p
+        %strong Item:
+        %a{ href: item_path(@track.item) }= @track.item.title
+      %p
+        %strong Number:
+        = @track.number
+      
+      %h2 Possible Covers:
+      - if @track.possible_covers.exists?
+        %ul
+          - @track.possible_covers.each do |track|
+            %li
+              %a{ href: track_path(track) } "#{track.name}" by #{track.artist} on #{track.item.title}
+      - else
+        None
+      %h2  Possible Alternate Versions:
+      - if @track.possible_alternates.exists?
+        %ul
+          - @track.possible_alternates.each do |track|
+            %li
+              %a{ href: track_path(track) } "#{track.name}" by #{track.artist} on #{track.item.title}
+      - else
+        None
+      

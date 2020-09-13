@@ -27,6 +27,7 @@
         %th{ scope: "col" } Duration
         %th{ scope: "col" } Item
         %th{ scope: "col" } Number
+        %th{ scope: "col" } Info
     %tbody
       - @tracks.each do |track|
         %tr
@@ -36,5 +37,7 @@
           %td
             %a{ href: item_path(track.item) }= track.item.title
           %td= track.number
+          %td
+            %a{ href: track_path(track) } link
 
   != pagy_bootstrap_nav(@pagy)
