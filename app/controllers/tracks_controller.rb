@@ -7,6 +7,10 @@ class TracksController < ApplicationController
     @pagy, @tracks = pagy(@track_finder.tracks)
   end
 
+  def show
+    @track = Track.find(params[:id])
+  end
+
   private
 
   def track_finder_params

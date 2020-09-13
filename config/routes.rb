@@ -30,7 +30,7 @@ Rayons::Application.routes.draw do
     end
   end
 
-  resources :tracks, only: [:index] do
+  resources :tracks, only: [:index, :show] do
     collection do
       get "find"
     end
