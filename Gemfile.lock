@@ -69,7 +69,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
-    autoprefixer-rails (10.0.0)
+    autoprefixer-rails (10.0.0.2)
       execjs
     bcrypt (3.1.16)
     bootstrap-sass (3.4.1)
@@ -152,7 +152,7 @@ GEM
       method_source (~> 1.0)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
-    puma (4.3.6)
+    puma (5.0.0)
       nio4r (~> 2.0)
     pundit (2.1.0)
       activesupport (>= 3.0.0)
