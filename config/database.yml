@@ -14,6 +14,12 @@ test:
   <<: *default
   database: rayons_test
 
+qa:
+  url: <%= ENV['DATABASE_URL'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 8
+
 production:
   url: <%= ENV['DATABASE_URL'] %>
   adapter: postgresql
