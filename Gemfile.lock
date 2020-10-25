@@ -81,7 +81,7 @@ GEM
     cacheable_flash (1.0.0)
       json
       stackable_flash (>= 0.0.7)
-    chartkick (3.4.1)
+    chartkick (3.4.2)
     clockwork (2.0.4)
       activesupport
       tzinfo
@@ -145,7 +145,7 @@ GEM
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
-    pagy (3.8.3)
+    pagy (3.9.0)
     pg (1.2.3)
     pry (0.13.1)
       coderay (~> 1.1)
@@ -205,7 +205,7 @@ GEM
       railties (>= 5.0)
     rspec-core (3.9.3)
       rspec-support (~> 3.9.3)
-    rspec-expectations (3.9.2)
+    rspec-expectations (3.9.3)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
     rspec-mocks (3.9.1)
@@ -219,7 +219,7 @@ GEM
       rspec-expectations (~> 3.9)
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
-    rspec-support (3.9.3)
+    rspec-support (3.9.4)
     ruby_parser (3.15.0)
       sexp_processor (~> 4.9)
     sass (3.7.4)
