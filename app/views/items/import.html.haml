@@ -1,0 +1,22 @@
+.container-fluid#importer
+  %h1 Import items from Discogs
+
+  - if @errors
+    - @errors.each do |error|
+      .message.error.text-center= error
+
+  = form_with url: import_items_path, method: :post do |form|
+    .form-group
+      = form.label "Discogs URLs (one per line)"
+      = form.text_area :urls, rows: 5, value: params[:urls], class: "form-control"
+    .form-group
+      %button.btn.btn-primary{ type: "submit" } Import
+
+  - if @items
+    - @items.each do |item|
+      .card
+        .card-header
+          %h2.mb-0
+            %a{ href: item_path(item) } #{item.artist} - #{item.title}
+        .card-body
+          = render "form", item: item

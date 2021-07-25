@@ -111,23 +111,12 @@ class ItemsController < ApplicationController
     end
   end
 
+  # GET /items/import
   # POST /items/import
   def import
-    @items = Item.import_csv_file(params[:file])
-    flash[:notice] = "Imported #{@items.count} items"
-
-  rescue => e
-    flash[:error] = "Error importing: #{e}"
-    Rails.logger.warn("!!! Error importing CSV: #{e}")
-    Rails.logger.warn(e.backtrace.join("\n"))
-  ensure
-    redirect_to "/"
-  end
-
-  # POST /items/import_discogs
-  def import_discogs
-    @item = DiscogsImporter.new(params[:url]).import
-    redirect_to edit_item_path(@item)
+    if request.post?
+      @items, @errors = ItemImporter.new(params[:urls].split).import
+    end
   end
 
   # GET /items/random
