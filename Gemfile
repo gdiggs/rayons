@@ -8,6 +8,8 @@ gem "devise"
 gem "pundit"
 gem "rack-cache"
 gem "dalli"
+gem "graphql"
+gem "graphql-batch"
 gem "textacular", git: "https://github.com/textacular/textacular.git"
 gem "dropbox-sdk", require: "dropbox_sdk"
 gem "chartkick"
@@ -36,3 +38,5 @@ group :test do
   gem "simplecov", require: false
   gem "timecop"
 end
+
+gem 'graphiql-rails', group: :development
