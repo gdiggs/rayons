@@ -48,19 +48,7 @@
       %li
         %a.logout{ :href => '/logout' } log out
       %li
-        %a.import{ :href => '' } import
-        %form.navbar-form.login.collapse{ :action => '/items/import_discogs', :method => 'post'}
-          .form-group
-            = token_tag(nil)
-            %input.form-control{ :type => 'text', :name => 'url', :placeholder => "Discogs URL" }
-            %input.form-control{ :type => 'submit', :value => 'Import' }
-      %li
-        %a.import{ :href => '' } import csv
-        %form.navbar-form.login.collapse{ :action => '/items/import', :method => 'post', :enctype => 'multipart/form-data'}
-          .form-group
-            = token_tag(nil)
-            %input.form-control{ :type => 'file', :name => 'file' }
-            %input.form-control{ :type => 'submit', :value => 'Import' }
+        %a{ :href => import_items_path } import
     - else
       %li
         %a.login{ :href => '' } log in

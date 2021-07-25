@@ -10,8 +10,8 @@ Rayons::Application.routes.draw do
     collection do
       get "daily"
       get "discover"
+      get "import"
       post "import"
-      post "import_discogs"
       get "random"
       get "latest"
       get "/page/:page", action: :index

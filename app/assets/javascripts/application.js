@@ -10,6 +10,7 @@
 //= require flash
 //= require js.cookie
 //= require rayons
+//= require rayons.importer
 //= require rayons.item
 //= require rayons.stats
 //= require rayons.ui

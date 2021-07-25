@@ -3,7 +3,7 @@ Rayons = Rayons || {};
 Rayons.UI = {
   bind: function() {
     $(document).delegate('form.ajax', 'submit', Rayons.UI.ajax_submit);
-    $('a.login, a.import').on('click', Rayons.UI.show_editing_form);
+    $('a.login').on('click', Rayons.UI.show_editing_form);
     $('a[data-sort]').click(Rayons.UI.sort);
   },
 
