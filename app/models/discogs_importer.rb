@@ -36,7 +36,7 @@ class DiscogsImporter
   attr_reader :url
 
   def discogs_id
-    @discogs_id ||= url.gsub(/.*\/release\/(\d+)/, '\1')
+    @discogs_id ||= url.gsub(/.*\/release\/(\d+).*/, '\1')
   end
 
   def discogs_release
