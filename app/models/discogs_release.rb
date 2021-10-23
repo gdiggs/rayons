@@ -10,7 +10,8 @@ class DiscogsRelease
     @wrapper = DiscogsWrapper.new
     self.item = item
     if item.discogs_url.present?
-      discogs_id = item.discogs_url.gsub(/.*\/release\/(\d+)/, '\1')
+      discogs_id = item.discogs_url.gsub(/.*\/release\/(\d+).*/, '\1')
+      Rails.logger.info("!!!!!!! #{discogs_id}")
       self.release = @wrapper.get_release(discogs_id)
     end
 
