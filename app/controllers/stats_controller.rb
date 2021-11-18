@@ -1,4 +1,5 @@
 class StatsController < ApplicationController
+  before_action :authenticate_user!
   before_action :initialize_item_stats, except: :time_machine
   before_action :initialize_time_machine, only: :time_machine
 

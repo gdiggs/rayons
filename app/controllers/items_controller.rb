@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   include ApplicationHelper
   include ActionController::Live
 
+  before_action :authenticate_user!
   before_action :authorize_item, only: [:new, :edit, :create, :update, :import, :destroy, :show]
   before_action :edit_discogs_param, only: [:index, :create, :update]
   before_action :set_variant, only: [:show]

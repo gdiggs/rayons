@@ -34,5 +34,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authenticate_user!
+    if current_user && current_user.admin?
+      super
+    else
+      redirect_to new_user_session_path
+    end
+  end
+
   rescue_from Pundit::NotAuthorizedError, with: :render_403
 end

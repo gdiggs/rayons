@@ -1,4 +1,6 @@
 class TracksController < ApplicationController
+
+  before_action :authenticate_user!
   include Pagy::Backend
 
   def index
