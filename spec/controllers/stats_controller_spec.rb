@@ -1,6 +1,12 @@
 require "spec_helper"
 
 describe StatsController, type: :controller do
+  before do
+    @item = items(:one)
+    @user = users(:admin)
+    sign_in @user
+  end
+
   describe "#index" do
     it "should set title" do
       get :index

@@ -62,13 +62,4 @@ describe ItemsController, type: :controller do
       expect(response).to be_successful
     end
   end
-
-  describe "when not logged in" do
-    describe "#create" do
-      it "should return a 403" do
-        post :create
-        expect(response).to be_forbidden
-      end
-    end
-  end
 end
