@@ -155,8 +155,6 @@ GEM
       pry (>= 0.10.4)
     puma (5.5.2)
       nio4r (~> 2.0)
-    pundit (2.1.1)
-      activesupport (>= 3.0.0)
     racc (1.6.0)
     rack (2.2.3)
     rack-cache (1.13.0)
@@ -285,7 +283,6 @@ DEPENDENCIES
   pg
   pry-rails
   puma
-  pundit
   rack-cache
   rails (~> 6.1.4)
   rails-controller-testing
@@ -301,4 +298,4 @@ DEPENDENCIES
   uglifier
 
 BUNDLED WITH
-   2.2.24
+   2.2.28

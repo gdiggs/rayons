@@ -1,12 +1,11 @@
 .container-fluid#items
-  - if @can_edit
-    #add-new.text-center
-      %form.form-inline.ajax{ :action => '/items', :method => 'post' }
-        .form-group
-          = token_tag(nil)
-          - field_headers.each do |field|
-            %input.form-control{ :type => 'text', :name => "item[#{field.parameterize(separator: "_")}]", :placeholder => field }
-          %button.btn.btn-primary{ :type => 'submit' } Add
+  #add-new.text-center
+    %form.form-inline.ajax{ :action => '/items', :method => 'post' }
+      .form-group
+        = token_tag(nil)
+        - field_headers.each do |field|
+          %input.form-control{ :type => 'text', :name => "item[#{field.parameterize(separator: "_")}]", :placeholder => field }
+        %button.btn.btn-primary{ :type => 'submit' } Add
 
   .table-responsive
     %table.table{ 'data-sort' => params[:sort], 'data-direction' => params[:direction] }
@@ -44,16 +43,7 @@
       %a{ href: discover_items_path } discover
     %li
       %a{ href: tracks_path } tracks
-    - if @can_edit
-      %li
-        %a.logout{ :href => '/logout' } log out
-      %li
-        %a{ :href => import_items_path } import
-    - else
-      %li
-        %a.login{ :href => '' } log in
-        = form_tag user_session_path, class: "navbar-form collapse" do
-          .form-group
-            = text_field_tag 'user[email]', nil, :placeholder => 'Email Address', class: "form-control"
-            = password_field_tag 'user[password]', nil, :placeholder => 'Password', class: "form-control"
-          %button.btn.btn-default{ type: "submit" } Sign in
+    %li
+      %a.logout{ :href => '/logout' } log out
+    %li
+      %a{ :href => import_items_path } import

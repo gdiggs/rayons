@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  include Pundit
   include CacheableFlash
 
   protect_from_forgery with: :exception
@@ -41,6 +40,4 @@ class ApplicationController < ActionController::Base
       redirect_to new_user_session_path
     end
   end
-
-  rescue_from Pundit::NotAuthorizedError, with: :render_403
 end

@@ -3,9 +3,7 @@ class ItemsController < ApplicationController
   include ActionController::Live
 
   before_action :authenticate_user!
-  before_action :authorize_item, only: [:new, :edit, :create, :update, :import, :destroy, :show]
   before_action :edit_discogs_param, only: [:index, :create, :update]
-  before_action :set_variant, only: [:show]
 
   # GET /
   # GET /items
@@ -14,7 +12,6 @@ class ItemsController < ApplicationController
   def index
     respond_to do |format|
       format.html do
-        @can_edit = policy(Item).edit?
         @presenter = index_presenter
       end
       format.json { render json: index_presenter.as_json }
@@ -55,7 +52,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html do
-        render html: (cache [@item, request.variant, "2"] do
+        render html: (cache [@item, "3"] do
           @release = DiscogsRelease.new(@item)
           render_to_string
         end)
@@ -141,10 +138,6 @@ class ItemsController < ApplicationController
 
   private
 
-  def authorize_item
-    authorize Item
-  end
-
   def edit_discogs_param
     params[:sort] = "discogs_url" if params[:sort] == "discogs"
     if params[:item]
@@ -152,16 +145,13 @@ class ItemsController < ApplicationController
     end
   end
 
-  def item_params
-    params.require(:item).permit(:artist, :condition, :format, :label, :price_paid, :title, :year, :color, :notes, :discogs_url, genres: [], styles: [])
-  end
-
-  def set_variant
-    request.variant = :editable if policy(:item).update?
-  end
-
   def index_presenter
     ItemJSONPresenter.new(params.slice(:sort, :direction, :search, :page))
+  end
+
+
+  def item_params
+    params.require(:item).permit(:artist, :condition, :format, :label, :price_paid, :title, :year, :color, :notes, :discogs_url, genres: [], styles: [])
   end
 
   def index_csv

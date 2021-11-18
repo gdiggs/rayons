@@ -14,9 +14,8 @@
   %td.item-added_on #{item.added_on}
   %td.item-edit<
     %a{:href => "/items/#{item.id}"}> s
-    - if @can_edit
-      \/
-      %a.item-edit{:href => "/items/#{item.id}/edit"}> e
-      \/
-      %a.item-delete{:href => "/items/#{item.id}"}> d
+    \/
+    %a.item-edit{:href => "/items/#{item.id}/edit"}> e
+    \/
+    %a.item-delete{:href => "/items/#{item.id}"}> d
 
