@@ -19,6 +19,7 @@ module Rayons
     config.i18n.enforce_available_locales = true
 
     config.autoload_paths += Dir["#{config.root}/app/policies/**"]
+    config.autoload_paths += Dir["#{config.root}/app/controllers/api/**"]
 
     config.log_tags = [:uuid]
 
