@@ -95,7 +95,7 @@ class Item < ActiveRecord::Base
   end
 
   def self.random
-    self.offset(rand(self.count)).first
+    offset(rand(count)).first
   end
 
   # def self.all_genres and def self.all_styles

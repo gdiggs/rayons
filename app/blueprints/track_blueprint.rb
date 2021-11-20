@@ -1,8 +1,10 @@
 class TrackBlueprint < Blueprinter::Base
   identifier :id
 
-  fields :name,
+  fields(
+    :name,
     :artist,
     :duration,
-    :number
+    :number,
+  )
 end

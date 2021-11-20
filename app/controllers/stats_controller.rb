@@ -19,8 +19,7 @@ class StatsController < ApplicationController
   end
 
   # GET /stats/time_machine
-  def time_machine
-  end
+  def time_machine; end
 
   # GET /stats/words_for_field
   def words_for_field

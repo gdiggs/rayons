@@ -1,7 +1,8 @@
 class ItemBlueprint < Blueprinter::Base
   identifier :id
 
-  fields :title,
+  fields(
+    :title,
     :artist,
     :year,
     :label,
@@ -9,7 +10,8 @@ class ItemBlueprint < Blueprinter::Base
     :color,
     :condition,
     :discogs_url,
-    :created_at
+    :created_at,
+  )
 
   association :tracks, blueprint: TrackBlueprint
 end

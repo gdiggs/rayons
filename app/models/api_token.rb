@@ -1,7 +1,6 @@
 require "securerandom"
 
 class ApiToken < ApplicationRecord
-
   before_validation :generate_token, on: :create
   validates_presence_of :name, :token, :user_id
   validates_uniqueness_of :token

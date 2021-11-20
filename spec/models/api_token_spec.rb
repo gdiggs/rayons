@@ -33,7 +33,7 @@ describe ApiToken do
       expect do
         token.token = mytoken
         token.save
-      end.not_to change { token.reload.token }
+      end.not_to(change { token.reload.token })
     end
 
     it "does not allow passing a custom token" do
