@@ -94,6 +94,10 @@ class Item < ActiveRecord::Base
     items
   end
 
+  def self.random
+    self.offset(rand(self.count)).first
+  end
+
   # def self.all_genres and def self.all_styles
   # Use metaprogramming here to prevent sql injection if the field were a method parameter
   class << self

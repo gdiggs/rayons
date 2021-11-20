@@ -12,9 +12,5 @@ module Api
         end
       end
     end
-
-    def current_user
-      @current_user ||= authenticate_token
-    end
   end
 end
