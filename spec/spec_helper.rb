@@ -2,6 +2,7 @@ require "simplecov"
 SimpleCov.start
 
 ENV["RAILS_ENV"] ||= "test"
+ENV["API_TOKEN_SIZE"] ||= "42"
 require File.expand_path("../../config/environment", __FILE__)
 require "rspec/rails"
 

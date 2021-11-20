@@ -54,12 +54,4 @@ describe ItemsController, type: :controller do
       expect(subject).to redirect_to items_path
     end
   end
-
-  describe "#daily" do
-    it "should return the right format" do
-      get :daily
-
-      expect(response).to be_successful
-    end
-  end
 end
