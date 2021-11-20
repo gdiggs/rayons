@@ -73,6 +73,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    ast (2.4.2)
     autoprefixer-rails (10.3.3.0)
       execjs (~> 2)
     bcrypt (3.1.16)
@@ -148,6 +149,8 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pagy (5.0.1)
+    parser (3.0.2.0)
+      ast (~> 2.4.1)
     pg (1.2.3)
     pry (0.14.1)
       coderay (~> 1.1)
@@ -228,6 +231,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    scout_apm (5.1.0)
+      parser
     secure_headers (6.3.3)
     sexp_processor (4.15.3)
     simplecov (0.21.2)
@@ -292,6 +297,7 @@ DEPENDENCIES
   rspec-mocks
   rspec-rails (~> 5.0.1)
   sassc-rails
+  scout_apm
   secure_headers
   simplecov
   textacular!

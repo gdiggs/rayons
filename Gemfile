@@ -28,6 +28,7 @@ gem "timber"
 gem "secure_headers"
 gem "alexa_verifier", git: "https://github.com/sidoh/alexa_verifier.git"
 gem "blueprinter"
+gem "scout_apm"
 
 group :test do
   gem "rails-controller-testing"
