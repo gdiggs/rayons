@@ -6,9 +6,17 @@ Rayons::Application.routes.draw do
     get "logout", to: "devise/sessions#destroy"
   end
 
+  namespace :api do
+    resources :items, only: [:show] do
+      collection do
+        get "daily"
+        get "random"
+      end
+    end
+  end
+
   resources :items, except: [:new] do
     collection do
-      get "daily"
       get "discover"
       get "import"
       post "import"

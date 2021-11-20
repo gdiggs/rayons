@@ -76,6 +76,7 @@ GEM
     autoprefixer-rails (10.3.3.0)
       execjs (~> 2)
     bcrypt (3.1.16)
+    blueprinter (0.25.3)
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
@@ -266,6 +267,7 @@ PLATFORMS
 DEPENDENCIES
   alexa_verifier!
   autoprefixer-rails
+  blueprinter
   bootstrap-sass
   bugsnag
   cacheable_flash

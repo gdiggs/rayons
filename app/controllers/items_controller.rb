@@ -46,19 +46,13 @@ class ItemsController < ApplicationController
   end
 
   # GET /items/1
-  # GET /items/1.json
   def show
     @item = Item.find(params[:id])
 
-    respond_to do |format|
-      format.html do
-        render html: (cache [@item, "3"] do
-          @release = DiscogsRelease.new(@item)
-          render_to_string
-        end)
-      end
-      format.json { render json: @item }
-    end
+    render html: (cache [@item, "3"] do
+      @release = DiscogsRelease.new(@item)
+      render_to_string
+    end)
   end
 
   # GET /items/1/edit
@@ -82,15 +76,13 @@ class ItemsController < ApplicationController
   end
 
   # PUT /items/1
-  # PUT /items/1.json
   def update
     @item = Item.find(params[:id])
     params[:item] = params[:item].reject { |k, _| !Item.column_names.include?(k) }
 
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to @item, notice: "Item was successfully updated." }
-        format.json { head :no_content }
+        redirect_to @item, notice: "Item was successfully updated."
       else
         default_error_response(format, "edit", @item)
       end
@@ -118,22 +110,10 @@ class ItemsController < ApplicationController
   end
 
   # GET /items/random
-  # GET /items/random.json
   def random
-    @item = Item.offset(rand(Item.count)).first
+    @item = Item.random
 
-    respond_to do |format|
-      format.html { redirect_to @item }
-      format.json { render json: @item }
-    end
-  end
-
-  # GET /items/daily.json
-  # Used for Alexa Flash Briefing Skill
-  def daily
-    @item = ItemOfTheDay.new
-
-    render json: @item
+    redirect_to @item
   end
 
   private

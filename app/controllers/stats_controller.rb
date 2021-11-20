@@ -19,12 +19,7 @@ class StatsController < ApplicationController
   end
 
   # GET /stats/time_machine
-  def time_machine
-    respond_to do |format|
-      format.json { render json: @time_machine.to_json }
-      format.html
-    end
-  end
+  def time_machine; end
 
   # GET /stats/words_for_field
   def words_for_field
