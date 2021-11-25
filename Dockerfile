@@ -1,4 +1,4 @@
-FROM ruby:3.0.2
+FROM ruby:3.0.3
 
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
     apt-get update -qq && \
