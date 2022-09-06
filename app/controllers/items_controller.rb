@@ -126,7 +126,7 @@ class ItemsController < ApplicationController
   end
 
   def index_presenter
-    ItemJSONPresenter.new(params.slice(:sort, :direction, :search, :page))
+    ItemJsonPresenter.new(params.slice(:sort, :direction, :search, :page))
   end
 
 
