@@ -7,5 +7,5 @@ dev: build
 
 test: build
 	docker-compose run web rake db:create db:migrate RAILS_ENV=test
-	docker-compose run web rake
+	docker-compose run web rspec
 

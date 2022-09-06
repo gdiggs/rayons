@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_20_032921) do
-
+ActiveRecord::Schema[7.0].define(version: 2021_11_20_032921) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,7 +19,7 @@ ActiveRecord::Schema.define(version: 2021_11_20_032921) do
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -33,7 +32,7 @@ ActiveRecord::Schema.define(version: 2021_11_20_032921) do
     t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -47,16 +46,16 @@ ActiveRecord::Schema.define(version: 2021_11_20_032921) do
     t.string "name"
     t.string "token"
     t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["token"], name: "index_api_tokens_on_token"
   end
 
   create_table "item_counts", id: :serial, force: :cascade do |t|
     t.integer "num"
     t.date "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["date"], name: "index_item_counts_on_date"
   end
 
@@ -68,8 +67,8 @@ ActiveRecord::Schema.define(version: 2021_11_20_032921) do
     t.text "format"
     t.text "condition"
     t.text "price_paid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.text "color"
     t.boolean "deleted", default: false
     t.text "discogs_url"
@@ -102,8 +101,8 @@ ActiveRecord::Schema.define(version: 2021_11_20_032921) do
     t.string "table", limit: 255
     t.integer "month", limit: 2
     t.bigint "year"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["item", "table", "month", "year"], name: "index_rails_admin_histories"
   end
 
@@ -113,8 +112,8 @@ ActiveRecord::Schema.define(version: 2021_11_20_032921) do
     t.string "artist"
     t.string "duration"
     t.bigint "item_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "tracks"
     t.boolean "deleted"
     t.index ["item_id"], name: "index_tracks_on_item_id"
@@ -124,15 +123,15 @@ ActiveRecord::Schema.define(version: 2021_11_20_032921) do
     t.string "email", limit: 255, default: "", null: false
     t.string "encrypted_password", limit: 255, default: "", null: false
     t.string "reset_password_token", limit: 255
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.datetime "reset_password_sent_at", precision: nil
+    t.datetime "remember_created_at", precision: nil
     t.integer "sign_in_count", default: 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
+    t.datetime "current_sign_in_at", precision: nil
+    t.datetime "last_sign_in_at", precision: nil
     t.string "current_sign_in_ip", limit: 255
     t.string "last_sign_in_ip", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

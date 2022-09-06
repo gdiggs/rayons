@@ -1,4 +1,4 @@
-class ItemJSONPresenter
+class ItemJsonPresenter
   include Pagy::Backend
   attr_reader :sort, :direction, :search, :page
 
