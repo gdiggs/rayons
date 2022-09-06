@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def opensearch
-    render "/opensearch.xml", layout: false
+    render "/opensearch", layout: false
   end
 
   def status
