@@ -33,7 +33,7 @@ gem "scout_apm"
 
 group :test do
   gem "rails-controller-testing"
-  gem "rspec-rails", "~> 5.1.0"
+  gem "rspec-rails", "~> 6.0.0"
   gem "rspec-mocks"
   gem "simplecov", require: false
   gem "timecop"
