@@ -10,6 +10,8 @@ the collection.
 
 ## Local Setup
 
+Copy `.env.example` to `.env` and fill in the necessary fields.
+
 Rayons requires Docker/Docker Compose to run:
 
 ```bash
