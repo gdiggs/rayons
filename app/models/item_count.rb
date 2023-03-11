@@ -2,9 +2,7 @@ class ItemCount < ActiveRecord::Base
   validates_uniqueness_of :date
 
   def self.by_week
-    result = {}
-    ItemCount.all.each_slice(7).map(&:first).each { |i| result[i.date] = i.num }
-    result
+    ItemCount.order(:date).map { |i| [i.date, i.num] }
   end
 
   def self.update_or_create_day(date)

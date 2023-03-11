@@ -8,11 +8,14 @@ Rayons.Stats = {
       $('a[data-target=".texts"]').click();
     }
 
+    var startYear = 2012;
+    var number_of_months = ((new Date().getFullYear() - startYear) * 12) + 11; // Show through the end of this calendar year
+
     var cal = new CalHeatMap();
     cal.init({
-      start: new Date(2012, 1, 1), // February 1, 2012
+      start: new Date(startYear, 1, 1), // February 1, 2012
       cellSize: 10,
-      range: 120,
+      range: number_of_months,
       domain: "month",
       subDomain: "day",
       legend: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
