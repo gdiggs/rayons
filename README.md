@@ -22,6 +22,10 @@ The app will be available at [0.0.0.0:5000](http://0.0.0.0:5000). When running
 in production mode, the app requires SSL (Heroku supplies this automatically),
 and an `ENV['SECRET_TOKEN']` to be set.
 
+### Making an admin user locally
+
+For security reasons, the sign up routes are not initialized. To make a user, open a Rails console and run `User.create!(email: <email>, password: <password>, admin: true)`.
+
 ## Tests
 
 You can run tests with `make test`.
