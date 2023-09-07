@@ -80,7 +80,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
     ast (2.4.2)
-    autoprefixer-rails (10.4.13.0)
+    autoprefixer-rails (10.4.15.0)
       execjs (~> 2)
     bcrypt (3.1.19)
     blueprinter (0.25.3)
@@ -93,7 +93,7 @@ GEM
     cacheable_flash (1.0.0)
       json
       stackable_flash (>= 0.0.7)
-    chartkick (5.0.3)
+    chartkick (5.0.4)
     clockwork (3.0.2)
       activesupport
       tzinfo
@@ -115,11 +115,11 @@ GEM
     erubi (1.12.0)
     execjs (2.8.1)
     ffi (1.15.5)
-    globalid (1.1.0)
-      activesupport (>= 5.0)
+    globalid (1.2.1)
+      activesupport (>= 6.1)
     groupdate (6.3.0)
       activesupport (>= 6.1)
-    haml (6.1.1)
+    haml (6.1.2)
       temple (>= 0.8.2)
       thor
       tilt
@@ -146,7 +146,7 @@ GEM
     memoist (0.16.2)
     method_source (1.0.0)
     mini_mime (1.1.5)
-    minitest (5.19.0)
+    minitest (5.20.0)
     msgpack (1.7.2)
     net-imap (0.3.7)
       date
@@ -167,7 +167,7 @@ GEM
     parser (3.2.2.3)
       ast (~> 2.4.1)
       racc
-    pg (1.5.3)
+    pg (1.5.4)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -258,7 +258,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
-    sprockets (4.2.0)
+    sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
     sprockets-rails (3.4.2)
@@ -271,7 +271,7 @@ GEM
     tilt (2.2.0)
     timber (3.0.1)
       msgpack (~> 1.0)
-    timecop (0.9.6)
+    timecop (0.9.8)
     timeout (0.4.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
