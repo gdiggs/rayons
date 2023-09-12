@@ -8,7 +8,10 @@
   = form_with url: import_items_path, method: :post do |form|
     .form-group
       = form.label "Discogs URLs (one per line)"
-      = form.text_area :urls, rows: 5, value: params[:urls], class: "form-control"
+      = form.text_area :urls, rows: 3, value: params[:urls], class: "form-control"
+    .form-group
+      = form.label "Notes", for: :notes
+      = form.text_field :notes, value: params[:notes], class: "form-control"
     .form-group
       %button.btn.btn-primary{ type: "submit" } Import
 

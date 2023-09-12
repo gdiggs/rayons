@@ -1,6 +1,7 @@
 class ItemImporter
-  def initialize(urls)
+  def initialize(urls, notes = nil)
     @urls = urls
+    @notes = notes
   end
 
   def import
@@ -8,7 +9,14 @@ class ItemImporter
     items = []
 
     urls.each do |url|
-      items << DiscogsImporter.new(url).import
+      item = DiscogsImporter.new(url).import
+
+      if notes.present?
+        item.notes = notes
+        item.save!
+      end
+
+      items << item
     rescue StandardError => e
       errors << "Error importing #{url}: #{e}"
     end
@@ -18,5 +26,5 @@ class ItemImporter
 
   private
 
-  attr_reader :urls
+  attr_reader :urls, :notes
 end
