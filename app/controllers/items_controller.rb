@@ -105,7 +105,7 @@ class ItemsController < ApplicationController
   # POST /items/import
   def import
     if request.post?
-      @items, @errors = ItemImporter.new(params[:urls].split).import
+      @items, @errors = ItemImporter.new(params[:urls].split, params[:notes]).import
     end
   end
 
