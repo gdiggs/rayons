@@ -26,6 +26,6 @@ module Clockwork
   end
 
   every(1.hour, "Backfill embeddings") do
-    #ItemEmbeddingGenerator.new.generate
+    ItemEmbeddingGenerator.new.generate
   end
 end
