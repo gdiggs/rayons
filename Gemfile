@@ -24,6 +24,7 @@ gem "pagy"
 gem "cacheable_flash"
 gem "memoist", require: false
 gem "neighbor"
+gem "ruby-openai"
 gem "bugsnag"
 gem "clockwork"
 gem "timber"

@@ -126,7 +126,15 @@ GEM
     dropbox-sdk (1.6.5)
       json
     erubi (1.12.0)
+    event_stream_parser (0.3.0)
     execjs (2.9.1)
+    faraday (2.7.11)
+      base64
+      faraday-net_http (>= 2.0, < 3.1)
+      ruby2_keywords (>= 0.0.4)
+    faraday-multipart (1.0.4)
+      multipart-post (~> 2)
+    faraday-net_http (3.0.2)
     ffi (1.16.3)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -165,6 +173,7 @@ GEM
     mini_mime (1.1.5)
     minitest (5.20.0)
     msgpack (1.7.2)
+    multipart-post (2.3.0)
     mutex_m (0.1.2)
     neighbor (0.3.1)
       activerecord (>= 6.1)
@@ -273,6 +282,10 @@ GEM
       rspec-mocks (~> 3.12)
       rspec-support (~> 3.12)
     rspec-support (3.12.1)
+    ruby-openai (5.2.0)
+      event_stream_parser (>= 0.3.0, < 1.0.0)
+      faraday (>= 1)
+      faraday-multipart (>= 1)
     ruby2_keywords (0.0.5)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -352,6 +365,7 @@ DEPENDENCIES
   rails_12factor
   rspec-mocks
   rspec-rails (~> 6.0.0)
+  ruby-openai
   sassc-rails
   scout_apm
   secure_headers

@@ -6,7 +6,7 @@ class Item < ActiveRecord::Base
   validates_format_of :discogs_url, with: URI.regexp(%w(http https)), allow_nil: true
 
   has_many :tracks
-  has_neighbors :embedding, normalize: true, dimensions: 100
+  has_neighbors :embedding, normalize: true, dimensions: 1536
 
   scope :added_on_day, ->(date) { where ["created_at >= ? AND created_at <= ?", date.to_date, (date + 1.day).to_date] }
 
@@ -121,6 +121,21 @@ class Item < ActiveRecord::Base
 
   def as_json(options = {})
     super(options.merge(methods: :added_on))
+  end
+
+  def as_embedding
+    <<~EOF.strip
+      Title: #{title}
+      Artist: #{artist}
+      Label: #{label}
+      Format: #{format}
+      Added to collection: #{created_at.strftime("%c")}
+      #{notes}
+    EOF
+  end
+
+  def similar_items
+    nearest_neighbors(:embedding, distance: "cosine").limit(10)
   end
 
   def destroy

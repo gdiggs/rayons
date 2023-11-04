@@ -37,6 +37,10 @@ do this, you must create an application on Dropbox and follow
 [these instructions](https://www.dropbox.com/developers/core/start/ruby) to get
 your Dropbox access token.
 
+## Upgrading Postgres locally
+
+If you need to update Postgres, replace the `db` image in `docker-compose.yml` with the right version of [`pgautoupgrade`](https://github.com/pgautoupgrade/docker-pgautoupgrade). Then run `docker compose run db` to upgrade, and then switch the image back.
+
 ## License
 
 Rayons is licensed under the MIT License
