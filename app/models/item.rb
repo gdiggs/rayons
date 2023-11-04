@@ -13,6 +13,7 @@ class Item < ActiveRecord::Base
   default_scope { where(deleted: false) }
 
   SORT_ORDER = %w(artist title year label format).freeze
+  EMBEDDING_VERSION = 2.freeze
 
   def self.search(query = "")
     query = query.to_s
@@ -124,14 +125,27 @@ class Item < ActiveRecord::Base
   end
 
   def as_embedding
-    <<~EOF.strip
+    str = <<~EOF
       Title: #{title}
       Artist: #{artist}
       Label: #{label}
       Format: #{format}
       Added to collection: #{created_at.strftime("%c")}
-      #{notes}
     EOF
+
+    if genres.present?
+      str << "Genres: #{genres.join(", ")}\n"
+    end
+
+    if styles.present?
+      str << "Styles: #{styles.join(", ")}\n"
+    end
+
+    if notes.present?
+      str << notes
+    end
+
+    str.strip
   end
 
   def similar_items
