@@ -60,6 +60,17 @@
           - @release.notes.to_s.lines.each do |line|
             = line.html_safe
             %br
+
+      - if @item.embedding.present?
+        .similar-items
+          %b Similar Items
+          %ul
+            - @item.similar_items.each do |item|
+              %li
+                %a{ href: item_path(item) }
+                  #{item.artist} - #{item.title}
+
+      - if @item.discogs_url.present?
         %p
           %a{ href: @item.discogs_url, target: '_blank', rel: "noopener noreferrer" } Discogs Link
       %p

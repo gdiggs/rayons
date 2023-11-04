@@ -24,4 +24,8 @@ module Clockwork
       TimeMachineMailer.daily_summary(user).deliver
     end
   end
+
+  every(1.hour, "Backfill embeddings") do
+    #ItemEmbeddingGenerator.new.generate
+  end
 end
