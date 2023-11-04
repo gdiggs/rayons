@@ -23,6 +23,7 @@ gem "hashie"
 gem "pagy"
 gem "cacheable_flash"
 gem "memoist", require: false
+gem "neighbor"
 gem "bugsnag"
 gem "clockwork"
 gem "timber"

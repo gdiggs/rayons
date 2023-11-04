@@ -6,6 +6,7 @@ class Item < ActiveRecord::Base
   validates_format_of :discogs_url, with: URI.regexp(%w(http https)), allow_nil: true
 
   has_many :tracks
+  has_neighbors :embedding, normalize: true, dimensions: 100
 
   scope :added_on_day, ->(date) { where ["created_at >= ? AND created_at <= ?", date.to_date, (date + 1.day).to_date] }
 

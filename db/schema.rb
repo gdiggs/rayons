@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2021_11_20_032921) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_04_143518) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "vector"
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -75,6 +76,7 @@ ActiveRecord::Schema[7.1].define(version: 2021_11_20_032921) do
     t.text "notes"
     t.text "genres", default: [], array: true
     t.text "styles", default: [], array: true
+    t.vector "embedding", limit: 100
     t.index "to_tsvector('english'::regconfig, artist)", name: "items_to_tsvector_idx1", using: :gin
     t.index "to_tsvector('english'::regconfig, color)", name: "items_to_tsvector_idx5", using: :gin
     t.index "to_tsvector('english'::regconfig, condition)", name: "items_to_tsvector_idx4", using: :gin
@@ -86,6 +88,7 @@ ActiveRecord::Schema[7.1].define(version: 2021_11_20_032921) do
     t.index ["color"], name: "index_items_on_color"
     t.index ["condition"], name: "index_items_on_condition"
     t.index ["created_at"], name: "index_items_on_created_at"
+    t.index ["embedding"], name: "index_items_on_embedding", opclass: :vector_cosine_ops, using: :hnsw
     t.index ["format"], name: "index_items_on_format"
     t.index ["label"], name: "index_items_on_label"
     t.index ["price_paid"], name: "index_items_on_price_paid"
