@@ -6,7 +6,7 @@ class ItemEmbeddingGenerator
     i = 1
 
     items_to_backfill.find_each do |item|
-      puts "[#{i}/#{total}]: #{item.artist} - #{item.title}"
+      Rails.logger.info("Embedding [#{i}/#{total}]: #{item.artist} - #{item.title}")
       embedding = openai.create_embedding(item.as_embedding)
       item.embedding = embedding
       item.embedding_version = Item::EMBEDDING_VERSION
