@@ -9,6 +9,7 @@ class ItemEmbeddingGenerator
       puts "[#{i}/#{total}]: #{item.artist} - #{item.title}"
       embedding = openai.create_embedding(item.as_embedding)
       item.embedding = embedding
+      item.embedding_version = Item::EMBEDDING_VERSION
       item.save!
       i += 1
     end
