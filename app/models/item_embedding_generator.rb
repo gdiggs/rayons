@@ -1,26 +1,23 @@
+require "digest"
+
 class ItemEmbeddingGenerator
   def generate
     openai = OpenaiWrapper.new
 
-    total = items_to_backfill.count
-    i = 1
+    Item.all.find_each do |item|
+      next if item.embedding_md5 == md5(item.as_embedding)
 
-    items_to_backfill.find_each do |item|
-      Rails.logger.info("Embedding [#{i}/#{total}]: #{item.artist} - #{item.title}")
+      Rails.logger.info("Embedding: #{item.artist} - #{item.title}")
       embedding = openai.create_embedding(item.as_embedding)
       item.embedding = embedding
-      item.embedding_version = Item::EMBEDDING_VERSION
+      item.embedding_md5 = md5(item.as_embedding)
       item.save!
-      i += 1
     end
   end
 
   private
 
-  def items_to_backfill
-    Item.where.
-      not(embedding_version: Item::EMBEDDING_VERSION).
-      or(Item.where(embedding_version: nil)).
-      or(Item.where(embedding: nil))
+  def md5(text)
+    Digest::MD5.hexdigest(text)
   end
 end

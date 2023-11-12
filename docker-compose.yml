@@ -3,7 +3,7 @@ volumes:
   postgres:
 services:
   db:
-    image: gordondiggs/pgvector:14
+    image: ankane/pgvector:v0.5.1 #pg 15
     volumes:
       - postgres:/var/lib/postgresql/data
     ports:
