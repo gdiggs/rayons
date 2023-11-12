@@ -13,7 +13,6 @@ class Item < ActiveRecord::Base
   default_scope { where(deleted: false) }
 
   SORT_ORDER = %w(artist title year label format).freeze
-  EMBEDDING_VERSION = 2.freeze
 
   def self.search(query = "")
     query = query.to_s
