@@ -90,7 +90,7 @@ GEM
     ast (2.4.2)
     autoprefixer-rails (10.4.15.0)
       execjs (~> 2)
-    base64 (0.1.1)
+    base64 (0.2.0)
     bcrypt (3.1.19)
     bigdecimal (3.1.4)
     blueprinter (0.30.0)
@@ -121,7 +121,7 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.5.0)
     docile (1.4.0)
-    drb (2.1.1)
+    drb (2.2.0)
       ruby2_keywords
     dropbox-sdk (1.6.5)
       json
@@ -153,11 +153,11 @@ GEM
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
-    irb (1.8.3)
+    irb (1.9.1)
       rdoc
       reline (>= 0.3.8)
     json (2.6.3)
-    loofah (2.21.4)
+    loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mail (2.8.1)
@@ -174,7 +174,7 @@ GEM
     minitest (5.20.0)
     msgpack (1.7.2)
     multipart-post (2.3.0)
-    mutex_m (0.1.2)
+    mutex_m (0.2.0)
     neighbor (0.3.1)
       activerecord (>= 6.1)
     net-imap (0.4.3)
@@ -187,9 +187,9 @@ GEM
     net-smtp (0.4.0)
       net-protocol
     nio4r (2.5.9)
-    nokogiri (1.15.4-aarch64-linux)
+    nokogiri (1.15.5-aarch64-linux)
       racc (~> 1.4)
-    nokogiri (1.15.4-x86_64-linux)
+    nokogiri (1.15.5-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pagy (6.1.0)
@@ -206,7 +206,7 @@ GEM
       stringio
     puma (6.4.0)
       nio4r (~> 2.0)
-    racc (1.7.2)
+    racc (1.7.3)
     rack (3.0.8)
     rack-attack (6.7.0)
       rack (>= 1.0, < 4)
@@ -258,9 +258,9 @@ GEM
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
     rake (13.1.0)
-    rdoc (6.5.0)
+    rdoc (6.6.0)
       psych (>= 4.0.0)
-    reline (0.3.9)
+    reline (0.4.0)
       io-console (~> 0.5)
     responders (3.1.1)
       actionpack (>= 5.2)
@@ -273,7 +273,7 @@ GEM
     rspec-mocks (3.12.6)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
-    rspec-rails (6.0.3)
+    rspec-rails (6.1.0)
       actionpack (>= 6.1)
       activesupport (>= 6.1)
       railties (>= 6.1)
@@ -312,7 +312,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     stackable_flash (0.1.1)
-    stringio (3.0.8)
+    stringio (3.0.9)
     temple (0.10.3)
     terser (1.1.19)
       execjs (>= 0.3.0, < 3)
@@ -364,7 +364,7 @@ DEPENDENCIES
   rails-controller-testing
   rails_12factor
   rspec-mocks
-  rspec-rails (~> 6.0.0)
+  rspec-rails (~> 6.1.0)
   ruby-openai
   sassc-rails
   scout_apm
