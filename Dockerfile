@@ -1,4 +1,4 @@
-FROM ruby:3.1.2
+FROM ruby:3.3.0-rc1
 
 ENV NODE_MAJOR 20
 
@@ -19,7 +19,6 @@ ENV PATH="$BINSTUBS_DIR:$PATH"
 RUN mkdir -p "$BINSTUBS_DIR"
 
 RUN gem update --system
-RUN gem install bundler --version 2.1.2
 
 RUN mkdir /app
 WORKDIR /app

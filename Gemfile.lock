@@ -188,9 +188,9 @@ GEM
     net-smtp (0.4.0)
       net-protocol
     nio4r (2.7.0)
-    nokogiri (1.16.0-aarch64-linux)
+    nokogiri (1.16.0.rc1-aarch64-linux)
       racc (~> 1.4)
-    nokogiri (1.16.0-x86_64-linux)
+    nokogiri (1.16.0.rc1-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pagy (6.2.0)
@@ -313,7 +313,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     stackable_flash (0.1.1)
-    stringio (3.1.0)
+    stringio (3.1.1)
     temple (0.10.3)
     terser (1.1.20)
       execjs (>= 0.3.0, < 3)
@@ -355,6 +355,7 @@ DEPENDENCIES
   marco-polo
   memoist
   neighbor
+  nokogiri (= 1.16.0.rc1)
   pagy
   pg
   pry-rails

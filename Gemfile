@@ -32,6 +32,7 @@ gem "secure_headers"
 gem "alexa_verifier", git: "https://github.com/sidoh/alexa_verifier.git"
 gem "blueprinter"
 gem "scout_apm"
+gem "nokogiri", "1.16.0.rc1"
 
 group :test do
   gem "rails-controller-testing"
