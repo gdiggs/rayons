@@ -1,4 +1,4 @@
-FROM ruby:3.3.0-rc1
+FROM ruby:3.3.0
 
 ENV NODE_MAJOR 20
 

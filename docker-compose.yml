@@ -22,8 +22,14 @@ services:
       - "5000:5000"
     depends_on:
       - db
+    env_file: .env
+    volumes:
+      - .:/app
   worker:
     build: .
     command: bundle exec clockwork config/clock.rb
     depends_on:
       - db
+    env_file: .env
+    volumes:
+      - .:/app

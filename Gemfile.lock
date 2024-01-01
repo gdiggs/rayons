@@ -188,9 +188,9 @@ GEM
     net-smtp (0.4.0)
       net-protocol
     nio4r (2.7.0)
-    nokogiri (1.16.0.rc1-aarch64-linux)
+    nokogiri (1.16.0-aarch64-linux)
       racc (~> 1.4)
-    nokogiri (1.16.0.rc1-x86_64-linux)
+    nokogiri (1.16.0-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pagy (6.2.0)
@@ -355,7 +355,6 @@ DEPENDENCIES
   marco-polo
   memoist
   neighbor
-  nokogiri (= 1.16.0.rc1)
   pagy
   pg
   pry-rails
