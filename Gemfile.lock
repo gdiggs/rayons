@@ -112,6 +112,7 @@ GEM
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
     crass (1.0.6)
+    csv (3.2.8)
     dalli (3.2.6)
     date (3.3.4)
     devise (4.9.3)
@@ -313,7 +314,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     stackable_flash (0.1.1)
-    stringio (3.1.1)
+    stringio (3.1.0)
     temple (0.10.3)
     terser (1.1.20)
       execjs (>= 0.3.0, < 3)
@@ -346,6 +347,7 @@ DEPENDENCIES
   cacheable_flash
   chartkick
   clockwork
+  csv
   dalli
   devise
   dropbox-sdk
