@@ -1,10 +1,8 @@
-FROM ruby:3.3.0
-
-ENV NODE_MAJOR 20
+FROM debian:bullseye-slim
 
 # Install custom ruby
 RUN apt-get update -qq && \
-    apt-get install -y build-essential wget autoconf && \
+    apt-get install -y -qq build-essential wget autoconf git pkg-config && \
     wget https://github.com/postmodern/ruby-install/releases/download/v0.9.3/ruby-install-0.9.3.tar.gz && \
     tar -xzvf ruby-install-0.9.3.tar.gz && \
     cd ruby-install-0.9.3/ && \
@@ -16,11 +14,11 @@ RUN apt-get update -qq && \
 # Make the Ruby binary available on the PATH
 ENV PATH="/opt/rubies/ruby-3.3.0/bin:${PATH}"
 
+ENV NODE_MAJOR 20
+
 RUN apt-get update -qq && \
     apt-get install -y -qq ca-certificates curl gnupg build-essential libpq-dev postgresql-client && \
-    mkdir -p /etc/apt/keyrings && \
-    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
-    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list && \
+    curl -fsSL "https://deb.nodesource.com/setup_$NODE_MAJOR.x" | bash - && \
     apt-get update -qq && \
     apt-get install -y -qq nodejs && \
     apt-get clean && \
