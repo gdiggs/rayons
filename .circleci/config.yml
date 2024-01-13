@@ -10,5 +10,4 @@ jobs:
           name: Run tests
           command: |
             touch .env
-            docker-compose up -d
             make test
