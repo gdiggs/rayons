@@ -1,18 +1,4 @@
-FROM debian:bullseye-slim
-
-# Install custom ruby
-RUN apt-get update -qq && \
-    apt-get install -y -qq build-essential wget autoconf git pkg-config && \
-    wget https://github.com/postmodern/ruby-install/releases/download/v0.9.3/ruby-install-0.9.3.tar.gz && \
-    tar -xzvf ruby-install-0.9.3.tar.gz && \
-    cd ruby-install-0.9.3/ && \
-    make install && \
-    ruby-install -p https://github.com/ruby/ruby/pull/9371.diff ruby 3.3.0 && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-# Make the Ruby binary available on the PATH
-ENV PATH="/opt/rubies/ruby-3.3.0/bin:${PATH}"
+FROM gordondiggs/ruby3
 
 ENV NODE_MAJOR 20
 
