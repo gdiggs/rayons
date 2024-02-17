@@ -1,11 +1,13 @@
 require "digest"
 
 class ItemEmbeddingGenerator
+  EMBEDDING_VERSION = 2
+
   def generate
     openai = OpenaiWrapper.new
 
     Item.all.find_each do |item|
-      next if item.embedding_md5 == md5(item.as_embedding)
+      next if item.embedding_md5 == md5("#{item.as_embedding}/v#{EMBEDDING_VERSION}")
 
       Rails.logger.info("Embedding: #{item.artist} - #{item.title}")
       embedding = openai.create_embedding(item.as_embedding)

@@ -1,5 +1,5 @@
 class OpenaiWrapper
-  EMBEDDING_MODEL = "text-embedding-ada-002".freeze
+  EMBEDDING_MODEL = "text-embedding-3-small".freeze
 
   OpenAI.configure do |config|
     config.access_token = ENV.fetch("OPENAI_API_KEY")
