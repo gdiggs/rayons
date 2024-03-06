@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_12_230659) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_06_012732) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "vector"
@@ -78,6 +78,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_12_230659) do
     t.text "styles", default: [], array: true
     t.vector "embedding", limit: 1536
     t.string "embedding_md5"
+    t.datetime "last_cleaned_at"
     t.index "to_tsvector('english'::regconfig, artist)", name: "items_to_tsvector_idx1", using: :gin
     t.index "to_tsvector('english'::regconfig, color)", name: "items_to_tsvector_idx5", using: :gin
     t.index "to_tsvector('english'::regconfig, condition)", name: "items_to_tsvector_idx4", using: :gin
@@ -92,6 +93,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_12_230659) do
     t.index ["embedding"], name: "index_items_on_embedding", opclass: :vector_cosine_ops, using: :hnsw
     t.index ["format"], name: "index_items_on_format"
     t.index ["label"], name: "index_items_on_label"
+    t.index ["last_cleaned_at"], name: "index_items_on_last_cleaned_at"
     t.index ["price_paid"], name: "index_items_on_price_paid"
     t.index ["title"], name: "index_items_on_title"
     t.index ["updated_at"], name: "index_items_on_updated_at"

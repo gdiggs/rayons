@@ -61,6 +61,14 @@
             = line.html_safe
             %br
 
+      .last-cleaned
+        %b Last cleaned:
+        - if @item.last_cleaned_at.present?
+          = @item.last_cleaned_at.strftime("%B %-m, %Y")
+        - else
+          Never
+        = button_to("Mark as cleaned", mark_as_cleaned_item_path(@item), class: "btn btn-light", form: {style: 'display:inline-block;'}) 
+
       - if @item.embedding.present?
         .similar-items
           %b Similar Items
