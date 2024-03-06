@@ -89,6 +89,18 @@ class ItemsController < ApplicationController
     end
   end
 
+  def mark_as_cleaned
+    @item = Item.find(params[:id])
+
+    respond_to do |format|
+      if @item.update(last_cleaned_at: Time.now)
+        redirect_to @item, notice: "Item was successfully updated."
+      else
+        default_error_response(format, "edit", @item)
+      end
+    end
+  end
+
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
@@ -131,7 +143,7 @@ class ItemsController < ApplicationController
 
 
   def item_params
-    params.require(:item).permit(:artist, :condition, :format, :label, :price_paid, :title, :year, :color, :notes, :discogs_url, genres: [], styles: [])
+    params.require(:item).permit(:artist, :condition, :format, :label, :price_paid, :title, :year, :color, :notes, :discogs_url, :last_cleaned_at, genres: [], styles: [])
   end
 
   def index_csv

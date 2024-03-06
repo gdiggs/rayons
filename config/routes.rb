@@ -28,6 +28,10 @@ Rayons::Application.routes.draw do
         post "random"
       end
     end
+
+    member do
+      post "mark_as_cleaned"
+    end
   end
 
   resources :stats, only: [:index] do
