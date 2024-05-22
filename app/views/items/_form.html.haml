@@ -6,7 +6,7 @@
         - item.errors.full_messages.each do |msg|
           %li= msg
 
-  - (Item.column_names - %w[id created_at updated_at deleted genres styles embedding embedding_md5]).each do |field|
+  - (Item.column_names - %w[id created_at updated_at deleted genres styles embedding embedding_md5 last_cleaned_at]).each do |field|
     .form-group
       = f.label field
       = f.text_field field, class: "form-control"
