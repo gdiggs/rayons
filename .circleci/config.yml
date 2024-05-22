@@ -2,12 +2,12 @@ version: 2
 jobs:
   build:
     docker:
-      - image: cimg/base:2020.05
+      - image: cimg/base:2024.05
     steps:
       - checkout
       - setup_remote_docker
       - run:
           name: Run tests
           command: |
-            docker-compose up -d
+            docker compose up -d
             make test
