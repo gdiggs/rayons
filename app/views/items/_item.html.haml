@@ -10,8 +10,10 @@
   %td.item-price_paid #{item.price_paid}
   %td.item-notes #{item.notes}
   %td.item-added_on #{item.added_on}
-  %td.item-edit<
-    %a.item-edit{:href => "/items/#{item.id}/edit"} edit
-    \/
-    %a.item-delete{:href => "/items/#{item.id}"} delete
+  %td.item-edit
+    %a.item-edit{:href => "/items/#{item.id}/edit"}
+      %i.glyphicon.glyphicon-pencil
+  %td.item-delete
+    %a.item-delete{:href => "/items/#{item.id}"}
+      %i.glyphicon.glyphicon-trash
 

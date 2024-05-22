@@ -78,11 +78,10 @@
                 %a{ href: item_path(item) }
                   #{item.artist} - #{item.title}
 
-      - if @item.discogs_url.present?
-        %p
-          %a{ href: @item.discogs_url, target: '_blank', rel: "noopener noreferrer" } Discogs Link
       %p
-        %a{ href: edit_item_path(@item) } Edit
+        - if @item.discogs_url.present?
+          = button_to("Discogs Link", @item.discogs_url, method: :get, class: "btn btn-light", form: {style: 'display:inline-block;'})
+        = button_to("Edit", edit_item_path(@item), method: :get, class: "btn btn-light", form: {style: 'display:inline-block;'})
 
 - content_for :nav do
   %ul.nav.navbar-nav

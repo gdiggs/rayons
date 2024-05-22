@@ -5,6 +5,7 @@
         = token_tag(nil)
         - field_headers.each do |field|
           %input.form-control{ :type => 'text', :name => "item[#{field.parameterize(separator: "_")}]", :placeholder => field }
+        %input.form-control{ :type => 'text', :name => "item[discogs_url]", :placeholder => "Discogs URL" }
         %button.btn.btn-primary{ :type => 'submit' } Add
 
   .table-responsive
@@ -22,6 +23,7 @@
           %th
             %a.added_on{ :href => '', 'data-sort' => 'created_at'}
               Added
+          %th
           %th
       %tbody
         - cache("#{@presenter.cache_key}/html") do
