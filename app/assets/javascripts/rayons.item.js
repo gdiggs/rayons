@@ -6,9 +6,9 @@ Rayons.Item = {
   },
 
   // Delete an item using ajax, then show the message and fade out the row.
-  destroy: function(e) {
+  destroy: function() {
     if(confirm("Are you sure you want to delete this item?")) {
-      var $link = $(e.target);
+      var $link = $(this);
 
       $.ajax({
         url: $link.attr('href'),
